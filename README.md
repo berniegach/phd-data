@@ -43,12 +43,12 @@ In general:
 
 ## Studies included in this repository
 
-- Chapter 3 — [paper_01_sql_grading_sensitivity](paper_01_sql_grading_sensitivity)
-- Chapter 4 — pending
-- Chapter 5 — pending
-- Chapter 6 — pending
-- Chapter 7 — pending
-- Chapter 8 — pending
+- Chapter 3 -- [paper_01_sql_grading_sensitivity](paper_01_sql_grading_sensitivity)
+- Chapter 4 -- pending
+- Chapter 5 -- pending
+- Chapter 6 -- pending
+- Chapter 7 -- pending
+- Chapter 8 -- pending
 
 ## Privacy and ethics
 
