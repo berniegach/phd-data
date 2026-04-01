@@ -1,0 +1,351 @@
+1,"SELECT Artist.name FROM Artist,Produces WHERE Produces.artist_id=Artist.artist_id;"
+2,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+3,"SELECT name; FROM Artist, Produces; WHERE Artist.artist_id = Produces.artist_id"
+4,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+5,"SELECT DISTINCT Artist.name FROM Artist, Produces;"
+6,"SELECT COUNT(DISTINCT(name)) FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+7,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+8,"SELECT name FROM Artist, Produces WHERE Artist.album_id=Produces.album_id;"
+9,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+10,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE P.artist_id = A.artist_id; "
+11,"SELECT name FROM Artist, Produces WHERE Artist.artist_id != Produces.artist_id;"
+12,"SELECT DISTINCT name FROM Produces, Artist WHERE Artist.artist_id = Produces.artist_id;"
+13,"select name from Artist, Produces  where Produces.artist_id=Artist.artist_id;"
+14,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+15,"SELECT Artist.name, FROM Artist, Produces WHERE Artist.artist_id =  Produces.artist_id;"
+16,"SELECT name FROM Artist a,Produces p WHERE a.artist_id = p.artist_id; "
+17,"SELECT DISTINCT""name"" FROM Artist, Produces;"
+18,"SELECT DISTINCT Artist.name FROM Artist, Produces  WHERE Artist.name = Produces.name ;"
+19,select distinct name from Artist join Produces on Artist.artist_id = Produces.artist_id;
+20,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; "
+21,"SELECT name FROM Artist a, Produces p WHERE a.artist_id = p.artist_id;"
+22,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+23,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON (Artist.artist_id = Produces.artist_id);
+24,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+25,SELECT name FROM Artist WHERE Artist.artist_id = Produces.artist_id;
+26,"SELECT DISTINCT name from Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+27,"SELECT name FROM Artist, Produces;"
+28,SELECT DISTINCT Artist.name FROM Artist NATURAL JOIN Produces;
+29,"SELECT Artists.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+30,"SELECT Distinct Artist.name FROM Artist, Produces  WHERE Produces.artist_id  = Artist.artist_id;"
+31,"SELECT DISTINCT Artist.names FROM Artist, Produces WHERE Produces.artist_id = Artist.artist_id;"
+32,SELECT DISTINCT name FROM Artist  INNER JOIN Produces ON Artist.artist_id = Produces.artist_id
+33,"SELECT DISTINCT name FROM Artist, Produces;"
+34,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+35,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+36,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+37,select DISTINCT name From Artist LEFT JOIN Produces on Artist.artist_id = Produces.artist_id where Produces.track_id NOT null; 
+38,"select distinct name from Artist, Produces where Artist.artist_id = Produces.artist_id;"
+39,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+40,(SELECT name FROM Artist) UNION (Select name FROM Produces);
+41,"Select name FROM Artist,Produces WHERE Artist.artist_id= Produces.artist_id;"
+42,"SELECT DISTINCT a.* FROM Artist a, Produces p WHERE a.artist_id = p.artist_id;"
+43,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id=Produces.artist_id;
+44,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+45,"SELECT DISTINCT name FROM Artist, Produces;"
+46,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+47,SELECT name FROM Artist JOIN Produces ON artist.artist_id=produces.artist_id;
+48,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces
+49,SELECT name FROM Artist INNER JOIN Produces WHERE Artist.artist_id = Produces.artist_id
+50,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+51,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+52,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+53,"SELECT name FROM Artist, Produces WHERE Artist.Track=Produces.Track;"
+54,
+55,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+56,"SELECT name FROM Artist, Produces"
+57,"SELECT name FROM Artist, Produces;"
+58,"SELECT COUNT( DISTINCT Artist.name) FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+59,SELECT name FROM Artist WHERE Artist.artist_id = Produces.artist_id;
+60,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+61,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; "
+62,SELECT name FROM Artist NATURAL JOIN Produces;
+63,SELECT DISTINCT name FROM Artist INNER JOIN Produces;
+64,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+65,SELECT name  FROM Artist NATURAL JOIN Produces
+66,"Select DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id; "
+67,"SELECT DISTINCT Artist.name FROM Artist, Produces;"
+68,"SELECT Artists.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+69,SELECT DISTINCT name FROM (Artist AND Produces);
+70,(SELECT name FROM Artist) UNION (SELECT Artist FROM produces)
+71,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+72,SELECT name FROM Artist NATURAL JOIN Produces;   
+73,"SELECT DISTINCT name  FROM Artist, Produces  WHERE Artist.artist_id=Produces.artist_id;"
+74,"SELECT DISTINCT Artist.Name FROM Artist,Produces WHERE produces.artist_id=artist.artist_id; "
+75,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+76,SELECT name FROM Artist NATURAL JOIN Produces;
+77,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+78,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+79,"SELECT name FROM Artist, Produces Where Artist.artist_id = Produces.artist_id;"
+80,SELECT name FROM Artist NATURAL JOIN Produces
+81,"SELECT COUNT(*) FROM (SELECT DISTINCT (name) FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id)  AS bernie_best_always_solves_problems;"
+82,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+83,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+84,"SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id;"
+85,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+86,"select distinct name from artist,produces;"
+87,"SELECT name; FROM Artist, Produces; WHERE Artist.artist_id = Produces.artist_id; "
+88,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+89,SELECT DISTINCT NAME FROM artist A JOIN produces P ON A.artist_id = P.artist_id;
+90,"SELECT DISTINCT name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;"
+91,"SELECT DISTINCT name FROM Artist, Produces;"
+92,"Select name From Artists, Produces;"
+93,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+94,"SELECT name FROM Artist, Produces"
+95,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; "
+96,"SELECT DISTINCT name  FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+97,"SELECT DISTINCT name FROM Artist, Produces;"
+98,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+99,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+100,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;   -- I did not know if using NATURAL JOIN is allowed, so I just did it manually now"
+101,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+102,"Select name From artist, produces "
+103,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+104,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+105,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+106,"SELECT DISTINCT name  FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+107,"SELECT name FROM Artits, Produces;"
+108,"SELECT name FROM Artist, Produces"
+109,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id; "
+110,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+111,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+112,"SELECT DISTINCT name FROM Artist, Produces;"
+113,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id ; "
+114,"SELECT DISTINCT name FROM Artist,Produces WHERE name = name"
+115,
+116,SELECT DISTINCT Artist.name FROM Artist INNER JOIN Produces ON Artist .artist_id = Produces .artist_id;
+117,SELECT DISTINCT Name FROM Artist NATURAL JOIN Produces;
+118,"SELECT DISTINCT name FROM Produces, Artist WHERE Artist.artist_id = Produces.artist_id;"
+119,"SELECT DISTINCT name FROM Artist , Produces WHERE Artist.artist_id = Produces.artist_id ;"
+120,"SELECT DISTINCT artist.name FROM artist,produces WHERE produces.artist_id=artist.artist_id;"
+121,
+122,"SELECT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id ; "
+123,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+124,"select distinct a.name from Artist a, Produces p where a.artist_id = p.artist_id; "
+125,"SELECT name From Artist, Produces"
+126,"SELECT DISTINCT name FROM Artist a, Produces p  WHERE a.artist_id = p.artist_id;"
+127,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+128,"SELECT Artist.name FROM Artist, Produces; WHERE Artist.artist_id = Produces.produces_id;"
+129,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+130,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+131,"SELECT DISTINCT name FROM Artist, Produces;"
+132,SELECT name FROM Artist NATURAL JOIN Produces;
+133,"SELECT name FROM Artist, Produces;"
+134,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+135,SELECT DISTINCT name FROM Artist natural join Produces;
+136,"SELECT DISTINCT Artist.name FROM Artist, Produces; "
+137,"SELECT DISTINCT name FROM artist, produces WHERE artist.artist_id=produces.artist_id;"
+138,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+139,"SELECT DISTINCT name FROM Artist, Produces "
+140,"SELECT DISTINCT name FROM Artist A, Produces P"
+141,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+142,"select distinct name from Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+143,"SELECT name FROM Artist,Produces where (Artist.artist_id = Produces.artist_id);"
+144,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+145,PROJECT name FROM Artist JOIN Produces
+146,"SELECT DISTINCT artist.name FROM artist, produces WHERE artist.artist_id = produces.artist_id;"
+147,"SELECT distinct name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+148,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+149,SELECT DISTINCT artist_id FROM produces;
+150,SELECT name WHERE 
+151,SELECT name FROM Artist NATURAL JOIN Produces;
+152,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+153,"SELECT name FROM Artist,Produces WHERE artist.name = produces.name"
+154,
+155,"Select DISTINCT name from Artist, Produces where Artist.artist_id = Produces.artist_id;"
+156,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+157,SELECT DISTINCT name FROM artist JOIN produces ON artist.artist_id = produces.artist_id;
+158,SELECT DISTINCT Artist.name FROM Artist NATURAL JOIN Produces;
+159,"SELECT DISTINCT name  FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+160,"SELECT Artist.name From Artist, Produces Where Artist.name = Produces.name"
+161,"SELECT distinct artist.name FROM Artist,Produces WHERE produces.artist_id=artist.artist_id;"
+162,"select distinct Artist.name from Artist, Produces where Artist.artist_id = Produces.artist_id;"
+163,"SELECT Artist.name, FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+164,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+165,"-- I was adviced against doing this but this should work so I wanted to show it <3 -- SELECT DISTINCT Artist.name -- FROM Artist -- NATURAL JOIN Produces;   -- My actual Answer SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+166,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+167,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;
+168,"SELECT DISTINCT Name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+169,SELECT name FROM Artist NATURAL JOIN Produces;
+170,"SELECT name FROM Artist, Produces WHERE artist.artist_id = produces.artist_id;"
+171,"SELECT DISTINCT name FROM Artist, Produces;"
+172,"SELECT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id; "
+173,"SELECT DISTINCT name FROM Artist, Produces Where Artist.artist_id == Produces.artist_id;"
+174,"select distinct name from artist, produces where artist.artist_id = produces.artist_id;"
+175,"SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id = Produces.artist_id;"
+176,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+177,"SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id; "
+178,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+179,"SELECT name FROM Artist, Produces; "
+180,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+181,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+182,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+183,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+184,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id AND Artist.artist_id = Writes.artist_id ;"
+185,SELECT DISTINCT name  FROM Artist NATURAL JOIN  Produces;
+186,"SELECT DISTINCT name from Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+187,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id INTERSECT SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+188,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+189,"SELECT name FROM Artists, Produces WHERE Artists.artist_id = Produces.artist_id"
+190,"SELECT COUNT (*) FROM (SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id) AS query_answer;"
+191,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+192,SELECT Artist.name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;
+193,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+194,SELECT name FROM Artist NATURAL JOIN Produces;
+195,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+196,SELECT DISTINCT name FROM Artist JOIN Produces;
+197,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; "
+198,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+199,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+200,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id AND Artist.name <> Produces.track_id;"
+201,"SELECT DISTINCT name FROM Artist, Produces;"
+202,"SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id =  Produces.artist_id; "
+203,π_name(σ_Writes.artist_id=Artist.artist_id(σ_Track.track_id=Writes.track_id(Artist X Track)) 
+204,"select distinct name from artist, produces where artist.artist_id = produces.artist_id;"
+205,"SELECT DISTINCT name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;"
+206,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+207,"SELECT DISTINCT(Artist.name) FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+208,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.name = Produces.name;"
+209,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;
+210,
+211,SELECT name Artist JOIN Produces
+212,SELECT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id ;
+213,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+214,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+215,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+216,project name Artist = Produces
+217,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+218,"SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+219,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+220,SELECT name FROM Artist NATURAL JOIN Produces;
+221,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+222,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+223,
+224,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id; "
+225," SELECT DISTINCT name > FROM Artist, Produces > WHERE Artist.artist_id=Produces.artist_id;"
+226,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id ;"
+227,SELECT name FROM Artist WHERE Artist.artist_id = Produceres.artist_id;
+228,SELECT name  FROM Artist NATURAL JOIN Produces;
+229,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+230,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+231,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+232,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+233,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces
+234,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE artist.artist_id = Produces.artist_id;"
+235,"Select Distinct Artist.name from Artist, Produces where Artist.artist_id = Produces.artist_id;"
+236,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id == Produces.artist_id;"
+237,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+238,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id; "
+239,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+240,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces; 
+241,Select distinct Artist.name from Artist join Produces on Artist.artist_id=Produces.artist_id;
+242,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+243,"SELECT DISTINCT name FROM Artist, Produces;"
+244,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+245," SELECT Artist.name FROM Artist , Produces WHERE Artist.artist_id =   Produces.artist_id;"
+246,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+247,"SELECT DISTINCT Artist.name FROM Artist, produces WHERE produces.artist_id = Artist.artist_id;"
+248,"SELECT artist.name FROM artist, produces WHERE artist.artist_id=produces.artist_id;"
+249,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+250,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+251,
+252,SELECT name FROM Artist UNION Produces
+253,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+254,"SELECT DISTINCT name FROM Artist , Produces; "
+255,"SELECT a.name FROM Artist a, Produces;"
+256,"SELECT a.name FROM Artist a, Produces p WHERE p.artist_id = a.artist_id;"
+257,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+258,SELECT name FROM Artist NATURAL JOIN Produces;
+259,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+260,"SELECT DISTINCT name FROM Produces, Artist WHERE Produces.artist_id = Artist.artist_id;"
+261,"SELECT DISTINCT Artist.name FROM Artists, produces WHERE Artist.artist_id = Produces.artist_id ;"
+262,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id=Produces.artist_id;
+263,SELECT distinct name FROM Artist NATURAL JOIN Produces 
+264,"SELECT Name FROM Artist,Produces WHERE Artist.artist_id = Produces.artist_id;"
+265,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+266,"SELECT name FROM Artist, Produces"
+267,=
+268,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+269,"SELECT name FROM Artist , Produces; "
+270,SELECT DISTINCT  name FROM Artist NATURAL JOIN Produces; 
+271,SELECT DISTINCT name FROM Artist INNER JOIN Produces  ON Artist.artist_id = Produces.artist_id;
+272,"SELECT DISTINCT( Artist.name) FROM Artist,Produces  WHERE Artist.artist_id = Produces.artist_id;"
+273,"Select DISTINCT Artist.name From Artist, Produces Where Produces.artist_id == Artist.artist_id;   "
+274,
+275,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+276,"SELECT name FROM Artist, Produces; "
+277,"SELECT DISTINCT name FROM Artist, Produces;"
+278,"SELECT Name FROM Artist,Produces;"
+279,
+280,"Select Distinct Artist.name From Artist, Produces Where Artist.artist_id = Produces.artist_id;"
+281,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+282,SELECT DISTINCT Name FROM Artist JOIN Produces;
+283,"SELECT DISTINCT name FROM Artist, Produces;"
+284,"SELECT DISTINCT name FROM Artist, Produces WHERE Arist.artist_id=Produces.artist_id;"
+285,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+286,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+287,πname(Artist)⨝πname(Produces)
+288,SELECT DISTINCT Artist.name FROM Produces NATURAL JOIN Artist WHERE Artist.artist_id = Produces.artist_id;
+289,SELECT Artist.name FROM Artist NATURAL JOIN Produces;
+290,"SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+291,"SELECT DISTINCT name FROM Artist, Produces WHERE Produces.artist_id = Artist.artist_id;"
+292,"SELECT name FROM Artist, Produces"
+293,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+294,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+295,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+296,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+297,"SELECT DISTINCT Artist.name FROM Artist,Produces WHERE Artist.artist_id == Produces.artist_id;"
+298,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+299,"SELECT name FROM Artist, Produces;"
+300,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id "
+301,SELECT name FROM Artist NATURAL JOIN Produces;
+302,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+303,"SELECT name FROM Artist, Produces WHERE Artist.artist_id == Produces.artist_id;"
+304,"SELECT DISTINCT name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;"
+305,"SELECT DISTINCT name FROM Artist, Produces;"
+306,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id"
+307,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id INTERSECT SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+308,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id"
+309,SELECT DISTINCT name FROM (Artist INNER JOIN Produces ON Artist._artist_id = Produces.artist_id);
+310,SELECT name FROM Produces GROUP BY Artist
+311,SELECT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;
+312,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;"
+313,"SELECT DISTINCT name FROM Produces, Artist WHERE Artist.artist_id = Produces.artist_id;"
+314,SELECT DISTINCT name FROM Artist JOIN Produces;
+315,SELECT name FROM Artist AND Produces
+316,"--SELECT DISTINCT artist.name FROM Artist, Produces WHERE Artist.artist_id == Produces.artist_id;"
+317,SELECT name FROM Artist NATURAL JOIN Produces 
+318,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id=Produces.artist_id;
+319,
+320,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+321,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+322,"SELECT name FROM Artist, Produces;"
+323,
+324,
+325,"SELECT name FROM Artist,Produces WHERE Artist.artist_id=Produces.track_id"
+326,"SELECT DISTINCT Artist.name  FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id"
+327,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+328,SELECT name Arist NATURAL JOIN Produces;
+329,"SELECT DISTINCT Artist.name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;"
+330,"SELECT DISTINCT name  FROM Artist, Produces  WHERE artist.artist_id = produces.artist_id;   "
+331,"SELECT DISTINCT name FROM Artist,produces WHERE artist.artist_id = produces.artist_id;"
+332,SELECT name FROM Artist NATURAL JOIN Produces;
+333,"SELECT DISTINCT name FROM Artist, Produces;"
+334,
+335,"SELECT name FROM artist AS ar, produces AS pr WHERE ar.artist_id = pr.artist_id"
+336,SELECT name FROM Artist NATURAL JOIN Produces;
+337,SELECT name FROM Artist FULL OUTER JOIN Produces ON Artist.artist_id=Produces.artist_id;
+338,select name from Artist natural join Produces;
+339,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+340,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;
+341,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+342,"select name from Artist, Produces;"
+343,D SELECT DISTINCT name > FROM Artist > NATURAL JOIN Produces;
+344,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+345,SELECT DISTINCT name  WHERE Artist Produces
+346,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+347,"SELECT * FROM (SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id);"
+348,"SELECT DISTINCT name FROM Produces, Artist WHERE Produces.artist_id = Artist.artist_id; "
+349,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"
+350,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"
+351,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;"

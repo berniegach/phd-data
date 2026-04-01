@@ -1,0 +1,351 @@
+1,"SELECT * FROM Track, Performs, Artist WHERE( Artist.name='Queen' AND Track.duration>300)  AND (Performs.artist_id=Artist.artist_id) AND (Performs.track_id= Track.track_id);"
+2,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+3,"SELECT *; FROM Track, Performs, Artist; WHERE duration>300 AND name='Queen'"
+4,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';"
+5,"SELECT * FROM Artist,Track, Performs WHERE Artist.name = 'Queen' AND Track.duration > 300 AND Track.track_id  = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+6," SELECT * FROM Track T, Performs P, Artist A WHERE T.duration > 300 AND A.name = 'Queen' AND T.track_id = P.track_id AND A.artist_id = P.artist_id;"
+7,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.name = 'Queen' AND Artist.artist_id=Performs.artist_id AND duration>300;"
+8,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen'; "
+9,"SELECT DISTINCT *  FROM Track T, Performs P, Artist A WHERE P.artist_id = A.artist_id AND P.track_id = T.track_id AND T.duration > 300 AND A.name = 'Queen';"
+10,"SELECT * FROM Track T, Performs P, Artist A WHERE T.duration > 300 AND A.name = 'Queen' AND T.track_id = P.track_id AND P.artist_id = A.artist_id;"
+11,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.track_id= Track.track_id AND Performs.artist_id = Artist.artist_id;"
+12,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Performs.track_id = Track.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen';"
+13," SELECT *  FROM Track, Performs, Artist WHERE duration > 300 AND name = 'Queen' AND Performs.track_id = Track.track_id and Performs.artist_id = Artist.artist_id;"
+14,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND Artist.name = 'Queen';"
+15,
+16,"SELECT * FROM Track t, Performs p, Artist a  WHERE a.name = 'Queen' AND t.duration >300 AND a.artist_id =p.artist_id AND t.track_id=p.track_id;"
+17,
+18,"SELECT DISTINCT Track.* FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen' ;"
+19,select * from Track natural join Performs natural join Artist where name='Queen' AND duration > 300;
+20,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen';"
+21,"SELECT * FROM Track t, Performs p, Artist a WHERE t.duration > 300 AND a.name = 'Quenn';"
+22,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;"
+23,SELECT * FROM Track INNER JOIN Performs ON (Track.track_id = Performs.track_id) INNER JOIN Artist ON (Performs.Artist_id = Artist.Artist_id) WHERE Track.duration > 300 AND Artist.name = 'Queen';
+24,"SELECT track_id FROM Track, Performs, Artist WHERE duration>300 AND name ='Queen';"
+25,SELECT title FROM Track WHERE Artist.artist_id = Track.track_id AND Artist.name = 'Queen' AND Track.duration > 300;
+26,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration >300 AND Artist.name = 'Queen';
+27,"SELECT Track.track_title FROM Artist, Track, Performs WHERE duration > 300 AND Artist.name='Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+28,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+29,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen'; "
+30,"SELECT Track.track_title FROM Track, Artist, Performs  WHERE Artist.name = 'Queen'  AND Track.duration > 300  AND Performs.artist_id = Artist.artist_id; "
+31,"SELECT * FROM Artist, Perform, Track WHERE Track.duration >300  AND Track.track_id = Perform.track_id AND Perform.artist_id = Artist.artist_id AND Artist.artist_name = 'Queen';"
+32,"SELECT * FROM Track, Performs, Artist WHERE Track.duration >300 AND Artist.name = 'Queen' AND  Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id"
+33,"SELECT Track.track_title FROM Track, Performs, Artist WHERE duration > 300 AND name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+34,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+35,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen';"
+36,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen'"
+37,"select * from track, Performs where track.duration > 300 AND track.track_id = Performs.track_id AND artist_id = (SELECT artist_id from artist where name = 'Queen');  "
+38,"select track_title from Track, Artist, Performs where Track.duration > 300 AND Artist.name == 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+39,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+40,SELECT  FROM
+41,"SELECT  * FROM  Track,Performs,Artist WHERE Track.track_id=Performs.track_id AND duration>300  AND Artist.artist_id = Performs.artist_id AND Artist.name='Queen';"
+42,"SELECT *  FROM Track, Artist WHERE Artist.name = 'Queen' AND Track.duration > 300;"
+43,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"
+44,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"
+45,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen';"
+46,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND name='Queen' AND Performs.artist_id = Artist.artist_id AND Track.track_id = Performs.track_id;"
+47,SELECT * FROM Track JOIN Performs ON Track.track_id=Performs.track_id JOIN Artist ON Performs.artist_id=Artist.artist_id WHERE Track.duration>300 AND Artist.name='Queen';
+48,select * from (Track natural join Performs) natural join (select * from Artist where name='Queen') where duration > 300
+49,SELECT * FROM Track INNER JOIN Performs  ON Track.track_id = Performs.track_id INNER JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE duration>300 AND name='Queen'
+50,"SELECT * FROM Track T, Performs P, Artist A WHERE T.duration > 300  AND T.track_id= P.track_id AND P.artist_id = A.artist_id AND A.name = 'Queen'; "
+51,"SELECT * FROM Track, Performs, Artist WHERE (Track.duration >300 AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id);"
+52,"SELECT track_title FROM Track, Performs, Artist WHERE duration>300 AND name='Queen' AND Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id;"
+53,"FROM Track, Performs, Artists WHERE Track.duration>300 AND Artist.name=Queen AND Track.name=Performs.name=Artist.name;"
+54,
+55,"SELECT * FROM Track, Performs, Artist WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id AND Artist.name = 'Queen' AND Track.duration > 300;"
+56,(SELECT* FROM Track WHERE duration>300) UNION (SELECT* FROM Artist WHERE name= 'Queen')
+57,
+58,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Artist.name='Queen' AND Track.duration>300;
+59,SELECT Track.title AND Performs FROM Track WHERE Artist.name='Queen' AND Track.duration > 300;
+60,"SELECT DISTINCT Track, Performs, Artist WHERE Track.duration > 300  AND Artist,name = 'Queen';"
+61,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id AND Artist.name = 'Queen' AND Track.duration > 300; "
+62,"SELECT * FROM Track, Performs, Artist WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id AND Track.duration > 300 AND Artist.name = 'Queen';"
+63,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen' AND Track.duration > 300; "
+64,"SELECT Track.track_title FROM Track, Performs, Artist WHERE duration > 300 AND name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+65,
+66,"SELECT * FROM Track T, Artist A, Performs P WHERE A.name = 'Queen' AND T.duration > 300 AND A.artist_id = P.artist_id AND P.track_id = T.track_id;"
+67,"SELECT * FROM Performs, Artist, Track WHERE Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Track.track_id = Performs.track_id AND Track.duration > 300;"
+68,"SELECT * FROM Track T, Performs P, Artist A WHERE A.artist_id = P.artist_id AND T.track_id = P.track_id AND A.name = 'Queen' and T.duration > 300;"
+69,"SELECT DISTINCT Track FROM Performs, Artist WHERE Performs.artist_id = Artist.artist_id WHERE Artist.name = 'Queen' AND duration > 300;"
+70,"SELECT DISTINCT Track FROM Artist, Performs WHERE Artist = 'Queen' AND duration > 300"
+71,
+72,"SELECT artist_id, track_id FROM Track NATURAL JOIN Artist WHERE duration>300 AND name='Queen' "
+73,"SELECT * FROM Track, Performs, Artist WHERE duration > 300  AND name='Queen'  AND Track.track_id=Performs.track_id  AND Performs.artist_id=Artist.artist_id;"
+74,"SELECT track.track_title FROM track,performs,artist WHERE track.duration>300 AND artist.name='Queen' AND track.track_id=performs.track_id AND performs.artist_id=artist.artist_id; "
+75,"SELECT * FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id AND name = 'Queen' AND duration > 300;"
+76,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+77,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE (Track.duration > 300) AND (Track.track_id = Performs.track_id) AND (Performs.artist_id = Artist.artist_id) AND (Artist.name = 'Queen');"
+78,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name=""Queen"";"
+79,"SELECT * FROM Track, Performs, Artist Where Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name='Queen'; "
+80,SELECT * FROM Track WHERE duration>300
+81,"SELECT *  FROM Track,Performs,Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;"
+82,"D SELECT * FROM Track, Performs, Artist WHERE name = 'Queen' AND duration > 300 AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id;"
+83," SELECT *  FROM Performs, Track, Artist  WHERE duration>300 AND Track.track_id=Performs.track_id AND name='Queen' AND Artist.artist_id=Performs.artist_id;"
+84,"SELECT * FROM Track,Artist,Performs WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id ;"
+85,SELECT DISTINCT *  FROM Track INNER JOIN Performs ON Track.track_id=Performs.track_id INNER JOIN Artist ON Performs.artist_id=Artist.artist_id WHERE Track.duration > 300 AND Artist.name='Queen';
+86,"select * from track,performs,artist where track.duration > 300 and artist.name = 'Queen' and track.track_id=performs.track_id and performs.artist_id=artist.artist_id;"
+87,"SELECT *  FROM Track, Performs, Artist  WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.track_id= Track.track_id AND Performs.artist_id = Artist.artist_id;"
+88,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE duration > 300 AND name = 'Queen';
+89,"SELECT t.track_id, t.album_id, t.track_title, t.duration, t.popularity, t.explicit, a.artist_id, a.name FROM track t JOIN performs p ON t.track_id = p.track_id JOIN artist a ON p.artist_id = a.artist_id WHERE t.duration > 300 AND a.name = 'Queen';"
+90,"SELECT *  FROM Track, Performs, Artist  WHERE (duration > 300 AND Artist.name = 'Queen' AND Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id);"
+91,"SELECT * FROM Track, Artist WHERE duration>300 AND name='Queen';"
+92,
+93,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND  Artist.artist_id = Performs.artist_id AND Track.duration>300 AND Artist.name='Queen';"
+94,SELECT DISTINCT Track.duration FROM Track WHERE Track = Performs AND Performs = Artist    
+95,"SELECT *  FROM Track, Performs, Artist WHERE Track.duration>300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+96,"SELECT *  FROM Track, Performs, Artist  WHERE duration>300  AND name='Queen'  AND Performs.track_id=Track.track_id  AND Performs.artist_id = Artist.artist_id; "
+97,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Performs.artist_id=Artist.artist_id AND Track.track_id=Performs.track_id AND Artist.name = 'Queen';"
+98,"SELECT * FROM Track, Performs, Artist WHERE Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id AND duration > 300 AND name='Queen';"
+99,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = performs.artist_id AND duration>300 AND name='Queen';"
+100,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id = Artist.artist_id AND (duration > 300) AND (name='Queen');   -- again, NATURAL JOIN can be used but not sure if that is allowed."
+101,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+102,"Select * From Track, Performs, Artist Where Track.duration>300 AND Artist.name='Queen' "
+103,"SELECT track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen'"
+104,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+105,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen' AND duration > 300;"
+106,"SELECT track_title FROM Track, Artist, Performs WHERE duration>300 AND name='Queen' AND Performs.track_id=Track.track_id AND Performs.artist_id=Artist.artist_id;"
+107,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND name = 'Queen';"
+108,"SELECT track FROM Track,  Performs, Artist WHERE duration>300 AND name='Queen'   "
+109,"SELECT track_title FROM Track T, Performs P, Artist A WHERE T.track_id = P.track_id AND P.artist_id = A.artist_id AND T.duration > 300 AND A.name = 'Queen';"
+110,"SELECT T.track_title FROM Track T, Performs P, Artist A WHERE T.track_id = P.track_id AND T.duration > 300 AND P.artist_id = A.artist_id AND A.name = 'Queen';"
+111,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;"
+112,"SELECT DISTINCT track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.artist_id = 'Queen';"
+113,"SELECT DISTINCT Track.track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+114,"SELECT track_title FROM Track,Artist WHERE name = 'Queen' AND duration > 300"
+115,
+116,SELECT * FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';
+117,SELECT * FROM Artist NATURAL JOIN Performs NATURAL JOIN Track WHERE Artist.name='Queen' AND Track.duration>300;
+118,"SELECT Track.track_title FROM Track, Performs, Artist WHERE Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id AND Track.duration > 300;"
+119,"SELECT track_title FROM Artist,Track,Performs WHERE duration > 300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id ;"
+120,"SELECT track.track_title FROM track,performs,artist WHERE track.duration>300 AND artist.name='Queen' AND track.track_id=performs.track_id AND performs.artist_id=artist.artist_id;"
+121,
+122,"Select track_title FROM Track,Performs,Artist WHERE Track.duration >300 AND Artist.name='Queen' AND Performs.artist_id=Artist.artist_id  AND Performs.track_id = Track.track_id;"
+123,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+124,"Select * from Track a, Performs b, Artist c where a.duration > 300 and c.name = 'Queen' and b.artist_id=c.artist_id;"
+125,"SELECT * FROM Track, Performs, Artist WHERE duration>300  AND Artist.name='Queen'"
+126,"SELECT DISTINCT * FROM Track t, Performs p, Artist a WHERE t.track_id = p.track_id  AND a.artist_id = p.artist_id AND t.duration > 300 AND a.name = 'Queen';"
+127,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+128,"SELECT * FROM Track, Artist WHERE duration>300 AND Artist.name='Queen';"
+129,"SELECT track_title FROM Track, Performs, Artist WHERE duration > '300' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen';"
+130,"SELECT * FROM Track, Performs, Artist WHERE duration >300 AND name = 'Queen';"
+131,SELECT *  FROM Track JOIN Performs  ON Track.track_id = Performs.track_id JOIN Artist  ON Performs.artist_id = Artist.artist_id WHERE duration > 300 AND name = 'Queen';
+132,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration > 300 AND name = 'Queen';
+133,
+134,"SELECT * FROM Track, Performs, Artist WHERE Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300"
+135,SELECT*FROM Track natural join Performs natural join Artist WHERE duration>300 AND name='Queen';
+136,"SELECT  DISTINCT  FROM Artist, Performs, Artist WHERE name = 'Queen' AND duration > 300; "
+137,"SELECT * FROM track,performs,artist WHERE duration > 300 AND name = 'Queen' AND track.track_id=performs.track_id AND performs.artist_id=artist.artist_id;"
+138,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name ='Queen' ;
+139,"SELECT track_title FROM Track, Performs, Artist WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id AND name = 'Queen' AND duration > 300 "
+140,"SELECT * FROM Track T, Performs P, Artist A WHERE Track AND T.duration > 300"
+141,"SELECT DISTINCT * FROM Performs, Track WHERE duration>300 FROM Artist WHERE name='Queen';"
+142,"select track_title from Track, Artist, Performs where Track.track_id = Performs.track_id and Artist.artist_id = Performs.artist_id and duration > 300 and name = 'Queen';"
+143,"SELECT track_title FROM Track, Artist, Performs WHERE Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id AND Track.duration > 300;"
+144,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+145,SELECT Track JOIN Performs JOIN SELECT Artist WHERE name='Queen' WHERE duration>300
+146,"SELECT * FROM artist, performs, track WHERE artist.artist_id = performs.artist_id AND performs.track_id=track.track_id AND artist.name = 'Queen' AND track.duration >300"
+147,"SELECT * FROM Track, Performs, Artist WHERE (Track.duration >300 AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id);"
+148,
+149,"SELECT track_title FROM track, performs, artist WHERE track.track_id = performs.track_id AND performs.artist_id = artist.artist_id AND artist.name = 'Queen' AND track.duration > 300;"
+150,
+151,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration > 300 AND name LIKE 'Queen';
+152,
+153,"SELECT * FROM Track,Performs,Artist WHERE track.duration > 300 AND artist.name = 'Queen'  "
+154,
+155,"Select track_title from Track, Performs, Artist where Track.artist_id = Performs.artist_id and Performs.artist_id = Artist.artist_id and Track.duration > 300 and Artist.name = 'Queen';"
+156,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+157,SELECT track_title FROM track JOIN writes ON track.track_id = writes.track_id JOIN artist ON writes.artist_id = Artist.artist_id WHERE artist.name = 'Queen' AND track.duration > 300;
+158,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Artist.name = 'Queen' AND Track.duration > 300;
+159,"SELECT *	   FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id  AND Performs.track_id = Track.track_id AND duration > 300  AND name = 'Queen';"
+160,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND  Track.id = Performs.id AND Performs.id = Artist.id AND Artist.name = Queen"
+161,"SELECT track.track_title FROM track,performs,artist WHERE track.duration>300 AND artist.name='Queen' AND track.track_id=performs.track_id AND performs.artist_id=artist.artist_id;"
+162,"select Track.track_title from Track, performs, artist where Artist.name ='Queen' and Track.duration>300 and  Performs.artist_id = Artist.artist_id and    Performs.track_id=Track.track_id; "
+163,
+164,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+165,"SELECT DISTINCT Track.track_title  FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id; "
+166,"SELECT DISTINCT track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = (SELECT artist_id FROM Artist WHERE Artist.name = 'Queen');"
+167,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 and Artist.name = 'Queen' and Track.track_id=Performs.track_id and  Performs.artist_id = Artist.artist_id;"
+168,"SELECT * FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND duration > 300 AND name = 'Queen';"
+169,"SELECT * FROM Track,Artist,Performs WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"
+170,
+171,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name='Queen' AND Track.duration>300;"
+172,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;"
+173,"SELECT name, track_title, duration FROM Artist,Track, Performs WHERE Performs.track_id == Track.track_id AND Track.duration > 300  AND Artist.artist_id == Performs.artist_id AND Artist.name == 'Queen';"
+174,"select distinct track_title from track, performs, artist where artist.name = 'Queen' and duration > 300 and track.track_id = performs.track_id;"
+175,"SELECT Track.track_title FROM Track,Performs,Artist WHERE Track.duration > 300 AND Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+176,"SELECT DISTINCT T.track_title FROM Track T, Performs P, Artist A WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id AND T.duration > 300 AND A.name = 'Queen';"
+177,"SELECT * FROM Track,Artist,Performs WHERE duration>300 AND name='Queen' AND Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id;"
+178,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE name = 'Queen' AND duration > 300;
+179,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+180,"SELECT * FROM Track T, Artist A, Performs P WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id AND T.duration > 300 AND A.name = 'Queen';"
+181,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;"
+182,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id;"
+183,"SELECT * FROM Track, Artist, Produces WHERE duration > 300 AND Produces.artist_id = Artist.artist_id AND name = 'Queen' AND Produces.track_id=Track.track_id;"
+184,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.track_id= Track.track_id AND Performs.artist_id = Artist.artist_id;"
+185,SELECT track_title  FROM Track CROSS JOIN  Performs CROSS JOIN  Artist  WHERE Performs.artist_id=Artist.artist_id AND  Track.track_id=Performs.track_id AND  Track.duration>300 AND  Artist.name='Queen';
+186,"SELECT Track.track_title from Track, Artist, Performs WHERE Track.duration>300 AND Performs.track_id=Track.track_id AND Performs.artist_id=Artist.artist_id AND Artist.name='Queen';"
+187,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen' AND duration > 300;"
+188,SELECT * FROM (SELECT * FROM Track WHERE duration>300) NATURAL JOIN Performs NATURAL JOIN (SELECT * FROM Artist WHERE name='Queen');
+189,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id"
+190,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen';"
+191,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name='Queen' AND Performs.track_id=Track.track_id AND Performs.artist_id=Artist.artist_id;"
+192,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';"
+193,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;"
+194,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE name = 'Queen' AND duration > 300 ;
+195,"SELECT Track.track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+196,SELECT * FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';
+197,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen'"
+198,"SELECT track_title FROM Artist A, Track T, Performs P WHERE P.track_id = T.track_id AND A.artist_id = P.artist_id AND T.duration > 300 AND A.name = 'Queen';"
+199,"SELECT track_title FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND name='Queen' AND duration > 300;"
+200,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id;"
+201,"SELECT title FROM Track, Artist WHERE duration > 300 AND name = 'Queen';"
+202,"SELECT* FROM Track, Artist,Performs WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"
+203,  σ_Track.title (σ_duration>300 ∧ (Performs ⨝ σ_name='Queen'(Artist)))    
+204,"select * from track, performs, artist where duration > 300 and name = 'Queen' and performs.artist_id = artist.artist_id;"
+205,"SELECT *  FROM Track, Performs, Artist  WHERE duration > 300  AND Artist.name = 'Queen'  AND Track.track_id = Performs.track_id  AND Performs.artist_id = Artist.artist_id;"
+206,"SELECT track_title FROM Track, Artist, Performs WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+207,"SELECT * FROM Artist, Performs, Track WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';"
+208,"SELECT * FROM Track, Artist, Performs WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;"
+209,"SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Artist.name - ""Queen"" AND  Track.duration > 300;"
+210,
+211,"SELECT Track JOIN Performs JOIN Artist, WHERE Track.duration>300 AND Artist.name = 'Queen' "
+212,"SELECT * FROM Track WHERE track_id =  (SELECT track_id FROM Performs WHERE artist_id = (SELECT artist_id FROM Artist WHERE name = ""Queen"")) AND duration > 300 ;"
+213,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name='Queen';
+214,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300  AND Artist.name = 'Queen';"
+215,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;"
+216,SELECT duration>300 SELECT name='Queen
+217,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name = 'Queen' AND Performs.track_id = Track.track_id AND Performs.artist_id =  Artist.artist_id;"
+218,"-- Track.track_title in database but Track.title in introduction for some reason. SELECT Track.track_title FROM Track, Artist WHERE Performs.artist_id=Artist.artist_id AND Track.track_id=Performs.track_id AND Track.duration>300;"
+219,"SELECT DISTINCT track_title FROM Track, Artist, Performs WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+220,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name = 'Queen';
+221,"SELECT track_title FROM Track, Artist, Performs WHERE Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id AND Track.duration > 300;"
+222,"SELECT * FROM Track, Performs, Artist WHERE name =""Queen"" AND duration>300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+223,
+224,"SELECT * FROM Track,Performs,Artist WHERE duration>300 AND name='Queen' AND Performs.track_id=Track.track_id AND Perfroms.artist_id=Artist.artist_id;"
+225,"SELECT * > FROM Track, Performs, Artist > WHERE Track.duration>300 > AND Artist.name='Queen' > AND Performs.track_id=Track.track_id > AND Performs.artist_id=Artist.artist_id;"
+226,"SELECT * FROM Performs, Artist, Track WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Track.track_id = Performs.track_id ; "
+227,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.artist_id = Performs.artist_id AND Artist.name = 'Queen';"
+228,
+229,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+230,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND Track.duration>300 AND Artist.name='Queen';"
+231,"SELECT Track.track_title FROM Track,Performs,Artist WHERE duration>300 AND name='Queen' AND Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id;"
+232,"SELECT DISTINCT * FROM Track T, Performs P, Artist A WHERE duration > 300 AND name = 'Queen' AND T.track_id= P.track_id AND P.artist_id = A.artist_id;"
+233,"SELECT * FROM Track, Artist NATURAL JOIN Produces WHERE track.duration > 300 AND artist.name = 'Queen' "
+234,"SELECT * FROM Track, Performs, Artist WHERE name = 'Queen' AND duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+235,"Select * from Track, Performs, Artist where Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+236,"SELECT Track.track_title FROM Track, Performs, Artist WHERE Artist.name == 'Queen' AND Track.duration > 300 AND Artist.artist_id == Performs.artist_id AND Performs.track_id == Track.track_id;"
+237,"SELECT track_title FROM Track, Performs, Artist WHERE Track.duration > 300  AND Artist.name = 'Queen'  AND Artist.artist_id = Performs.artist_id  AND Performs.track_id = Track.track_id;"
+238,"SELECT DISTINCT track_title FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id  AND Performs.artist_id=Artist.artist_id  AND duration>300  AND Artist.name='Queen'; "
+239,"SELECT track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id;"
+240,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';
+241,SELECT * FROM Track JOIN Performs ON Track.track_id=Performs.track_id JOIN Artist ON Artist.artist_id=Performs.artist_id WHERE Artist.name='Queen' AND Track.duration>300;
+242,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen' AND Track.duration > 300;"
+243,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE duration>300 and name='Queen' and Performs.artist_id = Artist.artist_id and Performs.track_id = Track.track_id;"
+244,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND Artist.name='Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id  = Artist.artist_id;"
+245,"SELECT duration, Track.track_id , name , Artist.artist_id , Performs.track_id , Performs.artist_id FROM Track,Artist,Performs WHERE duration > 300 AND name='Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id ; "
+246,"SELECT name, duration, track_title FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE name = 'Queen' AND duration > 300;"
+247,"SELECT Track.track_title FROM Track, performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id=performs.track_id AND performs.artist_id=Artist.artist_id;"
+248,"SELECT * FROM track, performs, artist WHERE duration>300 AND track.track_id=performs.track_id AND artist.name='Queen'; "
+249,SELECT * FROM (SELECT * FROM Track WHERE duration>300) NATURAL JOIN Performs NATURAL JOIN (SELECT * FROM Artist WHERE name='Queen');
+250,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+251,
+252,SELECT * FROM Track UNION Performs UNION Artist WHERE duration>300 AND name='Queen'
+253,"SELECT track_title FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND duration > 300 AND name = 'Queen';"
+254,"SELECT DISTINCT * FROM  Track, Performs, Artist WHERE Track.duration > 300 AND (Artist.name = 'Queen'); "
+255,"SELECT * FROM Track t, Performs p, Artist a WHERE a.name = 'Queen' AND t.duration > 300 AND p.artist_id = a.artist_id AND p.track_id = t.track_id;"
+256,"SELECT * FROM Track t, Performs p, Artist a WHERE p.artist_id = a.artist_id AND p.track_id = t.track_id AND t.duration > 300 AND a.name = 'Queen';"
+257,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND Track.duration>300 AND Artist.name = 'Queen';"
+258,"SELECT * FROM TRACK NATURAL JOIN Performs, Artist WHERE duration >300 AND Artist.name='Queen'; "
+259,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;"
+260,"SELECT track_title FROM Track, Performs, Artist WHERE duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+261,"SELECT * FROM Track T, Performs P, Artist A WHERE T.duration > 300 AND T.track_id = P.track_id AND P.artist_id = A.artist_id AND A.name = 'Queen' ;"
+262,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND Artist.name='Queen' AND Track.duration>300;"
+263,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration>300 AND name='Queen'
+264,"SELECT * FROM Track,Performs,Artist WHERE duration > 300 AND Track.track_id = Performs.track_id AND Artist.name='Queen' AND Artist.artist_id = Performs.artist_id;"
+265,"SELECT * FROM Track, Performs, Artist WHERE Performs.artist_id = Artist.artist_id AND Track.track_id = Performs.track_id AND duration > 300 AND name = 'Queen';"
+266,SELECT * FROM Artist WHERE Track.duration > 300 AND Artist.name='Queen'
+267,=
+268,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen' AND duration > 300; "
+269,"SELECT Artist.name FROM Track , Artist WHERE duration>300 AND Artist.name='Queen';"
+270,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration > 300 AND Artist.name = 'Queen';
+271,SELECT * FROM Track  INNER JOIN Performs  ON Track.track_id = Performs.track_id  INNER JOIN Artist ON Performs.artist_id = Artist.artist_id  WHERE Artist.name = 'Queen' AND Track.duration > 300;
+272,"SELECT Track.track_title  FROM Track,Performs,Artist  WHERE Track.duration > 300  AND Performs.artist_id = Artist.artist_id  AND Artist.name = 'Queen';"
+273,"SELECT TRACK.track_title from Track, Performs, Artist  WHERE Track.track_id == Performs.track_id  AND Artist.artist_id == Performs.artist_id  AND Artist.name ='Queen' AND Track.duration >300;  "
+274,
+275,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name='Queen';
+276,"SELECT track_id FROM Track, Artist, Performs A WHERE Track.duration > 300 AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';"
+277,"SELECT Track FROM Track, Performs, Artist WHERE Artist.name='Queen' AND Track.duration > 300 AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id; "
+278,"SELECT *  FROM Track,Performs,Artist WHERE duration>100  AND artist.name = 'Queen';"
+279,
+280,"select * from Artist, Performs, Track Where Performs.artist_id=Artist.artist_id AND Artist.name= 'Queen' And Track.track_id=Performs.track_id AND Track.duration > 300;"
+281,"SELECT * FROM Track, Performs, Queen WHERE Track.duration > 300 AND Artist.name = 'queen'"
+282,"SELECT track_title FROM Track, Artist, Performs WHERE Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id AND Duration>300 AND Artist.name= 'Queen';"
+283,"SELECT DISTINCT duration, name FROM Track, Performs, Artist WHERE duration>300 AND name='Queen';"
+284,SELECT DISTINCT *  FROM Track  INNER JOIN Performs  ON Track.track_id = Performs.track_id  INNER JOIN Artist  ON Performs.artist_id=Artist.artist_id  WHERE Track.duration>300  AND Artist.name='Queen';
+285,SELECT * FROM Track T NATURAL JOIN Performs P NATURAL JOIN Artist A  WHERE T.duration>300  AND A.name='Queen'; 
+286,SELECT * FROM Artist NATURAL JOIN Performs NATURAL JOIN Track WHERE name='Queen' AND duration>300;
+287,σtrack = Artist.artist_id(σTrack.track_id=Performs.track_id(Track X Performs X Artist)))
+288,SELECT * FROM Performs NATURAL JOIN Track NATURAL JOIN Artist WHERE Artist.name = 'Queen' AND Track.duration > 300;
+289,SELECT * FROM (SELECT * FROM Track WHERE duration > 300) NATURAL JOIN Performs NATURAL JOIN (SELECT * FROM Artist WHERE name = 'Queen');
+290,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';"
+291,"SELECT *  FROM  (SELECT * FROM Track WHERE duration > 300) AS TrackLong(track_id, album_id, title, duration,popularity,explicit),  Performs,  (SELECT * FROM Artist WHERE name = 'Queen') AS Queen(artist_id, name) WHERE Queen.artist_id = Performs.artist_id AND TrackLong.track_id = Performs.track_id;"
+292,SELECT *  FROM Track Where duration > 300 JOIN SELECT * FROM Performs JOIN  SELECT * FROM Artist WHERE name = 'Queen'
+293,"SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';"
+294,x
+295,"SELECT * FROM Track, Performs, Artist WHERE Artist.name = 'Queen' AND Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+296,"SELECT DISTINCT Track.track_title FROM Track, Performs, Artist WHERE Track.duration < 300 AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id AND Artist.name = 'Queen';"
+297,"SELECT track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name =='Queen' AND Performs.artist_id==Artist.artist_id AND performs.track_id == Track.track_id;"
+298,
+299,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen';"
+300,"SELECT * FROM Track, Performs, Artist WHERE Track.duration >300 AND Artist.name = 'Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id"
+301,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name = 'Queen';
+302,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration>300;"
+303,
+304,"SELECT track_title FROM Track, Performs, Artist WHERE Artist.artist_id = Performs.artist_id  AND  Performs.track_id = Track.track_id  AND duration > 300 AND name = 'Queen';"
+305,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Performs.track_id=Track.track_id AND Artist.artist_id=Performs.artist_id;    "
+306,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND  Artist.name='Queen' AND  Performs.track_id=Track.track_id AND  Artist.artist_id=Performs.artist_id;"
+307,"SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen';"
+308,"SELECT * FROM Performs, (SELECT * FROM Track WHERE duration > 300),(SELECT * FROM Artist WHERE name = 'Queen') WHERE Artist.artist_id = Track.artist_id"
+309,SELECT * FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE duration>300 AND Artist.name = 'Queen';
+310,SELECT * FROM Performs WHERE duration>300 AND name='Queen'
+311,SELECT * FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name ='Queen';
+312,"SELECT DISTINCT * FROM Track T, Performs P, Artist A WHERE duration > 300 AND name = 'Queen' AND T.track_id= P.track_id AND P.artist_id = A.artist_id;"
+313,"SELECT DISTINCT track_title FROM Track, Performs, Artist WHERE duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist.id AND Artist.name = 'Queen';"
+314,SELECT * FROM Track JOIN Performs ON Track.track_id=Performs.track_id JOIN Artist On Performs.artist_id=Artist.artist_id Where duration>300 AND name='Queen'; 
+315,
+316,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE Artist.name == 'Queen' AND Track.duration>300 AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;"
+317,
+318,"SELECT DISTINCT * FROM Track,Performs,Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;"
+319,
+320,SELECT *  FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND  Artist.name = 'Queen';
+321,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE duration > 300 AND name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+322,"SELECT name, track_title, duration FROM Track, Performs, Artist WHERE Artist.name == 'Queen' AND Artist.artist_id == Performs.artist_id AND Track.duration > 300 AND Track.track_id == Performs.track_id;"
+323,
+324,
+325,"SELECT track_title FROM Track,Artist,Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id=Performs.track_id AND name=""Queen"" AND duration>""300"" "
+326,"SELECT DISTINCT Track.track_title FROM Artist, Track, Performs WHERE Track.duration>300 AND Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id AND Artist.name='Queen' "
+327,"SELECT DISTINCT * FROM Track, Performs, Artist WHERE (Artist.name='Queen') AND (Track.duration>300) AND (Track.track_id=Performs.track_id) AND (Performs.artist_id=Artist.artist_id);"
+328,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Aritst where Artist.name ='Queen';
+329,"SELECT *  FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name='Queen';"
+330,"SELECT Track.track_title  FROM Track, Artist, Performs WHERE duration > 300 AND name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id;"
+331,"SELECT Track.track_title FROM Track, Artist, Performs WHERE duration > 300  AND name = 'Queen' AND Artist.artist_id= Performs.artist_id AND Track.track_id = Performs.track_id;"
+332,"SELECT * FROM Track,Artist,Performs WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"
+333,"SELECT DISTINCT * FROM Track, Performes, Artist WHERE duration>300 AND name='Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id"
+334,
+335,"SELECT track.name, Artist.name FROM performs p LEFT JOIN p.track_id=Tracks.track_id RIGHT JOIN p.artist_id=Artists.artist_id WHERE artists.name='queen' AND Track.duration>300 "
+336,"D SELECT * FROM Track,Performs,Artist WHERE Track.duration > 300 or Artist.name = 'Queen';"
+337,"SELECT * FROM Track, Artist, Performs WHERE Track.duration > 300  AND Artist.name = 'Queen' AND Performs.track_id = Track.track_id AND Artist.artist_id = Performs.artist_id;    "
+338,select * from ( select * from Track where duration>300) T natural join Performs  natural join  (select * from Artist where name = 'Queen') A;
+339,n > 300 AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';
+340,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration > 300 AND name = 'Queen';
+341,"SELECT*  FROM Track, Performs, Artist  WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;"
+342,-
+343,D SELECT * > FROM Track > NATURAL JOIN Performs > NATURAL JOIN Artist > WHERE Track.duration > 300 > AND Artist.name = 'Queen';
+344,"SELECT * FROM Artist, Track, Performs WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;"
+345,SELECT duration>300(Track) FROM Artist Where Performs = Artist  AND name = 'Queen'
+346,"SELECT * FROM Track, Performs, Artist WHERE  Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND Artist.name='Queen' AND Track.duration>300;"
+347,"SELECT *  FROM Track, Performs, Artist  WHERE Track.duration > 300  AND Artist.name = 'Queen'  AND Track.track_id=Performs.track_id  AND Artist.artist_id=Performs.artist_id;   "
+348,"SELECT track_title FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Performs.track_id = Track.track_id;"
+349,"SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;"
+350,"SELECT * FROM Track, Performs, Artist WHERE duration>300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen';"
+351,"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"

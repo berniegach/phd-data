@@ -1,0 +1,1 @@
+﻿"SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Writes.track_id = Track.track_id AND Track.track_title = 'Californication';"

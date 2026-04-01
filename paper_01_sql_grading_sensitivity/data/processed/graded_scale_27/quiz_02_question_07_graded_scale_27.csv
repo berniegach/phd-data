@@ -1,0 +1,352 @@
+id,query,syntax,semantic,results,correctness level,normalized value
+115,,2,0,0,3,0.0769231
+121,,2,0,0,3,0.0769231
+154,,2,0,0,3,0.0769231
+210,,2,0,0,3,0.0769231
+223,,2,0,0,3,0.0769231
+251,,2,0,0,3,0.0769231
+274,,2,0,0,3,0.0769231
+279,,2,0,0,3,0.0769231
+319,,2,0,0,3,0.0769231
+323,,2,0,0,3,0.0769231
+324,,2,0,0,3,0.0769231
+334,,2,0,0,3,0.0769231
+54,,2,0,0,3,0.0769231
+245," SELECT Artist.name FROM Artist , Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+225," SELECT DISTINCT name > FROM Artist, Produces > WHERE Artist.artist_id=Produces.artist_id;",0,0,0,1,0
+70,(SELECT name FROM Artist) UNION (SELECT Artist FROM produces),2,0,0,3,0.0769231
+40,(SELECT name FROM Artist) UNION (Select name FROM Produces);,2,0,0,3,0.0769231
+165,"-- I was adviced against doing this but this should work so I wanted to show it <3 -- SELECT DISTINCT Artist.name -- FROM Artist -- NATURAL JOIN Produces; -- My actual Answer SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+316,"--SELECT DISTINCT artist.name FROM Artist, Produces WHERE Artist.artist_id == Produces.artist_id;",2,0,0,3,0.0769231
+267,=,0,0,0,1,0
+343,D SELECT DISTINCT name > FROM Artist > NATURAL JOIN Produces;,0,0,0,1,0
+145,PROJECT name FROM Artist JOIN Produces,0,0,0,1,0
+347,"SELECT * FROM (SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id);",0,0,0,1,0
+192,SELECT Artist.name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,2,0,0,3,0.0769231
+289,SELECT Artist.name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+290,"SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+202,"SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; ",2,0,0,3,0.0769231
+218,"SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+128,"SELECT Artist.name FROM Artist, Produces; WHERE Artist.artist_id = Produces.produces_id;",1,0,0,2,0.0384615
+1,"SELECT Artist.name FROM Artist,Produces WHERE Produces.artist_id=Artist.artist_id;",2,0,0,3,0.0769231
+160,"SELECT Artist.name From Artist, Produces Where Artist.name = Produces.name",2,0,0,3,0.0769231
+15,"SELECT Artist.name, FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",0,0,0,1,0
+163,"SELECT Artist.name, FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",0,0,0,1,0
+29,"SELECT Artists.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+68,"SELECT Artists.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+190,"SELECT COUNT (*) FROM (SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id) AS query_answer;",2,0,1,12,0.423077
+58,"SELECT COUNT( DISTINCT Artist.name) FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,1,12,0.423077
+81,"SELECT COUNT(*) FROM (SELECT DISTINCT (name) FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id) AS bernie_best_always_solves_problems;",2,0,1,12,0.423077
+6,"SELECT COUNT(DISTINCT(name)) FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,0,1,12,0.423077
+176,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+180,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+9,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+10,"SELECT DISTINCT A.name FROM Artist A, Produces P WHERE P.artist_id = A.artist_id; ",2,2,2,27,1
+74,"SELECT DISTINCT Artist.Name FROM Artist,Produces WHERE produces.artist_id=artist.artist_id; ",2,2,2,27,1
+116,SELECT DISTINCT Artist.name FROM Artist INNER JOIN Produces ON Artist .artist_id = Produces .artist_id;,2,2,2,27,1
+28,SELECT DISTINCT Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+158,SELECT DISTINCT Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+134,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,2,2,27,1
+306,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,2,2,27,1
+113,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id ; ",2,2,2,27,1
+200,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id AND Artist.name <> Produces.track_id;",2,2,2,27,1
+55,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+195,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+229,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+250,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+302,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+329,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+4,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+326,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id",2,2,2,27,1
+18,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.name = Produces.name ;",2,0,0,3,0.0769231
+234,"SELECT DISTINCT Artist.name FROM Artist, Produces WHERE artist.artist_id = Produces.artist_id;",2,2,2,27,1
+5,"SELECT DISTINCT Artist.name FROM Artist, Produces;",2,0,0,3,0.0769231
+67,"SELECT DISTINCT Artist.name FROM Artist, Produces;",2,0,0,3,0.0769231
+136,"SELECT DISTINCT Artist.name FROM Artist, Produces; ",2,0,0,3,0.0769231
+247,"SELECT DISTINCT Artist.name FROM Artist, produces WHERE produces.artist_id = Artist.artist_id;",2,2,2,27,1
+297,"SELECT DISTINCT Artist.name FROM Artist,Produces WHERE Artist.artist_id == Produces.artist_id;",2,0,0,3,0.0769231
+261,"SELECT DISTINCT Artist.name FROM Artists, produces WHERE Artist.artist_id = Produces.artist_id ;",2,0,0,3,0.0769231
+288,SELECT DISTINCT Artist.name FROM Produces NATURAL JOIN Artist WHERE Artist.artist_id = Produces.artist_id;,2,2,2,27,1
+31,"SELECT DISTINCT Artist.names FROM Artist, Produces WHERE Produces.artist_id = Artist.artist_id;",2,0,0,3,0.0769231
+89,SELECT DISTINCT NAME FROM artist A JOIN produces P ON A.artist_id = P.artist_id;,2,2,2,27,1
+282,SELECT DISTINCT Name FROM Artist JOIN Produces;,0,0,0,1,0
+117,SELECT DISTINCT Name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+168,"SELECT DISTINCT Name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+42,"SELECT DISTINCT a.* FROM Artist a, Produces p WHERE a.artist_id = p.artist_id;",2,0,0,3,0.0769231
+146,"SELECT DISTINCT artist.name FROM artist, produces WHERE artist.artist_id = produces.artist_id;",2,2,2,27,1
+120,"SELECT DISTINCT artist.name FROM artist,produces WHERE produces.artist_id=artist.artist_id;",2,2,2,27,1
+149,SELECT DISTINCT artist_id FROM produces;,2,0,0,3,0.0769231
+69,SELECT DISTINCT name FROM (Artist AND Produces);,0,0,0,1,0
+309,SELECT DISTINCT name FROM (Artist INNER JOIN Produces ON Artist._artist_id = Produces.artist_id);,2,0,0,3,0.0769231
+119,"SELECT DISTINCT name FROM Artist , Produces WHERE Artist.artist_id = Produces.artist_id ;",2,2,2,27,1
+254,"SELECT DISTINCT name FROM Artist , Produces; ",2,0,0,3,0.0769231
+140,"SELECT DISTINCT name FROM Artist A, Produces P",2,0,0,3,0.0769231
+50,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+110,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+198,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+232,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+312,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;",2,2,2,27,1
+109,"SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id; ",2,2,2,27,1
+23,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON (Artist.artist_id = Produces.artist_id);,2,2,2,27,1
+32,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id,2,2,2,27,1
+167,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,2,2,2,27,1
+271,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,2,2,2,27,1
+43,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id=Produces.artist_id;,2,2,2,27,1
+318,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id=Produces.artist_id;,2,2,2,27,1
+63,SELECT DISTINCT name FROM Artist INNER JOIN Produces;,0,0,0,1,0
+262,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id=Produces.artist_id;,2,2,2,27,1
+196,SELECT DISTINCT name FROM Artist JOIN Produces;,0,0,0,1,0
+314,SELECT DISTINCT name FROM Artist JOIN Produces;,0,0,0,1,0
+233,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces,2,2,2,27,1
+48,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces,2,2,2,27,1
+320,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+246,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+164,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+123,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+144,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+178,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+185,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+188,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+213,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+231,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+249,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+253,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+270,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+286,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+340,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+39,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+126,"SELECT DISTINCT name FROM Artist a, Produces p WHERE a.artist_id = p.artist_id;",2,2,2,27,1
+135,SELECT DISTINCT name FROM Artist natural join Produces;,2,2,2,27,1
+139,"SELECT DISTINCT name FROM Artist, Produces ",2,0,0,3,0.0769231
+284,"SELECT DISTINCT name FROM Artist, Produces WHERE Arist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+103,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,2,2,27,1
+152,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,2,2,27,1
+90,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+82,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+64,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+60,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+51,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+344,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+321,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+268,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+219,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+181,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+166,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+159,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+129,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+101,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+130,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+205,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+206,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+215,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+217,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+221,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+237,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+242,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+244,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+257,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+259,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+265,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+293,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+304,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+339,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+349,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+46,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+77,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+85,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+88,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+96,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+99,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+61,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; ",2,2,2,27,1
+95,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; ",2,2,2,27,1
+100,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; -- I did not know if using NATURAL JOIN is allowed, so I just did it manually now",2,2,2,27,1
+236,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id == Produces.artist_id;",2,0,0,3,0.0769231
+300,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id ",2,2,2,27,1
+78,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+52,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+44,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+35,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+327,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+275,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+230,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+222,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+199,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+193,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+141,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+111,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+106,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+183,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+346,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+351,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+73,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+98,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+238,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id; ",2,2,2,27,1
+208,"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.name = Produces.name;",2,0,0,3,0.0769231
+291,"SELECT DISTINCT name FROM Artist, Produces WHERE Produces.artist_id = Artist.artist_id;",2,2,2,27,1
+330,"SELECT DISTINCT name FROM Artist, Produces WHERE artist.artist_id = produces.artist_id; ",2,2,2,27,1
+173,"SELECT DISTINCT name FROM Artist, Produces Where Artist.artist_id == Produces.artist_id;",2,0,0,3,0.0769231
+97,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+91,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+45,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+33,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+305,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+283,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+243,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+201,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+131,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+112,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+171,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+277,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+333,"SELECT DISTINCT name FROM Artist, Produces;",2,0,0,3,0.0769231
+175,"SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+84,"SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+177,"SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id; ",2,2,2,27,1
+114,"SELECT DISTINCT name FROM Artist,Produces WHERE name = name",2,0,0,3,0.0769231
+331,"SELECT DISTINCT name FROM Artist,produces WHERE artist.artist_id = produces.artist_id;",2,2,2,27,1
+313,"SELECT DISTINCT name FROM Produces, Artist WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+12,"SELECT DISTINCT name FROM Produces, Artist WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+118,"SELECT DISTINCT name FROM Produces, Artist WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+260,"SELECT DISTINCT name FROM Produces, Artist WHERE Produces.artist_id = Artist.artist_id;",2,2,2,27,1
+348,"SELECT DISTINCT name FROM Produces, Artist WHERE Produces.artist_id = Artist.artist_id; ",2,2,2,27,1
+157,SELECT DISTINCT name FROM artist JOIN produces ON artist.artist_id = produces.artist_id;,2,2,2,27,1
+137,"SELECT DISTINCT name FROM artist, produces WHERE artist.artist_id=produces.artist_id;",2,2,2,27,1
+345,SELECT DISTINCT name WHERE Artist Produces,0,0,0,1,0
+26,"SELECT DISTINCT name from Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+186,"SELECT DISTINCT name from Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,2,2,27,1
+17,"SELECT DISTINCTname"" FROM Artist",0,0,0,1,0
+272,"SELECT DISTINCT( Artist.name) FROM Artist,Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+207,"SELECT DISTINCT(Artist.name) FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+34,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+209,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+2,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+138,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+127,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+104,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+156,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+240,SELECT Distinct Artist.name FROM Artist NATURAL JOIN Produces;,2,2,2,27,1
+30,"SELECT Distinct Artist.name FROM Artist, Produces WHERE Produces.artist_id = Artist.artist_id;",2,2,2,27,1
+264,"SELECT Name FROM Artist,Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+278,"SELECT Name FROM Artist,Produces;",2,0,0,3,0.0769231
+256,"SELECT a.name FROM Artist a, Produces p WHERE p.artist_id = a.artist_id;",2,0,0,3,0.0769231
+255,"SELECT a.name FROM Artist a, Produces;",2,0,0,3,0.0769231
+248,"SELECT artist.name FROM artist, produces WHERE artist.artist_id=produces.artist_id;",2,0,0,3,0.0769231
+161,"SELECT distinct artist.name FROM Artist,Produces WHERE produces.artist_id=artist.artist_id;",2,2,2,27,1
+263,SELECT distinct name FROM Artist NATURAL JOIN Produces,2,2,2,27,1
+147,"SELECT distinct name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,2,2,27,1
+328,SELECT name Arist NATURAL JOIN Produces;,0,0,0,1,0
+211,SELECT name Artist JOIN Produces,0,0,0,1,0
+269,"SELECT name FROM Artist , Produces; ",2,0,0,3,0.0769231
+315,SELECT name FROM Artist AND Produces,0,0,0,1,0
+337,SELECT name FROM Artist FULL OUTER JOIN Produces ON Artist.artist_id=Produces.artist_id;,2,0,0,3,0.0769231
+212,SELECT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id ;,2,0,0,3,0.0769231
+311,SELECT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,2,0,0,3,0.0769231
+49,SELECT name FROM Artist INNER JOIN Produces WHERE Artist.artist_id = Produces.artist_id,0,0,0,1,0
+47,SELECT name FROM Artist JOIN Produces ON artist.artist_id=produces.artist_id;,2,0,0,3,0.0769231
+65,SELECT name FROM Artist NATURAL JOIN Produces,2,0,0,3,0.0769231
+317,SELECT name FROM Artist NATURAL JOIN Produces,2,0,0,3,0.0769231
+80,SELECT name FROM Artist NATURAL JOIN Produces,2,0,0,3,0.0769231
+62,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+332,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+301,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+258,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+194,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+169,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+132,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+151,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+220,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+228,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+336,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+72,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+76,SELECT name FROM Artist NATURAL JOIN Produces;,2,0,0,3,0.0769231
+252,SELECT name FROM Artist UNION Produces,0,0,0,1,0
+227,SELECT name FROM Artist WHERE Artist.artist_id = Produceres.artist_id;,2,0,0,3,0.0769231
+59,SELECT name FROM Artist WHERE Artist.artist_id = Produces.artist_id;,2,0,0,3,0.0769231
+25,SELECT name FROM Artist WHERE Artist.artist_id = Produces.artist_id;,2,0,0,3,0.0769231
+21,"SELECT name FROM Artist a, Produces p WHERE a.artist_id = p.artist_id;",2,0,0,3,0.0769231
+16,"SELECT name FROM Artist a,Produces p WHERE a.artist_id = p.artist_id; ",2,0,0,3,0.0769231
+56,"SELECT name FROM Artist, Produces",2,0,0,3,0.0769231
+292,"SELECT name FROM Artist, Produces",2,0,0,3,0.0769231
+266,"SELECT name FROM Artist, Produces",2,0,0,3,0.0769231
+108,"SELECT name FROM Artist, Produces",2,0,0,3,0.0769231
+94,"SELECT name FROM Artist, Produces",2,0,0,3,0.0769231
+53,"SELECT name FROM Artist, Produces WHERE Artist.Track=Produces.Track;",2,0,0,3,0.0769231
+8,"SELECT name FROM Artist, Produces WHERE Artist.album_id=Produces.album_id;",2,0,0,3,0.0769231
+11,"SELECT name FROM Artist, Produces WHERE Artist.artist_id != Produces.artist_id;",2,0,0,3,0.0769231
+71,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,0,0,3,0.0769231
+36,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,0,0,3,0.0769231
+298,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,0,0,3,0.0769231
+281,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id",2,0,0,3,0.0769231
+226,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id ;",2,0,0,3,0.0769231
+184,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id AND Artist.artist_id = Writes.artist_id ;",2,0,0,3,0.0769231
+307,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id INTERSECT SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+187,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id INTERSECT SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+75,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+341,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+294,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+295,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+296,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+239,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+24,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+22,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+214,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+182,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+14,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+105,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+20,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; ",2,0,0,3,0.0769231
+197,"SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id; ",2,0,0,3,0.0769231
+303,"SELECT name FROM Artist, Produces WHERE Artist.artist_id == Produces.artist_id;",2,0,0,3,0.0769231
+308,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id",2,0,0,3,0.0769231
+83,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+7,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+350,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+285,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+191,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+148,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+93,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;",2,0,0,3,0.0769231
+224,"SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id; ",2,0,0,3,0.0769231
+170,"SELECT name FROM Artist, Produces WHERE artist.artist_id = produces.artist_id;",2,0,0,3,0.0769231
+79,"SELECT name FROM Artist, Produces Where Artist.artist_id = Produces.artist_id;",2,0,0,3,0.0769231
+57,"SELECT name FROM Artist, Produces;",2,0,0,3,0.0769231
+322,"SELECT name FROM Artist, Produces;",2,0,0,3,0.0769231
+299,"SELECT name FROM Artist, Produces;",2,0,0,3,0.0769231
+27,"SELECT name FROM Artist, Produces;",2,0,0,3,0.0769231
+133,"SELECT name FROM Artist, Produces;",2,0,0,3,0.0769231
+276,"SELECT name FROM Artist, Produces; ",2,0,0,3,0.0769231
+179,"SELECT name FROM Artist, Produces; ",2,0,0,3,0.0769231
+122,"SELECT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id ; ",2,0,0,3,0.0769231
+172,"SELECT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id; ",2,0,0,3,0.0769231
+325,"SELECT name FROM Artist,Produces WHERE Artist.artist_id=Produces.track_id",2,0,1,12,0.423077
+153,"SELECT name FROM Artist,Produces WHERE artist.name = produces.name",2,0,0,3,0.0769231
+143,"SELECT name FROM Artist,Produces where (Artist.artist_id = Produces.artist_id);",2,0,0,3,0.0769231
+189,"SELECT name FROM Artists, Produces WHERE Artists.artist_id = Produces.artist_id",2,0,0,3,0.0769231
+107,"SELECT name FROM Artits, Produces;",2,0,0,3,0.0769231
+310,SELECT name FROM Produces GROUP BY Artist,2,0,0,3,0.0769231
+335,"SELECT name FROM artist AS ar, produces AS pr WHERE ar.artist_id = pr.artist_id",2,0,0,3,0.0769231
+125,"SELECT name From Artist, Produces",2,0,0,3,0.0769231
+150,SELECT name WHERE,0,0,0,1,0
+3,"SELECT name; FROM Artist, Produces; WHERE Artist.artist_id = Produces.artist_id",1,0,0,2,0.0384615
+87,"SELECT name; FROM Artist, Produces; WHERE Artist.artist_id = Produces.artist_id; ",1,0,0,2,0.0384615
+66,"Select DISTINCT A.name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id; ",2,2,2,27,1
+273,"Select DISTINCT Artist.name From Artist, Produces Where Produces.artist_id == Artist.artist_id; ",2,0,0,3,0.0769231
+155,"Select DISTINCT name from Artist, Produces where Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+280,"Select Distinct Artist.name From Artist, Produces Where Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+235,"Select Distinct Artist.name from Artist, Produces where Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+241,Select distinct Artist.name from Artist join Produces on Artist.artist_id=Produces.artist_id;,2,2,2,27,1
+41,"Select name FROM Artist,Produces WHERE Artist.artist_id= Produces.artist_id;",2,0,0,3,0.0769231
+92,"Select name From Artists, Produces;",2,0,0,3,0.0769231
+102,"Select name From artist, produces ",2,0,0,3,0.0769231
+216,project name Artist = Produces,0,0,0,1,0
+37,select DISTINCT name From Artist LEFT JOIN Produces on Artist.artist_id = Produces.artist_id where Produces.track_id NOT null;,0,0,0,1,0
+162,"select distinct Artist.name from Artist, Produces where Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+124,"select distinct a.name from Artist a, Produces p where a.artist_id = p.artist_id; ",2,2,2,27,1
+19,select distinct name from Artist join Produces on Artist.artist_id = Produces.artist_id;,2,2,2,27,1
+142,"select distinct name from Artist, Produces WHERE Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+38,"select distinct name from Artist, Produces where Artist.artist_id = Produces.artist_id;",2,2,2,27,1
+174,"select distinct name from artist, produces where artist.artist_id = produces.artist_id;",2,2,2,27,1
+204,"select distinct name from artist, produces where artist.artist_id = produces.artist_id;",2,2,2,27,1
+86,"select distinct name from artist,produces;",2,0,0,3,0.0769231
+338,select name from Artist natural join Produces;,2,0,0,3,0.0769231
+13,"select name from Artist, Produces where Produces.artist_id=Artist.artist_id;",2,0,0,3,0.0769231
+342,"select name from Artist, Produces;",2,0,0,3,0.0769231
+203,π_name(σ_Writes.artist_id=Artist.artist_id(σ_Track.track_id=Writes.track_id(Artist X Track)),0,0,0,1,0
+287,πname(Artist)⨝πname(Produces),0,0,0,1,0

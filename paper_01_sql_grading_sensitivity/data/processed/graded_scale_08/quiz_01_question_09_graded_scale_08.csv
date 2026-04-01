@@ -1,0 +1,359 @@
+id,query,syntax,semantic,results,correctness level,normalized value
+228,,1,0,0,2,0.142857
+321,,1,0,0,2,0.142857
+328,,1,0,0,2,0.142857
+49,,1,0,0,2,0.142857
+56,,1,0,0,2,0.142857
+6,,1,0,0,2,0.142857
+67,,1,0,0,2,0.142857
+33," SELECT * FROM Teacher, Theme WHERE Theme.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,0,0,2,0.142857
+81," SELECT * FROM Teacher, Theme_ID AND Teach_ID 2",0,0,0,1,0
+267," SELECT Theme.theme_id, Theme.name FROM Theme INNER JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name == 'Djoerd Hiemstra';",1,0,0,2,0.142857
+35," SELECT theme_id, name FROM Teacher, Theme WHERE name='Djoerd Hiemstra'",1,0,0,2,0.142857
+24,"-- Select all: SELECT * FROM Teacher, Theme WHERE teacher_id = 2; ",1,0,0,2,0.142857
+107,"BEGIN; SELECT theme_id, name FROM Theme WHERE teacher_id = 2; COMMIT;",1,0,0,2,0.142857
+342,"BEGIN; SELECT theme_id, name FROM Theme; WHERE name = 'Djoerd Hiemstra'; COMMIT;",0,0,0,1,0
+286,CREATE TABLE Theme ( theme_id INT teacher_id INT name TEXT ) ; CREATE TABLE Teacher ( teacher_id INT name TEXT ) ; SELECT teacher_id FROM Teacher WHERE type = '2' SELECT name FROM Teacher WHERE type = '2' AND name = 'Djoerd Hiemstra',0,0,0,1,0
+306,"Given the same SQL query: SELECT theme_id, name FROM Teacher , Theme where teacher_id='Djoerd Hiemstra' ",0,0,0,1,0
+182,"SELECT 'Djoerd Hiemstra' FROM Teacher, Theme",1,0,0,2,0.142857
+71,"SELECT (theme_id, name) FROM Teacher, Theme",1,0,0,2,0.142857
+270,"SELECT * FROM TEACHER, THEME WHERE theme_id = 'Djoerd Hiemstra' AND THEME.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+340,"SELECT * FROM Teacher te, Theme th WHERE te.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+146,"SELECT * FROM Teacher, Theme WHERE Djoerd Hiemstra = Theme",0,0,0,1,0
+98,"SELECT * FROM Teacher, Theme WHERE Teacher = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+281,"SELECT * FROM Teacher, Theme WHERE Teacher = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+27,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,0,0,2,0.142857
+30,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id == Theme.theme_id;",1,0,0,2,0.142857
+288,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+315,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+338,"SELECT * FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+234,"SELECT * FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+172,"SELECT * FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra'; ",1,0,0,2,0.142857
+142,"SELECT * FROM Teacher, Theme WHERE Theme.Teacher_id='2' AND Teacher.Teacher_id='2';",1,0,0,2,0.142857
+216,"SELECT * FROM Teacher, Theme WHERE name = Djeord Hiemstra",0,0,0,1,0
+58,"SELECT * FROM Teacher, Theme WHERE teacher_id = '2'",1,0,0,2,0.142857
+162,"SELECT * FROM Teacher, Theme WHERE teacher_id = 2",1,0,0,2,0.142857
+95,"SELECT * FROM Teacher, Theme WHERE teacher_id = 2;",1,0,0,2,0.142857
+272,"SELECT * FROM Teacher,Theme WHERE Teacher.teacher_id ==Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+117,SELECT * FROM Theme WHERE Theme-id = 2,1,0,0,2,0.142857
+135,SELECT * FROM Theme WHERE Theme.teacher_id = 2;,1,0,0,2,0.142857
+207,SELECT * FROM Theme WHERE Theme.teacher_id=2;,1,0,0,2,0.142857
+192,SELECT * FROM Theme WHERE teacher_id = '1',1,0,0,2,0.142857
+268,SELECT * FROM Theme WHERE teacher_id = 'Djoerd Hiemstra',1,0,0,2,0.142857
+72,SELECT * FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+307,SELECT * FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+3,SELECT * FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+331,SELECT * FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+90,SELECT * FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+214,SELECT * FROM Theme WHERE teacher_id=2;,1,0,0,2,0.142857
+63,"SELECT * FROM Theme(theme_id, name) WHERE names='Djoerd Hiemstra';",1,0,0,2,0.142857
+348,SELECT * FROM theme WHERE teachers_id = '2',1,0,0,2,0.142857
+9,"SELECT * Theme.theme, theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0,0,0,1,0
+16,"SELECT 2 FROM Teacher, Theme",1,0,0,2,0.142857
+147,"SELECT A.theme_id, A.name FROM Theme A, Teacher B WHERE B.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+136,"SELECT A.theme_id, A.name FROM Theme A, Teacher B WHERE B.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+100,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE (A.name = 'Djoerd Hiemstra') AND (A.teacher_id = B.teacher_id);",1,1,1,8,1
+357,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE A.name='Djoerd Hiemstra' AND A.teacher_id=B.teacher_id; ",1,1,1,8,1
+106,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_id AND A.name = 'Djoerd Hiemstra'; ",1,1,1,8,1
+325,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_id WHERE A.name = 'Djoerd Hiemstra'",0,0,0,1,0
+279,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE B.teacher_id = 2 AND A.teacher_id = 2",1,1,1,8,1
+299,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+168,"SELECT B.theme_id, B.name FROM Theme B WHERE B.teacher_id = 2",1,1,1,8,1
+174,"SELECT DISTINCT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+170,"SELECT DISTINCT theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = 2;",1,1,1,8,1
+242,"SELECT H.theme_id, H.name FROM Teacher E, Theme H WHERE E.name = 'Djoerd Hiemstra' AND E.teacher_id = H.teacher_id; ",1,1,1,8,1
+308,"SELECT H.theme_id, H.name FROM Teacher T, Theme H WHERE T.name = 'Djoerd Hiemstra' AND T.teacher_id = H.teacher_id;",1,1,1,8,1
+184,"SELECT H.theme_id, H.name FROM Teacher T, Theme H WHERE T.name = 'Djoerd Hiemstra' AND T.teacher_id = H.teacher_id;",1,1,1,8,1
+141,"SELECT H.theme_id, H.name FROM Teacher T, Theme H WHERE T.teacher_id = H.teacher_id AND T.name = 'Djoerd Hiemstra'",1,1,1,8,1
+296,"SELECT P.theme_id, P.name FROM Teacher T, Theme P WHERE T.teacher_id = P.teacher_id AND T.name = 'Djoerd Hiemstra';",1,1,1,8,1
+181,"SELECT T.name, T.theme_id FROM Teacher, Theme AS T WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = T.teacher_id;",1,1,1,8,1
+37,"SELECT T.theme_id, T.name FROM Teacher, Theme T WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = T.teacher_id;",1,1,1,8,1
+64,"SELECT T.theme_id, T.name FROM Theme T, Teacher L WHERE L.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+83,"SELECT T.theme_id, T.name FROM Theme T, Teacher N WHERE N.name='Djoerd Hiemstra' AND T.teacher_id=N.teacher_id",1,1,1,8,1
+143,"SELECT T.theme_id, T.name FROM Theme T, Teacher P WHERE P.name = 'Djoerd Hiemstra' AND T.teacher_id = P.teacher_id;",1,1,1,8,1
+70,"SELECT T.theme_id, T.name FROM Theme T, Teacher TE WHERE T.teacher_id = TE.teacher_id AND TE.name = 'Djoerd Hiemstra'",1,1,1,8,1
+185,"SELECT T.theme_id, T.name FROM Theme T, Teacher Te WHERE T.teacher_id = Te.teacher_id AND Te.name = 'Djoerd Hiemstra';",1,1,1,8,1
+332,"SELECT TH.theme_id, TH.name FROM Theme TH, Teacher TE WHERE TE.name='Djoerd Hiemstra' AND TE.teacher_id=TH.teacher_id;",1,1,1,8,1
+127,SELECT Teacher FROM name WHERE teacher_id = 2,1,0,0,2,0.142857
+14,"SELECT Team id, Team name FROM Team WHERE teacher id = 2 ",0,0,0,1,0
+122,"SELECT Th.theme_id, Th.name FROM Teacher Tc, Theme Th WHERE Th.teacher_id = Tc.teacher_id and Tc.name='Djoerd Hiemstra';",1,1,1,8,1
+158,"SELECT Th.theme_id, Th.name FROM Teacher Te, Theme Th WHERE Te.teacher_id = Th.teacher_id AND Te.name = 'Djoerd Hiemstra' ;",1,1,1,8,1
+304,"SELECT Th.theme_id, Th.name FROM Teacher Te, Theme Th WHERE Te.teacher_id = Th.teacher_id AND Te.name = 'Djoerd Hiemstra'; ",1,1,1,8,1
+250,"SELECT Th.theme_id, Th.name from Teacher Tc, THeme Th where Th.teacher_id = Tc.teacher_id and Tc.name='Djoerd Hiemstra';",1,1,1,8,1
+173,"SELECT Theme.id, Theme.name FROM teacher, theme WHERE teacher.name = 'Djoerd Hiemstra' AND teacher.teacher_id = 2",1,0,0,2,0.142857
+119,"SELECT Theme.name, Theme.theme_id FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+219,"SELECT Theme.name, Theme.theme_id FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+356,"SELECT Theme.name, Theme.theme_id FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+218,"SELECT Theme.name, Theme.theme_id FROM Teacher, Theme WHERE Theme.teacher_id = (SELECT Teacher.teacher_id WHERE Teacher.name = Djoerd Hiemstra"");""",1,0,0,2,0.142857
+339,"SELECT Theme.name, Theme.theme_id FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+309,"SELECT Theme.name, Theme.theme_id FROM Theme, Teacher WHERE Theme.teacher_id=Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+232,"SELECT Theme.teacher_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,0,0,2,0.142857
+180,"SELECT Theme.theme_id ,Theme.name FROM Teacher,Theme INNER JOIN Teacher ON Theme.teacher_id = Teacher,teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+115,"SELECT Theme.theme_id AND Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+263,"SELECT Theme.theme_id, Teacher.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,0,0,2,0.142857
+32,"SELECT Theme.theme_id, Teacher.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",1,0,0,2,0.142857
+346,"SELECT Theme.theme_id, Thema.name FROM Teacher, Theme where Teacher.teacher_id = Theme.teacher_id",1,0,0,2,0.142857
+358,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+316,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+193,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+120,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+310,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+42,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+74,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = 2;",1,1,1,8,1
+229,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+175,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+151,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+354,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+60,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id=Theme.teacher_id;",1,1,1,8,1
+85,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id=Theme.teacher_id;",1,1,1,8,1
+8,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Theme.teacher_id=Teacher.teacher_id;",1,1,1,8,1
+34,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+235,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+213,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+256,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+285,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+294,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+289,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id;",1,0,0,2,0.142857
+253,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = Djoerd Hiemstra"";""",1,0,0,2,0.142857
+104,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra'",1,1,1,8,1
+50,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra' ",1,1,1,8,1
+10,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",1,1,1,8,1
+352,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id == Teacher.teacher_id AND Teacher.name == 'Djoerd Hiemstra';",1,0,0,2,0.142857
+5,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+69,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+217,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme Where Teacher.name = Djoerd Hiemstra",0,0,0,1,0
+323,"SELECT Theme.theme_id, Theme.name FROM Teacher.Theme WHERE Teacher.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+118,"SELECT Theme.theme_id, Theme.name FROM Theme INNER JOIN Teacher ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+355,"SELECT Theme.theme_id, Theme.name FROM Theme INNER JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name == Djoerd Hiemstra"";""",1,0,0,2,0.142857
+129,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.name = Djored Hiemstra"";""",1,0,0,2,0.142857
+244,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.name ='Djoerd Hiemstra';",1,0,0,2,0.142857
+109,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.name == 'Djoerd Hiemstra';",1,0,0,2,0.142857
+139,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.name=Djoerd Hiemstra"";""",1,0,0,2,0.142857
+88,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.teacher_id = ( SELECT Teacher.teacher_id FROM Teacher WHERE Teacher.name = 'Djoerd Hiemstra' )",1,1,1,8,1
+87,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.teacher_id = ( Select teacher_id FROM Teacher WHERE Teacher.name = 'Djoerd Hiemstra') ;",1,1,1,8,1
+293,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.teacher_id = 2;",1,1,1,8,1
+269,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+176,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id; ",1,1,1,8,1
+123,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id; ",1,1,1,8,1
+11,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+110,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+102,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+160,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name=Djoerd Hiemstra"" AND Teacher.teacher_id=Theme.teacher_id""",1,0,0,2,0.142857
+287,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+329,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+28,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+13,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+21,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+276,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+99,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",1,1,1,8,1
+212,"SELECT Theme.theme_id, Theme.name FROM Theme,Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+239,"SELECT Theme.theme_id, Theme.name from Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' ",1,0,0,2,0.142857
+1,"SELECT Theme.theme_id,Theme.name FROM Teacher, Theme WHERE (Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra');",1,1,1,8,1
+245,"SELECT Theme.theme_id,Theme.name FROM Theme join Teacher on Teacher.teacher_id=Theme.teacher_id where Teacher.name='Djoerd Hiemstra'; SELECT Theme.theme_id,Theme.name FROM Teacher,Theme where Teacher.teacher_id=Theme.teacher_id and Teacher.name='Djoerd Hiemstra';",1,1,1,8,1
+7,"SELECT Theme.theme_id,Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+262,"SELECT Theme_id, Th.name FROM Theme Th, Teacher Te WHERE Te.name = Djoerd Hiemstra"" AND Te.teacher_id = Th.teacher_id ;""",1,0,0,2,0.142857
+82,"SELECT Theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.Teacher_id = Theme.Teacher_id AND Teacer.name = Djoerd Hiemstra"" ;""",1,0,0,2,0.142857
+226,"SELECT Theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+336,"SELECT Theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = '2';",1,1,1,8,1
+337,"SELECT Theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = '2'; ",1,1,1,8,1
+152,"SELECT Theme_id, name FROM Theme WHERE teacher_id = 2",1,1,1,8,1
+203,"SELECT a.theme_id, a.name FROM Theme a, Teacher b WHERE a.teacher_id = b.teacher_id AND b.name = 'Djoerd Hiemstra'",1,1,1,8,1
+68,"SELECT b.theme_id, b.name FROM Teacher a, Theme b WHERE a.teacher_id = b.teacher_id AND a.name = 'Djoerd Hiemstra';",1,1,1,8,1
+26,"SELECT c1, c3 FROM Theme WHERE teacher_id = 2",1,0,0,2,0.142857
+255,SELECT name FROM Theme WHERE teacher_id = 2,1,0,0,2,0.142857
+349,SELECT name FROM Theme WHERE teacher_id=2; SQL DB IR,0,0,0,1,0
+91,"SELECT name, theme_id FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+12,"SELECT name, theme_id FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+187,"SELECT name, theme_id FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+156,"SELECT teacher_id, name From Theme WHERE teacher_id = 2; ",1,0,0,2,0.142857
+311,"SELECT teacher_id,name FROM Theme WHERE teacher_id = 2;",1,0,0,2,0.142857
+211,"SELECT th.theme_id, th.name FROM Teacher Te, Theme Th WHERE Te.name = 'Djoerd Hiemstra' AND Te.teacher_id = Th.teacher_id;",1,1,1,8,1
+128,"SELECT th.theme_id, th.name FROM Theme th Teacher te WHERE te.teacher_id = th.teacher_id AND te.name = 'Djoerd Hiemstra';",0,0,0,1,0
+238,"SELECT theme.theme_id, theme.name FROM Teacher, Theme WHERE teacher.name == 'Djoerd Hiemstra';",1,0,0,2,0.142857
+313,"SELECT theme.theme_id, theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND teacher_id = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+297,SELECT theme_id AND name FROM Theme WHERE teacher_id = '2',1,0,0,2,0.142857
+320,"SELECT theme_id AND theme name FROM Teacher, Theme WHERE teacher name = Djoerd Hiemstra"" """,0,0,0,1,0
+326,"SELECT theme_id FROM Teacher, AND name Djoerd Hoemsta",0,0,0,1,0
+31,"SELECT theme_id FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = '2'",1,0,0,2,0.142857
+215,SELECT theme_id FROM Theme WHERE name = 'Djoerd Hiemstra';,1,0,0,2,0.142857
+291,SELECT theme_id FROM Theme WHERE name = 'Djoerd Hiemstra';,1,0,0,2,0.142857
+89,SELECT theme_id FROM Theme WHERE teacher_id = '2',1,0,0,2,0.142857
+314,SELECT theme_id FROM Theme WHERE teacher_id = 2,1,0,0,2,0.142857
+225,SELECT theme_id FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+240,"SELECT theme_id FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+54,SELECT theme_id WHERE thme_name='Djoerd Hiemstra';,1,0,0,2,0.142857
+205,"SELECT theme_id, A.name FROM Teacher A, Theme B WHERE A.name = 'Djoerd Hiermstra' AND A.teacher_id = B.teacher_id;",1,0,0,2,0.142857
+23,"SELECT theme_id, A.name from Theme A, Teacher B where B.name='Djoerd Hiemstra' AND B.teacher_id=A.teacher_id;",1,1,1,8,1
+171,"SELECT theme_id, B.name FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_id AND A.name = 'Djoerd Hiemstra';",1,1,1,8,1
+204,"SELECT theme_id, C.name FROM Teacher A, Theme C WHERE A.name = 'Djoerd Hiemstra' AND C.teacher_id = 2;",1,1,1,8,1
+51,"SELECT theme_id, TH.name FROM Theme TH, Teacher TE WHERE TE.name = 'Djoerd Hiemstra' AND TE.teacher_id = TH.teacher_ID;",1,1,1,8,1
+241,"SELECT theme_id, TH.name FROM Theme TH, Teacher TE WHERE TE.name = 'Djoerd Hiemstra' AND TH.teacher_id = TE.teacher_id;",1,1,1,8,1
+105,"SELECT theme_id, TH.name FROM Theme TH, Teacher TE WHERE TH.teacher_id = TE.teacher_id AND TE.name = 'Djoerd Hiemstra';",1,1,1,8,1
+2,"SELECT theme_id, Teacher.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+292,"SELECT theme_id, Th.name FROM Teacher Te, Theme Th WHERE Te.name = 'Djoerd Hiemstra' AND Te.teacher_id = Th.teacher_id; ",1,1,1,8,1
+4,"SELECT theme_id, Th.name FROM Teacher Te, Theme Th WHERE Te.teacher_id = Th.teacher_id AND Te.name = 'Djoerd Hiemstra';",1,1,1,8,1
+198,"SELECT theme_id, Theme.name FROM Teacher INNER JOIN Theme ON Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+20,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE ( Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra');",1,1,1,8,1
+277,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = Djoerd Hiemstra"" AND Teacher.teacher_id = Theme.teacher_id;""",1,0,0,2,0.142857
+45,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = Djoerd Hiemstra"" AND Theme.teacher_id = Teacher.teacher_id;""",1,0,0,2,0.142857
+46,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = Djoerd Hiemstra"" AND Theme.teacher_id = Teacher.teacher_id;""",1,0,0,2,0.142857
+59,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' ;",1,0,0,2,0.142857
+61,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1,1,1,8,1
+177,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id; ",1,1,1,8,1
+347,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+111,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+57,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+133,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+318,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+77,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+79,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+92,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'; ",1,0,0,2,0.142857
+334,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name LIKE 'D%';",1,0,0,2,0.142857
+202,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name=Djoerd Hiemstra"" AND Theme.teacher_id = 2;""",1,0,0,2,0.142857
+22,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Theme.Teacher_id=Teacher.teacher_id;",1,1,1,8,1
+97,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id; ",1,1,1,8,1
+40,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2 AND Theme.teacher_id = 2;",1,1,1,8,1
+167,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2 AND Theme.teacher_id = 2;",1,1,1,8,1
+125,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2 AND Theme.teacher_id=2;",1,1,1,8,1
+145,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2 AND Theme.teacher_id=2;",1,1,1,8,1
+52,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2 and Theme.teacher_id = 2;",1,1,1,8,1
+148,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2 and Theme.teacher_id = 2;",1,1,1,8,1
+78,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = 2;",1,0,0,2,0.142857
+36,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra' ",1,1,1,8,1
+159,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra' ; ",1,1,1,8,1
+65,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+243,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+227,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+248,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+265,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+303,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+266,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",1,1,1,8,1
+290,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+55,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra';",1,1,1,8,1
+199,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra';",1,1,1,8,1
+140,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Theme.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+257,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = 2 AND Teacher.name = 'Djoerd Hiemstra'; ",1,1,1,8,1
+322,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = Djoerd Hiemstra"";""",1,0,0,2,0.142857
+246,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1,1,1,8,1
+44,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE teacher.name = Djoerd Hiemstra"" AND Theme.teacher_id = Teacher.teacher_id;""",1,0,0,2,0.142857
+221,"SELECT theme_id, Theme.name FROM Teacher,Theme WHERE Teacher.teacher_id=2 AND Theme.teacher_id=2;",1,1,1,8,1
+312,"SELECT theme_id, Theme.name FROM Theme INNER JOIN Teacher On Teacher.teacher_id=Theme.teacher_id WHERE Teacher.name='Djoerd Hiemstra'",1,1,1,8,1
+103,"SELECT theme_id, Theme.name FROM Theme WHERE Theme.teacher_id = 2;",1,1,1,8,1
+48,"SELECT theme_id, Theme.name FROM Theme WHERE Theme.teacher_id = 2;",1,1,1,8,1
+196,"SELECT theme_id, Theme.name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+132,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+247,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1,1,1,8,1
+335,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+210,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+131,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+300,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.teacher_id = 2;",1,0,0,2,0.142857
+264,"SELECT theme_id, name FROM .Teacher T1, Theme T2 WHERE T1.teacher_id = T2.teacher_id = 2 As seen in last week's slides, to combine multiple tables successfully we have to use different letters for both tables and select only the combinations of matching teacher_ids, as after executing SELECT * FROM Teacher, Theme we will have 8 tuples (4 for which the teacher id is 1 and 4 for which the teacher id is 2)",0,0,0,1,0
+209,"SELECT theme_id, name FROM Teacher WHERE name = Djoerd Hiemstra;",0,0,0,1,0
+201,"SELECT theme_id, name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' ",1,0,0,2,0.142857
+274,"SELECT theme_id, name FROM Teacher, Theme WHERE name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+233,"SELECT theme_id, name FROM Teacher, Theme WHERE teacher_id = 2 ;",1,0,0,2,0.142857
+112,"SELECT theme_id, name FROM Theme",1,0,0,2,0.142857
+249,"SELECT theme_id, name FROM Theme WHERE name = 'Djoerd Hiemstra'; ",1,0,0,2,0.142857
+333,"SELECT theme_id, name FROM Theme WHERE teacherID = 2",1,0,0,2,0.142857
+206,"SELECT theme_id, name FROM Theme WHERE teacher_id = '2'",1,1,1,8,1
+191,"SELECT theme_id, name FROM Theme WHERE teacher_id = '2';",1,1,1,8,1
+73,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra')",1,1,1,8,1
+280,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra') ",1,1,1,8,1
+188,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",1,1,1,8,1
+224,"SELECT theme_id, name FROM Theme WHERE teacher_id = 1 ",1,0,0,2,0.142857
+251,"SELECT theme_id, name FROM Theme WHERE teacher_id = 1;",1,0,0,2,0.142857
+93,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2",1,1,1,8,1
+350,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2",1,1,1,8,1
+236,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2",1,1,1,8,1
+153,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2",1,1,1,8,1
+134,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2",1,1,1,8,1
+351,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2 ",1,1,1,8,1
+200,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2 ",1,1,1,8,1
+84,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+47,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+43,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+343,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+341,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+319,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+29,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+271,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+258,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+254,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+25,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+222,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+220,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+183,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+178,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+163,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+161,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+149,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+15,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+150,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+130,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+116,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+101,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+190,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+283,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+302,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+345,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+76,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+94,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2; ",1,1,1,8,1
+295,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2; ",1,1,1,8,1
+259,"SELECT theme_id, name FROM Theme WHERE teacher_id = 2; ",1,1,1,8,1
+39,"SELECT theme_id, name FROM Theme WHERE teacher_id == '2'",1,0,0,2,0.142857
+353,"SELECT theme_id, name FROM Theme WHERE teacher_id in ( SELECT teacher_id FROM Teacher Where name = 'Djoerd Hiemstra' );",1,1,1,8,1
+169,"SELECT theme_id, name FROM Theme WHERE teacher_id is 2;",0,0,0,1,0
+195,"SELECT theme_id, name FROM Theme WHERE teacher_id='2'",1,1,1,8,1
+284,"SELECT theme_id, name FROM Theme WHERE teacher_id=(SELECT teacher_id FROM Teacher WHERE name='Djoerd Hiemstra');",1,1,1,8,1
+189,"SELECT theme_id, name FROM Theme WHERE teacher_id=(SELECT teacher_id FROM Teacher WHERE name='Djoerd Hiemstra');",1,1,1,8,1
+41,"SELECT theme_id, name FROM Theme WHERE teacher_id=(SELECT teacher_id FROM Teacher WHERE name='Djoerd Hiemstra'); ",1,1,1,8,1
+197,"SELECT theme_id, name FROM Theme WHERE teacher_id=2",1,1,1,8,1
+53,"SELECT theme_id, name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+275,"SELECT theme_id, name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+252,"SELECT theme_id, name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+194,"SELECT theme_id, name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+186,"SELECT theme_id, name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+113,"SELECT theme_id, name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+317,"SELECT theme_id, name FROM Theme WHERE teachter_id = 2;",1,0,0,2,0.142857
+62,"SELECT theme_id, name FROM Theme t WHERE t.teacher_id IN (SELECT teacher_id FROM Teacher te WHERE te.name = 'Djoerd Hiemstra'); ",1,1,1,8,1
+327,"SELECT theme_id, name FROM Theme, Teacher WHERE id == 2",1,0,0,2,0.142857
+18,"SELECT theme_id, name FROM teacher, theme WHERE teacher_name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+237,"SELECT theme_id, name FROM theme WHERE teacher_id = 2;",1,1,1,8,1
+17,"SELECT theme_id, name FROM theme WHERE teacher_id = 2; ",1,1,1,8,1
+166,"SELECT theme_id, name FROM theme WHERE teacher_id = 2; ",1,1,1,8,1
+208,"SELECT theme_id, name FROM theme, WHERE teacher_id = 2; ",0,0,0,1,0
+144,"SELECT theme_id, name From Theme WHERE teacher_id = 2;",1,1,1,8,1
+231,"SELECT theme_id, name from Theme WHERE teacher_id=(SELECT teacher_id from Teacher WHERE name='Djoerd Hiemstra');",1,1,1,8,1
+179,"SELECT theme_id, theme.name FROM Teacher, Theme WHERE Teacher.name = Djoerd Hiemstra"" AND Theme.teacher_id = Teacher.teacher_id;""",1,0,0,2,0.142857
+66,"SELECT theme_id, theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = '2';",1,1,1,8,1
+261,"SELECT theme_id, theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' and teacher.teacher_id = theme.teacher_id;",1,1,1,8,1
+114,"SELECT theme_id, theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra';",1,1,1,8,1
+298,"SELECT theme_id, theme.name FROM Theme WHERE teacher_id == 2;",1,0,0,2,0.142857
+138,"SELECT theme_id, theme.name FROM Theme, Teacher WHERE teacher.name = 'Djoerd Hiemstra' AND theme.teacher_id = 2;",1,1,1,8,1
+38,"SELECT theme_id, theme_name FROM Teacher, Theme WHERE name = 'Djoerd Hiemstra'; ",1,0,0,2,0.142857
+260,"SELECT theme_id,name FROM 'Djoerd Hiemstra'",0,0,0,1,0
+124,"SELECT theme_id,name FROM Theme WHERE teacher_id = 2;",1,1,1,8,1
+223,"SELECT theme_id,name FROM Theme WHERE teacher_id=2;",1,1,1,8,1
+154,"SELECT theme_id,name FROM Theme,Teacher WHERE name = 'Djoerd Hiemstra'",1,0,0,2,0.142857
+230,"SELECT theme_id,name FROM teacher WHERE teacher_id = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+330,"SELECT theme_id,name FROM theme WHERE teacher_id=2",1,1,1,8,1
+121,"SELECT theme_id,theme.name FROM Teacher,Theme WHERE teacher.name='Djoerd Hiemstra';",1,0,0,2,0.142857
+301,"SELECT theme_id,theme_name FROM Theme WHERE teacher_id=2",1,0,0,2,0.142857
+155,"SELECT* FROM Teacher A, Theme B WHERE name 'Djoerd Hiemstra' AND A .teacher_id=B.teacher_id; ",1,0,0,2,0.142857
+305,"SELECT* FROM Teacher, Theme WHERE Teacher_id = 2",1,0,0,2,0.142857
+137,SELECT*FROM Theme WHERE teacher_id = 2;,1,0,0,2,0.142857
+278,"Select * FROM teacher, theme Where Teacher_id = 2",1,0,0,2,0.142857
+273,"Select * from Teacher, Theme where Teacher.teacher_id = 2;",1,0,0,2,0.142857
+164,"Select Th.theme_id,Th.name from Teacher Tc, Theme Th where Th.teacher_id = Tc.teacher_id and Tc.name='Djoerd Hiemstra';",1,1,1,8,1
+75,"Select Th.theme_id,Th.name from Teacher Tc, Theme Th where Th.teacher_id = Tc.teacher_id and Tc.name='Djoerd Hiemstra'; ",1,1,1,8,1
+282,"Select Theme.Theme_id, Theme.name From Teacher, Theme Where Theme.Teacher_ID=2 AND Teacher.Teacher_ID=2;",1,1,1,8,1
+157,"Select theme_id, T2.name from Teacher T1, Theme T2 where T1.name = 'Djoerd Hiemstra';",1,0,0,2,0.142857
+108,"Select theme_id, Theme_name From Teacher, Theme Where Teacher_name='Djoerd Hiemstra'",1,0,0,2,0.142857
+126,"Select theme_id, name from Theme where teacher_id = 2;",1,1,1,8,1
+80,Teacher.teacher_id | Teacher.name | Theme.theme_id | Theme.teacher_id | There.name ----------------------+--------------------+-------------------+----------------------+---------------- 2 | Djoerd Hiemstra | 2 | 2 | SQL 2 | Djoerd Hiemstra | 3 | 2 | DB 2 | Djoerd Hiemstra | 4 | 2 | IR,0,0,0,1,0
+344,"Theme.name FROM Teacher, Theme WHERE (Teacher.name ='Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id);",0,0,0,1,0
+324,"select T.theme_id, T.name from Theme T, Teacher Tc where T.teacher_id == Tc.teacher_id and Tc.name == 'Djoerd Hiemstra';",1,0,0,2,0.142857
+165,"select theme.theme_id, theme.name from teacher, theme where teacher.name='Djoerd Hiemstra' and teacher.teacher_id=theme.teacher_id;",1,1,1,8,1
+96,"select theme_id, name from theme where teacher_id = 2;",1,1,1,8,1
+86,"select theme_id, t2.name from teacher t1, theme t2 where t1.name='Djoerd Hiemstra';",1,0,0,2,0.142857
+19,"select theme_id, theme.name from theme join teacher on teacher.teacher_id = theme.teacher_id where teacher.name = 'Djoerd Hiemstra'; ",1,1,1,8,1

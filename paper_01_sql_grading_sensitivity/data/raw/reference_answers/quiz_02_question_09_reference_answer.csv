@@ -1,0 +1,1 @@
+﻿"SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id;"

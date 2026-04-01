@@ -1,0 +1,1 @@
+﻿"select theme_id, theme.name from theme join teacher on teacher.teacher_id = theme.teacher_id where teacher.name = 'Djoerd Hiemstra'; "

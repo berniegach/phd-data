@@ -1,0 +1,351 @@
+1,"Select album_id as album_id2 FROM Track WHERE Track.track_title='Overpass Graffiti';   Select Track_tmp.track_title  FROM Track, Track as Track_tmp  WHERE  ((Track.track_title='Overpass Graffiti') AND (Track.album_id= Track_tmp.album_id));"
+2,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+3,"SELECT track_title; FROM Track; WHERE album_id=album_id2  AND Track AS album_id2(album_id, track_title='Overpass Graffiti')"
+4,"SELECT T1.track_title FROM Track T1, Track T2 WHERE T2.track_title = 'Overpass Graffiti' AND T1.album_id = T2.album_id;"
+5,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+6,
+7,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id  AND Track2.track_title='Overpass Graffiti'; "
+8,SELECT track_title FROM Track  WHERE  AND 
+9,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti';"
+10,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+11,"SELECT Track.track_title, Track.album_id FROM Track, Track AS album_id2 WHERE album_id2.track_title = 'Overpass Graffiti' AND Track.album_id = album_id2.album_id;"
+12,"SELECT DISTINCT Album2.track_title FROM Track, Track as album2, Album WHERE Track.album_id = Album.album_id AND Track.track_title = 'Overpass Graffiti' AND Album.album_id = Album2.album_id;"
+13," SELECT Track.track_title FROM Track, Track as Track_2 WHERE Track.album_id = Track_2.album_id AND Track_2.track_title = 'Overpass Graffiti';"
+14,
+15,
+16,"SELECT t.track_title  FROM Track t,Album a,Album a AS Album2 aa(album_id2) WHERE a.album_id=aa.album_id2 AND "
+17,"Select Track2.track_title FROM Track, Track as Track2(track_id, album_id2) WHERE Track.track_title='Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+18,"SELECT T1.track_title  FROM Track T1, Track T2 WHERE T2.track_title = 'Overpass Graffiti'  AND T1.album_id = T2.album_id ;"
+19,select track_title from Track join (select album_id from Track where track_title='Overpass Graffiti') as Track2(album_id2) on Track.album_id = Track2.album_id2;
+20," SELECT Track.track_title, album_id FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit ) WHERE album_id = album_id2 AND Track.track_title ='Overpass Graffiti' ;"
+21,"SELECT track_title, album_id AS album_id2 FROM Track WHERE album_id = album_id2 AND track_title = 'Overpass Grafitti';"
+22,"SELECT Track.track_title FROM Track, Track as Track_2 WHERE Track.album_id = Track_2.album_id AND Track_2.track_title = 'Overpass Graffiti';"
+23,
+24,SELECT track_title FROM Track WHERE album_id=album_id2 AND rack_title='Overpass Graffiti';
+25,SELECT name FROM Track WHERE Track.album_id = Album.album_id AND
+26,
+27,"SELECT DISTINCT Track.track_title, Track.album_id FROM Track, Track AS Track2(album_id, album_id2) WHERE Track.album_id = Track2.album_id2 AND Track.track_title='Overpass Graffiti'; "
+28,"SELECT Track.track_title FROM Track, Track AS Copy WHERE Track.album_id = Copy.album_id AND Copy.track_title = 'Overpass Graffiti';"
+29,"SELECT track_title, album_id AS album_id2  FROM Track WHERE album_id = album_id2 AND track_title = 'Overpass Graffiti'; "
+30,"SELECT Track.track_title FROM Track, Track AS Track2(track_id,album_id2, track_title, duration, popularity, explicit)  WHERE Track.album_id = Track2.album_id2  AND Track2.track_title = 'Overpass Graffiti';"
+31,"SELECT Track.track_title FROM Track, Track as Track 2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;"
+32,SELECT track_title FROM Track INNER JOIN  (SELECT album_id AS album_id2  FROM Track WHERE Track.track_title = 'Overpass Graffiti') ON Track.album_id = album_id2 
+33,"SELECT Track.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id = album_id2 AND Track2.track_title = 'Overpass Graffiti';"
+34,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+35,"SELECT track_title, album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti' AND album_id=album_id2;"
+36,SELECT DISTINCT track_title FROM Track WHERE album_id=album_id2 AND Track.track_title='Overpass Graffiti'   
+37,Select track.track_title
+38,"select track_title from Track, Album, Album AS Album2(album_id2, album_title, total_tracks, year, type) where Album.album_id = Album2.album_id2 AND Track.track_title == 'Overpass Graffiti' AND Track.album_id = Album.album_id;"
+39,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE  Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id;"
+40,SELECT track FROM Track WHERE track.album_id='Overpass Graffiti'.album_id;
+41,"Select Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+42,
+43,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+44,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+45,"SELECT Track.track_title, Track.album_id AS album_id2 FROM Track as Track2, Track WHERE Track.album_id=album_id2 AND Track.track_title='Overpass Graffiti';"
+46,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id = album_id2 AND Track.track_title = 'Overpass Graffiti';"
+47,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') AS TrackA WHERE album_id = album_id2;"
+48,select track_title from Track join ( select album_id as album_id2 from (select * from Track where track_title='Overpass Graffiti') ) where album_id = album_id2
+49,"SELECT Track.track_title FROM Track, Track2 WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti'"
+50,"SELECT Track2.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti';"
+51,"SELECT Track.track_title  FROM Track, Track as Track_2  WHERE (Track_2.track_title='Overpass Graffiti'  AND Track.album_id= Track_2.album_id);"
+52,"SELECT DISTINCT Track2.track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title, duration, popularity, explicit), Album, Album AS Album2(album_id2, album_title, total_tracks, year, type) WHERE Track.track_title='Overpass Graffiti' AND Track.album_id=Album2.album_id2 AND Track2.album_id2=Album2.album_id2;"
+53,"SELECT DISTINCT track_title FROM TRACK, TRACK.album_id as TRACK.album_id=Track.album_id2 WHERE track.title='Overpass Graffiti' AND Track.album_id=Track.album.id2;"
+54,πalbum_id(σtrack_title='Overpass Graffiti'(Track ⨝album_id=album_id2 ρalbum_id2(πtrack_title(Track))))
+55,"SELECT Track.track_title FROM Track, (SELECT Track.album_id AS album_id2 FROM Track WHERE Track.track_title = 'Overpass Graffiti') WHERE Track.album_id = album_id2; "
+56,"(SELECT track.title FROM Track, Track AS Track2 (track_id, album_id2, title, duration, popularity, explicit) WHERE album.id = album.id2) UNION (SELECT album.id FROM Track WHERE track.title = 'Overpass Graffiti') "
+57,SELECT track_title;
+58,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+59,SELECT title FROM Track WHERE Album.album_title='Overpass Graffiti';
+60,"SELECT DISTINCT title FROM Track, Track AS Track2(track_id, album_id, title2, duration, popularity, explicit) WHERE Track2.title2 = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;"
+61,"SELECT track_title, album_id AS album_id2 FROM Track WHERE Track.track_title = 'Overpass Graffiti';"
+62,"SELECT track_title  FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') WHERE album_id = album_id2;"
+63,"SELECT track_title FROM Track, (     SELECT album_id AS album_id2     FROM Track     WHERE track_title = 'Overpass Graffiti'; ) WHERE Track.album_id = album_id2;"
+64,"SELECT DISTINCT Track.track_title FROM  Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity) WHERE Track.album_id=Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';         "
+65,
+66,
+67,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti'; "
+68,"SELECT T.track_title FROM Track T, Track T2 WHERE T.track_title = 'Overpass Graffiti' AND T.album_id = T2.album_id"
+69,SELECT DISTINCT track_title FROM Track AND Album where album_id = album_id2 AND SELECT album_id FROM album WHERE track_title = 'Overpass Graffiti';
+70,"SELECT DISTINCT Album.Track FROM Track, Album AS Album2 (Album, Track) WHERE Album.Track  = Album2.Track AND track_title = 'Overpass Graffiti' "
+71,
+72,-
+73,"SELECT Track.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id=album_id2 AND Track2.track_title='Overpass Graffiti';"
+74,"SELECT track.track_title  FROM Track, Track AS Tr2  WHERE Track.album_id = Tr2.album_id  AND Tr2.track_title = 'Overpass Graffiti';"
+75,
+76,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+77,"SELECT DISTINCT Track2.track_title FROM Track, Track AS Track2(track_id, album_id, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti';"
+78,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title=""Overpass Graffiti"" AND  Track2.album_id=Track.album_id;"
+79,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track AS Track2 Where track_title = 'Overpass Graffiti') Where album_id = album_id2;"
+80,SELECT track_title FROM Track INNER JOIN (ALTER TABLE integers RENAME TO integers_old;) ON album_id=album_id2
+81,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track AS Track2 WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;"
+82,
+83,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+84,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track AS Track2 WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;"
+85,"Select b.track_title, a.album_id, b.album_id AS album_id2 FROM Track AS a INNER JOIN Track AS b ON a.album_id = b.album_id WHERE a.track_title='Overpass Graffiti';"
+86,"select track.track_title from track, track as track2 where track2.track_title='Overpass Graffiti' and track.album_id=track2.album_id;"
+87,"SELECT Track.track_title, Track.album_id  FROM Track, Track AS album_id2  WHERE album_id2.track_title = 'Overpass Graffiti' AND Track.album_id = album_id2.album_id;"
+88,"SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title='Overpass Graffiti';"
+89,"SELECT t2.track_title FROM track t1, track t2 WHERE t1.album_id = t2.album_id AND t1.track_title = 'Overpass Graffiti'"
+90,"SELECT track_title  FROM Track WHERE track_title = 'Overpass Graffiti''; --weet niet hoe dit moet, krijg alleen errors als ik probeer te werken met AS."
+91,"SELECT track_title, album_id FROM Track WHERE track_title='Overpass Graffiti';"
+92,
+93,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title='Overpass Graffiti' AND Track2.album_id = Track.album_id;"
+94, SELECT track_title  FROM Track UNION 
+95,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id2, album_id2) WHERE album_id = album_id2 AND Track.track_title='Overpass Graffiti';"
+96,"SELECT track_title FROM Track, (SELECT album_id FROM Track AS album_id2 WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2; "
+97,"SELECT Track2.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track.track_title='Overpass Graffiti';"
+98,SELECT track_title FROM Track WHERE Track.album_id=(SELECT album_id FROM Track WHERE Track.track_title='Overpass Graffiti');
+99,"SELECT DISTINCT track_title FROM Track, Track as Track2(track_id2, album_id2, track_title2, duration, popularity, explicit) WHERE Track2.track_title2='Overpass Graffiti' AND album_id = album_id2;"
+100,"SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id2, track_title, duratoin, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title='Overpass Graffiti';      "
+101,"SELECT DISTINCT Track2.track_title FROM Track, Track AS Track2(track_title2, album_id) WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti';"
+102,"Select track_title, album_id From Track, Track AS Track2(album_id AS album_id2) Where track_title='Overpass Graffity' AND album_id=album_id2"
+103,"SELECT Track2.track_title  FROM Track, Track as Track2  WHERE Track.album_id=Track2.album_id AND TRACK2.track_title='Overpass Graffiti'"
+104,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+105,.
+106,"SELECT track_title FROM Album, Track WHERE Track.album_id = Album.album_id AND Album.album_id='32iAEBstCjauDhyKpGjTuq';"
+107,??
+108,"SELECT track_title, album_id FROM Track WHERE album_id=album_id2 AND AS Track(album_id2, track_title='Overpass Graffiti')"
+109,"SELECT DISTINCT Track2.track_title2 FROM Track, Album, Track AS Track2(track_id, album_id, track_title2, duration, popularity, explicit), Album AS Album2(album_id2, album_title, total_tracks, year, type) WHERE Track.album_id = Track2.album_id AND Album.album_id = Album2.album_id2 AND Track.track_title = 'Overpass Graffiti';    "
+110,"SELECT T2.track_title FROM Track T1, Track T2, Album A1, Album A2 WHERE A1.album_id = A2.album_id AND A1.album_id = T1.album_id AND A2.album_id = T2.album_id AND T1.track_title = 'Overpass Graffiti';"
+111,"SELECT track_title FROM Track, (SELECT album_id FROM Track WHERE track_title='Overpass Graffiti') AS album_id2 WHERE Track.album_id=album_id2.album_id;"
+112,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(album_id2, track_title) WHERE Track.track_title <> 'Overpass Graffiti' AND album_id = album_id2;"
+113,SELECT track_title FROM Track WHERE album_id  = (    SELECT album_id AS album_id2    FROM Track    WHERE track_title = 'Overpass Graffiti' ) ;
+114,
+115,
+116,
+117,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.track_title ='Overpass Graffiti' AND Track.album_id=Track2.album_id2;"
+118,"SELECT AlbumOverpass.track_title2 FROM Track, Track AS AlbumOverpass(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE Track.track_title = 'Overpass Graffiti' AND AlbumOverpass.album_id2 = Track.album_id;"
+119,"SELECT Track.track_title FROM Track, Track as Track2(track_id,album_id2) WHERE album_id=album_id2 AND Track2.track_title='Overpass Graffiti';"
+120,"SELECT t2.track_title FROM track AS t1, track AS t2 WHERE t1.album_id=t2.album_id AND t1.track_title='Overpass Graffiti';"
+121,
+122,"SELECT track_title FROM Track,Track AS Track2(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE  Track.track_title ='OverpassGraffiti' AND Track.album_id =Track2.album_id2 AND Track.track_title<>Track2.track_title2; "
+123,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE  Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id;"
+124," select distinct a.track_title, from Track a, Album b, album c , track d where b.album_id = c.album_id and a.track_id = d.track_id and c.album_id = d.album_id and d.track_title = 'Overpass Graffiti';"
+125,"SELECT track_title, album_id FROM Track AS album_id2 WHERE album_id=album_id2 AND Track.track_title='Overpass Graffiti'"
+126,"SELECT t1.track_title  FROM Track t1, Track AS t2(track_id, album_id2, track_title, duration, popularity) WHERE t2.track_title = 'Overpass Graffiti' AND t1.album_id = t2.album_id2;"
+127,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+128,"SELECT track_title, album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti' AND album_id=album_id2;"
+129,"SELECT T1.track_title FROM Track T1, Track T2 WHERE T1.album_id = T2.album_id AND T2.track_title = 'Overpass Graffiti';"
+130,SELECT track_title FROM Album WHERE album_id = album_id2 AND track_title = 'Overpass Graffiti';
+131,"SELECT Track.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit)  WHERE Track.album_id = Track2.album_id2  AND Track2.track_title = 'Overpass Graffiti';"
+132,"SELECT track.track_title FROM track, track AS track2 WHERE track.album_id = track2.album_id AND track2.track_title = 'Overpass Graffiti';"
+133,
+134,"SELECT Track1.track_title FROM Track AS Track1, Track AS Track2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track1.album_id = Track2.album_id"
+135,"SELECT track.track_title FROM Track, Track as Track2 WHERE track.album_id = track2.album_id and track2.track_title = 'Overpass Graffiti';"
+136,
+137,
+138,"SELECT Track.track_title FROM Track, Track as Track_Copy WHERE Track.album_id= Track_Copy.album_id AND Track_Copy.track_title= 'Overpass Graffiti';"
+139,"I understand we need to make a new album_id and set that equal to the album_id of the track_title ""Overpass Graffiti"", however I didn't know how to, so here is the code hardcoded:    SELECT track_title, t.album_id as album_id2 FROM Track t WHERE t.album_id = '32iAEBstCjauDhyKpGjTuq' AND album_id = t.album_id "
+140,SELECT track_title FROM 
+141,"SELECT DISTINCT track_title AND album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti', Artist WHERE name='Queen';"
+142,"select t.track_title from Track t, Track t2 where t.album_id = t2.album_id and t2.track_title = 'Overpass Graffiti';"
+143,
+144,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE  Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id;"
+145,PROJECT track_title FROM Track JOIN album_id=album_id2   RENAME album_id FROM Track WHERE track_title='Overpass Graffiti' TO album_id2      
+146,SELECT t.track_title FROM track t WHERE EXISTS(     SELECT * FROM track a     WHERE a.album_id = t.album_id     AND EXISTS (         SELECT * FROM track m         WHERE m.track_id = a.track_id         AND m.track_title = 'Overpass Graffiti'     ) );
+147,"SELECT Track.track_title  FROM Track, Track as Track_2  WHERE (Track_2.track_title='Overpass Graffiti'  AND Track.album_id= Track_2.album_id)"
+148,"SELECT title FROM Track, Track AS Track2(album_id, title) WHERE Track2.title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;"
+149,"SELECT track_title FROM track, track AS track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE track.album_id = track2.album_id2 AND track2.track_title = 'Overpass Graffiti';"
+150,
+151,"SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, title, dur, pop, exp) WHERE Track.album_id = Track2.album_id2 AND Track2.title = 'Overpass Graffiti'; "
+152,"SELECT Track2.track_title FROM Track, Track as Track2 WHERE Track.album_id=Track2.album_id AND TRACK2.track_title='Overpass Graffiti'"
+153,SELECT track_title FROM Track WHERE album_id = album_id2 AS album_id2
+154,
+155,"Select track_title from Track, Track as album_id2(track_id, album_id2, track_title, duration, popularity, explicit) where Track.album_id = album_id2.album_id2 and track_title = 'Overpass Graffiti';"
+156,"SELECT Track.track_title FROM Track, Track as Track_other WHERE Track.album_id = Track_other.album_id AND Track_other.track_title = 'Overpass Graffiti';"
+157,"SELECT track_title FROM track  JOIN album ON track.album_id = album.album_id   WHERE album.album_id IN( 	SELECT album.album_id AS album_id2  	FROM album 	JOIN track ON album.album_id = track.album_id 	WHERE track.track_title='Overpass Graffiti' ); "
+158,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+159,SELECT Track2.track_title FROM Track JOIN Track AS Track2 ON Track.album_id = Track2.album_id WHERE Track.track_title = 'Overpass Graffiti';
+160,SELECT DISTINCT Track.track_title FROM Track WHERE album_id = album_id2 AND album_id 2 AS album_id AND Track.track_title = Overpass Graffiti
+161,"SELECT track.track_title FROM Track, Track AS Tr2 WHERE Track.album_id = Tr2.album_id AND Tr2.track_title = 'Overpass Graffiti';"
+162,"select Track2.track_title from Track, album, track as track2(track_id, album_id2, track_title, duration, popularity, explicit) where track.track_title = 'Overpass Graffiti'  and Track2.album_id2  = Track.album_id  and album.album_id = Track.album_id ;"
+163,
+164,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;"
+165,"SELECT Track.track_title FROM Track, Track AS Tracker WHERE Tracker.track_title = 'Overpass Graffiti' AND Tracker.album_id=Track.album_id; "
+166,"SELECT Track.track_title FROM Track, Track AS Track2(album_id, track_id2), Album WHERE Track.album_id = Track2.album_id AND Track.track_id = Track2.track_id2 AND Track.track_title = 'Overpass Graffiti';"
+167,"SELECT Track.track_title FROM Track, (SELECT track_title, album_id as album_id2 FROM Track) as Track2 WHERE Track.album_id = Track2.album_id2 and Track2.track_title='Overpass Graffiti';"
+168,"SELECT Track.track_title FROM Track, (SELECT album_id2  FROM Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit)  WHERE Track2.track_title = 'Overpass Graffiti') WHERE album_id = album_id2;"
+169,"SELECT Track.track_title, Track.album_id FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.album_id2 = Track.album_id AND Track2.track_title='Overpass Graffiti';"
+170,
+171,"SELECT track_title  FROM Track, Track as Track2(track_id, album_id2, track_title2, duration, popularity, explicit) WHERE album_id = album_id2 AND track_title2 = 'Overpass Graffiti';"
+172,
+173,"SELECT t2.track_title, t2.album_id AS album_id2 FROM Track AS t1, Track AS t2 WHERE t1.album_id== t2.album_id AND t1.track_title == 'Overpass Graffiti'; "
+174,
+175,"SELECT Track2.track_title FROM Track,Track AS Track2(track_id,album_id2,track_title,duration,popularity,explicit) WHERE Track.album_id=Track2.album_id2 AND Track.track_title = 'Overpass Graffiti';"
+176,"SELECT T.track_title, A.album_id FROM Track T, Album AS Album2, Album A WHERE A.album_id = Album2.album_id AND T.track_title = 'Overpass Graffiti'; "
+177,"SELECT track2.track_title,track2.album_id FROM Track AS track1, Track AS track2 WHERE track1.album_id=track2.album_id AND track1.track_title = 'Overpass Graffiti';"
+178,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_Id AND Track2.track_title = 'Overpass Graffiti';"
+179,"SELECT track_title, album_id FROM Track WHERE Track.album_id = album_id2, FROM Track.track_title = 'Overpass Graffiti' AS album_id2;"
+180,SELECT track_title FROM Track WHERE album_id = (   SELECT album_id   FROM Track   WHERE track_title = 'Overpass Graffiti');
+181,
+182,"SELECT Track.track_title, Track.album_id FROM Track, Track AS album_id2 WHERE album_id2.track_title = 'Overpass Graffiti' AND Track.album_id = album_id2.album_id;"
+183,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track AS Track2 WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;"
+184,"SELECT Track.track_title, Track.album_id FROM Track, Track AS album_id2 WHERE album_id2.track_title = 'Overpass Graffiti' AND Track.album_id = album_id2.album_id;"
+185,???
+186,"SELECT Track.track_title, Track.album_id AS album_id2 FROM Track WHERE Track.album_id=album_id2 AND Track.track_title='Overpass Graffiti';"
+187,"SELECT Track.track_title FROM Track, Track AS album_id2 (album_id) WHERE Track.album_id = Track.album_id2 AND Track.track_title = 'Overpass Graffiti';"
+188,SELECT track_title FROM Track SELF JOIN album_id=album_id2 SELECT album_id FROM Track WHERE track_title='Overpass Graffiti';
+189,SELECT track_title FROM Track WHERE track_title= 'Overpass Graffiti'.....
+190,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track AS Track2 WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;"
+191,"SELECT track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title2) WHERE album_id=album_id2 AND track_title2='Overpass Graffiti' AND track_id <> track_id2; "
+192,"SELECT track_title FROM Track, Track AS album_id2 WHERE Track.album_id = album_id2 AND track_title = 'Overpass Graffiti';"
+193,"SELECT track_title FROM Track, Track AS Track2(track_id, album_id2, track_title2, duration, popularity, explicit) WHERE track_title2='Overpass Graffiti' AND album_id=album_id2;"
+194,"SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, title, dur, pop, exp) WHERE Track.album_id = Track2.album_id2 AND Track2.title = 'Overpass Graffiti';"
+195,"SELECT Track.track_title FROM Album, Track"
+196,SELECT * FROM Track JOIN Track AS Track2 ON Track.album_id = Track2.album_id WHERE Track.track_title = 'Overpass Graffiti';
+197,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') WHERE album_id = album_id2; "
+198,"SELECT Track2.track_title FROM Track, Track AS Track2(album_id2, duration, explicit, popularity, track_id, track_title) WHERE Track2.track_title ='Overpass Graffiti';"
+199,"SELECT Track2.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track.track_title='Overpass Graffiti';"
+200,"SELECT Track.track_title FROM Track, (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS album_id2 WHERE Track.album_id = album_id2.album_id;"
+201,
+202,"SELECT Track.track_title, Track.album_id  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit)  WHERE Track2.album_id2 = Track.album_id AND Track2.track_title='Overpass Graffiti';"
+203,
+204," select track.track_title from album as album2(album_id2, album_title, total_tracks, year, type), track, track as track2(track_id, album_id, title, duration, popularity, explicit) where album_id = album_id2 and track2.track_title = 'Overpass Graffiti'';"
+205,"SELECT Track.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';"
+206,"SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+207,"SELECT Track.track_title, Track.album_id FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+208,"SELECT track_title FROM Track, Album, Album AS Album2 (album_id2, album_title, total_tracks, year, type) WHERE Track.album_id = Album.album_id AND Track.track_title = 'Overpass Graffiti' AND Album.album_id = Album.album_id2;"
+209,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.track_title = ""Overpass Graffiti"" AND Track2.album_id;"
+210,
+211,"Select track_title From Track, SELECT album_id AS album_id2 FROM Track Where track_title='Overpass Graffiti', WHERE album_id=album_id2"
+212,"SELECT title FROM Track, Track AS Track2 (track_id, album_id2, title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id AND Track.title = ""Overpass Graffiti"" ;"
+213,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id,album_id2,track_title, duration, popularity, explicit) WHERE Track.track_title='Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+214,"SELECT track_title, album_id FROM Track AS album_id2(Track, album_id) WHERE track_title = 'Overpass Graffiti'; "
+215,"SELECT track_title FROM Track, Track AS Track2(track_id, album_id2, track_title2,duration,popularity,explicit) WHERE Track2.track_title2 = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+216,Project track_title
+217,SELECT track_title FROM Track WHERE album_id = '32iAEBstCjauDhyKpGjTuq';
+218,"SELECT Track.track_title, Track.album_id FROM Track WHERE Track.album_id= -- I give up"
+219,"SELECT track_title FROM Track, Track AS AlbumID WHERE Track.album_id = AlbumID.album_id2 AND Track.track_title='Overpass Graffiti';"
+220,"SELECT Track.track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') WHERE album_id=album_id2;"
+221,"SELECT track_title FROM Track, Track AS Track2(track2_id, album2_id, track2_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album2_id AND Track2.track2_title = 'Overpass Graffiti';"
+222,"SELECT track_title, album_id FROM Track, Track AS Track2 (track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track.album_id2 AND track_title = ""Overpass Graffiti"";"
+223,
+224,
+225,"SELECT Track.track_title > FROM Track, (SELECT Track.album_id AS album_id2 > FROM Track > WHERE Track.track_title='Overpass Graffiti') > WHERE Track.album_id=album_id2;"
+226,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+227,"SELECT track_title, album_id FROM Track WHERE Track.album_id AS Track.album_ids2 AND Track.track_tilte = 'Overpass Grafitii';"
+228,
+229,SELECT track_title FROM Track WHERE album_id = (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti');
+230,"SELECT Track.track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE Track.album_id=Track2.album_id2 AND Track2.track_title2='Overpass Graffiti';"
+231,"SELECT Track.track_title FROM Track, Track AS Nina(track_id,album_id2,titile,duration,popularity,explicit) WHERE Nina.titile='Overpass Graffiti' AND Track.album_id=Nina.album_id2;"
+232,"SELECT DISTINCT track_title FROM Track,  (SELECT DISTINCT album_id FROM Track WHERE track_title='Overpass Graffiti') AS album_id2 WHERE track.album_id=album_id2.album_id;   "
+233,
+234,"SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id, title, duration, popularity, explicit) WHERE Track2.title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;"
+235," SELECT Track2.track_title FROM Track, Track as Track2(track_id, album_id2) WHERE Track.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;     "
+236,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+237,"SELECT Track2.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit)  WHERE Track.album_id = Track2.album_id2  AND Track.track_title = 'Overpass Graffiti';"
+238,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id=Track2.album_id2  AND Track2.track_title='Overpass Graffiti'; "
+239,SELECT album_id AS album_id2 FROM Track AS Track2;
+240,"SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+241,
+242,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';"
+243,SELECT track_title     FROM     (SELECT album_id AS album_id2        FROM Track        WHERE track_title = 'Overpass Graffiti'    )  JOIN Track     ON album_id = album_id2;
+244,"SELECT track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title2, duration, popularity, explicit) WHERE album_id=album_id2 AND track_title2='Overpass Graffiti';"
+245,SELECT track_title FROM Track AS album_id2 WHERE track_title='Overpass Graffiti';
+246,
+247,"SELECT Track.track_title FROM Track, Track AS Tr2 WHERE Track.album_id = Tr2.album_id AND Tr2.track_title = 'Overpass Graffiti' ; "
+248,"SELECT track.track_title FROM track, track AS track2 WHERE track.track_title='Overpass Graffiti' AND track.album_id = track2.album_id;"
+249,"SELECT track_title From Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;"
+250,"SELECT Track.track_title FROM Track, Album, Album AS Album2(album_id2, album_title, total_tracks, year, type) WHERE Track.track_title = 'Overpass Graffiti' AND Track.album_id = Album.album_id AND Album.album_id = album_id2 AND Track.album_id = album_id2;"
+251,
+252,SELECT * FROM Track WHERE album_id = (album_id FROM Track WHERE title = 'Overpass Graffiti')
+253,"SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+254,"SELECT track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND (Track2.track_title = 'Overpass Graffiti'); "
+255,
+256,SELECT t1.track_title FROM Track t1 WHERE t1.album_id= t2.album_id WHERE ( SELECT t2.album_id AS album_id2 From Track t2 WHERE t2.track_title = 'Overpass Graffiti' );
+257,SELECT Track.track_title FROM Track JOIN Track AS Track2  ON Track.album_id = Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';
+258,
+259,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_title, album_id2) WHERE album_id = (SELECT album_id FROM Track WHERE Track.track_title = 'Overpass Graffiti');"
+260,"SELECT sel.track_title FROM Track AS lookup, Track AS sel WHERE lookup.track_title = 'Overpass Graffiti' AND lookup.album_id = sel.album_id;"
+261,"SELECT T1.track_title FROM Track T1, Track T2 WHERE T1.album_id = T2.album_id AND T2.track_title = 'Overpass Graffiti' ;"
+262,SELECT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';
+263,SELECT track_title FROM Track 
+264,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE Track.track_title = 'Overpass Graffiti') AS Track2 WHERE Track.album_id=Track2.album_id2;"
+265,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title =  'Overpass Graffiti' AND Track.album_id = Track2.album_id; "
+266,SELECT track_title from Track WHERE album_id = album_id2 AS track_title='Overpass Graffiti'
+267,=
+268,.
+269,\project_{track_title}(Track \join_{album_id=album_id2} \rename_{album_id2}(\project_{album_id}(\select_{track_title='Overpass Graffiti'}(Track))))
+270,SELECT t2.track_title  FROM (Track t1 NATURAL JOIN Album a1) CROSS JOIN (Track t2 NATURAL JOIN Album a2) WHERE t1.track_title = 'Overpass Graffiti' AND  a2.album_id = a1.album_id; 
+271,"SELECT Track.track_title, Track2.album_id AS album_id2  FROM Track, Track AS Track2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = album_id2;"
+272,"SELECT DISTINCT Track.track_title  FROM Track, Track AS Track2( track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2  AND Track2.track_title = 'Overpass Graffiti' ;         "
+273,"SELECT Track.track_title from Track, Track as Track2  WHERE Track.album_id == Track2.album_id  ANDTrack2.track_title='Overpass Graffiti';"
+274,
+275,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+276,SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti' AND SELECT track_title FROM Track WHERE album_id=album_id2;
+277,"SELECT t1.track_title, t2.album_id FROM Track AS t1, Track AS t2 WHERE t1.album_id = t2.album_id AND t2.track_title='Overpass Graffiti'; "
+278,"SELECT track_title FROM Track, Track2(album_id2) WHERE album_id = album_id2  AND track_title = 'Overpass Graffiti';"
+279,
+280,"Select Track2.track_title From Track, Track AS Track2(track_id, album_id2) Where Track.album_id= Track2.album_id2 And Track.track_title= 'Overpass Graffiti';"
+281,-
+282,
+283,"SELECT DISTINCT track_title, album_id, album_id2 FROM Track WHERE album_id=album_id2 AND track_title='Overpass Graffiti';"
+284,
+285,"SELECT track_title  FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+286,"SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND album_id=album_id2;"
+287,σtrack_title=track_title(πalbum_id(σalbum_id=albumid2 P album_id2(σtrack_title='Overpass Graffiti'(Track X Album)))))))
+288,"SELECT Track.track_title FROM Track NATURAL JOIN Album, Album AS Album2(album_id2) WHERE Track.track_title = 'Overpass Graffiti' AND Album.album_id = Album2.album_id2;"
+289,"SELECT Track.track_title FROM Track, (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS Track2(album_id2) WHERE album_id = album_id2;"
+290,
+291,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti')  WHERE album_id = album_id2;    "
+292,SELECT track_title FROM Track JOIN SELECT album_id as album_id2 FROM Track Where track_title = 'Overpass Graffiti'
+293,"SELECT B.track_title FROM Track A, Track B WHERE A.track_title = 'Overpass Graffiti' AND B.album_id = A.album_id;"
+294,x
+295," SELECT Track.track_title FROM Track, Track as Track2(track_id,album_id2,track_title,duration,popularity,explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';"
+296,"SELECT Track.track_title FROM Track, Track AS Track2(album_id, track_title) WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;"
+297,"SELECT Track.track_title FROM Track, Track AS TrackAlias WHERE Track.album_id == TrackAlias.album_id AND TrackAlias.track_title == 'Overpass Graffiti';"
+298,
+299,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id;"
+300,"SELECT track_title FROM Track, Track AS Track2 (track_id, album_id2, track_title2, duration, popularity) WHERE track_title2='Overpass Graffiti' AND album_id=album_id2"
+301,"SELECT Track.track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') WHERE album_id=album_id2;"
+302,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE Track2.track_title2 = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+303,
+304,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title) WHERE track_id<>track_id2 AND album_id=album_id2 AND Track.track_title<>Track2.track_title AND Track.track_title = 'Overpass Graffiti';"
+305,"SELECT Track.track_title, Track2.album_id AS album_id2 FROM Track, Track AS Track2 WHERE Track2.track_title='Overpass Graffiti';"
+306,SELECT track_title FROM Track WHERE album_id = ( SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti' );
+307,SELECT track_title FROM Track Where Track.album_id = album_id2 AS album_id2 INTERSECT SELECT album_id FROM Track WHERE track_title='Overpass Graffiti';
+308,"SELECT track_title FROM Track,(SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') WHERE album_id = album_id2"
+309,SELECT album_id1.track_title  FROM Track album_id1 INNER JOIN (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS album_id2 on album_id1.album_id = album_id2.album_id;
+310,SELECT track_title FROM Track WHere album_id=album_id2
+311,SELECT album_id AS album_id2 FROM Track as Track2 WHERE track_title = 'Overpass Graffiti'; --I don't know
+312,"SELECT DISTINCT track_title FROM Track,  (SELECT DISTINCT album_id FROM Track WHERE track_title='Overpass Graffiti') AS album_id2 WHERE track.album_id=album_id2.album_id;"
+313,SELECT track_title FROM Track WHERE album_id =  ( SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti' );
+314,
+315,
+316,--SELECT track_title FROM Track WHERE album_id = (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti');
+317,
+318,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+319,
+320,SELECT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id == Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';
+321,"SELECT T1.track_title FROM Track as T1, Track as T2 WHERE T1.album_id = T2.album_id AND     T2.track_title = 'Overpass Graffiti';"
+322,
+323,
+324,
+325,"SELECT track_title as album_id2,album_id FROM Track WHERE Track.album_id = Track.track_title  AND track_title=""Overpass Graffiti""  "
+326,SELECT DISTINCT Track.track_title FROM Track WHERE Track.track_title='Overpass Graffiti' AND album_id=album_id2
+327,"SELECT DISTINCT Track2.track_title FROM Track, Track AS Track2(track_id, album_id, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id AND Track.track_title='Overpass Graffiti' AND Track2.album_id=Track.album_id;   "
+328,SELECT track_title FROM Track NATURAL JOIN 
+329,"SELECT Track.track_title,  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title= 'Overpass Graffiti';"
+330,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti'; "
+331,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id, album_id2,track_title,duration,popularity) WHERE Track.album_id = Track2.album_id2 AND track2.track_title = 'Overpass Graffiti';"
+332,"SELECT Track.track_title, Track.album_id FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title='Overpass Graffiti' AND Track2.album_id2 = Track.album_id;"
+333,"SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id;"
+334,
+335,SELECT title FROM track t WHERE track.name='Overpass Grafiti'   Sidenote: I don't really understand what is asked here. Would like to discuss it in the tutorial thursday :)
+336,"SELECT DISTINCT Track.track_title, Track2.album_id2 FROM Track, Track AS Track2(album_id2) WHERE Track.album_id=Track2.album_id2 AND Track2.track_title='Overpass Graffiti';"
+337,"SELECT DISTINCT Track2.track_title, FROM Track, Track AS Track2(track_title2, album_id) WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti'; "
+338,select track_title from Track join  (select album_id as album_id2 from Track where track_title = 'Overpass Graffiti') as A on album_id=A.album_id2;
+339,"Select Track.track_title FROM Track, Track as Track_tmp WHERE (Track_tmp.track_title='Overpass Graffiti' AND Track.album_id=Track_tmp.album_id);"
+340,"SELECT Track.track_title FROM Track, Track as t2 WHERE Track.album_id = t2.album_id AND t2.track_title = 'Overpass Graffiti';"
+341,"SELECT album_id2.track_title  FROM Track, Track AS album_id2  WHERE Track.album_id = album_id2.album_id AND Track.track_title = 'Overpass Graffiti'; "
+342,-
+343,"D SELECT DISTINCT Track.track_title > FROM Track, Track AS Track2 > WHERE Track2.track_title='Overpass Graffiti' > AND Track.album_id=Track2.album_id;"
+344,
+345,.
+346,"SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';"
+347,"SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') WHERE  album_id = album_id2;"
+348,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id,album_id,track_title,duration,popularity,explicit) WHERE Track.album_id=Track2.album_id AND Track.track_title = 'Overpass Graffiti'; "
+349,"SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;"
+350,
+351,"SELECT DISTINCT track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit)  WHERE Track.album_id=Track2.album_id2 AND track_title='Overpass Graffiti';"
