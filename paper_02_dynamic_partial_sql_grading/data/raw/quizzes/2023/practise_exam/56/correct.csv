@@ -1,0 +1,1 @@
+﻿"SELECT E2.name FROM Employee E1, Employee E2 WHERE E1.name = 'Djoerd Hiemstra' AND E1.superv_nr = E2.emp_nr;"

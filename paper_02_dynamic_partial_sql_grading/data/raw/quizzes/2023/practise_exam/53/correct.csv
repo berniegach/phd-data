@@ -1,0 +1,1 @@
+﻿"SELECT name, hire_date FROM Employee WHERE salary BETWEEN 2500.00 AND 3500.00;"

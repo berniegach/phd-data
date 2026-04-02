@@ -1,0 +1,1 @@
+﻿SELECT album_title FROM Album WHERE NOT EXISTS( SELECT * FROM Market WHERE album.album_id = market.album_id AND country = 'DE' );

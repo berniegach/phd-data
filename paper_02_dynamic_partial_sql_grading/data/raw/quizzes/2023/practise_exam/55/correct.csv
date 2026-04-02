@@ -1,0 +1,1 @@
+﻿"SELECT unit_name, AVG(salary) FROM Unit, Employee WHERE Unit.unit_id = Employee.unit_id GROUP BY unit_name"

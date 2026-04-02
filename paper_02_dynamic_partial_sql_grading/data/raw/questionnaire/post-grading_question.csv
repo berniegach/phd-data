@@ -1,0 +1,56 @@
+#,Username,First name,Last name,Email,Q1 - Do you believe the grades received from the automated grading system were fair? (0 pts),Total
+1,Anon1 ,Name1,Name2,name@email,/,/
+2,Anon2,,,,"Yes, they were fair",/
+3,Anon3,,,,"Yes, they were fair",/
+4,User 1,,,,No,/
+5,User 2,,,,"Yes, they were fair",/
+6,User 3,,,,No,/
+7,User 4,,,,"Yes, they were fair",/
+8,User 5,,,,"Yes, they were fair",/
+9,User 7,,,,"Yes, they were fair",/
+10,User 8,,,,"Yes, they were fair",/
+11,User 9,,,,"Yes, they were fair",/
+12,User 10,,,,"Yes, they were fair",/
+13,User 11,,,,"Yes, they were fair",/
+14,User 12,,,,"Yes, they were fair",/
+15,User 13,,,,"Yes, they were fair",/
+16,User 14,,,,"Yes, they were fair",/
+17,User 15,,,,"Yes, they were fair",/
+18,User 16,,,,"Yes, they were fair",/
+19,User 17,,,,No,/
+20,User 18,,,,No,/
+21,User 19,,,,"Yes, they were fair",/
+22,User 20,,,,"Yes, they were fair",/
+23,User 21,,,,No,/
+24,User 22,,,,"Yes, they were fair",/
+25,User 23,,,,"Yes, they were fair",/
+26,User 24,,,,"Yes, they were fair",/
+27,User 25,,,,"Yes, they were fair",/
+28,User 26,,,,"Yes, they were fair",/
+29,User 27,,,,"Yes, they were fair",/
+30,User 29,,,,No,/
+31,User 30,,,,No,/
+32,User 31,,,,No,/
+33,User 32,,,,"Yes, they were fair",/
+34,User 33,,,,"Yes, they were fair",/
+35,User 34,,,,"Yes, they were fair",/
+36,User 35,,,,"Yes, they were fair",/
+37,User 36,,,,"Yes, they were fair",/
+38,User 37,,,,No,/
+39,User 38,,,,No,/
+40,User 39,,,,"Yes, they were fair",/
+41,User 40,,,,"Yes, they were fair",/
+42,User 41,,,,No,/
+43,User 42,,,,No,/
+44,User 43,,,,"Yes, they were fair",/
+45,User 44,,,,"Yes, they were fair",/
+46,User 45,,,,"Yes, they were fair",/
+47,User 46,,,,"Yes, they were fair",/
+48,User 47,,,,/,/
+49,User 48,,,,/,/
+50,User 49,,,,/,/
+51,User 50,,,,/,/
+52,User 51,,,,/,/
+53,User 52,,,,/,/
+54,User 53,,,,/,/
+,Average,,,,/,/

@@ -29,5 +29,4 @@ paper_01_sql_grading_sensitivity/
 - `data/processed/graded_scale_27/`: grading outputs for the 27-level scheme
 - `scripts/`: analysis code
 - `outputs/figures/`: generated plots
-- `metadata/`: supporting documentation
 

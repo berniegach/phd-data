@@ -1,0 +1,1 @@
+﻿SELECT year FROM Album WHERE album_title = 'American Pie';

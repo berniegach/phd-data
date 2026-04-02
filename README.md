@@ -44,7 +44,7 @@ In general:
 ## Studies included in this repository
 
 - Chapter 3 -- [paper_01_sql_grading_sensitivity](paper_01_sql_grading_sensitivity)
-- Chapter 4 -- pending
+- Chapter 4 -- [paper_02_dynamic_partial_sql_grading](paper_02_dynamic_partial_sql_grading)
 - Chapter 5 -- pending
 - Chapter 6 -- pending
 - Chapter 7 -- pending

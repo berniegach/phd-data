@@ -1,0 +1,1 @@
+﻿"WITH RECURSIVE Chain_of_command(emp_nr, superv_nr, name, job) AS ( SELECT emp_nr, superv_nr, name, job FROM Employee WHERE emp_nr = 'U333333' UNION SELECT E.emp_nr, E.superv_nr, E.name, E.job FROM Chain_of_command C, Employee E  WHERE C.superv_nr = E.emp_nr ) SELECT name, job FROM Chain_of_command WHERE emp_nr <> 'U333333';"

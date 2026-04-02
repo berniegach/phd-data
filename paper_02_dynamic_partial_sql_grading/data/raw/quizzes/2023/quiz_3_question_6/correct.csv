@@ -1,0 +1,1 @@
+﻿"SELECT year, COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;"

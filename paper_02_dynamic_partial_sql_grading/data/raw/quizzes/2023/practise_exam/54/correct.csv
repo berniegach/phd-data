@@ -1,0 +1,1 @@
+﻿SELECT unit_name FROM Unit WHERE NOT 'Dean' IN ( SELECT job FROM Employee WHERE Employee.unit_id = Unit.unit_id );

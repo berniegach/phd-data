@@ -1,0 +1,1 @@
+﻿"WITH RECURSIVE Ancestor(advisor, student) AS (SELECT advisor, student from Teaches UNION SELECT T.advisor, A.student FROM Teaches T, Ancestor A WHERE T.student = A.advisor) SELECT S2.* FROM Scientist S1, Scientist S2, Ancestor A WHERE S1.id = A.advisor AND S2.id = A.student AND S1.name = 'Desiderius Erasmus';"

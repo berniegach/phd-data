@@ -1,0 +1,1 @@
+﻿"SELECT country FROM Market, Album WHERE market.album_id = album.album_id AND album_title = 'American Pie';"
