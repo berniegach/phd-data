@@ -7,32 +7,54 @@ Data and analysis for the paper “Parameter setting in automated SQL grading”
 ```text
 paper_03_parameter_setting_sql_grading/
   README.md
+  _previous_import_wrong_source/
   data/
     raw/
-      2024/
-      2024_april/
+      properties/
+        2024/
+        2024_april/
+      property_ordering/
+        2024/
+        2024_april/
+      ted/
+        2024/
+        2024_april/
     processed/
-      2024/
-      2024_april/
+      properties/
+        2024/
+        2024_april/
+      property_ordering/
+        2024/
+        2024_april/
+      ted/
+        2024/
+        2024_april/
   scripts/
-    data_line_graphs.py
-    differences.py
-    differences_multiple.py
-    merger.py
-    myscript.sh
+    properties/
+    property_ordering/
+    ted/
   outputs/
     figures/
-      2024/
-      2024_april/
+      properties/
+        2024/
+        2024_april/
+      property_ordering/
+        2024/
+        2024_april/
+      ted/
+        2024/
+        2024_april/
     tables/
 ```
 
 ## Dataset groups
 
-- `data/raw/2024/`: source datasets and supporting SQL files for the 2024 parameter-setting experiments
-- `data/raw/2024_april/`: source datasets for the April 2024 parameter-setting experiments
-- `data/processed/2024/`: graded outputs, score-difference files, and derived datasets for the 2024 experiments
-- `data/processed/2024_april/`: graded outputs and derived datasets for the April 2024 experiments
-- `scripts/`: analysis and data-preparation code
-- `outputs/figures/`: generated plots for the 2024 and April 2024 experiment sets
+- `data/raw/properties/`: source and support files for the evaluation properties experiments
+- `data/raw/property_ordering/`: source and support files for the property-ordering experiments
+- `data/raw/ted/`: source files for the text edit distance experiments
+- `data/processed/properties/`: graded outputs and derived datasets for the evaluation properties experiments
+- `data/processed/property_ordering/`: graded outputs and derived datasets for the property-ordering experiments
+- `data/processed/ted/`: graded outputs and derived datasets for the text edit distance experiments
+- `scripts/`: family-specific analysis and data-preparation code
+- `outputs/figures/`: generated plots for each experiment family and run set
 - `outputs/tables/`: generated tables

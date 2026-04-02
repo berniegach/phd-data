@@ -1,0 +1,924 @@
+Org Defined ID,Answer_original,Score_original,Score_final,score_difference,filename
+1,"SELECT name, COUNT(DISTINCT track_id) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name HAVING COUNT(DISTINCT track_id) >= 3 ORDER BY COUNT(DISTINCT track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+1,SELECT song FROM Track WHERE NOT EXIST (  SELECT * FROM Performs  WHERE Performs.track_id = Track.track_id  AND role = 'vocals');,0.0,0.375,0.375,291/quiz_graded_5_5.csv
+1,SELECT Performs.artist_id FROM Performs WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+1,"WITH RECURSIVE managers(id) AS (   SELECT E.manager_nr AS id   FROM Employee E   WHERE E.employee_nr = 'U000001' UNION   SELECT E.manager_nr AS id   FROM managers M, Employee E   WHERE M.id = E.id   AND NOT E.manager_nr IS NULL )  SELECT * FROM managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+2,"SELECT A.name, COUNT(P.tracks_id) AS least3 FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(P.tracks_id) >2 ORDER BY least3 DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+2,SELECT T.song FROM Track T JOIN Performs P ON T.track_id = P.track_id WHERE P.role <> 'vocals';,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+3,"SELECT song FROM Track, Performs WHERE NOT role = 'vocals' AND NOT artist_id = NULL AND Track.track_id =  Performs.track_id;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+3,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+3,"(SELECT Employee1.employee_nr FROM Employee1, Employee2 WHERE Employee1.employee_nr = 'U000001' AND Employee1.employee_nr = Employee2.manager_nr) UNION (SELECT Employee1.employee_nr FROM Employee1, Employee2 WHERE  Employee1.employee_nr = Employee2.manager_nr);",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+4,"SELECT A.name, COUNT(T.*) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name HAVING COUNT(T.*) >= 3 ORDER BY COUNT(T.*) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+4,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND NOT EXISTS (   SELECT role FROM Performs P2 WHERE T.track_id = P2.track_id AND role='vocals' );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+4,"WITH RECURSION Managed(employee_nr) AS (   SELECT E.manager_nr AS employee_nr   FROM Employee E   WHERE E.employee_number = 'U000001' UNION   SELECT E.manager_nr AS employee_nr   FROM Managed M, Employee E   WHERE M.employee_nr = E.employee_nr   AND NOT E.manager_nr IS NULL ) SELECT * FROM Managed;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+5,SELECT DISTINCT album_id  FROM Release  WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+5,"SELECT song, Track.track_id, role FROM Track, Performance WHERE Performs.track_id = Track.track_id  AND role != 'vocals' ;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+5,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitaist´;,0.6,0.75,0.15000000000000002,294/quiz_graded_5_5.csv
+5,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+5,SELECT song FROM Track WHERE album_id = 'Nevermind';,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+6,"SELECT title, COUNT(duration) AS total_duration FROM Album GROUP BY title ;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+6,"SELECT album_id, country FROM Release WHERE country ='Belgium' ;",0.0,0.5,0.5,293/quiz_graded_5_5.csv
+6,"SELECT DISTINCT name, COUNT(track_id) AS Number_of_tracks FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY name HAVING COUNT(track_id) => 3 ORDER BY Number_of_tracks DESC ;",0.5,0.0,-0.5,289/quiz_graded_5_5.csv
+6,"SELECT song, album_id FROM Track, Album WHERE title = 'Nevermind' AND  Album.album_id= Track.album_id ;",0.0,0.25,0.25,292/quiz_graded_5_5.csv
+6,"WITH RECURSIVE managed AS ( (SELECT Employ.manager_nr AS manager, Employ.employee_nr AS descendant, 1 AS depth  FROM Employee AS Employ  WHERE Employee.employee_nr = 'U000001') UNION  (SELECT Old.manager, Employ.employee_nr, Old.depth +1 FROM managed AS Old JOIN Employee as Employ ON Old.descendant= Employ.manager_nr)  ) SELECT DISTINCT * FROM managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+6,"SELECT DISTINCT artist_id, role, track_id FROM Performs, Track  WHERE role = 'guitarist'  AND Performs.track_id= Track.track_id ;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+6,"SELECT songs, role FROM Track, Performs WHERE Performs.track_id= Track.track_id AND role != vocal AND Performs.artist_id IS NOT NULL ;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+7,"SELECT A.name, COUNT(T.track_id) AS count FROM Track T, Artist A, Preforms P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id AND count > 2 GROUP BY A.name ORDER BY count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+7,SELECT T.song FROM Track T WHERE NOT EXISTS ( SELECT P.track_id FROM Preforms P WHERE P.role = 'vocals');,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+7,SELECT P.artist_id FROM Preforms P WHERE P.role = 'guitarist';,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+8,"WITH DistinctTracks ( artist_id, track_id ) AS ( SELECT DISTINCT Artist.artist_id, track_id FROM Artist NATURAL JOIN Performs ) SELECT name, count(track_id) FROM Artist NATURAL JOIN DistinctTracks GROUP BY artist_id HAVING count(track_id) >= 3 ORDER BY count(track_id) DESC;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+9,"SELECT name, COUNT(*) AS Nr FROM Artist WHERE artist_id IN (SELECT DISTINCT track_id, artist_id FROM Track, Performs WHERE Track.track_id=Performs.track_id) GROUP BY name HAVING COUNT(*) >= 3 ORDER BY Nr DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+10,SELECT T.song FROM Track T WHERE NOT EXISTS  (SELECT P.role FROM Performs P WHERE T.artist_id = P.artist_id AND role = 'vocals');,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+10,"SELECT A.name, COUNT(DISTINCT T.track_id) FROM Artist A, Track T, Performs P WHERE A.artist_id  = P.artist_id AND P.track_id = T.track_id HAVING COUNT(DISTINCT T.track_id) >= 3 ORDER BY COUNT(DISTINCT T.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+10,"SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY A.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+10,"WITH RECURSIVE Manager(Employee_nr) AS ( SELECT Employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION SELECT E.Manager_nr AS manager FROM Employee E, Manager M WHERE M.manager = E.manager AND NOT E.manager IS NULL )  SELECT * FROM Manager;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+11,"SELECT DISTINCT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+11,"WITH RECURSIVE ManagedBy (employee_nr) AS (    SELECT E.employee_nr AS employee_nr    FROM Employee E    WHERE E.employee_nr = 'U000001'   UNION    SELECT E.manager_nr AS employee_nr    FROM ManagedBy M, Employee E    WHERE M.employee_nr = E.employee_nr    AND NOT E.manager_nr IS NULL )  SELECT * FROM ManagedBy;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+11,"SELECT DISTINCT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT EXISTS ( SELECT * FROM Artist WHERE (Artist.artist_id = Performs.artist_id AND Performs.role = 'vocals') OR (Artist.artist_id = Performs.artist_id AND Performs.artist_id IS NULL));",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+12,"SELECT Album.album_id FROM Album A, Release R WHERE A.album_id = R.album_id AND R.country = ´Belgium´;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+12,"SELECT DISTINCT A.name, COUNT(*) as ntracks FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND T.track_id = P.track_id GROUP BY A.name HAVING COUNT(*) >=3 ORDER BY ntracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+12,SELECT name FROM Artist WHERE NOT death_rate IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+12,"SELECT Track.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",0.0,0.75,0.75,292/quiz_graded_5_5.csv
+13,"SELECT a.title, SUM(t.duration) AS total_duration FROM Album a, Track t WHERE a.album_id = t.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+13,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+13,WITH RECURSIVE Managed AS( SELECT employee_nr FROM Employee WHERE manager_nr = 'U000001' UNION Select managed.employee_nr FROM Employee managed JOIN Employee manager on manager.employee_nr = managed.employee_nr JOIN Managed m ON manager.manager_nr = m.employee_nr ) SELECT * FROM Managed;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+13,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+13,"SELECT DISTINCT a.artist_id FROM Artist a, Performs p WHERE a.artist_id = p.artist_id AND p.role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+13,"SELECT t.song FROM Track t, Performs p WHERE t.track_id = p.track_id AND NOT p.artist_id IN(   SELECT p.artist_id   FROM Performs p   WHERE p.role = 'vocals' ) HAVING COUNT(p.artist_id) > 0;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+13,"SELECT a.name, COUNT(DISTINCT p.track_id) AS nr_of_tracks FROM Artist a JOIN Performs p ON a.artist_id = p.artist_id GROUP BY a.name HAVING COUNT(DISTINCT p.track_id) >= 3 ORDER BY nr_of_tracks DESC, a.name;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+14,SELECT Performs.artist_id FROM Performs WHERE Performs.role = ´guitarist´;,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+14,"SELECT DISTINCT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT EXISTS (SELECT Performs.track_id FROM Performs WHERE Performs.role = ´vocals´ OR Performs.role IS NULL);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+14,"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+14,SELECT Release.album_id FROM Release WHERE Release.country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+14,SELECT Artist.name FROM Artist WHERE Artist.death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+14,"SELECT Artist.name, COUNT(DISTINCT Performs.track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY Artist.name HAVING COUNT(DISTINCT Performs.track_id) >= 3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+15,"SELECT Track.song FROM Track WHERE NOT EXISTS ( SELECT Performs.role FROM Performs WHERE Track.track_id = Performs.track_id AND Performs.role = ´vocals´);  -- since Performs.artist_id is a foreign key referencing to Artist.artist_id, where it is a primary key (as well), and primary keys are assumed to be NOT NULL, it seems unnecesarry to add this to the query",0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+15,"SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+15,"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+15,"SELECT Album.album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = ´Belgium´;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+15,"WITH RECURSIVE Managedby(manager) AS (   SELECT M.manager_nr AS manager   FROM Employee E, Employee M   WHERE E.manager_nr = M.employee_nr   UNION   SELECT M.manager AS manager   FROM Managedby E, Employee M   WHERE E.manager_nr = M.employee_nr   AND NOT M.manager_nr IS NULL )  SELECT * FROM Managedby;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+16,"Select A.name, COUNT(DISTINCT P.track_id) AS nr_of_tracks_with_performance From Artist A, Performs P Where A.artist_id = P.artist_id GROUP BY artist_id HAVING COUNT(nr_of_tracks_with_performance) >=3 ORDER BY nr_of_tracks_with_performance DESC",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+16,"WITH RECURSIVE managed_by_U000001 (id) AS ( (SELECT X.employee_nr as id FROM Employee X WHERE X.manager_nr = 'U000001') UNION (SELECT X.employee_nr as id FROM managed_by_U000001 Y, Employee X WHERE Y.id = X.id) ) SELECT * FROM managed_by_U000001",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+16,SELECT name FROM Artist WHERE NOT death_date IS NULL,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+16,"SELECT title, SUM(duration)  FROM album GROUP BY album_id",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+16,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND NOT EXISTS(   SELECT track_id   FROM Performs   WHERE Track.track_id = Performs.track_id   AND Performs.role = 'vocals' ) AND T.track_id  IN (  SELECT track_id, COUNT(artist_id) AS known_artist_count  FROM Performs  GROUP BY track_id  HAVING known_artist_count > 0) -- Since I do not know if the schema fills in NULL or an arbitrary string like 'Artist unknown' when an artist for a role on a track is unknown I was unable to use IS NULL with certainty, if this is the intended solution it would be helpful if it were specified.",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+16,"SELECT DISTINCT A.Artist_id FROM Artist A, Performs P AND A.artist_id = P.artist_id AND P.role = 'guitarist'",0.0,0.875,0.875,294/quiz_graded_5_5.csv
+17,"SELECT name, COUNT(track_id)  FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY name  HAVING COUNT(track_id) >= 3  ORDER BY COUNT(track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+18,"SELECT DISTINCT songs FROM Track T, Performs P, Artist A WHERE T.track_id=P.track.id AND A.artist_id=P.artist_id  AND NOT EXISTS(SELECT P.artist_id FROM Performs P WHERE T.track_id=P.track.id  AND P.role=´vocals´);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+18,"SELECT DISTINCT album_id FROM Album A, Release R WHERE A.album_id=R.album_id AND R.country = ´Belgium´;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+18,"WITH RECURSIVE managed(employee_nr) AS( SELECT ´U000001´ UNION SELECT E.employee_nr FROM Employee E, Managed M WHERE E.manager_nr =  M.employee_nr) SELECT * FROM Managed;",0.8,0.25,-0.55,309/quiz_graded_5_5.csv
+18,"SELECT DISTINCT artist_id FROM Artist A, Performs P WHERE A.artist_id=P.artist_id AND P.role=´guitarist´;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+18,"SELECT A.title, T.duration FROM Album A, Track T WHERE T.album_id=A.album_id   GROUP BY album_id HAVING COUNT(track_id)>=1;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+18,SELECT song FROM Album WHERE Album.title = ´Nevermind´;,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+18,"SELECT A.name , COUNT(*) FROM Artist A, Track T WHERE T.album_id=A.album_id   GROUP BY A.name HAVING COUNT(*)>=3;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+19,"SELECT album_id  FROM Album, Release  WHERE Album.album_id = Release.album_id AND Release.country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+19,"SELECT A.name, Count(DISTINCT Performs.artist_id) AS played_by_artist FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id  GROUP BY A.name  HAVING COUNT(DISTINCT Performs.artist_id) >= 3 ORDER BY played_by_artist DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+19,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+20,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+20,SELECT name FROM Artist  WHERE Artist.death_date = 'NULL';,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+21,"SELECT song FROM Track, Performs, Artist WHERE Performs.artist_id = Artist.artist_id  AND Performs.track_id = Track.track_id  AND NOT Performs.role = 'vocals' AND Performs.artist_id IS NOT NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+21,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+21,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+21,"SELECT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+22,"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+22,SELECT album_id FROM Album WHERE album_id IN (   SELECT album_id   FROM Release   WHERE country = ´Belgium´ );,0.8,0.25,-0.55,293/quiz_graded_5_5.csv
+22,"SELECT Artist.name, COUNT(Performs.track_id) FROM Performs, Artist WHERE Performs.artist_id = Artist.artist_id GROUP BY Performs.artist_id HAVING COUNT(Performs.track_id) >= 3 ORDER BY COUNT(Performs.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+22,"WITH RECURSIVE Ancestors(id) AS ( SELECT E.manager_nr as id   FROM Employee E   WHERE E.employee_nr = 'U000001'   UNION   SELECT E.manager_nr as id   FROM Ancestors A, Employee E   WHERE A.id = E.id   AND NOT E.manager_nr IS NULL ) SELECT * FROM Ancestors;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+23,SELECT employee_nr FROM Employee WHERE manager_nr = U000001 OR employee_nr = U000001,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+23,SELECT name FROM Artist WHERE death_date IS NOT NULL,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+23,SELECT artist_id FROM Perfroms WHERE role = 'guitarist',0.0,0.25,0.25,294/quiz_graded_5_5.csv
+24,"SELECT song FROM Track t, Album a WHERE t.album_id = a.album_id AND title = ´Nevermind´",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+24,"SELECT title, SUM(song) AS album_duration FROM Album a, Track t WHERE a.album_id = t.album_id",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+24,"SELECT name, COUNT(*) FROM Artist, Performs p GROUP BY p.artist_id HAVING COUNT(*) >= 3",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+24,SELECT DISTINCT p.artist_id From Performs p WHERE role = ´guitarist´,0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+24,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND role <> ´vocals´",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+24,SELECT r.album_id FROM Release r WHERE country = ´Belgium´,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+25,"SELECT a.title, SUM(t.duration) FROM Album a INNER JOIN Track t ON a.album_id= t.album_id GROUP BY a.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+25,SELECT song  FROM Track t WHERE track_id NOT IN (  SELECT track_id FROM Performs p  WHERE role = 'vocals' AND artist_id is NULL);,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+25,"SELECT a.name, COUNT(t.track_id) AS number_of_tracks FROM Artist a  INNER JOIN Performs p ON a.artist_id= p.artist_id INNER JOIN Track t ON t.Album_id=al.Album_id INNER JOIN Album al ON t.Album_id= al.Album_id INNER JOIN Release r ON r.Album_id= al.Album_id GROUP by a.name ORDER by release_date DESC",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+26,"WITH RECURSIVE Subordinates AS ( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION ( SELECT emp.empoyee_nr FROM Employee emp, Subordinates sub WHERE emp.employee_nr = sub.manager_nr ))  SELECT employee_nr FROM Subordinates;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+27,"WITH RECURSIVE managedByU000001(employee_nr) AS (   (SELECT Employee.employee_nr FROM Employee WHERE manager_nr = 'U000001' OR manager_nr IS NULL)   UNION   (SELECT Employee.employee_nr FROM managedByU000001, Employee WHERE managedByU000001.employee_nr = Employee.employee_nr) ) SELECT * FROM managedByU000001;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+27,"SELECT name, COUNT(track_id) AS total FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY name HAVING total >= 3 ORDER BY total DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+28,"SELECT name, COUNT(track_id) as num_tracks FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = (SELECT DISTINCT track_id FROM Performs) GROUP BY artist_id HAVING COUNT(track_id) >= 3 ORDER BY num_tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+28,"SELECT DISTINCT album_id FROM Album A, Release R WHERE A.album_id = R.album_id AND R.country = ´Belgium´;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+28,"SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+28,"SELECT title, SUM(duration)  FROM Track T, Album A WHERE T.album_id = A.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+28,"WITH RECURSIVE Result(employee_nr) AS (    SELECT E.manager_nr AS employee_nr    FROM Employee E    WHERE E.employee_nr = ´U000001´    UNION    SELECT R.manager_nr AS employee_nr    FROM Result R, Employee E    WHERE R.employee_nr = E.employee_nr    AND NOT R.manager_nr IS NULL ) SELECT * FROM Result;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+28,"SELECT DISTINCT artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;",0.0,0.75,0.75,294/quiz_graded_5_5.csv
+28,"SELECT DISTINCT song FROM Track T, Artist A, Performs P WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id AND P.role <> ´vocals´ AND A.name IS NOT NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+29,SELECT song FROM Track T WHERE NOT EXISTS ( -- no vocals SELECT * FROM Performs P WHERE T.track_id = P.track_id AND role = 'vocals') AND T.track_id IN ( -- must have a known artist SELECT P.track_id FROM Performs P);,1.0,0.0,-1.0,291/quiz_graded_5_5.csv
+31,"SELECT DISTINCT Artist.name, SUM(Track.song) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id AND SUM(Performs.track_id) >= 3 GROUP BY Performs.artist_id ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+31,"WITH RECURSIVE ManagedBy1 (id_employee) AS( SELECT E.manager_number, E.employee_nr AS id_employee FROM Employee E WHERE E.manager_nr = 'U000001'  UNION  SELECT E.employee_nr AS id_employee FROM Employee E, ManagedBy1 M WHERE E.manager_nr = M.id_employee) SELECT * FROM ManagedBy1;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+31,SELECT Artist.name FROM Artist WHERE Artist.death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+31,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Track.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+31,"SELECT Track.song FROM Track, Performs WHERE NOT EXISTS (SELECT * FROM Performs WHERE Performs.role = 'vocals' AND Performs.track_id = Track.track_id)  AND NOT EXISTS (SELECT * FROM Performs WHERE Performs.artist_id = NULL AND Performs.track_id = Track.track_id);",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+32,"SELECT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+32,"WITH RECURSIVE manage AS( SELECT employee_nr FROM Employee WHERE manager_nr = 'U000001' UNION SELECT employee_nr FROM manage M, Employee E WHERE M.employee_nr = E.manager_nr ) SELECT * FROM manage;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+32,"SELECT name, COUNT(*) as count FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name HAVING count >= 3 ORDER BY count DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+33,"SELECT Album.title, SUM(Track.duration)  FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+33,"WITH RECURSIVE Managed_by_u000001(manager)AS (  SELECT E.manager_nr AS manager FROM Employee E WHERE E.employee_nr = 'U000001'  UNION  SELECT E.manager_nr AS manager FROM Managed_by_u000001 M, Employee E WHERE M.manager = E.manager AND NOT E.manager_nr IS NULL ) SELECT * FROM Managed_by_u000001;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+33,"SELECT name, COUNT(Performs.track_id) AS total_tracks FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id GROUP BY Artist.name HAVING total_tracks >= 3 ORDER BY total_tracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+34,"SELECT DISTINCT A.name, COUNT(T.track_id) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name HAVING COUNT(T.track_id) >= 3 ORDER BY COUNT(T.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+35,WITH RECURSIVE function AS ( SELECT employee_nr AS P FROM Employee WHERE employee_nr = 'U000001' UNION SELECT employee_nr AS C FROM Employee WHERE P.employee_nr = C.manager_nr ) SELECT * FROM function;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+35,"SELECT name, COUNT(DISTINCT, track_id) AS nr FROM Track, Performs, Artist  WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY name HAVING nr >= 3 ORDER BY nr DESC;",0.6,0.0,-0.6,289/quiz_graded_5_5.csv
+36,"SELECT a.title, SUM(t.duration) AS album_duration FROM Album a, Track t WHERE t.album_id = a.album_id GROUP BY t.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+36,"WITH RECURSIVE Managers (employee_nr) AS (   SELECT e.manager_nr as employee_nr   FROM Employee e   WHERE e.employee_nr = 'U000001' UNION  SELECT e.manager as employee_nr  FROM Managers m, Employee e   WHERE m.employee_nr = e.employee_nr   AND NOT e.manager IS NULL)  SELECT * FROM managers",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+36,"SELECT t.song FROM Track t, Performs p WHERE NOT EXISTS (SELECT * FROM Performs p WHERE t.track_id = p.track_id AND p.role = 'vocals');",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+36,"SELECT a.name AS artist_name, COUNT( t.track_id) AS track_count FROM Track t, Artist a, Performs p WHERE t.track_id = p.track_id AND p.artist_id = a.artist_id GROUP BY p.artist_id HAVING COUNT (DISTINCT t.track_id > 3) ORDER BY track_count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+37,"SELECT DISTINCT Artist.name, COUNT(Performs.track_id) FROM Artist, Performs WHERE Artist.artist_id=Performs.artist_id GROUP BY Artist.name;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+38,"SELECT Artist.name, COUNT(Track.track_id) AS total FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND total >= 3 GROUP BY Artist.name ORDER BY total DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+38,"WITH RECURSIVE EmployeesOF (id) AS (   (SELECT X.employee_nr AS id    FROM Employee X    WHERE X.manager_id = 'U000001')   UNION   (SELECT X.employee_nr AS id   FROM EmployeesOF Y, Employee X   WHERE Y.id = X.id) ) SELECT employee_nr FROM EmployeesOf;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+38,"SELECT Album.title, SUM(Track.duration) AS total FROM Track, Album WHERE Album.album_id = Track.track_id GROUP BY Album.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+39,"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+39,"WITH RECURSIVE Chain(employee_nr) AS(  SELECT Employee.employee_nr FROM Employee WHERE manager_nr = 'U000001'  UNION  SELECT Employee.employee_nr FROM Chain, Employee WHERE Employee.manager_nr = Chain.employee_nr  UNION   SELECT Employee.employee_nr FROM Employee WHERE employee_nr = 'U000001'  ) SELECT * FROM Chain;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+39,SELECT Artist.name FROM Artist WHERE death_date = 'NULL';,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+39,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT Performs.role = 'vocals';",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+39,"SELECT DISTINCT Artist.name, COUNT(Track.track_id) FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.track_id AND COUNT( Track.track_id) > 2 GROUP BY COUNT(Track.track_id);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+39,SELECT Track.song FROM Track WHERE album_id = 'Nevermind';,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+40,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.role != 'vocals' AND Performs.artist_id != NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+40,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+40,"SELECT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = 'Belgium';",0.8,0.25,-0.55,293/quiz_graded_5_5.csv
+40,"WITH RECURSIVE Managers (employee_nr) AS (SELECT X.manager_nr AS employee_nr FROM Employee X WHERE X.employee_nr = 'U000001' UNION (SELECT X.manager_nr AS employee_nr FROM Managers Y, Employee Y WHERE Y.employee_nr = X.employee_nr)) SELECT * FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+40,SELECT DISTINCT name FROM Artist WHERE Artist.death_date = NULL;,0.0,0.25,0.25,295/quiz_graded_5_5.csv
+40,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';",0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+40,"SELECT DISTINCT name, COUNT(track_id) as count FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id AND count >= 3 ORDER BY count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+41,SELECT artist_id FROM Performs  WHERE role = 'guitarist',0.0,0.5,0.5,294/quiz_graded_5_5.csv
+41,"WITH RECURSIVE ManagedEmployees(nr) AS (SELECT E.employee_nr AS nr  FROM Employee E  WHERE E.nr = 'U000001'  UNION  SELECT E.manager_nr AS nr  FROM ManagedEmployees M, Employee E  WHERE M.nr = E.nr  AND NOT E.manager_nr IS NULL) SELECT * FROM ManagedEmployees",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+41,"SELECT Artist.name, COUNT(DISTINCT Track.track_id) AS track_count FROM Artist JOIN Performs ON Performs.artist_id = Artist.artist_id JOIN Track ON Track.track_id = Performs.track_id GROUP BY Artist.name HAVING COUNT(DISTINCT Track.track_id) >= 3 ORDER BY DESC",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+42,"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.album_id = 'Nevermind';",0.0,0.25,0.25,292/quiz_graded_5_5.csv
+42,SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+42,"SELECT title, SUM(duration) AS duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+42,WITH RECURSIVE EmployeeManaged(employee_nr) AS ( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' OR manager_nr = 'U000001' UNION SELECT employee_nr FROM Employee WHERE EmployeeManaged(manager_nr) = 'U000001' ) SELECT employee_nr;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+42,"SELECT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+43,SELECT song FROM Track NATURAL JOIN Album WHERE title = ´Nevermind´;,0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+43,"SELECT title, SUM(duration) FROM Album NATURAL JOIN TRACK;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+43,SELECT artist_id FROM Performs WHERE role=´guitarist´;,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+43,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+43,SELECT DISTINCT song FROM Track NATURAL JOIN Performs WHERE role !=´vocals´ AND artist_id IS NOT NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+44,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+44,"SELECT Artist.name, COUNT(*) AS count_tracks FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.artist_id HAVING count_tracks >= 3 ORDER BY count_tracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+44,"SELECT Track.song FROM Track,Performs WHERE Track.track_id = Performs.track_id AND NOT EXISTS(SELECT *  FROM Track, Performs  WHERE Performs.role = 'vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+44,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+45,SELECT artist_id FROM Performs WHERE COUNT(track_id) >= 3; SELECT name FROM Artist WHERE artist_id = artist_id.Performs; SELECT DINSTINCT COUNT(track_id) FROM Performs WHERE artist_id = artist_id.Performs;,0.0,0.125,0.125,289/quiz_graded_5_5.csv
+45,SELECT title FROM Album; SELECT SUM(duration) FROM Track WHERE album_id = album_id.Album;,0.0,0.25,0.25,290/quiz_graded_5_5.csv
+45,SELECT track_id FROM Performs WHERE role != 'vocals' AND NOT artist_id IS NULL; SELECT song FROM Track WHERE track_id = track_id.Performs;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+45,SELECT album_id FROM Album WHERE title = 'Nevermind'; SELECT song FROM Track WHERE album_id = Album.album_id;,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+46,"SELECT Album.album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND country = ´Belgium´",0.8,0.25,-0.55,293/quiz_graded_5_5.csv
+46,SELECT DISTINCT name FROM Artist WHERE Artist.death_data IS NULL;,0.0,0.25,0.25,295/quiz_graded_5_5.csv
+46,"SELECT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id  AND role = ´guitarist´;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+47,"SELECT A.name, COUNT(P.track_id) FROM Artist A, Performs P WHERE A.artist_id=P.artist_id GROUP BY A.name HAVING COUNT(P.track_id) >= 3 ORDER BY COUNT(P.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+48,SELECT artist_id FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id WHERE Performs.role = ´guitarist´;,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+48,"WITH RECURSIVE Managedby(employee_nr) AS (  ( SELECT *  FROM Employee m, Employee e  WHERE m.employee_nr = e.manager_nr)  UNION ( SELECT *    FROM Managedby n, Employee m   WHERE n.employee_nr = m.manager_nr) )   SELECT *  FROM Managedby;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+48,SELECT song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ´Nevermind´;,0.8,0.25,-0.55,292/quiz_graded_5_5.csv
+48,SELECT album_id FROM Album JOIN Release ON Album.album_id = Release.album_id WHERE Release.country = ´Belgium´;,0.0,0.25,0.25,293/quiz_graded_5_5.csv
+48,"WITH Activeartist AS ( SELECT name, COUNT(DISTINCT track.id) AS track_count FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Perfroms.track_id = Track.track_id GROUP BY name HAVING track_count >= 3 )   SELECT name, track_count FROM Activeartist ORDER BY track_count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+49,"SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.track_id = P.track_id AND P.role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+49,"SELECT A.name, COUNT(*) FROM Artist A WHERE A.artist_id IN ( SELECT DISTINCT P.artist_id FROM Performs P WHERE P.artist_id = A.artist_id );",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+49,"WITH RECURSIVE Managed(employee_nr) AS (   SELECT E.employee_nr FROM Employee E   WHERE E.manager_nr = 'U000001'   UNION   SELECT E.employee_nr    FROM Managed M, Employee E   WHERE M.employee_nr = E.manager_nr ) SELECT * FROM Managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+49,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.track_id GROUP BY A.title;",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+50,"SELECT name, COUNT(DISTINCT track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY name HAVING COUNT(track_id) >= 3 ORDER BY COUNT(track_id) DESC;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+51,"WITH RECURSIVE Managed (manager_nr, employee_nr) AS ( SELECT manager_nr, employee_nr  FROM Employee  UNION  SELECT E.manager_nr, M.employee_nr  FROM Employee E, Managed M Where E.employee_nr=M.manager_nr ) SELECT E1.employee_nr, E2.employee_nr                      -- not sure about E1.employee_nr FROM Employee E1, Employee E2, Managed M  WHERE E1.employee_nr =M.manager_nr AND E2.employee_nr=M.employee_nr AND E1.employee_nr='U000001';",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+51,SELECT Track.song FROM Track WHERE NOT EXISTS (SELECT * FROM Performs WHERE Track.track_id=Performs.track_id AND Performs.artist_id IS NULL) AND EXISTS (SELECT * FROM Performs WHERE Track.track_id=Performs.track_id AND Performs.role='vocals' AND Performs.artist_id IS NULL);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+51,"SELECT Artist.name, COUNT(*) FROM Artists WHERE (SELECT COUNT(*) FROM Artists, Performs WHERE Artist.artist_id=Performs.artist_id) >=3 GROUP BY Artist.name ORDER BY COUNT(*) DESC",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+52,"SELECT name, COUNT(DISTINCT track_id) FROM Artist, Performs WHERE Artist.artist_id=Performs.artist_id GROUP BY name HAVING COUNT(DISTINCT track_id)>=3 ORDER BY COUNT(DISTINCT track_id);",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+52,"WITH RECURSIVE U000001_employees(id) AS( SELECT employee_nr AS id FROM Employee E WHERE E.manager_nr='U000001' UNION SELECT employee_nr AS id FROM U000001_employees U, Employee E WHERE U.id=E.id AND NOT E.employee_nr IS NULL) SELECT * FROM U000001_emloyees",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+52,"SELECT song FROM Track, Performs WHERE Track.track_id=Performs.track_id AND NOT EXISTS ( SELECT song FROM Track, Performs WHERE Track.track_id=Performs.track_id  AND role='vocals);",0.0,0.125,0.125,291/quiz_graded_5_5.csv
+53,WITH RECURSIVE Managed_by_U000001(employee_nr) AS (   -- Base case   SELECT E.employee_nr   FROM Employee E   WHERE E.employee_nr = 'U000001' UNION   -- Recursive case   SELECT E.employee_nr   FROM Employee E   JOIN Managed_by_U000001 M ON E.manager_nr = M.employee_nr ) SELECT * FROM Managed_by_U000001;,1.0,0.0,-1.0,309/quiz_graded_5_5.csv
+53,SELECT T.song FROM Track T JOIN Performs P ON T.track_id = P.track_id --to make sure we only select tracks for which at least one artist is known WHERE NOT EXISTS (   SELECT *   FROM Performs P2   WHERE P2.track_id = T.track_id   AND P2.role = 'vocals' );,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+54,SELECT p.artist_id FROM Artist a JOIN Performs p ON p.artist_id = a.artist_id WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+54,SELECT * FROM Artist WHERE death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+54,"SELECT Track.album_id, Release.country FROM Track, Release WHERE Release.country ='Belgium';",0.0,0.5,0.5,293/quiz_graded_5_5.csv
+54,"SELECT Track.song, Album.title FROM Track, Album WHERE Album.title = 'Nevermind';",0.0,0.5,0.5,292/quiz_graded_5_5.csv
+55,"SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+55,"SELECT name, COUNT(*) FROM Track, Performs WHERE Track.track_id = Performs.track_id AND 3 >= COUNT(*) GROUP BY artist_id ORDER BY COUNT(tracks) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+55,"SELECT DISTINCT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND EXISTS (SELECT * FROM Track, Performs WHERE Track.track_id = Performs.track_id) AND NOT EXISTS (SELECT * FROM Track, Performs WHERE Track.track_id = Performs.track_id AND role = 'vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+55,"WITH RECURSIVE Managerfoodchain(id) AS( SELECT E2.employee_nr AS id  FROM Employee E1, Employee E2 WHERE E1.employee_nr = 'U000001' AND E2.manager_nr = E1.employee_nr UNION SELECT E2.employee_nr AS id  FROM Managerfoodchain M, Employee E1, Employee E2 WHERE M.id = E1.id AND E2.manager_nr = E1.employee_nr) SELECT employee_nr FROM Managerfoodchain(id) UNION SELECT employee_nr  FROM Employee WHERE employee_nr = 'U000001';",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+57,"SELECT title, SUM(duration) AS total_duration FROM Album JOIN Track on Album.album_id = Track.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+57,"SELECT name, COUNT(track_id) as nr_of_tracks_played FROM Artist JOIN Performs on Artist.artist_id = Performs.artist_id GROUP BY artist_id HAVING COUNT(track_id) >=3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+57,"WITH RECURSIVE Managers(employee_nr) AS ( (SELECT X.manager_nr as manager FROM Employee X WHERE X.employee_nr = 'U000001') UNION (SELECT X.manager_nr as manager FROM Managers Y,  Employee X WHERE X.employee_nr = Y.employee_nr) ) SELECT * FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+58,"SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+58,"WITH RECURSIVE U1Employee(id) AS (   SELECT e.manager_nr AS id   FROM Employee e   WHERE e.employee_nr = 'U000001' UNION   SELECT e.manager_id AS id   FROM U1Employee u, Employee e   WHERE u.id = e.id   AND NOT e.manager_id IS NULL ) SELECT * FROM U1Employee;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+58,SELECT song FROM Track WHERE NOT EXISTS ( SELECT role FROM Performs WHERE Performs.track_id = Track.track_id AND p.role = 'vocals' );,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+58,"SELECT a.name, COUNT(p.track_id) AS dist_t FROM Artist a, Performs p WHERE a.artist_id = p.artist_id GROUP BY a.name HAVING COUNT(p.track_id) >= 3 ORDER BY dist_t DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+59,"select album_id from Album A, Release R where A.album_id = R.album_id and R.country = 'Belgium';",0.0,0.75,0.75,293/quiz_graded_5_5.csv
+59,"select name, COUNT(*) as n_tracks from Track T, Performs P, Artist A where T.track_id = P.track_id and A.artist_id = P.artist_id group by A.artist_id, T.track_id, P.role having COUNT(*) > 2 order by n_tracks desc;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+59,"select songs from Track where not exists (   select * from Track T, Artist A, Performs P where A.artist_id = P.artist_id and P.track_id = T.track_id and role = 'vocals' ) and T.artist_id is not null;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+59,"select A.title, SUM(duration) from Album A, Track T where A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+59,"select distinct artist_id from Artist A, Performs P, Track T where A.artist_id = P.artist_id and P.track_id = T.track_id and role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+60,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+60,"SELECT DISTINCT a.artist_id FROM Artist a, Performs p WHERE a.artist_id = p.artist_id AND role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+60,"SELECT song FROM Track t, Performs p WHERE t.track_id = p.track_id AND ´vocals´ NOT IN (SELECT role FROM Performs p WHERE p.track_id = t.track_id) AND EXISTS(SELECT artist_id FROM Performs p WHERE p.track_id = t.track_id);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+60,"WITH RECURSIVE U000001Managed(employee_nr) AS ( SELECT employee_nr FROM Employee e WHERE e.employee_nr = ´U000001´ UNION SELECT employee_nr FROM Employee e, U000001Managed m WHERE e.manager_nr = m.employee_nr AND NOT e.manager_nr IS NULL  ) SELECT * FROM U000001Managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+60,SELECT name FROM Artist WHERE death_date NOT NULL;,0.0,0.875,0.875,295/quiz_graded_5_5.csv
+60,"SELECT song FROM Track t, Album m WHERE t.album_id = m.album_id AND title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+60,"SELECT name, COUNT(*) AS num_of_tracks FROM Artist a, Track t, Performs p WHERE t.track_id = p.track_id AND p.artist_id = a.artist_id GROUP BY name, t.track_id HAVING num_of_tracks >= 3 ORDER BY num_of_tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+60,"SELECT title, SUM(duration) AS tot_duration FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY duration;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+61,"WITH RECURSIVE empl(employee_nr) AS ( SELECT employee_nr  FROM Employee e1 WHERE e1.employee_nr = 'U000001'  UNION  SELECT employee_nr FROM Employee e1, Employee e2 WHERE e1.employee_nr = e2.manager_nr) SELECT * FROM empl;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+61,"SELECT Album.title, SUM(Track.Duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Track.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+61,SELECT Track.song FROM Track WHERE NOT EXISTS (SELECT track_id FROM Performs WHERE role = 'vocals' OR artist_id IS NULL) GROUP BY Track.song;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+61,"SELECT Artist.name, COUNT(Performs.track_id) AS tot_track FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id GROUP BY Artist.name, Performs.tack_id HAVING tot_track > 2 ORDER BY DESC LIMIT 5;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+62,"SELECT name, COUNT(*)  FROM Artist NATURAL JOIN (SELECT DISTINCT artist_id, track_id FROM Performs) GROUP BY name  HAVING COUNT(*) >= 3 ORDER BY COUNT(*) DESC;",1.0,0.0,-1.0,289/quiz_graded_5_5.csv
+63,"SELECT A1.name AS artist_name, COUNT(T.track_id) AS total_tracks FROM Performs P, Artist A1, Album A2, Track T WHERE P.artist_id = A1.artist_id AND P.album_id = A2.album_id AND P.track_id = T.track_id AND total_tracks >= 3 GROUP BY artist_name ORDER BY total_tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+63,SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+63,"SELECT T.song FROM Track T, Performs P WHERE NOT EXISTS (   SELECT *   FROM Track T, Performs P   WHERE T.track_id = P.track_id   AND role = 'vocals' ) AND T.track_id = P.track_id AND P.artist_id IS NOT NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+64,SELECT Track.songs FROM Track WHERE NOT EXISTS(SELECT Performs.track_id FROM Performs WHERE role = 'vocals' AND Track.track_id = Performs.track_id) AND 0 < (SELECT COUNT(Performs.track_id) FROM Performs WHERE NOT Performs.artist_id IS NULL AND Track.track_id = Performs.track_id);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+64,"WITH RECURSIVE Managing(manager_nr, employee_nr) AS (   SELECT manager_nr, employee_nr FROM Employee   UNION   SELECT E.employee_nr, M.employee_nr FROM Employee AS E, Managing AS M   WHERE E.manager_nr = M.employee_nr)  SELECT E.employee_nr FROM Employee AS E, Managing AS M WHERE E.employee_nr = A.employee_nr AND E.employee_nr = 'U000001';",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+65,"WITH RECURSIVE Managed(employee_nr, manager_nr) AS( SELECT E.employee_nr, E.manager_nr  FROM Employee E, Employee AS E2 WHERE E.employee_nr = E2.manager_nr UNION SELECT E.employee_nr, M.manager_nr FROM Managed M, Employee E WHERE M.employee_nr = E.manager_nr AND M.employee_nr IS NOT NULL ) SELECT employee_nr FROM Managed;",0.0,0.5,0.5,309/quiz_graded_5_5.csv
+65,"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+65,"SELECT DISTINCT Artist.name, COUNT(*) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.artist_id HAVIN COUNT(*) >=3 ORDER BY COUNT(*) DESC;",0.5,0.0,-0.5,289/quiz_graded_5_5.csv
+65,SELECT Track.song FROM Track WHERE NOT EXISTS( SELECT *  FROM Performs WHERE Track.track_id = Performs.track_id AND Performs.role = 'vocals' AND Performs.artist_id IS NULL );,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+66,"WITH RECURSIVE Descendents (employee_nr, name) AS ( SELECT E.employee_nr, E.name  FROM Employee E WHERE E.employee_nr=´U000001´ UNION  SELECT E.employee_nr, E.name  FROM Employee E, Descendents D WHERE D.employee_nr=E.manager_nr )  SELECT * FROM Descendents;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+66,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+66,"SELECT A.name, COUNT(*) AS track_nr FROM Artist A, Performs P, Track T WHERE A.artist_id=P.artist_id AND T.track_id=P.track_id  GROUP BY A.name HAVING track_nr>=3 ORDER BY track_nr DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+66,SELECT artist_id FROM Performs WHERE role=´guitarist´;,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+66,"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+66,SELECT song FROM Track WHERE EXISTS ( SELECT * FROM Performs  WHERE Track.track_id=Performs.track_id )  AND NOT EXISTS (  SELECT * FROM Performs  WHERE Track.track_id=Performs.track_id  AND Performs.role=´vocals´ );,0.8,0.25,-0.55,291/quiz_graded_5_5.csv
+67,"SELECT  a.name, (SELECT count(p.artist_id)  from track as t, perfrom as p  where t.track_id=p.track_id GROUP BY  t.track_id ) as distict_tracks   FROM Performs as p, Track as t, Artist as a WHERE  p.artist=a.artist_id AND p.track_id=t.track_id AND distict_tracks>=3 ORDER BY distict_tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+67,"SELECT DISTINCT a.artist_id  FROM Artist as a,Performs as p WHERE a.atrist_id=p.atrist_id AND p.role='guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+67,"With Result AS( SELECT a.artist_id, a.name,p.track_id, p.role FROM Artist as a NATURAL JOIN Performs as P WHERE p.role<>'vocals'  AND a.name IS NOT NULL )  SELECT DISTINCT t.song FROM Track t, Result r WHERE t.track_id=r.track_id;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+68,"SELECT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+68,"SELECT Artist.name, COUNT(*) AS Trackcounter FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY Arist.name HAVING Trackcounter >= 3 ORDER BY Trackcounter DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+69,"SELECT A.name, COUNT(DISTINCT P.track_id) FROM Artist A, Performs P WHERE P.artist_id = A.artist_id GROUP BY A.name HAVING COUNT(DISTINCT P.track_id) >= 3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+69,SELECT name FROM Artist WHERE death_data IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+69,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+69,"SELECT DISTINCT song FROM Track WHERE NOT EXISTS ( SELECT T.track_id FROM Performs P, Artist A WHERE P.track_id = Track.track_id AND A.artist_id = P.artist_id AND A.name IS NULL AND P.role <> 'vocals' );",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+70,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+70,"SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND title = ¨Nevermind¨;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+70,SELECT song FROM Track T WHERE NOT EXISTS(   SELECT *   FROM Performs P   WHERE T.track_id = P.track_id AND role = ¨vocals¨ );,0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+70,"SELECT Album.title, SUM(Track.duration) AS album_duration FROM Album",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+70,"SELECT DISTINCT artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND role = ¨guitarist¨;",0.0,0.75,0.75,294/quiz_graded_5_5.csv
+70,"SELECT album_id FROM Album A, Release R WHERE A.album_id = R.album_id AND country = ¨Belgium¨;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+71,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+71,WITH RECURSIVE Indirectly_managed(current_nr) AS (   SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001'   UNION   SELECT employee_nr FROM Employee WHERE manager_nr = current_nr )  SELECT * FROM Indirectly_managed;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+72,"SELECT DISTINCT  t.song AS instrumental_songs FROM   Track t, Performs p  WHERE   t.track_id = p.track_id AND  p.role <> 'vocals' AND   p.artist_id IS NOT NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+72,"SELECT   t.song AS songs FROM   Track t, Album a WHERE   t.album_id = a.album_id AND  a.title = 'Nevermind'; -- NB ¨´¨ = ¨'¨ in the safe exam environment apparently",0.8,1.0,0.19999999999999996,292/quiz_graded_5_5.csv
+73,"SELECT song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+73,"WITH RECURSIVE Employee_tree(employee_nr) AS (  SELECT E.employee_nr  FROM Employee E  WHERE E.employee_nr = ´U000001´  UNION  SELECT E.employee_nr   FROM Employee_tree E2, Employee E  WHERE E.manager_nr = E2.employee_nr ) SELECT * FROM Employee_tree;",0.8,0.25,-0.55,309/quiz_graded_5_5.csv
+73,"SELECT DISTINCT artist_id FROM Performs P, Track T WHERE P.track_id = T.track_id AND P.role = ´guitarist´;",0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+73,"SELECT song FROM Track T, Performs P WHERE P.track_id = T.track_id AND P.artist_id IS NOT NULL AND P.role NOT IN (SELECT role FROM Performs P WHERE role = ´vocals´);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+73,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+74,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT EXISTS (SELECT * FROM Artist, Performs WHERE Artist.artist_id=Performs.artist_id AND role='vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+74,"SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role='guitarist' GROUP BY artist_id;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+75,"WITH RECURSIVE employees (id) AS ( SELECT E.manager_nr AS id FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.manager_nr AS id FROM employees M, Employee E WHERE M.id = E.id AND NOT M.manager_nr IS NULL ) SELECT *  FROM employees",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+75,"SELECT A.title, SUM(T.duration) FROM Track T, Album A WHERE A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+76,"SELECT song FROM Track, Album WHERE title = ´Nevermind´ AND Track.album_id = Album.album_id;",0.8,0.25,-0.55,292/quiz_graded_5_5.csv
+76,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+76,"SELECT name, COUNT(track_id) FROM Artist, Peforms WHERE Artist.artist_id = Performs.artist_id AND track_id >= 3;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+76,"SELECT title, duration FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+76,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+76,"SELECT DISTINCT song FROM Track, Performs WHERE role <> ´vocals´ AND Track.track_id = Performs.track_id;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+77,SELECT song FROM Track T WHERE NOT EXISTS (SELECT role FROM Performs P WHERE T.track_id = P.track_id AND P.role = ´vocals´ AND P.artist_id IS NULL);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+77,"SELECT song FROM Track T, Album A WHERE T.album_id= A.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+77,"SELECT A.title, COUNT (T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+77,"SELECT DISTINCT artist_id FROM Artist A, Performs P WHERE A.artist_id=P.artist_id AND P.role = ´guitarist´;",0.0,0.75,0.75,294/quiz_graded_5_5.csv
+77,SELECT album_id FROM Release R WHERE R.country= ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+77,"SELECT A.name, COUNT (*) AS total_tracks FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(*)>=3 ORDER BY total_tracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+78,SELECT artist_id FROM Performs WHERE role = ´guitarist´;,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+78,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+78,"SELECT title, SUM(duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id AND Track.duration = total_duration;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+78,"WITH RECURSIVE Manages(employee_nr, manager_nr) AS(   SELECT employee_nr, manager_nr   FROM Employee   UNION   SELECT e.manager_nr, m.employee_nr   FROM Employee e, Manages m   WHERE m.employee_nr = e.manager_nr   AND m.employee_nr = ´U000001´   ) SELECT*FROM Manages;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+78,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT Performs.role = ´vocals´ AND Performs.artist_id IS NOT NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+78,"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+80,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+80,"SELECT A.name, COUNT(DISTINCT P.track_id) AS nr_of_tracks_played FROM Performs P, Artist A GROUP BY P.artist_id, A.name HAVING COUNT(DISTINCT P.track_id) >= 3 ORDER BY nr_of_tracks_played DESC;",0.0,0.5,0.5,289/quiz_graded_5_5.csv
+80,"SELECT A.title, SUM(T.duration) AS total_duration FROM Track T, Album A GROUP BY A.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+80,SELECT DISTINCT T.song FROM Track T WHERE NOT EXISTS ( SELECT * FROM Performs P WHERE T.track_id = P.track_id AND P.role = ´vocals´ OR P.role IS NULL );,0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+80,"SELECT T.song FROM Album A,  Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+80,SELECT DISTINCT artist_id FROM Performs WHERE role=´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+81,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+81,"WITH RECURSIVE Managers(employee_nr) AS ( SELECT e.manager_nr AS employee_nr FROM Employee e WHERE e.employee_nr = 'U000001' UNION SELECT e.manager_nr as employee_nr FROM Managers m, Employee e WHERE m.employee_nr = e.employee_nr AND NOT e.manager_nr IS NULL ) SELECT * FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+82,"SELECT Ar.name, COUNT(T.track_id) AS number_of_tracks FROM Track T, Artist Ar, Performs P WHERE T.track_id = P.track_id AND P.artist_id = Ar.artist_id GROUP BY Ar.name HAVING COUNT(T.track_id) >= 3 ORDER BY number_of_tracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+83,"SELECT title, SUM(duration) AS total_duration FROM Album JOIN Track ON Album.album_id = Track.album_id",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+83,SELECT album_id FROM Release WHERE country = ´Belgium´ HAVING COUNT(*) >= 1,0.0,0.25,0.25,293/quiz_graded_5_5.csv
+83,SELECT song FROM Track  JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ´Nevermind´,0.8,0.25,-0.55,292/quiz_graded_5_5.csv
+83,"SELECT t.song FROM Track t, Performs p WHERE t.track_id = p.track_id AND (p.role = ´vocals´ IS NULL) AND p.artist_id IS NOT NULL HAVING COUNT(*) >= 1",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+83,"WITH RECURSIVE Managed(employee_nr, manager_nr) AS( SELECT employee_nr, manager_nr From Employee WHERE employee_nr = ´U000001´ UNION SELECT E.employee_nr, E.manager_nr FROM Managed M, Employee E WHERE M.manager_nr = E.Employee_nr)  SELECT employee_nr FROM Managed",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+83,"SELECT DISTINCT name, COUNT(*) AS nr_of_tracks FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id  WHERE (Performs.role IS NOT NULL) HAVING COUNT(*) >= 3 ORDER BY nr_of_tracks DESC",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+83,"SELECT DISTINCT artist_id FROM Performs, Track WHERE role = 'guitarist' AND Performs.track_id = Track.track_id HAVING COUNT(*) >= 1",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+84,"WITH RECURSIVE Managers(manager) AS( SELECT Employee.manager_nr AS manager FROM Employee WHERE Employee.employee_nr= 'U000001' UNION SELECT Employee.manager_nr AS manager FROM Managers, Employee WHERE Managers.manager_nr = Employee.employee_nr AND NOT Managers.manager_nr IS NULL ) SELECT * FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+85,WITH RECURSIVE EmployeesManaged AS ( SELECT employee_nr FROM Employee e1 WHERE manager_nr = 'U000001' UNION ALL SELECT employee_nr FROM Employee e2 WHERE e2.manager_nr = e1.employee_nr OR e1.employee_nr IS NULL) SELECT * FROM EmployeesManaged;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+85,SELECT DISTINCT song FROM Track JOIN Performs ON Track.track_id = Performs.track_id WHERE Performs.role <> 'vocals' AND Performs.role IS NOT NULL;,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+85,"SELECT Album.title, SUM(Track.duration) AS TotalDuration FROM Album JOIN Track ON Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+85,"SELECT name, COUNT(Track.track_id) as TracksPlayed FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Track.track_id = Performs.track_id WHERE TracksPlayed >= 3 ORDER BY TracksPlayed DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+86,"SELECT title, SUM(duration) FROM Track, Album GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+86,"SELECT name, COUNT(name) FROM Artist A, Performs P  WHERE A.artist_id = P.artist_id  AND COUNT(name) >= 3 GROUP BY name  ORDER BY COUNT(name) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+87,SELECT Track.song FROM Track JOIN Performs ON Track.track_id = Performs.track_id WHERE Performs.role <> 'vocals' AND Performs.artist_id IS NOT NULL;,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+87,WITH RECURSIVE Descandants AS ( SELECT * FROM Employee WHERE employee_nr = 'U000001'  UNION  SELECT * FROM Employee E JOIN Descandants ON E.manager_nr=Descandants.employee_nr )  SELECT employee_nr  FROM Descandants;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+87,"SELECT Album.title, SUM(Track.duration) as total_durtion FROM Track JOIN Album ON Track.album_id=Album.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+88,"WITH RECURSIVE Chain(employee_nr, manager_nr, name) AS ( SELECT employee_nr, manager_nr, name FROM Employee WHERE emp_nr = 'U000001' UNION SELECT Employee.employee_nr, Employee.manager_nr, Employee.name FROM Chain c, Employee E WHERE C.manager_nr = E.employee_nr) SELECT name FROM Chain WHERE employee_nr = 'U000001';",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+88,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+88,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+89,SELECT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+89,"SELECT Track.song FROM Track, Performs WHERE Performs.track_id = Track.track_id AND NOT EXISTS (SELECT Track.song FROM Track, Performs WHERE Performs.track_id = Track.track_id AND Artist.role = 'vocals' OR Artist.artist_id IS NULL );",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+89,"SELECT Artist.name, COUNT(*)  FROM Artist, Performs, Performs AS P2 WHERE Artist.artist_id = Performs.artist_id AND Performs.artist_id <>  P2.artist_id AND P2.track_id = Performs.track_id GROUP BY Artist.name HAVING COUNT(*) >= 3 ORDER BY COUNT(*)  DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+90,"SELECT name, count FROM (   SELECT name, COUNT(track_id) AS count   FROM Artist A, Performs P   WHERE A.artist_id = P.artist_id   GROUP BY name ) WHERE count >= 3 ORDER BY count DESC;",0.5,0.0,-0.5,289/quiz_graded_5_5.csv
+90,"SELECT DISTINCT artist_id FROM Artist A, Performs P WHERE role = 'guitarist' AND A.artist_id = P.artist_id;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+90,"WITH RECURSIVE employeeManagers(employee_nr) AS (   SELECT E.employee_nr AS employee_nr   FROM Employee E   WHERE E.manager_nr IS NULL   UNION   SELECT E.employee_nr AS employee_nr   FROM employeeManagers EM, Employee E   WHERE EM.empoyee_nr = E.manager_nr  ) SELECT *  FROM employeeManagers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+91,SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+91,"WITH RECURSIVE managed AS ( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION SELECT employee_nr FROM Employee, managed WHERE Employee.manager_nr = managed.employee_nr ) SELECT * FROM managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+91,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT EXISTS ( SELECT * FROM Performs WHERE role = 'vocals' AND Performs.track_id = Track.track_id );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+91,"SELECT title, SUM(duration) FROM Album, Track GROUP BY title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+91,"SELECT DISTINCT name, COUNT(*) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY name HAVING COUNT(*) >= 3 ORDER BY COUNT(*) desc;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+92,"WITH RECURSIVE ManagedBy(employee_nr) AS ( SELECT Employee.employee_nr FROM Employee WHERE Employee.employee_nr = 'U000001' UNION SELECT Employee.employee_nr FROM ManagedBy, Employee WHERE ManagedBy.employee_nr = Employee.manager AND NOT Employee.employee_nr IS NULL ) SELECT employee_nr FROM ManagedBy;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+92,"SELECT name, COUNT(song) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name HAVING COUNT(song) >= 3 ORDER BY COUNT(song) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+93,"SELECT DISTINCT Artist.name, COUNT(Performs.track_id) FROM Artist, Performs, Release WHERE Artist.artist_id = Performs.artist_id AND COUNT(Performs.track_id) >= 3 ORDER BY release_date DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+93,"SELECT artist_id FROM Performs, Track WHERE Performs.track_id = Track.track_id AND role = 'guitarist';",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+93,"SELECT title, SUM(duration) FROM Album, Track  WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+93,SELECT name FROM Artist  WHERE NOT death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+93,"WITH RECURSIVE AllEmployees(employee_nr, manager_nr) AS ( SELECT employee_nr, manager_nr FROM Employee WHERE manager_nr =  'U000001' UNION SELECT employee_nr FROM AllEmployees, Employee WHERE AllEmployees.employee_nr = Employee.employee_nr ) SELECT employee_nr FROM AllEmployees",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+93,"SELECT Track.song FROM Track, Performs WHERE NOT artist_id IS NULL AND Performs.track_id = Track.track_id AND NOT Performs.role = 'vocals';",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+94,"SELECT name, COUNT(track_id) FROM Performs, Artist WHERE Performs.artist_id = Artist.artist_id GROUP BY name  HAVING COUNT(track_id) >= 3 ORDER BY COUNT(track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+94,"SELECT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+94,SELECT song FROM Track WHERE NOT EXISTS ( SELECT * FROM Perfoms WHERE Track.track_id = Performs.track_id AND role = 'vocals' ),0.0,0.25,0.25,291/quiz_graded_5_5.csv
+94,"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+94,"WITH RECURSIVE Manage(id) AS  ( SELECT employee_nr  FROM Employee WHERE  employee_nr = 'U000001' UNION SELECT E.employee_nr FROM Manages M, Employee E WHERE  M.id = E.manager_nr  ) SELECT * FROM Manage;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+95,"SELECT A.name, COUNT(DISTINCT T.track_id) AS distinct_tracks FROM Artist A, Track T, Performs P WHERE P.artist_id=A.artist_id AND P.track_id=T.track_id GROUP BY MAX(distinct_tracks) HAVING COUNT(T.track_id)>=3;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+95,"SELECT DISTINCT T.song FROM Track T WHERE NOT EXISTS( SELECT * FROM Performs P, Artist A WHERE A.artist_id=P.artist_id AND T.track_id=P.track_id AND A.name IS NULL AND P.role='vocals' );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+95,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id=A.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+95,"WITH RECURSIVE Managed_employees(employee_nr) AS( SELECT 'U000001' UNION SELECT E.employee_nr FROM Employee E, Managed_employees M WHERE E.employee_nr=M.employee_nr ) SELECT * FROM Managed_employees;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+96,SELECT T.songs FROM Track T WHERE ( NOT EXISTS( SELECT * FROM Performs P WHERE P.track_id = T.track_id AND P.role = 'vocals' OR P.artist_id IS NULL));,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+97,SELECT song FROM Track JOIN Performs ON Performs.track_id = Track.track_id WHERE Performs.role ='vocals' IS NULL AND Performs.artist_id IS NULL GROUP BY song ;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+98,SELECT DISTINCT song FROM Track JOIN Album WHERE Track.album_id=Album.album_id AND title = 'Nevermind';,1.0,0.125,-0.875,292/quiz_graded_5_5.csv
+98,"SELECT a.name AS artist_name, COUNT(DISTINCT track_id) AS nr_tracks FROM Artist a JOIN Performs p ON a.artist_id=p.artist_id JOIN Tracks t ON p.track_id=t.track_id GROUP BY artist_id HAVING COUNT(DISTINCT t.track_id)>=3 ORDER BY nr_tracks;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+98,"SELECT title, sum(Track.duration) FROM Album JOIN Track WHERE Album.album_id=Track.album_id GROUP BY album_id;",0.0,0.125,0.125,290/quiz_graded_5_5.csv
+98,SELECT DISTINCT album_id  FROM Album JOIN Release WHERE Album.album_id=Release.album_id AND country = 'Belgium';,0.0,0.125,0.125,293/quiz_graded_5_5.csv
+99,SELECT t.song FROM Track t NATURAL JOIN Performs p WHERE NOT EXISTS (SELECT * FROM Performs p1 WHERE t.album_id = p1.album_id AND p1.role = 'vocals') HAVING COUNT(p.artist_id) >= 1;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+99,"SELECT a.name, COUNT(DISTINCT p.track_id) FROM Album a NATURAL JOIN Performs p GROUP BY a.name HAVING COUNT(DISTINCT p.track_id) >= 3 ORDER BY COUNT(DISTINCT p.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+100,"SELECT DISTINCT song  FROM Track, Performs WHERE Track.track_id = Performs.track_id AND role NOT IN ( SELECT role FROM Performs WHERE role = vocals)  AND song IS NOT NULL",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+100,"SELECT song FROM Track, Album,  WHERE Track.album_id = Album.album_id AND Album.title = Nevermind",0.0,0.625,0.625,292/quiz_graded_5_5.csv
+100,"SELECT COUNT MAX(duration), title FROM Album, Track  WHERE Track.album_id = Album.album_id",0.0,0.125,0.125,290/quiz_graded_5_5.csv
+100,"SELECT DISTINCT COUNT (track_id), name FROM Track, Artist  WHERE COUNT (*) >= 3 GROUP BY MAX(COUNT)",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+100,SELECT DISTINCT album_id  FROM Release WHERE country = Belgium,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+100,SELECT name FROM Artist WHERE death_date IS NOT NULL,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+100,SELECT name  FROM Employee WHERE manager_nr = U000001  AND manager_nr IS NULL,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+100,"SELECT DISTINCT artist_id  FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = guitarist",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+101,"SELECT * FROM Track T, Performs P WHERE T.track_id = P.track_id AND P.role <> 'vocals';",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+101,"SELECT A.name, COUNT(P.track_id) AS count FROM Album A, Performs P WHERE A.artist_id = P.artist_id ORDER BY count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+101,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+103,"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+103,"SELECT Track.song FROM Track, Perform, Artist WHERE NOT EXISTS(SELECT * FROM Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Performs.role = 'vocals' OR Artist IS NOT NULL);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+103,"SELECT Artist.artist_id FROM Artist, Performs, Track WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id AND Performs.role = 'guitarist';",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+103,"SELECT DISTINCT Artist.name, COUNT(Track.track_id) AS distinct_tracks FROM Artist, Performs, Track WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY Artist.name ORDER BY distinct_track DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+104,"SELECT Artist.name, COUNT(DISTINCT Performs.track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND 3 >= (SELECT COUNT(DISTINCT Performs.track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+104,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Track.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+104,"WITH RECURSION manager(id) AS ( SELECT Employee.manager_nr as id FROM Employee WHERE Employee.employee_nr = 'U000001' UNION SELECT e.manager_nr as id FROM manager m, Employee e WHERE m.id = e.id AND NOT e.id IS NULL ); SELECT * FROM manager;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+105,"SELECT name, COUNT(*) FROM Performs, Artist WHERE Performs.artist_id = Artist.artist_id GROUP BY artist_id HAVING COUNT(*) > 2 ORDER BY total DESC",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+105,"SELECT title, SUM(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+106,SELECT e1.employee_nr FROM Employee e1 WHERE 'U000001' IN (SELECT e1.manager_nr FROM Employee e2 WHERE e1.employee_nr = e2.manager_nr);,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+106,"SELECT a.name, COUNT(DISTINCT t.track_id) FROM Artist a, Track t, Performs p WHERE p.artist_id = a.artist_id AND p.track_id = t.track_id GROUP BY a.name, COUNT(DISTINCT t.track_id) HAVING COUNT(DISTINCT t.track_id) >= 3 ORDER BY COUNT(DISTINCT t.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+106,"SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+107,"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´ ;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+107,"SELECT A.title, SUM (T.duration) FROM Album A, Track T WHERE Track.album_id = A.album_id GROUP BY (A.title);",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+107,"SELECT  DISTINCT T.song FROM Track T, Performs P, Artist A WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id AND P. role <> ´vocals´ ;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+107,"SELECT A.album_id FROM Album A, Release R WHERE A.album_id = R.album_id AND R.country = ´Belgium´ ;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+107,"SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´ ;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+108,Select name  From Artist  WHERE death_date = NULL ;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+108,"SELECT A.name, COUNT(P.track_id) AS tracks FROM Artitst AS A, Perfroms AS P WHERE A.artist_id = P.artist_id And tracks >= 3 ORDER BY tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+108,"SELECT DISTINCT T.song FROM Track AS T, Performs AS P WHERE T.track_id = P.track_id AND T.role <> 'songs'  ANd T.role IS NOT NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+108,"SELECT A.artist_id  FROM Artist AS A, Performs AS P  WHERE A.artist_id = P.artist_id AND P.role = 'guitarist' ;",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+108,"SELECT A.title, SUM(T.duration) FROM Track AS T, Album AS A WHERE A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+109,SELECT * FROM Artist WHERE death_date NOT NULL;,0.0,0.625,0.625,295/quiz_graded_5_5.csv
+110,"SELECT name, count(DISTINCT track_id) FROM Track, Performs, Artist WHERE Performs.artist_id=Artist.artist_id AND Track.track_id=Performs.track_id HAVING count(DISTINCT track_id)>=3 ORDER BY count(DISTINCT track_id);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+110,"SELECT t.* FROM Track t, Album a WHERE a.title='Nevermind' AND t.album_id=a.album_id;",0.0,0.5,0.5,292/quiz_graded_5_5.csv
+110,"SELECT DISTINCT t.* FROM Track t, Performs p WHERE p.artist_id IN (SELECT artist_id FROM Performs WHERE role <> 'vocals') AND t.track_id=p.track_id;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+110,"SELECT a.title, sum(t.duration) FROM Album a, Track t WHERE a.album_id=t.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+111,"SELECT A.name, COUNT(P.track_id) FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(P.track_id) >= 3 ORDER BY COUNT(P.track_id) DESC",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+111,"WITH RECURSIVE employee_tree (id) AS ( SELECT employee_nr AS id FROM Employee WHERE manager_nr = 'U000001' UNION SELECT employee_nr AS id FROM Employee E, employee_tree T WHERE E.id = T.id AND NOT manager_nr IS NULL ) SELECT employee_nr FROM employee_tree",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+111,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND P.role <> 'vocals' AND P.artist_id IS NOT NULL",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+112,SELECT album_id FROM Release WHERE country='Begium';,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+112,"SELECT DISTINCT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id=T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+112,"SELECT A.name, COUNT(P.track_id)>2 AS number FROM Artist A JOIN Performs P ON A.artist_id=P.artist_id GROUP BY A.name ORDER BY number DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+112,SELECT T.song FROM Track T JOIN Performs P ON T.track_id = P.track_id EXCEPT SELECT T.song FROM Track T JOIN Performs P ON T.track_id WHERE role='vocals' OR role IS NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+113,"SELECT song FROM Track, Album WHERE Track.ablum_id = Album.album_id AND Album.title = ´Nevermind´;",0.0,0.75,0.75,292/quiz_graded_5_5.csv
+113,"SELECT name, SUM(track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY SUM(track_id) HAVING name ORDER BY SUM(track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+113,"SELECT Album.album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = ´Belgium´;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+113,"SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+113,"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY SUM(duration) HAVING title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+113,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.role <> ´vocals´ OR Performs.role <> NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+114,"SELECT DISTINCT A.name  FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+114,"SELECT DISTINCT A.title, SUM(T.duration) AS totalDuration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+115,"SELECT DISTINCT name, SUM(track_id) FROM Artist A, Performs P WHERE A.artist_id=P.artist_id GROUP BY P.artist_id HAVING SUM(track_id)>=3 ORDER BY SUM(track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+115,"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+115,SELECT album_id FROM Release WHERE country=´BE´;,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+115,SELECT DISTINCT artist_id FROM Performs WHERE role=´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+115,"WITH RECURSIVE Managed(employee_nr) AS (SELECT U000001 UNION SELECT E.employee_nr AS employee_nr FROM Managed M, Employee E WHERE M.employee_nr=E.manager_nr) SELECT * FROM Managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+115,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY T.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+115,"SELECT DISTINCT T.song FROM Track T, Performs P WHERE P.artist_id IS NOT NULL AND T.track_id=P.track_id AND NOT EXISTS(SELECT * FROM Performs P WHERE P.role=´vocals´);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+116,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE artist_id = (SELECT artist_id FROM Performs WHERE role = 'guitarist');",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+116,"SELECT title, SUM(duration) FROM Album, Track GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+117,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND NOT P.role= 'vocals' AND NOT P.artist_id IS NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+117,"WITH RECURSIVE EmpManaged(nr) AS ( SELECT E.employee_nr AS nr FROM Employee E WHERE manager_nr = 'U000001' UNION SELECT E.employee_nr AS nr  FROM Employee E, EmpManaged M WHERE M.nr = E.nr ) SELECT * FROM EmpManaged;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+118,SELECT DISTINCT artist_id FROM Performs WHERE role=´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+118,"SELECT Album.title, SUM(Track.duration) FROM Album JOIN Track ON Album.album_id=Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+118,"SELECT Artist.name, COUNT(DISTINCT Performs.track_id) FROM Artist JOIN Performs ON Artist.artist_id=Performs.artist_id GROUP BY Performs.artist_id HAVING COUNT(Performs.track_id) >= 3;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+118,SELECT Track.song FROM Track JOIN Album ON Track.album_id=Album.album_id WHERE Album.name=´Nevermind´;,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+118,SELECT album_id FROM Release WHERE country=`Belgium`;,1.0,0.125,-0.875,293/quiz_graded_5_5.csv
+118,SELECT employee_nr FROM Employee;,0.0,0.5,0.5,309/quiz_graded_5_5.csv
+118,SELECT song FROM Track JOIN Performs ON Track.track_id=Performs.track_id WHERE Performs.role != ´vocals´ AND Performs.artist_id IS NOT NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+119,"SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+119,"SELECT Artist.name, COUNT(Track.track_id) AS number FROM Artist, Track GROUP BY Artist.name HAVING COUNT(Track.track_id)>=3 ORDER BY number DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+119,"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+119,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+119,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id IS NOT NULL AND NOT role = ´vocals´;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+119,"SELECT Album.title, SUM(Track.duration) AS total FROM Album, Track GROUP BY Album.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+120,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND NOT P.role = 'vocals'  AND NOT P.artist_id IS NULL ; -- i am not sure its needed to make sure that artist_id is not null since artist_id is a foreign key referencing a primary key, as an underlined primary key.  -- i believe it is most likely not necessary, ok ill add it just in case.",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+120,"SELECT A.name, COUNT(P.track) as distinctTracks FROM Artist A, Performs P GROUP BY P.artist_id HAVING COUNT(P.track) >= 3  ORDER BY COUNT(P.track) DESC ;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+120,SELECT artist_id FROM Performs WHERE role = 'guitarist' ;,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+120,"SELECT A.title, SUM(T.duration) as totalDuration FROM Album A, Track T GROUP BY T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+121,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+121,SELECT name FROM Artist WHERE NOT death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+121,"WITH RECURSIVE Manages(manager_nr, employee_nr) AS(  SELECT manager_nr, employee_nr FROM Employee  UNION  SELECT M.manager_nr, E.employee_nr FROM Manages M, Employee E WHERE E.manager_nr = M.manager_nr )  SELECT employee_nr FROM Manages WHERE manager_nr = 'U000001';",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+121,"SELECT name, COUNT(*) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id; GROUP BY name HAVING COUNT(*) >= 3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+122,"WITH RECURSIVE AllManagedEmployees (id) AS ( SELECT employee_nr AS id FROM Employee E WHERE employee_nr = 'U000001' UNION  SELECT E.employee_nr AS id FROM Employee E, AllManagedEmployees M WHERE M.employee_nr = E.manager_nr ) SELECT * FROM AllManagedEmployees;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+123,"select distinct A.artist_id  from Artist A, Track T, Performs P where P.artist_id=A.artist_id and P.track_id=T.track_id and P.role=´guitarist´;",0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+123,"select distinct A.album_id  from Album A, Release R where A.album_id=R.album_id and R.country=´Belgium´;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+123,"select T.song from Track T, Album A where T.album_id=A.album_id and A.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+123,select distinct T.song from Track T  where not exists  ( select P.role from Performs P where P.role=´vocals´ and P.track_id=T.track_id) and exists  (select P.track_id from Performans P where P.track_id=T.track_id group by P.track_id having count(*)>=1);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+123,"select A.name, count(*) as total_tracks from Artist A, Track T, Performs P where A.artist_id=P.artist_id and P.track_id=T.track_id group by A.name having count(*)>=3 order by count(*) desc;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+123,"select A.title, sum(T.duration) from Album A, Track T where A.album_id=T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+124,SELECT song FROM Track NATURAL JOIN Performs WHERE NOT EXISTS ( SELECT artist_id  FROM Performs WHERE role = 'vocals' ),0.0,0.25,0.25,291/quiz_graded_5_5.csv
+124,"SELECT name, COUNT(track_id) AS total FROM Artist NATURAL JOIN Performs GROUP BY name HAVING total >= 3 ORDER BY total DESC",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+124,"WITH RECURSIVE ManagedMembers (id)  AS ( SELECT E.employee_nr AS id FROM Employee E WHERE E.manager_nr = 'U000001' UNION SELECT E.employee_nr AS id FROM ManagedMembers M, Employee E WHERE M.employee_nr = E.employee_nr AND NOT E.manager_nr IS NULL ) SELECT * FROM ManagedMembers",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+125,"SELECT a.name, COUNT (p.track_id) FROM Artist a, Performs p, Track t WHERE a.artist_id = p.artist_id AND t.track_id = p.track_id AND COUNT (p.track_id) >= 3 ORDER BY COUNT(p.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+125,WITH RECURSIVE manager1 AS (SELECT employee_nr AS employee_nr FROM Employee WHERE manager_nr = 'U000001' UNION SELECT employee_nr AS manager_nr FROM manager1 WHERE manager_nr = 'U000001') SELECT * FROM manager1;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+125,"SELECT album_id FROM Album a, Release r WHERE a.album_id = r.album_id AND r.country = ´Belgium´;",0.0,0.75,0.75,293/quiz_graded_5_5.csv
+125,"SELECT DISTINCT artist_id FROM Artist a, Performs p WHERE a.artist_id = p.artist_id AND p.role = ´guitarist´;",0.0,0.75,0.75,294/quiz_graded_5_5.csv
+125,"SELECT song FROM Track t, Performs p, Artist a WHERE  t.track_id = p.track_id AND a.artist_id = p.artist_id AND p.role <> ´vocals´;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+125,"SELECT song FROM Track t, Album a WHERE a.album_id = t.album_id AND a.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+125,"SELECT a.title, SUM(t.song) FROM Track t, Album a WHERE a.album_id = t.album_id GROUP BY (a.title);",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+126,"SELECT A.name, COUNT(*) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name HAVING COUNT(*) >= 3 ORDER BY COUNT(*) desc;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+126,"WITH RECURSIVE U000001_desc AS ( SELECT E.name AS id FROM Employee E WHERE E.employee_nr = U000001 UNION SELECT E.employee_nr AS id FROM U000001_desc, Employee E WHERE U000001_desc.id = E.id AND NOT E.employee_nr IS NULL) SELECT * FROM U000001_desc;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+126,"SELECT DISTINCT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND P.role <> ´vocals´ AND P.artist_id IS NOT NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+126,"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+126,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+126,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+127,SELECT R.album_id FROM Release R WHERE R.country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+127,"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+127,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = ´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+127,SELECT T.song FROM Track T WHERE NOT EXISTS ( SELECT P.artist_id FROM Perfroms P WHERE P.track_id = T.track_id AND P.role = ´vocals ) AND EXISTS ( SELECT  P.artist_id FROM Perfroms P WHERE P.track_id = T.track_id );,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+127,"SELECT A.name, COUNT(*) AS distinct_track_count FROM Artist A WHERE 0 <>  ( SELECT COUNT(P.role) FROM Performs P, Track T WHERE P.artist_id = A.artist_id AND T.track_id = P.track_id ) GROUP BY A.name HAVING distinct_track_count >= 3 ORDER BY distinct_track_count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+128,"SELECT name,COUNT(Performs.track_id) FROM Artist,Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY name HAVING COUNT(Performs.track_id) >=3 ORDER BY COUNT(Performs.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+129,"SELECT A.name, COUNT(P.track_id) FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id GROUP BY A.artist_id HAVING COUNT(P.track_id) >= 3 ORDER BY COUNT(P.track_id);",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+129,"WITH RECURSIVE ManagedBy(id) AS (   SELECT E.employee_nr as id   FROM Employee E   WHERE E.employee_nr = 'U000001'   UNION   SELECT E.employee_nr as id   FROM ManagedBy M, Employee E   WHERE E.manager_nr = M.employee_nr ) SELECT * FROM ManagedBy;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+129,SELECT name FROM Artist A WHERE A.death_deat = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+129,SELECT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+129,"SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY A.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+130,"WITH RECURSIVE chain AS ( SELECT M.employee_nr FROM Employee M WHERE M.manager_nr = 'U000001'  UNION SELECT E.employee_nr FROM chain M, Employee E WHERE M.employee_nr = E.manager_nr ) SELECT employee_nr FROM chain;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+130,SELECT DISTINCT T.song FROM Track T WHERE NOT EXISTS ( SELECT * FROM Performs P WHERE T.track_id = P.track_id AND P.role = 'vocals' ) AND EXISTS ( SELECT *  FROM Performs  WHERE T.track_id = P.track_id);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+131,"WITH RECURSION EmployeesOfHanVanKrieken (employee_nr) AS ( SELECT E.employee_nr FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.employee_nr FROM Employee E, Employee M WHERE M.manager_nr = E.employee_nr ) SELECT * FROM EmployeesOfHanVanKrieken;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+131,SELECT DISTINCT Track.song FROM Track JOIN Performs ON Track.track_id = Performs.track_id WHERE Performs.role <> 'vocals' AND Performs.artist_id IS NOT NULL;,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+131,"SELECT Album.title, SUM(Track.duration) FROM Album, Track JOIN Track ON Album.album_id = Track.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+131,"SELECT Artist.name, COUNT( Performs.track_id) FROM Artist, Performs JOIN Performs ON Artist.artist_id = Performs.artist_id GROUP BY Performs.artist_id HAVING COUNT(Performs.track_id) >= 3;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+132,"WITH RECURSIVE Hierarchy(employee_nr) AS ( ( SELECT E.employee_nr   FROM Employee E    WHERE E.employee_nr = 'U000001')   UNION ( SELECT E.employee_nr   FROM Hierarchy H, Employee E   WHERE H.manager_nr = E.employee_nr) )  SELECT * FROM Hierarchy;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+132,"SELECT artist_id FROM Performs, Track WHERE Track.track_id = Performs.track_id AND Performs.role = 'Guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+132,"SELECT Track.song FROM Track, Performs WHERE Performs.artist_id IS NOT NULL AND NOT EXISTS (SELECT * FROM Performs WHERE role = 'vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+132,"SELECT name, COUNT(Track.track_id) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.artist_id AND Track.track_id = Performs.track_id GROUP BY name HAVING COUNT(Track.track_id) > 2 ORDER BY COUNT(Track.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+132,"SELECT Album.title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.track_id GROUP BY Album.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+133,SELECT T.song FROM Track T NATURAL JOIN Album A WHERE A.title = ´Nevermind´;,0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+133,SELECT T.song FROM Track T WHERE NOT EXISTS ( SELECT * FROM Performs P WHERE P.track_id = T.track_id AND P.role = ´vocals´);,0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+133,"WITH RECURSIVE manager_chain (id) AS (  (SELECT E.employee_nr AS id FROM Employee E WHERE E.employee_nr = ´U000001´) UNION (SELECT E.employeer_nr AS id FROM manager_chain m, Employee E WHERE m.id = E.manager_nr) ) SELECT * FROM manager_chain;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+133,"SELECT A.name, COUNT (DISTINCT T.track) AS num_dist_tracks FROM Artist A NATURAL JOIN Track T GROUP BY A.name HAVING (num_dist_tracks >= 3) ORDER BY num_dist_tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+133,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = ´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+133,SELECT R.album_id FROM Releases R WHERE R.country = ´Belgium´;,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+134,"WITH RECURSIVE Managed_employees(employee_nr,manager_nr) AS ( SELECT employee_nr, manager_nr FROM Employee WHERE employee_nr = 'U000001' UNION SELECT E1.employee_nr, E1.manager_nr FROM Employee AS E1, Managed_employees WHERE E1.Employee_nr = Managed_employees.manager_nr) SELECT * FROM Managed_Employees;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+134,SELECT song FROM Track WHERE NOT EXISTS( SELECT *  FROM Performs WHERE Performs.track_id = Track.track_id AND Performs.role = 'vocals') AND EXISTS(  SELECT * FROM Performs WHERE Artist.artist_id = Performs.artist_id);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+134,"SELECT album_id FROM Album,Release WHERE Album.album_id = Release.album_id AND Release.country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+134,"SELECT DISTINCT artist_id FROM Artist,Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+135,"WITH RECURSIVE Managed_By(id) AS ( SELECT manager_nr AS id FROM Employee WHERE employee_nr = 'U000001' UNION SELECT E.manager_nr AS id FROM Employee E, Managed_By M WHERE E.id = P.id AND E.manager_id IS NOT NULL ) SELECT *  FROM Managed_By;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+135,"SELECT A.title, T.duration FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+135,SELECT T.song FROM Track T JOIN Performs P ON T.track_id = P.track_id WHERE P.role <> 'vocals' AND P.role IS NOT NULL;,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+135,"SELECT DISTINCT A.name, A.COUNT(song) FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY artist_id HAVING (COUNT(song) >= 3) ORDER BY A.COUNT(song);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+136,"SELECT DISTINCT name, COUNT (*) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id ORDER BY COUNT (*) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+136,"SELECT DISTINCT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = ¨Belgium¨;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+136,"WITH RECURSIVE managedbyrector AS ( SELECT Employee1.employee_nr FROM Employee1 WHERE Employee.employee_nr = ¨U000001¨ UNION SELECT Employee2.employee_nr FROM Employee1, Employee2 WHERE Employee.employee_nr = ¨U000002¨ AND Employee1.employee_nr = Employee2.manager_nr)  SELECT * FROM managedbyrector;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+136,SELECT song FROM Track WHERE Track.album_id = Album.album_id AND Album.title = ¨Nevermind¨;,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+136,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.role = ¨guitarist¨;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+136,SELECT name FROM Artist WHERE death_date = ¨NULL¨;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+137,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+137,"SELECT T.song  FROM Track T, Performs P WHERE T.track_id = P.track_id AND P.role <> 'vocals';",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+137,"SELECT A.title, COUNT(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+137,"SELECT A.name, COUNT (DISTINCT P.track_id) FROM Artist A, Performs P WHERE A.artist_id = P.artist_id;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+137,"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Neverland';",0.0,0.75,0.75,292/quiz_graded_5_5.csv
+137,"WITH RECURSIVE Managed(employee_nr) AS ( SELECT E.manager_nr as employee_nr FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.manager_nr AS employee_nr FROM Managed M, Employee E WHERE E.employee_nr = M.employee_nr AND NOT E.manager_nr IS NULL ) SELECT * FROM Managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+138,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+138,"SELECT Artist.name, COUNT(DISTINCT Performs.track_id) AS track_no FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND track_no >= 3 ORDER BY track_no DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+138,"SELECT DISTINCT Track.song FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND NOT EXISTS ( SELECT* FROM Performs WHERE Performs.role = 'vocals') AND Artist.name IS NOT NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+139,"SELECT title, Sum(duration) FROM Album, Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+139,"SELECT name, Count(track_id) FROM Performs, Artist WHERE Performs.artist_id=Artist.artist_id AND Count(track_id)>=3 ORDER BY Count(track_id);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+139,"SELECT song  FROM Track, Performs WHERE Track.track_id=Performs.track_id AND artist_id IS NOT NULL AND NOT role='vocals';",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+140,"SELECT Title , Duration FROM Track , Album WHERE Track.album_id = Album.album_id ;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+140,SELECT album_id FROM Relase WHERE country = 'Belgium' ;,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+140,SELECT DISTINCT artist_id FROM Performs WHERE role = 'Guitarist' ;,0.0,0.75,0.75,294/quiz_graded_5_5.csv
+140,"SELECT song FROM Track , Album GROUP BY title HAVING Track.album_id = Album.album_id AND title = 'Nevermind' ;",0.0,0.25,0.25,292/quiz_graded_5_5.csv
+141,SELECT name FROM Artist WHERE death_date == NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+141,CREATE VIEW employee_order AS   SELECT employee_nr   FROM Employee   WHERE manager_nr == employee_order;  SELECT employee_nr FROM Employee WHERE manager_nr == NULL OR manager_nr == employee_order;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+141,"SELECT name, track_id FROM Performs GROUP BY artist_id HAVING COUNT > 2 ORDER BY COUNT;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+142,"WITH RECURSIVE ManagedBy(id) AS ( SELECT E.employee_nr AS id FROM Employee E WHERE E.employee_nr='U000001' UNION SELECT E.manager_nr AS id FROM ManagedBy M, Employee E WHERE M.manager_nr=E.employee_nr ) SELECT * FROM ManagedBy",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+142,"SELECT title, SUM(duration) FROM Album,Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+143,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE role = ¨guitarist¨;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+143,"SELECT Track FROM Track, Album WHERE title = ¨Nevermind¨;",0.0,0.25,0.25,292/quiz_graded_5_5.csv
+143,"SELECT DISTINCT album_id FROM Album, Release WHERE country = ¨Belgium¨;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+143,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+144,"WITH RECURSIVE Manage(id) AS (  SELECT E.manager_nr AS id FROM Employee E WHERE E.manager_nr = 'U000001'  UNION  SELECT Em.employee_id AS id FROM Employee Em, Manage M WHERE Em.manager_nr = M.id ) SELECT * FROM Manage;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+144,"SELECT Artist.name, COUNT(DISTINCT Track.song) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id  GROUP BY Artist.name HAVING COUNT(DISTINCT Track.song) >= 3 ORDER BY COUNT(*) DESC;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+145,"SELECT DISTINCT name, COUNT(track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Count(track_id) > 3 ORDER BY COUNT(track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+145,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT EXISTS (SELECT role FROM Performs WHERE role = 'vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+145,"SELECT SUM(duration) FROM Track, Album WHERE Album.album_id = Track.track_id GROUP BY title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+146,"SELECT Album.title,SUM(Track.duration) FROM Album WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+146,SELECT DISTINCT artist_id FROM Artist WHERE Artist.artist_id=Performs.artist_id AND Performs.role='guitarist';,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+146,SELECT song FROM Track WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+146,SELECT DISTINCT song FROM Track WHERE Track.track_id=Performs.track_id AND NOT Performs.role='vocals';,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+147,SELECT song FROM Track WHERE EXISTS (SELECT *           FROM Performs           WHERE artist_id IS NOT NULL AND NOT role = 'vocals'           );,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+147,"SELECT a.title, SUM(t.duration) FROM Album a, Track t;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+147,SELECT album_id FROM Albums WHERE album_id IN (SELECT album_id              FROM Release              WHERE country = 'Belgium'              );,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+147,SELECT name FROM Artist WHERE artist_id IN (SELECT artist_id            FROM Performs            WHERE role = 'guitarist'            );,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+147,WITH RECURSIVE emp_managed AS     (SELECT employee_nr    FROM Employee    WHERE employee_nr = 'U000001'    UNION    SELECT M.employee_nr    FROM emp_managed M    JOIN Employee E ON M.employee_nr = E.manager_nr ) SELECT *  FROM emp_managed;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+148,"SELECT song FROM Track, Performs WHERE Performs.track_id = Track.track_id AND Performs.artist_id IS NOT NULL AND NOT EXISTS ( SELECT song FROM Track, Performs WHERE Performs.track_id = Track.track_ID AND role = 'vocals' );",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+148,"SELECT DISTINCT Artist.name, COUNT(*) AS PlayedTracks FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id  AND PlayedTracks >= 3  GROUP BY Artist.name ORDER BY PlayedTracks;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+149,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id  -- This line checks if there exists a performing artist AND NOT EXISTS (   SELECT *   FROM Performs P2   WHERE T.track_id = P2.track_id   AND P2.role = 'vocals' );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+149,"WITH RECURSIVE RectorEmployeesNr AS (   SELECT employee_nr   FROM Employee   WHERE employee_nr = 'U000001'   UNION   SELECT employee_nr   FROM Employee E, RectorEmployeesNr R   WHERE E.manager_nr = R.employee_nr ) SELECT * FROM RectorEmployeesNr;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+149,"SELECT A.name, COUNT(P.track_id) AS noTracks FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(P.track_id) > 2 ORDER BY noTracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+150,"SELECT T.songs FROM Track T, Album A WHERE T.album_id = A.album_id AND T.title = 'Nevermind' ;",0.0,0.75,0.75,292/quiz_graded_5_5.csv
+150,"SELECT DISTINCT artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;",0.0,0.75,0.75,294/quiz_graded_5_5.csv
+150,"SELECT DISTINCT album_id FROM Album A, Release R WHERE A.album_id = R.album_id AND R.country = ´Belgium´;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+150,SELECT T.songs FROM Track T WHERE NOT EXISTS (SELECT * FROM Performs P WHERE T.track_id = P.track_id AND P.role =  'vocals');,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+151,"SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE P.role = 'guitarist';",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+151,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+152,"SELECT DISTINCT A.album_id FROM Album A, Release R WHERE R.album_id= A.album_id AND R.country= ¨Belgium¨;",0.8,0.25,-0.55,293/quiz_graded_5_5.csv
+152,"WITH RECURSIVE Managers AS( SELECT E2.employee_nr,E.employee_nr  FROM Employee E, Employee E2 WHERE E2.manager_nr = E.employee_nr AND  E.employee_nr ='U000001' UNION SELECT E.employee_nr, Managers.employee_nr FROM Managers M, Employee E WHERE M.employee_nr= E.manager_nr ) SELECT employee_nr FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+152,"SELECT DISTINCT COUNT(P.track_id), A.name FROM Artist A, Performs P WHERE A.artist_id=P.artist_id GROUP BY A.name HAVING COUNT(P.track_id) >= 3 ORDER BY COUNT(P.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+153,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist' ;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+153,"SELECT name, COUNT(Track.track_id) FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY name HAVING (COUNT(Track.track_id) >= 3) ORDER BY COUNT(Track.track_id) DESC ;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+153,"WITH RECURSIVE Managers(employee_nr) AS( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION SELECT E1.employee_nr FROM Employee AS E1, Managers WHERE E1.employee_nr = Managers.manager_nr) SELECT * FROM Managers ;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+154,"SELECT DISTINCT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND P.role <> 'vocals' AND P.artist_id <> NULL;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+154,"SELECT A.name, COUNT(DISTINCT P.track_id) FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(DISTINCT P.track_id) >= 3  ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+154,SELECT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+154,"WITH RECURSIVE MasterEmployee(employee_nr, manager_nr) AS (   SELECT employee_nr, manager_nr FROM Employee  UNION   SELECT E.manager_nr, M.employee_nr   FROM Employee E, MasterEmployee M   WHERE E.employee_nr = M.manager_nr ) SELECT E2.employee_nr FROM Employee E1, Employee E2, MasterEmployee M WHERE E1.employee_nr = M.manager_nr AND E2.employee_nr = M.employee_nr AND E1.employee_nr = 'U000001';",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+155,SELECT DISTINCT song FROM Track T WHERE NOT 'vocals' IN ( SELECT role FROM Performs P WHERE T.track_id = P.track_id ) AND role IS NOT NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+155,"SELECT name, COUNT(track_id) AS num FROM Artist A NATURAL JOIN Performs P WHERE num>2 GROUP BY name ORDER BY num DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+155,"SELECT title, COUNT(duration) AS total_duration FROM Track T, Album A WHERE A.album_id = T.album_id GROUP BY title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+155,"WITH RECURSIVE Man(id) AS ( SELECT manager_nr AS id FROM Employee E WHERE employee_nr = 'U000007' UNION SELECT manager_nr AS id FROM Man M, Employee E WHERE M.id = E.id) SELECT employee_nr FROM Man;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+156,"SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id == Performs.artist_id AND Performs.role == ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+156,"SELECT name, COUNT(*) as played FROM Artist, Performs WHERE Arist.artist_id == Performs.artist_id GROUP BY name HAVING played >= 3 ORDER BY desc;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+156,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id == Track_album_id GROUP BY title;",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+156,SELECT DISTINCT album_id FROM Release WHERE country == ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+156,"SELECT song FROM Track, Album WHERE Track.album_id == Album.album_id AND Album.title == ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+157,"SELECT A.name, COUNT(*) AS total FROM Artist A, Track T, Album Al WHERE A.artist_id = Al.artist_id AND T.album_id = Al.album_id HAVING COUNT(*) > 3 ORDER BY total DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+157,"SELECT A.title, T.duration FROM Album A, Track T WHERE T.duration = ( SELECT SUM(T.duration)             FROM Track T, Album A             WHERE A.album_id = T.album_id              );",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+157,"SELECT T.song FROM Track T, Performs P WHERE T.track_id = P.track_id AND P.role <> 'vocals' AND P.artist_id IS NOT NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+158,"SELECT Album.title, SUM(Track.duration) FROM Album, Track GROUP BY Album.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+159,"SELECT Artist.name, COUNT(*) FROM Artist JOIN Performs ON Performs.artist_id=Artist.artist_id GROUP BY Artist.artist_id HAVING COUNT(*) >= 3 ORDER BY COUNT(*) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+159,SELECT Track.song FROM Track JOIN Performs ON Performs.track_id=Track.track_id  -- filter out songs without artist  WHERE NOT EXISTS (   SELECT *   FROM Performs   WHERE role='vocals'   AND Performs.track_id=Track.track_id );,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+159,"WITH RECURSIVE EmployeesManaged(id) AS (   SELECT Employee.employee_nr AS id   FROM Employee   WHERE Employee.manager_nr='U000001'   UNION   SELECT Employee.employee_nr AS id   FROM EmployeesManaged AS E, Employee AS M   WHERE E.manager_nr = M.employee_nr ) SELECT id FROM EmployeesManaged;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+160,"SELECT T.song FROM  Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+160,"SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+160,"WITH RECURSIVE Employees_of_U1(nr) AS (   SELECT employee_nr    FROM Employee   WHERE manager_nr = ´U000001´   UNION   SELECT E.employee_nr   FROM Employees_of_U1 R, Employee E   WHERE E.manager_nr = R.nr ) SELECT * FROM Employees_of_U1;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+160,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+160,"SELECT A.name, COUNT(DISTINCT P.track_id) AS no_tracks FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY P.artist_id HAVING no_tracks >=3 ORDER BY no_tracks DESC;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+160,"SELECT song FROM Track WHERE NOT track_id IN(   SELECT Performs.track_id   FROM Track, Performs   WHERE Track.track_id = Performs.track_id   AND Performs.role = ´vocals´ );",0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+160,"SELECT A.title, SUM(T.duration) AS total_dur FROM Track T,  Album A WHERE T.album_id = A.album_id GROUP BY A.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+161,"SELECT A.name, count(P.track_id) AS total FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(P.track_id) >= 3 ORDER BY total DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+161,"WITH RECURSIVE managernumber(id) AS (     (SELECT E.employee_nr AS id      FROM Employee E      WHERE E.employee_nr = 'U000001')   UNION     (SELECT E.employee_nr AS id      FROM managernumber M, Employee E      WHERE M.id = P.id) ) SELECT * FROM managernumber;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+161,SELECT DISTINCT T.songs FROM Track T WHERE NOT EXISTS (    SELECT P.role    FROM Performs P    WHERE T.track_id = P.track_id    AND P.role = 'vocals') ;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+161,"SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.track_id GROUP BY A.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+162,"SELECT Album.title,SUM(Track.duration) FROM Track,Album WHERE Album.album_id=Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+162,"SELECT song FROM Track,Album WHERE Track.album_id=Album.album_id AND Album.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+162,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+162,"SELECT song FROM Track, Performs WHERE Track.track_id=Performs.track_id  AND NOT EXISTS ( SELECT *  FROM Performs  WHERE role=´vocals´ AND Track.track_id=Performs.track_id);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+162,"SELECT DISTINCT Artist.artist_id FROM Artist,Performs WHERE Performs.role=´guitarist´ AND Artist.artist_id=Performs.artist_id;",0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+162,"WITH RECURSIVE EmpMan(id) AS( SELECT E.employee_nr AS id FROM Employee E WHERE E.employee_nr=´U000001' UNION SELECT E.manager_nr AS id FROM EmpMan M, Employee E WHERE M.manager_nr=E.employee_nr AND NOT E.manager_nr IS NULL ) SELECT *  FROM EmpMan;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+162,"SELECT Artist.name, COUNT(DISTINCT Performs.track_id) AS no_of_tracks FROM Artist,Performs WHERE Artist.artist_id=Performs.artist_id GROUP BY Artist.artist_id HAVING COUNT(DISTINCT Performs.track_id) >= 3 ORDER BY no_of_tracks DESC;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+163,"SELECT a.album_id, SUM(t.duration) FROM Album AS a, Track as t WHERE a.album_id = t.album_id GROUP BY a.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+163,"SELECT DISTINCT t.song FROM Track AS t, Performs AS p WHERE (NOT p.role IS NULL) AND (NOT p.role = 'vocals') AND t.track_id = p.track_id;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+163,"SELECT DISTINCT a.name, COUNT(*) AS total FROM Artist AS a, Performs AS p WHERE a.artist_id = p.artist_id GROUP BY a.name HAVING COUNT(*) > 2 ORDER BY total DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+164,WITH RECURSIVE Management(n) AS( SELECT manager_nr=´U000001´ UNION SELECT employee_nr  FROM Management WHERE manager_nr=n ) SELECT * FROM Management;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+164,SELECT DISTINCT artist_id  FROM Performs WHERE role=¨guitarist¨;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+164,SELECT song  FROM Track WHERE track_id IN (SELECT track_id FROM Performs WHERE NOT role=´vocals´);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+164,"SELECT a.title, t.duration FROM Track t JOIN Album a ON Track.album_id=Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+164,SELECT song  FROM Track WHERE album_id IN (SELECT album_id FROM Album WHERE title=´Nevermind´);,0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+164,SELECT album_id  FROM Release WHERE country=¨Belgium¨;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+165,SELECT artist_id FROM Performs WHERE role = 'guitarist',0.0,0.5,0.5,294/quiz_graded_5_5.csv
+165,"SELECT title, SUM (duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+165,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.role <> 'vocals' AND Performs.role IS NOT NULL",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+166,"SELECT artist_id FROM Artist, Performs WHERE role = 'guitarist' AND Artist.artist_id = Performs.artist_id;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+166,"SELECT title, album_duration FROM Track WHERE EXISTS ( SELECT SUM(duration) AS album_duration FROM Album WHERE Track.album_id = Album.album_id);",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+166,"SELECT DISTINCT song FROM Track, Performs WHERE Performs.role IS NOT NULL AND Performs.role <> 'vocals' AND Track.track_id = Performs.track_id;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+166,"WITH RECURSIVE Employeesofone(employee_nr) AS ( SELECT employee_nr From Employee WHERE employee_nr = 'U000001' UNION SELECT employee_nr FROM Employeesofone, Employee WHERE Empoyeesofone.employee_nr = Employee.manager_nr) SELECT * FROM Employeesofone",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+166,"SELECT name, COUNT(track_id) AS tracks  FROM Aritst WHERE EXISTS( SELECT track_id FROM Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id) GROUP BY name HAVING COUNT(tracks) >= 3 ORDER BY tracks DESC ;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+167,"SELECT title, SUM(duration)  FROM album, track  WHERE album.track_id = track.track_id  GROUP BY title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+167,"SELECT song  FROM track, performs p1  WHERE track.track_id = p1.track_id  and p1.track_id not in    (   SELECT p2.track_id    FROM performs p2    WHERE p2.role = 'vocals' and p1.track_id = p2.track_id    );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+167,"SELECT name, count(*)  FROM artist, performs  WHERE artist.artist_id = performs.artist_id GROUP BY name  HAVING count(*) >= 3  ORDER BY count(*) desc;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+167,"SELECT DISTINCT artist_id  FROM artist, performs  WHERE artist.artist_id = performs.artist_id and role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+168,"SELECT title, SUM(duration) FROM Track, Album WHERE Album.album_id = Track.album_id GROUP BY album_id",0.8,0.25,-0.55,290/quiz_graded_5_5.csv
+168,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND role NOT IN (SELECT role FROM Performs WHERE role = 'vocals') AND artist_id IS NOT NULL",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+168,"SELECT name, COUNT(track_id) FROM Artist, Performs WHERE COUNT(track_id) > 3 AND Artist.artist_id = Performs.artist_id GROUP BY name ORDER BY COUNT(track_id) DESC",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+168,"WITH RECURSIVE ManagerRec(id) AS  ( SELECT P.employee_nr AS id FROM Employee P WHERE P.manager_nr = 'U000001' UNION SELECT P.employee_nr AS id FROM ManagerRec M, Employee P WHERE M.id = P.id AND NOT P.manager_nr IS NULL ) SELECT * FROM ManagerRec",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+169,SELECT album_id FROM Album NATURAL JOIN Realease WHERE country=Belgium;,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+170,"SELECT artist.name, COUNT(DISTINCT track.track_id) FROM artist, performs WHERE artist.artist_id = performs.artist_id GROUP BY artist.name HAVING COUNT(track.track_id) >= '3' ORDER BY (COUNT(track.track_id)) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+171,"SELECT A.artist_id, A.name, COUNT(P.artist_id)    -- multiple artists can have same name, so select artist_id as well FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.artist_id;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+171,"SELECT Album.album_id, Album.title, SUM(Track.duration)   -- album_id is necessary for GROUP BY and to avoid selecting tracks from different albums with same title FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+171,"WITH RECURSIVE managed(nr) AS ( SELECT E.employee_nr FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.employee_nr FROM managed m, Employee E WHERE E.manager_nr = m.nr; ) SELECT * FROM managed;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+171,"SELECT * FROM Track T, Performs P WHERE T.track_id = P.track_id AND NOT EXISTS (   SELECT * FROM Performs P   WHERE T.track_id = P.track_id   AND P.role = 'vocals' );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+171,"SELECT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+172,"SELECT name,COUNT(Performs.track_id) FROM Track,Artist,Performs,Release WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND Track.album_id=Release.album_id  GROUP BY name HAVING COUNT(Perfoms.track_id)>=3 ORDER BY release_date DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+172,"SELECT song  FROM Track, Album WHERE Album.album_id=Track.album_id AND Album.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+172,SELECT employee_nr FROM Employee WHERE manager_nr=´U000001´;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+172,SELECT name  FROM Artist  WHERE death_date=NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+172,SELECT album_id  FROM Release  WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+172,SELECT DISTINCT artist_id  FROM Performs WHERE role=´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+173,"SELECT Album.album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = ´Belgium´;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+173,WITH RECURSIVE Manager(emp_nr) AS (   SELECT Employee.employee_nr FROM Employee WHERE Employee.manager_nr = emp_nr OR Employee.employee_nr = emp_nr   UNION   SELECT emp_nr FROM Manager WHERE emp_nr = (SELECT Employee2.employee_nr FROM Employee AS Employee2 WHERE Employee2.manager_nr = emp_nr) ) SELECT * FROM Manager;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+173,"SELECT Track.song FROM Track WHERE NOT EXISTS(SELECT Track2.track_id FROM Track AS Track2, Performs WHERE Track.track_id = Track2.track_id AND Track2.track_id = Performs.track_id AND Performs.role = ´vocals´);",0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+173,"SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+173,"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+173,"SELECT name, COUNT(Track.track_id) AS distinct_tracks FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name HAVING distinct_tracks >= 3 ORDER BY distinct_tracks DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+174,"CREATE VIEW tracks_per_artist AS SELECT A.artist_id, P.name, COUNT(P.track_id) AS track_count FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.artist_id;  SELECT * FROM tracks_per_artist WHERE trak_count > 2 ORDER BY track_count",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+174,SELECT album_id FROM Release WHERE country = 'belgium',0.0,0.75,0.75,293/quiz_graded_5_5.csv
+174,SELECT artist_id FROM Performs WHERE role = 'guitarist',0.0,0.5,0.5,294/quiz_graded_5_5.csv
+175,"SELECT Album.title, COUNT SUM(Track.duration) FROM Album WHERE Track.album_id = Album.album_id;",0.0,0.125,0.125,290/quiz_graded_5_5.csv
+175,SELECT Album.album_id FROM Album WHERE Album.album_id = Release.album_id AND Release.country = ´Belgium´;,0.0,0.25,0.25,293/quiz_graded_5_5.csv
+175,SELECT Artist.artist_id FROM Artist WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+175,"SELECT DISTINCT Artist.name, COUNT (Track.song) FROM Artist, Track WHERE(   SELECT Artist.artist_id   FROM Artist   WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id   HAVING COUNT (Track.track_id) >= 3);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+175,SELECT Track.song FROM Track WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id  HAVING Performs.role = ´vocals´ AND Performs.role IS NOT NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+175,SELECT Track.song FROM Track WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+176,"select a.name, count(t.track_id) as c from Track t, Performs p, Artist a where t.track_id=p.track_id and p.artist_id=a.artist_id group by a.name having c>=3 order by c desc;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+176,"select distinct artist_id from Artist a, Performs p where a.artist_id=p.artist_id and role='guitarist';",0.0,0.75,0.75,294/quiz_graded_5_5.csv
+177,SELECT song FROM Track  JOIN role ON Track.track_id = Performs.track_id WHERE vocals IS NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+177,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+177,SELECT song FROM Track JOIN title ON Track.album_id = Album.album_id WHERE title = 'Nevermind';,0.0,0.75,0.75,292/quiz_graded_5_5.csv
+178,"SELECT song  FROM Track, Artist  WHERE name IS NOT NULL and ´vocals´ NOT IN ( SELECT role  FROM Performs WHERE Track.track_id = Performs.track_id )",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+178,"SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = ´gutarist´;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+178,"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = ´Nevermind´",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+178,SELECT name FROM Artist WHERE death_date = ´NULL´;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+178,"SELECT album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND country = ´Belgium´;",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+178,"SELECT Artist.name, COUNT(DISTINCT Track.track_id) as no_of_tracks FROM Artist JOIN Performs ON Performs.artist_id = Artist.artist_id JOIN Track ON Track.track_id = Performs.track_id GROUP BY Artist.name, Track.track_id HAVING no_of_tracks >= 3 ORDER BY no_of_tracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+179,"WITH RECURSIVE managed_by AS (  SELECT employee_nr  FROM Employee  WHERE employee_nr = ´U000001´   UNION  SELECT employee_nr  FROM managed_by M, Employee E  WHERE M.employee_nr = E.manager_nr ) SELECT * FROM managed_by;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+179,SELECT Artists.name FROM Artist WHERE Artist.death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+179,"SELECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+179,"SELECT Album.album_id FROM Album, Release WHERE Album.album_id = Release.album_id AND Release.country = ´Belgium´;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+179,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Track.track_id <> (Select Track.track_id                                      FROM Performs, Track                                      WHERE Performs.track_id = Track.track_id AND Performs.role = ´vocals´);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+179,"SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.role = ´guitarist´;",0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+179,"SELECT Artist.name, COUNT(Track.track_id) FROM Artist, Track GROUP BY artist_id, Artist.name HAVING COUNT(Track.track_id) > 2 ORDER BY COUNT(Track.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+180,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+180,"WITH RECURSIVE Managed (employee_nr) As (  SELECT E.employee_nr AS employee_nr  FROM Employee E   WHERE E.employee = 'U000001' UNION  SELECT E.employee_nr AS employee_nr  FROM Managed M, Employee E  WHERE M.employee = E.manager_nr )  SELECT *  FROM Managed",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+180,SELECT song FROM Track WHERE Track.track_id = Performs.track_id AND NOT EXISTS( SELECT track_id  FROM Performs WHERE role = 'vocals' ),0.0,0.25,0.25,291/quiz_graded_5_5.csv
+180,SELECT song FROM Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+181,"SELECT t.song FROM Track t, Album a WHERE a.name = 'Nevermind' AND t.album_id = a.album_id;",0.0,0.75,0.75,292/quiz_graded_5_5.csv
+181,"SELECT a.name, COUNT(t.track_id) FROM Artists a LEFT JOIN (SELECT DISTINCT p.artist_id,p.track_id FROM Performs p) t  ON (t.artist_id = a.artist_id) GROUP BY t.artist_id ORDER BY COUNT(t.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+181,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+181,"SELECT a.title, SUM(t.duration) AS duration FROM Album a,Track t WHERE (a.album_id = t.album_id) GROUP BY t.title;",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+181,WITH RECURSIVE Commanded AS (  SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001'  UNION ALL  SELECT e.empoyee_nr FROM Employee e INNER JOIN Commanded c ON e.manager_nr = c.empoyee_nr ) SELECT employee_nr FROM Commanded;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+182,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Album.track_id AND Performs.artist_id IS NOT NULL AND NOT Performs.role=¨vocals¨;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+182,SELECT album_id FROM Release WHERE country = ¨Belgium¨;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+182,SELECT name FROM Artists WHERE death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+182,"CREATE VIEW album_duration AS SELECT SUM(duration) FROM Track  WHERE Track.album_id=Track.album_id;  SELECT Album.title, Track.album_duration FROM Album, Track;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+182,SELECT DISTINCT artist_id FROM Performs WHERE role = ¨guitarist¨;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+182,"CREATE VIEW count AS SELECT COUNT(artist_id) FROM Performs WHERE NOT track_id= track_id;  SELECT Artist.name, Performs.count FROM Artist, Performs WHERE count>=3;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+183,"SELECT Album.title, SUM(Track.duration) From Album, Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+183,SELECT DISTINCT Album.album_id FROM Album JOIN Release ON Album.album_id=Release.album_id AND Release.country=´Belguim´;,0.0,0.25,0.25,293/quiz_graded_5_5.csv
+183,"SELECT Artist.name, COUNT(Performs.artist_id) FROM Artist, Performs WHERE Artist.artist_id=Performs.artist_id AND COUNT(Performs.artist_id) >= 3  ORDER BY COUNT (Performs.artist_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+184,"SELECT DISTINCT A.name, SUM(P.track_id) FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(*) >= 3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+184,SELECT T.song FROM Track T WHERE T.track_id = ( SELECT P.track_id FROM Performs P WHERE NOT P.artist_id IS NULL AND NOT EXISTS ( SELECT P.track_id FROM Performs P WHERE role = 'vocals'));,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+184,"WITH RECURSIVE Manages(employee_nr) AS ( SELECT E.manager_nr AS nr FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.manager_nr AS nr FROM Manages M, Employee E WHERE M.employee_nr = E.nr AND NOT E.manager_nr IS NULL ) SELECT * FROM Manages;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+185,SELECT Album.album_id FROM Release.country WHERE Release.country = 'Belgium';,0.0,0.25,0.25,293/quiz_graded_5_5.csv
+185,SELECT Artist.name FROM Artist.death_date WHERE Artist.death_date = NULL;,0.0,0.25,0.25,295/quiz_graded_5_5.csv
+185,SELECT Track.song FROM Album.title WHERE Album.title = 'Nevermind';,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+185,SELECT Artist.artist_id FROM Performs.role WHERE Performs.role = 'guitarist';,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+186,"SELECT name, COUNT(Track.track_id) FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id  GROUP BY name Having COUNT(Track.track_id) >= 3 ORDER BY COUNT(Track.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+186,"SELECT Artist.artist_id FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.role = 'guitarist' ;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+186,"WITH RECURSIVE ManagedBy(empnr) AS (  SELECT E2.employee_nr AS empnr FROM Employee E1 , Employee E2 WHERE E1.employee_nr = E2.manager_nr  UNION  SELECT E2.employee_nr AS empnr FROM ManagedBy M, Employee E3 WHERE M.employee_nr = E3.manager_nr )  SELECT * FROM ManagedBy;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+187,"SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist'",0.0,0.5,0.5,294/quiz_graded_5_5.csv
+187,"SELECT A.title, T.duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY album_id",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+187,"SELECT Ar.name, SUM(*) FROM Artist Ar, Track T, Album Al WHERE T.album_id = Al.album_id AND Al.artist_id = Ar.artist_id GROUP BY Ar.name",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+187,"WITH RECURSIVE managedEmployees ( SELECT E.employee_nr FROM Employee E WHERE E.employee_nr = 'U000001'  UNION  SELECT E.employee_nr as nr FROM mangedEmployees M, Employee E WHERE E.manager_nr = M.employee_nr ) SELECT * FROM managedEmployees;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+188,"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+188,"WITH RECURSIVE UltimateManager(id) AS ( SELECT employee_nr AS id FROM Employee WHERE manager_nr =  ´U000001´ UNION SELECT employee_nr AS id FROM UltimateManager, Employee WHERE UltimateManager.id = Employee.manager_nr AND NOT Employee.manager_nr IS NULL ) SELECT * FROM UltimateManager;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+188,"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY duration;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+188,"SELECT name, COUNT(Performs.artist_id) FROM Artist, Performs WHERE Artist.artist_id=Performs.artist_id AND COUNT(Performs.artist_id)>2 GROUP BY Performs.artist_id ORDER BY COUNT(Performs.artist_id);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+188,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+188,SELECT DISTINCT artist_id FROM Performs WHERE ´role=guitarist´;,0.0,0.75,0.75,294/quiz_graded_5_5.csv
+189,"SELECT DISTINCT song FROM Track T, Performs P WHERE T.track_id=P.track_id AND role IS NOT NULL AND role<>'vocals';",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+190,"SELECT name, COUNT(track_id) AS co FROM Performs NATURAL JOIN Artist  GROUP BY name HAVING co>=3 ORDER BY co DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+190,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+190,WITH RECURSIVE u01managed AS ( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION  SELECT employee_nr FROM Employee WHERE Employee.manager_nr = u01managed.employee_nr )  SELECT * FROM u01managed;,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+191,"SELECT DISTINCT T.song  FROM Track T WHERE NOT EXISTS( SELECT P.role  FROM Performs P, Artist A WHERE T.track.id = P.track_id AND P.artist_id = A.artist_id  AND  (P.role = 'vocals' OR A.name IS NULL)) ;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+192,"SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´ ;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+192,SELECT DISTINCT album_id FROM Release WHERE country=´Belgium´ ;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+192,"WITH RECURSIVE umanaged(nr) AS ( SELECT e.employee_nr AS nr FROM Employee e WHERE e.manager_nr = ´U000001´ UNION  SELECT e.employee AS nr FROM umanaged u, Employee e WHERE u.nr = e.nr AND NOT e.employee_nr IS NULL) SELECT name FROM umanaged ;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+192,"SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = ´Nevermind´ ;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+192,"SELECT a.name, COUNT(*) AS trackNumber FROM Artist a, Track t, Performs p WHERE a.artist_id = p.artist_id  AND p.track_id = t.track_id GROUP BY a.name HAVING COUNT(*) >= 3 ORDER BY trackNumber DESC ;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+192,SELECT t.song FROM Track t WHERE NOT ´vocals´ IN (SELECT role  FROM Performs p WHERE p.track_id = t.track_id AND artist_id IS NOT NULL) ;,0.3,0.25,-0.04999999999999999,291/quiz_graded_5_5.csv
+193,"SELECT album_id FROM Release WHERE country = ""Belgium"";",1.0,0.75,-0.25,293/quiz_graded_5_5.csv
+193,"SELECT name, COUNT(p.track_id) AS Count FROM Artist a  LEFT JOIN Performs p ON a.artist_id = p.artist_id  GROUP BY a.artist_id, p.track_id HAVING COUNT(artist_id > 3) ORDER BY Count desc LIMIT 5;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+193,"SELECT song FROM Track  LEFT JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ""Nevermind"";",1.0,0.25,-0.75,292/quiz_graded_5_5.csv
+193,"SELECT song FROM Track WHERE NOT EXISTS (    SELECT track_id     FROM Performs    WHERE Performs.role = ""vocals"" OR Performs.artist_id IS NULL);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+193,"SELECT DISTINCT(artist_id) FROM Performs WHERE role = ""guitarist"";",1.0,0.75,-0.25,294/quiz_graded_5_5.csv
+194,"WITH RECURSIVE manager1(id) AS ( SELECT employee_nr AS id FROM Employee AS E WHERE E.manager_nr = 'U000001' OR E.employee_nr = 'U000001' UNION SELECT employee_nr AS id FROM manager1 AS M, Employee AS E WHERE M.id = E.id ) SELECT * FROM manager1;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+194,"SELECT DISTINCT T.song FROM Track AS T, Performs AS P WHERE T.track_id = P.track_id AND NOT P.artist_id IS NULL AND track_id NOT IN (SELECT track_id FROM Performs WHERE role = 'vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+195,"SELECT DISTINCT T.song FROM Track T, Performs P, Artist A WHERE T.track_id=P.track_id AND P.artist_id=A.artist_id AND Artist.name IS NOT NULL AND role<>'vocals';",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+195,"SELECT Album.title, COUNT(Track.duration) FROM Album, Track WHERE Track.album_id=Album.album_id GROUP BY Album.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+195,"SELECT A.name, COUNT(T.track_id) FROM Artist A, Track T, Performs P, Release R WHERE T.track_id=P.track_id AND P.artist_id=A.artist_id AND R.album_id=T.album_id HAVING COUNT(T.track_id)>=3 ORDER BY R.release_date DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+195,"WITH RECURSIVE oneDesc(id) as (SELECT M.employee_nr as id FROM Manager M WHERE M.manager_id='U000001' UNION SELECT M.employee_nr as id FROM oneDesc D, manager M WHERE D.id=M.id AND NOT M.employee_nr IS NULL) SELECT * FROM oneDesc;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+196,"WITH RECURSIVE EmpNr(nr) AS ( SELECT E.employee_nr AS nr FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.employee_nr AS nr FROM EmpNr EN, Employee E WHERE EN.nr = E.nr ) SELECT * FROM EmpNr",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+196,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+196,SELECT name FROM Artist WHERE death_date <> NULL,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+197,"SELECT DISTINCT Track.song FROM Track, Performs WHERE Track.track_id = Performs.performs_id AND Performs.role <> ´vocals´;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+197,SELECT name FROM Artist WHERE death_date NOT NULL;,0.0,0.875,0.875,295/quiz_graded_5_5.csv
+197,"SELECT name, COUNT(DISTINCT track_id) FROM Artist, Performs  WHERE COUNT(DISTINCT track_id) >= 3 ORDER BY COUNT(DISTINCT track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+197,"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+197,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+197,SELECT employee_nr FROM Employee WHERE manager_nr = (SELECT employee_nr FROM Employee WHERE  manager_nr = ´U000001´);,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+197,SELECT DISTINCT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+197,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+198,"SELECT A.name AS name, COUNT(P.track_id) AS distinct_tracks_played FROM Artist A, Performs P, Release R WHERE A.artist_id = P.artist_id AND distinct_tracks_played >= 3 AND R.album_id = T.album_id ORDER BY R.release_date DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+198,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+200,"WITH RECURSIVE Managed AS( SELECT employee_nr FROM Employee WHERE manager_nr='U000001' UNION SELECT e1.employee_nr FROM Employee e1, Employee e2 WHERE e1.manager_nr=e2_employee_nr ) SELECT * FROM Managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+200,"SELECT title, SUM(duration) FROM Track, Album WHERE Album.album_id=Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+200,"SELECT name, COUNT(track_id) FROM Performs GROUP BY artist_id HAVING COUNT(track_id)>=3 ORDER BY COUNT(track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+201,select DISTINCT Track.role from Track where Not Exists (select Performs.role from Performs  join Artist on Artist.artist_id = Performs.artist_id  join Track on Track.track_id = Performs.track_id where Performs.role = 'vocals' and  Artist.name is null ),0.0,0.25,0.25,291/quiz_graded_5_5.csv
+201,select DISTINCT Album.album_id from Album join Release on Release.album_id = Album.album_id  where Release.country = Belgium,0.0,0.25,0.25,293/quiz_graded_5_5.csv
+201,"select Artist.name, Count(distinct Track.track_id) as played from Artist join Performs on Performs.artist_id = Artist.artist_id  join Track on Track.track_id = Performs.track_id  group by Artist.name  having played >= 3  order by desc",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+201,with recursive managed as  ( select name from Employee where employee_nr = 'U000001' union select Employee.name from managed  join Employee on managed.employee_nr = Employee.manager_nr ) select * from managed,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+202,"SELECT DISTINCT A.name, COUNT(T.track_id) FROM Track T, Artist A, Performs P WHERE P.artist_id = A.artist_id AND T.track_id = P.track_id HAVING COUNT(T.track_id) >= 3  LIMIT 5 ;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+202,"SELECT A.album_id, A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id ;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+202,"SELECT DISTINCT T.song FROM Track T, Performs P, Artist A WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id AND A.artist_id IS NOT NULL AND P.role <> 'vocals' ;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+202,"SELECT DISTINCT A.artist_id  FROM Artist A, Performs P, Track T WHERE P.role = 'guitarist' AND A.artist.id = P.artist_id  AND T.track_id = P.track_id ;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+202,"SELECT A.album_id FROM Album A, Release R WHERE A.album_id = R.album_id AND R.country = ´Belgium´ ;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+203,"SELECT name, COUNT(artist_id) FROM Artist, Performs WHERE COUNT(Performs.artist_id) >= 3 ORDER BY name;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+203,"SELECT title, COUNT(duration) FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+203,SELECT songs FROM Track WHERE track_id = ANY (SELECT track_id FROM Performs HAVING NOT role='vocals' AND NOT artist_id IS NULL);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+203,SELECT song FROM Track WHERE album_id = ANY (SELECT album_id FROM Album WHERE title='Nevermind');,0.0,1.0,1.0,292/quiz_graded_5_5.csv
+203,SELECT artist_id FROM Performs WHERE role='guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+204,SELECT name FROM Artist WHERE death_date = NULL,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+204,"SELECT Album.title, COUNT (Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id ;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+204,SELECT album_id FROM Album WHERE title = 'Nevermind' ( SELECT song FROM Track WHERE Album.album_id = Track.album_id ),0.0,0.125,0.125,292/quiz_graded_5_5.csv
+205,SELECT T.song FROM Track T INNER JOIN Performs P ON T.track_id = P.track_id WHERE NOT EXISTS( SELECT P2.track_id FROM Performs P2 WHERE role = ´vocals´ AND T.track_id = P2.track_id);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+205,SELECT T.song FROM Track T INNER JOIN Album A ON T.album_id = A.album_id WHERE A.title = ´Nevermind´;,0.8,0.25,-0.55,292/quiz_graded_5_5.csv
+205,"WITH RECURSIVE ManagerofManager(employee_nr) AS ( SELECT E.employee_nr From Employee E WHERE E.employee_nr = ´U000001´ UNION SELECT E.employee_nr FROM ManagerofManager M, Employee E WHERE M.employee_nr = E.manager_nr ); SELECT * FROM ManagerofManager;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+205,SELECT A.album_id FROM Album A  INNER JOIN Release R ON A.album_id = R.album_id WHERE R.country = ´Belgium´;,0.8,0.25,-0.55,293/quiz_graded_5_5.csv
+205,SELECT DISTINCT A.artist_id FROM Artist A INNER JOIN Performs P ON A.artist_id = P.artist_id WHERE P.role = ´guitarist´;,0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+205,SELECT A1.name FROM A1.Artist WHERE A1.artist_id NOT IN ( SELECT A2.artist_id FROM A2.Artist WHERE A2.death_date IS NOT NULL AND A1.artist_id = A2.artist_id);,0.0,0.25,0.25,295/quiz_graded_5_5.csv
+206,select name from artist where death_rate is not null,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+206,select employee_nr from employee where (select manager_nr='U000001' or employee_nr='U000001'),0.0,0.25,0.25,309/quiz_graded_5_5.csv
+206,select Track.songs from Track JOIN Performs on Track.track_id=Performs.track_id JOIN Artist on Artist.artist_id=Performs.artist_id where Performs.role !='vocals',0.0,0.25,0.25,291/quiz_graded_5_5.csv
+207,"SELECT A.album_id FROM Album A, Released R WHERE A.album_id=R.album_id AND R.country='Belgium';",0.0,0.75,0.75,293/quiz_graded_5_5.csv
+207,"SELECT A.title, SUM(T.duration) AS duration FROM Album A, Track T WHERE A.album_id=T.album_id; GROUP BY A.title;",0.0,0.125,0.125,290/quiz_graded_5_5.csv
+207,"SELECT A.name, COUNT(*) AS distinct_tracks FROM Artist A, Performs P WHERE A.artist_id=P.artist_id  GROUP BY A.name HAVING distinct_tracks >= 3 ORDER BY A.birth_date DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+207,"WITH RECURSIVE managed AS ( SELECT employee_nr FROM Employee WHERE manager_nr = 'U000001' UNION SELECT employee_nr FROM Employee, managed WHERE Employee.manager_nr=managed(employee_nr) AND manager_nr IN (managed) ) SELECT * FROM managed;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+208,"SELECT song FROM Track, Performs  WHERE Track.track_id = Performs.track_id  AND artist_id IS NOT NULL  AND NOT EXISTS (SELECT artist_id FROM Performs WHERE role = 'vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+208,"SELECT title, COUNT(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY title;",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+208,"WITH RECURSIVE Managers(employee_nr) AS ( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION SELECT employee_nr FROM Managers, Employee WHERE Managers.employee_nr = Employee.manager_nr AND NOT Managers.employee_nr IS NULL ) SELECT * FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+208,"SELECT name, COUNT(track_id) FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id  AND track_id IN(SELECT DISTINCT track_id FROM Performs) GROUP BY name  HAVING COUNT(track_id) >=3 ORDER BY COUNT(track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+209,"SELECT artist_id , role FROM Performs  WHERE role = ´guitarist´",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+209,"WITH RECURSIVE  Managers(manager_nr,name,job_description,employee_nr)AS( SELECT manager_nr,name,job_description,employee_nr FROM Employee  WHERE employee_nr=´U000001´ UNION  SELECT E1.manager_nr, E1.employee_nr, E1.name, E1.job_description FROM Employee AS E1, Managers WHERE E1.employee_nr = Managers.manager_nr) SELECT*FROM Managers ;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+209,SELECT name  FROM Artist  WHERE death_date=NULL,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+209,"SELECT album_id , country  FROM Release  WHERE country =  ´Belgium´",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+210,"SELECT title, SUM(duration) AS total FROM Album A, Track T GROUP BY title HAVING T.album_id = A.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+210,SELECT name FROM Artist  WHERE death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+210,"SELECT name, COUNT(track_id) AS total  FROM Artist A, Performs P  GROUP BY A.name HAVING A.artist_id = P.artist_id  AND COUNT(track_id) >= 3  ORDER BY total DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+210,"SELECT DISTINCT song FROM Track T, Artist A, Performs P WHERE T.track_id = P.track_id  AND P.artist_id = A.artist_id  AND NOT P.role = 'vocals'  AND P.artist_id IS NOT NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+210,"WITH RECURSIVE Managedby1(id) AS (  SELECT E.employee_nr AS id   FROM Employee E  WHERE E.employee_nr = 'U000001' UNION   SELECT E.employee_nr AS id   FROM Managedby1 M, Employee E  WHERE M.employee_nr = E.employee_nr ) SELECT * FROM Managedby1",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+211,"SELECT name, COUNT(*) FROM Artist NATURAL JOIN Performs GROUP BY name HAVING COUNT(*) >= 3;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+212,"WITH RECURSIVE ManagerOfManager(id) AS ( SELECT E.manager_nr AS id FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.manager_nr AS id FROM ManagerOfManager M, Employee E WHERE M.id = E.id AND NOT E.manager_nr IS NULL ) SELECT * FROM ManagerOfManager;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+212,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.track_id GROUP BY Album.title;",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+212,"SELECT Artist.name, COUNT(Performs.track) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id GROUP BY Artist.name HAVING COUNT(Performs.track) > 3 ORDER BY COUNT(Performs.track) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+213,"SELECT DISTINCT Artist.name, SUM(Performs.track_id) FROM Artist, Performs, Performs AS Performs2, Performs AS Performs3 WHERE Artist.artist_id = Performs.artist_id AND Performs.artist_id = Performs2.artist_id AND Performs2.artist_id = Performs3.artist_id AND NOT Performs.track_id = Performs2.track_id AND NOT Performs2.track_id = Performs3.track_id ORDER BY SUM(Performs.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+213,"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id ORDER BY title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+213,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT Performs.role = 'vocals' AND NOT Performs.role IS NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+214,"WITH T1(album_id, sum) AS (   SELECT album_id, SUM(Track.duration) AS sum   FROM Album, Track   WHERE Album.album_id = Track.album_id   GROUP BY album_id ) SELECT album_name, T1.sum FROM Album, T1 WHERE Album.album_id = T1.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+214,"WITH RECURSIVE manager_parents (employee_nr) AS ( SELECT 'U000001' as employee_nr UNION SELECT E.manager_nr as employee_nr FROM manager_parents P, Employee E WHERE P.employee_nr = E.employee_nr AND NOT (E.manager_nr IS NULL) ) SELECT * FROM manager_parents;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+215,"WITH RECURSIVE general_manager(id) AS (SELECT E.employee_nr AS id FROM Employee E WHERE E.employee_nr = 'U000001' UNION SELECT E.emplyee_nr AS id FROM Employee E, general_manager M WHERE E.manger_nr = M.id AND NOT E.manager_nr IS NULL) SELECT * FROM general_manager;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+215,"SELECT name, COUNT(Track.track_id) FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id GROUP BY name HAVING COUNT(Track.track_id) >= 3 ORDER BY COUNT(Track.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+216,"SELECT Artist.name, COUNT(*) AS amount FROM Artist, Performs WHERE Performs.artist_id = Artist.artist_id GROUP BY Artist.name HAVING COUNT(*) >= 3 ORDER BY amount DESC",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+217,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+217,"SELECT song FROM Track T, Album A WHERE A.album_id=T.album_id AND title=´Nevermind´;",0.8,0.25,-0.55,292/quiz_graded_5_5.csv
+217,SELECT DISTINCT artist_id FROM Performs WHERE role=´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+217,SELECT employee_nr FROM Employee WHERE employee_nr='U000001' OR,0.0,0.125,0.125,309/quiz_graded_5_5.csv
+218,SELECT DISTINCT artist_id  FROM Performs WHERE role = ´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+218,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+218,SELECT Track.song FROM Track WHERE NOT EXISTS (      SELECT *       FROM Performs      WHERE Track.track_id = Performs.track_id      AND Performs.role = ´vocals´     ) AND NOT Performs.track_id IS NULL ;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+218,"WITH RECURSIVE Sub(id) AS (     SELECT A.employee_nr AS id     FROM Employee A     WHERE A.employee_nr = ´U000001´   UNION     SELECT A.employee_nr AS id     FROM Sub B, Employee A     WHERE A.employee_nr = B.manager_nr     AND NOT B.manager_nr IS NULL ) SELECT * FROM Sub ;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+218,"SELECT Track.song FROM Album, Track WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+219,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id GROUP BY song HAVING COUNT(Performs.role = 'vocals') = 0;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+219,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+219,"SELECT Artist.name, COUNT(Track) AS NumberOfTracks FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name HAVING SUM(NumberOfTracks) >= 3 ORDER BY NumberOfTracks DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+220,SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+220,SELECT DISTINCT artist_id FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id WHERE role = 'guitarist';,0.0,0.25,0.25,294/quiz_graded_5_5.csv
+220,SELECT song FROM Track JOIN Performs ON Track.track_id = Performs.track_id WHERE NOT role = 'vocals' AND artist_id IS NOT NULL;,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+220,"SELECT title, SUM(duration) AS total_duration FROM Track JOIN Album ON Track.album_id = Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+220,"SELECT name, COUNT(role) FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id WHERE role > 3 ORDER BY COUNT(role);",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+221,SELECT song FROM Track T WHERE 'vocals' <> ALL (   SELECT role    FROM Performs P ) AND NOT P.artist_id IS NULL;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+221,"WITH RECURSIVE ManagedBy (id) AS (   SELECT Employee.manager_nr AS id   FROM Employee E   WHERE E.employee_nr = 'U000001' UNION   SELECT Employee.manager_nr AS id   FROM ManagedBy M, Employee E   WHERE M.id = E.id    AND NOT E.employee_nr IS NULL ) SELECT* FROM ManagedBy;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+221,SELECT name FROM Artist WHERE NOT Artist.death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+221,"SELECT title, SUM(duration) FROM Track, Album GROUP BY Track.title;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+221,"SELECT song FROM Track T, Album A WHERE A.Title = 'Nevermind';",0.0,0.5,0.5,292/quiz_graded_5_5.csv
+222,"select title, sum(duration) from Album, Track where Album.album.id = Track.album_id group by title;",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+223,"SELECT name, COUNT(DISTINCT track_id) AS no_tracks FROM Performs GROUP BY name HAVING no_tracks>=3;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+223,SELECT album_id FROM Release  WHERE country='Belguim';,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+224,"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+224,"SELECT Artist.name,  COUNT(Track.track_id) FROM Artist, Track, Album WHERE Album.album_id = Track.album_id AND Artist.artist_id = Track.artist_id AND COUNT(Track.track_id) >= 3 LIMIT 1;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+224,SELECT album_id FROM Release WHERE country = ´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+224,"SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;",0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+225,"SELECT Artist.name, COUNT(Track.track_id) FROM Track, Artist, Performs GROUP BY Artist.name HAVING COUNT(Track.track_id)>=3 ORDER BY COUNT(Track.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+225,"SELECT Track.song FROM Track, Performs WHERE NOT EXISTS (SELECT Performs.role FROM Performs WHERE role='vocals');",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+226,"SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+226,"SELECT A.name, COUNT(T.track_id) > 3 FROM Artist A, Track T JOIN Performs P ON A.artist_id = P.artist_id WHERE T.track_id = P.track_id ORDER BY COUNT(T.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+227,SELECT song FROM Track WHERE Track.track_id = Performs.track_id AND Performs.role IS NOT NULL AND Performs.role <> 'vocals',0.0,0.25,0.25,291/quiz_graded_5_5.csv
+227,"SELECT name, count(Performs.track_id) FROM Artist, Performs WHERE Performs.artist_id = Artist.artist_id AND count(Performs.track_id) >= 3 ORDER BY count(Performs.track_id)",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+227,SELECT song FROM Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind',0.0,0.25,0.25,292/quiz_graded_5_5.csv
+228,"SELECT Artist.name, COUNT(Performs.track_id) FROM Artist NATURAL JOIN Performs WHERE COUNT(Performs.track_id) > 2 GROUP BY Artist.name ORDER BY COUNT(Performs.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+228,"SELECT Track.song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND 'vocals' NOT IN ( SELECT Performs.role FROM Track AS Track2, Performs WHERE Track2.track_id = Performs.track_id AND Track.song = Track2.song);",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+229,"SELECT A.name, COUNT(*) FROM Artist A, Performs P WHERE P.artist_id = A.artist_id GROUP BY A.name HAVING COUNT(*) >= 3 ORDER BY COUNT(*) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+230,"SELECT Artist.name,COUNT(Performs.artist_id) FROM Artist,Performs WHERE COUNT(Performs.artist_id)>=3 AND ( SELECT DISTINCT Performs.artist_id,Performs.track_id FROM Performs) GROUP BY Artist.name ORDER BY MAX(COUNT(Performs.artist_id));",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+230,"SELECT DISTINCT Track.song FROM Track,Performs WHERE Track.track_id=Performs.track_id AND NOT Performs.role='vocals' AND NOT artist_id IS NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+231,"SELECT DISTINCT Artist.name, COUNT(Track.track_id) AS number FROM Artist, Track, Performs WHERE Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id AND number>=3 ORDER BY number DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+231,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+231,"SELECT Track.song FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND  Artist.artist_id=Performs.artist_id AND NOT Performs.role='vocals' AND Artist.name IS NOT NULL;",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+232,"SELECT  title, SUM(duration)  FROM Track T, Album A  WHERE T.album_id = A.album_id ;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+232,"SELECT DISTINCT x.track_id FROM Performs P , Performs AS x WHERE P.role =  'vocals' AND NOT P.track_id = x.track_id AND NOT x.role IS NULL ;",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+232,SELECT  artist_id FROM Performs WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+233,"SELECT A.name, SUM(P.track_id) FROM Artist A, Performs P WHERE A.artist_id=P.artist_id GROUP BY P.artist_id HAVING SUM(P.track_id) >= 3 ORDER BY SUM(P.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+233,"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY T.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+235,"SELECT song FROM Track, Performs WHERE Track.track_id=Performs.track_id AND NOT EXISTS( SELECT role FROM Performs WHERE Track.track_id=Performs.track_id AND Performs.role = 'vocals') AND NOT EXISTS( SELECT track_id FROM Performs WHERE Track.track_id=Performs.track_id AND Performs.role IS NULL);",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+235,SELECT name FROM Artist WHERE NOT EXISTS( SELECT death_rate FROM Artist WHERE death_rate IS NOT NULL);,0.0,0.25,0.25,295/quiz_graded_5_5.csv
+235,"SELECT DISTINCT name, COUNT(Track.track_id)  FROM Artist, Track GROUP BY Artist.name HAVING COUNT(Track.track_id)>=3 ORDER BY COUNT(Track.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+235,"WITH RECURSIVE EmployeesManagers(employee_nr) AS( SELECT manager_nr AS employee_nr FROM Employee UNION SELECT manager_nr AS employee_nr FROM EmployeesManagers, Employee WHERE EmployeesManagers.employee_nr = Employee.employee_nr AND NOT manager_nr IS NULL) SELECT * FROM EmployeesManagers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+236,SELECT DISTINCT artist_id FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id WHERE role = 'guitarist';,0.8,0.25,-0.55,294/quiz_graded_5_5.csv
+236,"SELECT title, SUM(duration) FROM Track JOIN Album ON Track.album_id = Album.album_id GROUP BY album_id;",0.8,0.25,-0.55,290/quiz_graded_5_5.csv
+236,"SELECT name, SUM(track_id) FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id GROUP BY artist_id HAVING SUM(track.id) >= 3 ORDER BY SUM(track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+236,-- I forgot how to do this :( SELECT song FROM Tracks JOIN Performs ON Track.track_id = Performs.track_id GROUP BY track_id HAVING (   NOT EXISTS 'vocals' IN (   SELECT role FROM Performs   ) );,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+237,"WITH RECURSIVE Employee(employee_nr) AS ( SELECT employee_nr FROM Employee WHERE employee_nr = 'U000001' UNION SELECT E2.employee_nr FROM Employee E, Employee AS E2 WHERE employee_nr = 'U000001' AND  E.employee_nr = E2.employee_nr ) SELECT employee_nr FROM Employee;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+237,"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+237,"SELECT DISTINCT name, COUNT(track_id) as total FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND total >= 3 ORDER BY total DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+237,"SELECT song FROM Track, Performs WHERE Track.track_id = Performs.track_id AND track_id <> ( SELECT track_id FROM Track, Performs WHERE Track.track_id = Performs.track_id AND role LIKE '%vocals%' AND artist_id IS NOT NULL );",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+238,SELECT name FROM Artist WHERE NOT death_date IS NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+238,"SELECT DISTINCT songs FROM Track, Performs WHERE Track.track_id = Performs.track_id AND NOT artist_id IS NULL AND NOT role = 'vocals';",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+238,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+238,"WITH RECURSIVE List(nrs) AS ( SELECT employee_nr AS nrs FROM Employee WHERE manager_nr = 'U000001' UNION SELECT employee_nr FROM List, Employee WHERE manager_nr = nrs) SELECT DISTINCT * FROM List;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+238,"SELECT name, COUNT(DISTINCT track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id IN (SELECT artist_id WHERE (SELECT COUNT(DISTINCT track_id) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id) >= 3) GROUP BY name ORDER BY COUNT(DISTINCT track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+239,"WITH RECURSIVE EmployeeManager(employee_nr) AS ( SELECT E.employee_nr AS employee_nr FROM Employee E WHERE E.manager_nr = 'U000001' UNION SELECT E.employee_nr AS employee_nr FROM EmployeeManager M, Employee E WHERE M.employee_nr = E.employee_nr AND NOT E.employee_nr IS NULL ) SELECT * FROM EmployeeManager;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+239,"SELECT name, COUNT(*) FROM Artist a WHERE artist_id IN ( SELECT DISTINCT p.artist_id, track_id  FROM Performs p ) HAVING COUNT(*) >= 3 ORDER BY COUNT(*) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+240,SELECT name FROM Employee  WHERE manager_nr = (SELECT employee_nr FROM Employee);,0.0,0.25,0.25,309/quiz_graded_5_5.csv
+240,"SELECT songs  FROM Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.role IS NOT NULL AND NOT EXISTS(SELECT * FROM Performs AS Performs2(artist_id2, track_id2,role2)            WHERE Performs.track_id = Performs2.track_id2             AND Performs.role =´vocals´);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+240,"SELECT DISTINCT Artist.name, COUNT(Performs.track_id)  FROM Track, Performs WHERE Artist.artist_id=Performs.artist_id HAVING COUNT(Performs.track_id) >= 3  ORDER BY COUNT(Performs.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+240,"SELECT Track.song  From Track, Album WHERE Track.album_id = Album.album_id AND Album.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+240,"SELECT Album.title, SUM(Track.duration) FROM Album, Album AS Album2(album_id2, title2), Track WHERE Album.album_id=Track.album_id AND Album.album_id = Album2.album_id2;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+240,"SELECT Artist.artist_id  FROM Artist, Performs WHERE Performs.role=´guitarist´ GROUP BY Artist.artist_id;",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+240,SELECT album_id FROM Release WHERE country=´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+241,"SELECT name, COUNT(DISTINCT track_id) as distinct_tracks FROM Artist a JOIN Performs p ON(a.artist_id = p.artist_id) GROUP BY artist_id HAVING COUNT(DISTINCT track_id) >2  ORDER BY distinct_tracks;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+241,SELECT song FROM Track WHERE album_id = (    SELECT album_id    FROM Album   WHERE title = Nevermind);,0.0,0.75,0.75,292/quiz_graded_5_5.csv
+241,SELECT t.song FROM Track t WHERE NOT EXISTS(        SELECT 1        FROM Performs p        WHERE t.track_id = p.track_id AND role= vocals);,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+241,SELECT album_id FROM Release  WHERE country = Belgium ;,0.0,0.75,0.75,293/quiz_graded_5_5.csv
+241,"SELECT title, SUM(duration) as total_duration FROM Track t JOIN Album a ON(t.album_id= a.album_id) GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+241,SELECT DISTINCT artist_id  FROM Performs WHERE role = guitarist ;,0.0,0.75,0.75,294/quiz_graded_5_5.csv
+242,"SELECT Album.album_id FROM Album, Release  WHERE Album.album_id = Release.release_id and Release.country = 'Belgium';",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+242,"SELECT Track.song  FROM Track, Performs WHERE NOT EXISTS ( SELECT   FROM Track, Performs WHERE Track.track_id = Performs.track_Id AND role = 'vocals' );",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+242,"SELECT Artist.name, COUNT(*)  FROM Artist, Performs  WHERE Track.track_id = Performs.track_id GROUP BY Artist.id  HAVING COUNT(Tracks.id) >= 3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+242,"SELECT Album.Title, SUM(duration)  FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+243,"SELECT songs FROM Track,Performs WHERE Performs.artist_id = Track.artist_id AND NOT Track.artist_id IN (SELECT artist_id FROM Performs WHERE role = 'vocals' OR role IS NULL)",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+243,"SELECT artist_id FROM Artist , Performs WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist' GROUP BY artist_id",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+243,"SELECT songs FROM Track,Album WHERE Album.album_id = Track.album_id AND title = 'Nevermind'",0.0,0.75,0.75,292/quiz_graded_5_5.csv
+243,"SELECT album_id FROM Album , Release  WHERE Album.album_id = Release.album_id AND country = 'Belgium' GROUP BY album_id",0.0,0.25,0.25,293/quiz_graded_5_5.csv
+243,"SELECT titel,SUM(duration) FROM Album,Track WHERE Track.album_id = Album.album_id GROUP BY title",0.0,0.75,0.75,290/quiz_graded_5_5.csv
+244,"SELECT song FROM Track t WHERE NOT EXISTS( SELECT * FROM Performs p, Artist a WHERE t.track_id=p.track_id AND a.artist_id=p.artist_id AND p.role=´vocals´) AND EXISTS( SELECT * FROM Performs p, Artist a WHERE t.track_id=p.track_id AND a.artist_id=p.artist_id);",0.8,0.25,-0.55,291/quiz_graded_5_5.csv
+244,"SELECT name, COUNT(DISTINCT p.track_id) FROM Artist a, Performs p, Track t WHERE a.artist_id=p.artist_id AND p.track_id=t.track_id GROUP BY name, p.track_id HAVING COUNT(DISTINCT p.track_id)>=3 ORDER BY COUNT(DISTINCT p.track_id) DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+244,"SELECT song FROM Track t, Album a WHERE a.album_id=t.album_id AND a.title=´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+244,"SELECT a.title, SUM(t.duration) FROM Track t, Album a WHERE a.album_id=t.album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+244,"SELECT a.album_id FROM Album a, Release r WHERE a.album_id=r.album_id AND r.country=´Belgium´;",0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+245,SELECT song FROM Track WHERE NOT EXISTS (SELECT role FROM Performs WHERE track_id=Track.id AND role='vocals') AND (SELECT COUNT(*) FROM Performs WHERE track_id=Track.id) > 0;,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+245,"SELECT Album.title, SUM(Track.duration) FROM Album NATURAL JOIN Track GROUP BY album_id;  -- group by album_id so that two album's with the same title don't show up as one album with their durations together in one total",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+245,"SELECT name, COUNT(Performs.track_id) AS tracks_played FROM Artist NATURAL JOIN Performs WHERE COUNT(Performs.track_id) >= 3 GROUP BY name ORDER BY tracks_played DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+246,"SELECT Artist.name, COUNT(*) FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id  GROUP BY Artist.name HAVING COUNT(*) >= 3 ORDER BY COUNT(*) DESC ;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+246,"WITH RECURSIVE ManagedByHan(id) AS ( SELECT E.manager_nr AS id FROM Employee E WHERE E.employee_nr = 'U000007' UNION SELECT E.manager_nr AS id FROM ManagedByHan M, Employee E WHERE M.id = E.id AND NOT E.employee_nr IS NULL ) ;   SELECT * FROM ManagedByHan ;",0.0,0.125,0.125,309/quiz_graded_5_5.csv
+247,"SELECT A.title, SUM(T.duration)  FROM Album A  NATURAL JOIN Track T GROUP BY A.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+247,SELECT DISTINCT track_id FROM Track T WHERE NOT 'vocals' IN ( SELECT role FROM Performs P WHERE P.track_id = T.track_id ) AND ( EXISTS ( SELECT artist_id FROM Performs P WHERE P.track_id = T.track_id ));,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+247,SELECT T.track_id  FROM Track T NATURAL JOIN Album A WHERE A.title LIKE 'Nevermind';,0.0,0.25,0.25,292/quiz_graded_5_5.csv
+247,"SELECT A.name, COUNT(*) AS tracks_they_played FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.artist_id HAVING COUNT(*) >= 3 ORDER BY tracks_they_played DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+247,"WITH RECURSIVE Managers(employee_nr) AS ( SELECT E.manager_nr AS employee_nr FROM Employee E WHERE employee_nr = 'U000001' UNION SELECT E.manager_nr AS employee_nr FROM Managers M, Employee E WHERE M.employee_nr = E.employee_nr AND NOT E.manager_nr IS NULL ) SELECT * FROM Managers;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+248,"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.75,-0.050000000000000044,292/quiz_graded_5_5.csv
+248,SELECT album_id FROM Release WHERE country =´Belgium´;,0.8,0.75,-0.050000000000000044,293/quiz_graded_5_5.csv
+248,SELECT DISTINCT artist_id FROM Performs WHERE role =´guitarist´;,0.8,0.75,-0.050000000000000044,294/quiz_graded_5_5.csv
+248,"SELECT A.name, COUNT(T.track_id) FROM Artist A, Performs P, Track T WHERE P.artist_id = A.artist_id AND P.track_id = T.track_id GROUP BY A.name HAVING COUNT(T.track_id) > 2 ORDER BY COUNT(T.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+248,SELECT DISTINCT T.song FROM Track T WHERE NOT EXISTS ( SELECT P.artist_id FROM Perfroms P WHERE P.track_id = T.track_id AND P.role =´vocals AND P.artist_id IS NULL );,0.0,0.25,0.25,291/quiz_graded_5_5.csv
+249,"SELECT DISTINCT name, COUNT(song) AS numberOfSongs FROM Track, Artist, Performs WHERE Artist.artist_id=Performs.artist_id AND Track.track_id=Perfroms.track_id GROUP BY name HAVING numberOfSongs>=3 ORDER BY numberOfSongs DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+249,"SELECT song FROM Track, Performs WHERE role<>'vocals' AND Track.track_id=Performs.track_id AND EXISTS (SELECT*FROM Track, Performs WHERE Track.track_id=Performs.track_id AND artist_id IS NOT NULL);",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+249,SELECT artist_id FROM Performs WHERE role='guitarist';,0.0,0.5,0.5,294/quiz_graded_5_5.csv
+249,"WITH RECURSIVE Managed(employee_nr) AS (SELECT employee_nr FROM Employee WHERE manager_nr IS NULL UNION SELECT E.employee_nr FROM Employee E, Managed M WHERE M.employee_nr=E.manager_nr) SELECT employee_nr FROM Managed;",0.0,0.5,0.5,309/quiz_graded_5_5.csv
+249,"SELECT title, SUM(duration) FROM Track GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+250,"SELECT A.name, COUNT(DISTINCT P.track_id) AS stats FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id WHERE COUNT(DISTINCT P.track_id) >= 3 GROUP BY A.name ORDER BY stats DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+250,SELECT T.song FROM Track T  JOIN Performs P ON T.track_id = P.track_id WHERE T.track_id NOT IN (   SELECT DISTINCT T2.track_id   FROM Track AS T2 JOIN Performs AS P2 ON T2.track_id = P2.track_id   WHERE P2.role = 'vocals' ) AND NOT artist_id IS NULL;,0.0,0.5,0.5,291/quiz_graded_5_5.csv
+251,"SELECT Artist.name, SUM(Performs.track_id) FROM Artist NATURAL JOIN Performs GROUP BY Artist.name HAVING count(Performs.track_id) > 2 DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+251,SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv
+253,WITH RECURSIVE Manager (emolyee_nr) AS  ( SELECT E.emolyee_nr FROM Employee E  WHERE E.employee_nr = 'U000001'  UNION  SELECT E.employee_nr  FROM Employee E Manager M  WHERE M.employee_nr = E.manager_nr )  SELECT * FROM Manager;,0.0,0.125,0.125,309/quiz_graded_5_5.csv
+253,"SELECT DISTINCT song  FROM Track WHERE NOT EXISTS (SELECT P.role FROM Track T, Performs P, Artist A WHERE T.track_id=P.track_id AND P.role = 'vocals' AND A.name IS NOT NULL);",0.0,0.25,0.25,291/quiz_graded_5_5.csv
+253,"SELECT A.name, COUNT(P.track_id) AS count  FROM Artist A, Track T, Performs P  WHERE A.aritst_id=P.artist_id AND T.track_id=P.track_id  GROUP BY A.name  HAVING count >=3  ORDER BY count DESC;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+254,"SELECT Artist.name, COUNT(DISTINCT Performs.track_id) AS artist_track_count FROM Artist, Performs WHERE Performs.artist_id = Artist.artist_id GROUP BY Artist.artist_id HAVING artist_track_count >= 3 ORDER BY artist_track_count DESC;",1.0,0.25,-0.75,289/quiz_graded_5_5.csv
+254,"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75,290/quiz_graded_5_5.csv
+254,"WITH RECURSIVE managed_by_han(id) AS (   SELECT employee_nr AS id   FROM Employee   WHERE manager_nr = 'U000001'   UNION   SELECT E.employee_nr AS id   FROM Employee E, managed_by_han M   WHERE E.manager_nr = M.employee_nr ) SELECT * FROM managed_by_han;",0.0,0.25,0.25,309/quiz_graded_5_5.csv
+255,"SELECT A.name, COUNT(P.track_id) FROM Artist A, Performs P WHERE A.artist_id = P.artist_id GROUP BY A.name HAVING COUNT(P.track_id) >= 3 ORDER BY COUNT(P.track_id) DESC;",0.5,0.25,-0.25,289/quiz_graded_5_5.csv
+255,"SELECT T.song FROM Track T WHERE NOT EXISTS (          SELECT T.track_id          FROM Track T, Performs P          WHERE P.track_id = T.track_id          AND P.role = 'vocals'          AND P.artist_id IS NULL );",0.0,0.5,0.5,291/quiz_graded_5_5.csv
+256,"SELECT DISTINCT A.name, COUNT(*) >= 3 FROM Artist A WHERE EXISTS (SELECT DISTINCT P.track_id FROM Performs P WHERE A.artist_id=P.artist_id) GROUP BY A.artist_id;",0.0,0.25,0.25,289/quiz_graded_5_5.csv
+256,"SELECT A.title, SUM(T.duration) AS duration FROM Track T, Album A WHERE T.album_id=A.album_id GROUP BY album_id;",0.0,0.25,0.25,290/quiz_graded_5_5.csv
+257,"SELECT DISTINCT artist_id  FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id   AND role = 'guitarist';",0.0,0.25,0.25,294/quiz_graded_5_5.csv
+258,"SELECT Artist.name, COUNT(DISTINCT Track.track_id) AS num_tracks FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name HAVING COUNT(DISTINCT Track.track_id) >= 3 ORDER BY DESC;",0.0,0.125,0.125,289/quiz_graded_5_5.csv
+258,SELECT Artist.name FROM Artist WHERE Artist.death_date IS NOT NULL;,0.0,0.75,0.75,295/quiz_graded_5_5.csv

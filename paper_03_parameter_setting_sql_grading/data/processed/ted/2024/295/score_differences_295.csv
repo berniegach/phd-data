@@ -1,0 +1,255 @@
+Answer_original,Score_original,Score_final,score_difference
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name  FROM Artist  WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT DISTINCT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE NOT death_rate IS NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NOT NULL;,0.0,0.25,0.25
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE NOT death_date IS NULL,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name  FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist  WHERE Artist.death_date = 'NULL';,0.0,0.25,0.25
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NOT NULL,0.0,0.25,0.25
+SELECT name FROM Artist  WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date is NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT a.name FROM Artist a WHERE a.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE death_date = 'NULL';,0.0,0.25,0.25
+SELECT DISTINCT name FROM Artist WHERE Artist.death_date = NULL;,0.0,0.25,0.25
+SELECT name  FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT DISTINCT name FROM Artist WHERE Artist.death_data IS NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT * FROM Artist WHERE death_date IS NULL;,0.0,0.5,0.5
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist  Where death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist a WHERE a.death_date IS NULL;,1.0,1.0,0.0
+select name from Artist where death_date is null;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date NOT NULL;,0.0,0.125,0.125
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist  WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT a.name  FROM Artist AS a WHERE a.death_date is NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date is NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_data IS NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist  WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date  IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist  WHERE NOT death_date IS NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NOT NULL,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+Select name  From Artist  WHERE death_date = NULL ;,0.0,0.75,0.75
+SELECT * FROM Artist WHERE death_date NOT NULL;,0.0,0.125,0.125
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist  WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT A.name  FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist  WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE NOT death_date IS NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+select A.name  from Artist A  where A.death_date is NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist a WHERE a.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist A WHERE A.death_deat = NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = ¨NULL¨;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date == NULL;,0.0,0.75,0.75
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT DISTINCT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist A WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT DISTINCT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM artist  WHERE death_date is null;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist  WHERE death_date=NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+select name from Artist where death_date is null;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date = ´NULL´;,0.0,0.25,0.25
+SELECT Artists.name FROM Artist WHERE Artist.death_date IS NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artists WHERE death_date IS NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist.death_date WHERE Artist.death_date = NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date <> NULL,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date NOT NULL;,0.0,0.125,0.125
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM artist WHERE death_date IS NULL;,1.0,1.0,0.0
+select Artist.name from Artist  where Artist.death_date is null,1.0,1.0,0.0
+SELECT A.name FROM Artist A WHERE A.death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = NULL,0.0,0.75,0.75
+SELECT A1.name FROM A1.Artist WHERE A1.artist_id NOT IN ( SELECT A2.artist_id FROM A2.Artist WHERE A2.death_date IS NOT NULL AND A1.artist_id = A2.artist_id);,0.0,0.25,0.25
+select name from artist where death_rate is not null,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist  WHERE death_date=NULL,0.0,0.75,0.75
+SELECT name FROM Artist  WHERE death_date IS NOT NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NOT NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE NOT Artist.death_date IS NULL;,0.0,0.25,0.25
+select name from Artist where death_date is null;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE NOT EXISTS( SELECT death_rate FROM Artist WHERE death_rate IS NOT NULL);,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE NOT death_date IS NULL;,0.0,0.25,0.25
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist  WHERE death_date is NULL  ;,1.0,1.0,0.0
+SELECT name  FROM Artist  WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL ;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date = NULL;,0.0,0.75,0.75
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist  WHERE Artist.death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name FROM Artist WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT name  FROM Artist  WHERE death_date IS NULL;,1.0,1.0,0.0
+SELECT Artist.name FROM Artist WHERE Artist.death_date IS NOT NULL;,0.0,0.25,0.25
