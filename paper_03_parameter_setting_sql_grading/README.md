@@ -7,7 +7,8 @@ Data and analysis for the paper “Parameter setting in automated SQL grading”
 ```text
 paper_03_parameter_setting_sql_grading/
   README.md
-  _previous_import_wrong_source/
+  software/
+    socoles
   data/
     raw/
       properties/
@@ -55,6 +56,7 @@ paper_03_parameter_setting_sql_grading/
 - `data/processed/properties/`: graded outputs and derived datasets for the evaluation properties experiments
 - `data/processed/property_ordering/`: graded outputs and derived datasets for the property-ordering experiments
 - `data/processed/ted/`: graded outputs and derived datasets for the text edit distance experiments
+- `software/`: shared experiment software
 - `scripts/`: family-specific analysis and data-preparation code
 - `outputs/figures/`: generated plots for each experiment family and run set
 - `outputs/tables/`: generated tables
