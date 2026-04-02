@@ -1,0 +1,255 @@
+Answer_original,Score_original,Score_final,score_difference
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+SELECT T.song FROM Track T JOIN Album A ON T.album_id = A.album_id WHERE A.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.title = 'Nevermind' AND Track.album_id = Album.album_id;",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track WHERE album_id = 'Nevermind';,0.0,0.25,0.25
+"SELECT song, album_id FROM Track, Album WHERE title = 'Nevermind' AND  Album.album_id= Track.album_id ;",0.0,0.25,0.25
+SELECT T.song FROM Track T NATURAL JOIN Album A WHERE A.title = 'Nevermind';,1.0,1.0,0.0
+SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track T JOIN Album A ON T.album_id =  A.album_id WHERE A.title =  'Nevermind';,1.0,1.0,0.0
+"SELECT DISTINCT Track.song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",0.0,0.25,0.25
+"SELECT t.song FROM Track t, Album a WHERE a.album_id = t.album_id AND a.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song  FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Album WHERE Album.title = ´Nevermind´;,0.0,0.25,0.25
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track WHERE Track.album_id = Album.album_id WHERE Album.album_id (FROM Album SELECT title WHERE title = 'Nevermind');,0.0,0.0,0.0
+"SELECT song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+JOIN Track*Album SELECT song FROM Track*Album WHERE title = 'Nevermind',0.0,0.0,0.0
+"SELECT song FROM Track t, Album a WHERE t.album_id = a.album_id AND title = ´Nevermind´",0.8,0.25,-0.55
+SELECT song  FROM Track t  INNER JOIN Album a ON t.album_id= a.album_id WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.Album_id = Album.Album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.album_id = Track.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song  FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album  WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT t.song FROM Album a, Track t WHERE a.album_id = t.album_id AND a.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track WHERE 'Nevermind' IN (SELECT title FROM Album WHERE Album.album_id = Track.album_id);,1.0,1.0,0.0
+SELECT Track.song FROM Track WHERE album_id = 'Nevermind';,0.0,0.25,0.25
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT Track.song FROM Track JOIN Album ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind' GROUP BY Track.song,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.album_id = 'Nevermind';",0.0,0.25,0.25
+SELECT song FROM Track NATURAL JOIN Album WHERE title = ´Nevermind´;,0.8,0.25,-0.55
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT album_id FROM Album WHERE title = 'Nevermind'; SELECT song FROM Track WHERE album_id = Album.album_id;,0.0,0.25,0.25
+"SELECT DISTINCT song  FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ´Nevermind´;,0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND title='Nevermind';",1.0,1.0,0.0
+SELECT T.song FROM Track T JOIN Album A ON T.album_id = A.album_id WHERE A.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT Track.song, Album.title FROM Track, Album WHERE Album.title = 'Nevermind';",0.0,0.5,0.5
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind' ;",1.0,1.0,0.0
+SELECT Track.song FROM Track JOIN Album ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';",1.0,1.0,0.0
+"select song from Track T, Album A where T.album_id = A.album_id and A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track t, Album m WHERE t.album_id = m.album_id AND title = ´Nevermind´;",0.8,0.25,-0.55
+SELECT DISTINCT Track.song FROM Track JOIN Album ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+SELECT song  FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track AS T, Album AS A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song  FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title=´Nevermind´;",0.8,0.25,-0.55
+SELECT DISTINCT t.song FROM Track as t NATURAL JOIN Album as a WHERE a.title='Nevermind';,1.0,1.0,0.0
+"SELECT DISTINCT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song  FROM Track T, Album A WHERE A.album_id = T.album_id  AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND title = ¨Nevermind¨;",0.8,0.25,-0.55
+SELECT song FROM Track WHERE album_id = (SELECT album_id FROM Album WHERE title = 'Nevermind');,1.0,1.0,0.0
+"SELECT   t.song AS songs FROM   Track t, Album a WHERE   t.album_id = a.album_id AND  a.title = 'Nevermind'; -- NB ¨´¨ = ¨'¨ in the safe exam environment apparently",0.8,1.0,0.19999999999999996
+"SELECT song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND title='Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE title = ´Nevermind´ AND Track.album_id = Album.album_id;",0.8,0.25,-0.55
+"SELECT song FROM Track T, Album A WHERE T.album_id= A.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Album A,  Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT t.song  FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album Al WHERE T.album_id = Al.album_id AND Al.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track  JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ´Nevermind´,0.8,0.25,-0.55
+"SELECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track JOIN Album ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT Track.song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+SELECT song FROM Track WHERE album_id IN (SELECT album_id FROM Album WHERE title = 'Nevermind');,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE title = 'Nevermind' AND T.album_id = A.album_id;",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT DISTINCT song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.album_id = Track.album_id  AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.album_id = Track.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE A.album_id=T.album_id  AND A.title='Nevermind';",1.0,1.0,0.0
+"SELECT DISTINCT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song  FROM Track JOIN Album ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind' GROUP BY song ;,1.0,1.0,0.0
+SELECT DISTINCT song FROM Track JOIN Album WHERE Track.album_id=Album.album_id AND title = 'Nevermind';,1.0,0.0,-1.0
+SELECT t.song FROM Track t NATURAL JOIN Album a WHERE a.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album,  WHERE Track.album_id = Album.album_id AND Album.title = Nevermind",0.0,0.625,0.625
+SELECT song FROM Track WHERE album_id = (SELECT album_id FROM Album WHERE title = 'Nevermind');,1.0,1.0,0.0
+SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT t.song FROM Track t, Album a WHERE a.title = 'Nevermind' AND t.album_id = a.album_id;",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´ ;",0.8,0.25,-0.55
+"SELECT T.song FROM Album AS A, Track AS T Where A.album_id = T.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT t.* FROM Track t, Album a WHERE a.title='Nevermind' AND t.album_id=a.album_id;",0.0,0.5,0.5
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'",1.0,1.0,0.0
+SELECT T.song FROM Track T JOIN Album A ON T.album_id=A.album_id WHERE title='Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.ablum_id = Album.album_id AND Album.title = ´Nevermind´;",0.0,0.25,0.25
+"SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title=´Nevermind´;",0.8,0.25,-0.55
+SELECT song FROM Track WHERE album_id = (SELECT album_id FROM Album WHERE title = 'Nevermind';,0.0,0.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT Track.song FROM Track JOIN Album ON Track.album_id=Album.album_id WHERE Album.name=´Nevermind´;,0.0,0.25,0.25
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind' ;",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"select T.song from Track T, Album A where T.album_id=A.album_id and A.title=´Nevermind´;",0.8,0.25,-0.55
+SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind',1.0,1.0,0.0
+"SELECT song FROM Track t, Album a WHERE a.album_id = t.album_id AND a.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT song FROM Track,Album WHERE Album.title = 'Nevermind' AND Track.album_id = Album.album_id;",1.0,1.0,0.0
+SELECT T.song FROM Track T JOIN Album A ON T.album_id = A.album_id WHERE A.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT Track.song  FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT T.song FROM Track T NATURAL JOIN Album A WHERE A.title = ´Nevermind´;,0.8,0.25,-0.55
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track WHERE Track.album_id = Album.album_id AND Album.title = ¨Nevermind¨;,0.0,0.25,0.25
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Neverland';",0.0,0.75,0.75
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND title='Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track , Album GROUP BY title HAVING Track.album_id = Album.album_id AND title = 'Nevermind' ;",0.0,0.25,0.25
+"SELECT song FROM Track t, Album a WHERE a.album_id = t.album_id AND title == 'Nevermind';",1.0,1.0,0.0
+"SELECT song  FROM Track, Album WHERE Album.album_id=Track.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+"SELECT Track FROM Track, Album WHERE title = ¨Nevermind¨;",0.0,0.25,0.25
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';,0.0,0.25,0.25
+SELECT song  FROM Track t JOIN Album a ON t.album_id = a.album_id WHERE a.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE A.title = 'Nevermind' AND A.album_id = T.album_id;",1.0,1.0,0.0
+"SELECT T.songs FROM Track T, Album A WHERE T.album_id = A.album_id AND T.title = 'Nevermind' ;",0.0,0.75,0.75
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT DISTINCT T.song FROM Track T, Album A WHERE  T.album_id= A.album_id AND A.title= 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind' ;",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id == Album.album_id AND Album.title == ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+SELECT Track.song FROM Track JOIN Album ON Album.album_id=Track.album_id WHERE Album.title='Nevermind';,1.0,1.0,0.0
+"SELECT T.song FROM  Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track,Album WHERE Track.album_id=Album.album_id AND Album.title=´Nevermind´;",0.8,0.25,-0.55
+"SELECT t.song FROM Track AS t, Album AS a WHERE a.title = 'Nevermind' AND a.album_id = t.album_id;",1.0,1.0,0.0
+SELECT song  FROM Track WHERE album_id IN (SELECT album_id FROM Album WHERE title=´Nevermind´);,0.8,0.25,-0.55
+"SELECT song FROM Track, Album WHERE Album.title = 'Nevermind' AND Track.album_id = Album.album_id",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.title = 'Nevermind' AND Album.album_id = Track.album_id;",1.0,1.0,0.0
+"SELECT DISTINCT song  FROM track, album  WHERE track.album_id = album.album_id and title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Album, Track WHERE title = 'Nevermind' AND Album.album_id = Track.album_id",1.0,1.0,0.0
+SELECT song FROM Track NATURAL JOIN Album WHERE title='Nevermind';,1.0,1.0,0.0
+"SELECT track.song FROM track, album WHERE track.album_id = album.album_id AND album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song  FROM Track, Album WHERE Album.album_id=Track.album_id AND Album.title=´Nevermind´;",0.8,0.25,-0.55
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'",1.0,1.0,0.0
+SELECT Track.song FROM Track WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;,0.0,0.25,0.25
+"select song from Track t, Album a where t.album_id=a.album_id and a.title='Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track JOIN title ON Track.album_id = Album.album_id WHERE title = 'Nevermind';,0.0,0.25,0.25
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = ´Nevermind´",0.8,0.25,-0.55
+"SELECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+SELECT song FROM Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';,0.0,0.25,0.25
+"SELECT t.song FROM Track t, Album a WHERE a.name = 'Nevermind' AND t.album_id = a.album_id;",0.0,0.25,0.25
+"SELECT  Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title ='Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+SELECT T.song FROM Track T JOIN Album A ON A.album_id = T.album_id WHERE A.title = 'Nevermind';,1.0,1.0,0.0
+SELECT Track.song FROM Album.title WHERE Album.title = 'Nevermind';,0.0,0.25,0.25
+"SELECT Track.song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND title=´Nevermind´;",0.8,0.25,-0.55
+"SELECT song FROM Track T, Album A WHERE T.album_id=A.album_id AND title='Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song  FROM Track, Album WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = ´Nevermind´ ;",0.8,0.25,-0.55
+"SELECT song FROM Track  LEFT JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ""Nevermind"";",1.0,0.25,-0.75
+"SELECT T.song FROM Track AS T, Album AS A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Album.title='Nevermind' AND Track.album_id=Album.album_id;",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE A.title = 'Nevermind' AND T.album_id = A.album_id",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+SELECT T.song FROM Track T JOIN Album A ON A.album_id = T.album_id AND A.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND title='Nevermind';",1.0,1.0,0.0
+select Track.song from Track join Album on Album.album_id = Track.album_id where Album.title = 'Nevermind',1.0,1.0,0.0
+"SELECT DISTINCT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind' ;",1.0,1.0,0.0
+SELECT song FROM Track WHERE album_id = ANY (SELECT album_id FROM Album WHERE title='Nevermind');,0.0,1.0,1.0
+SELECT album_id FROM Album WHERE title = 'Nevermind' ( SELECT song FROM Track WHERE Album.album_id = Track.album_id ),0.0,0.125,0.125
+SELECT T.song FROM Track T INNER JOIN Album A ON T.album_id = A.album_id WHERE A.title = ´Nevermind´;,0.8,0.25,-0.55
+select Track.song from Track JOIN Album on Track.Album_id=Album.Album_id where Album.title='Nevermind',1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song , album_id ,  title  FROM Track , Album WHERE album title=´Nevermind´",0.0,0.0,0.0
+"SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id  AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Album NATURAL JOIN Track WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Album.title = 'Nevermind' AND Track.album_id = Album.album_id;",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind'",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE A.album_id=T.album_id AND title=´Nevermind´;",0.8,0.25,-0.55
+"SELECT Track.song FROM Album, Track WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE A.Title = 'Nevermind';",0.0,0.5,0.5
+"select song from Album, Track where Album.album_id = Track.album_id and Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT Track.song FROM Track, Album WHERE Album.title='Nevermind' AND Track.album_id=Album.album_id;",1.0,1.0,0.0
+SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1.0,1.0,0.0
+SELECT song FROM Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind',0.0,0.25,0.25
+SELECT Track.song FROM Track NATURAL JOIN Album WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track,Album WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';",1.0,1.0,0.0
+"SELECT  song  FROM Track T, Album A  WHERE T.album_id = A.album_id AND title = 'Nevermind' ;",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id=Album.album_id AND album.title='Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE title = 'Nevermind';,1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track, Album WHERE Album.album_id = Track.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT song FROM Track t, Album a WHERE t.album_id = a.album_id AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song  From Track, Album WHERE Track.album_id = Album.album_id AND Album.title=´Nevermind´;",0.8,0.25,-0.55
+SELECT song FROM Track WHERE album_id = (    SELECT album_id    FROM Album   WHERE title = Nevermind);,0.0,0.25,0.25
+"SELECT Track.song  FROM Track, Album  WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT songs FROM Track,Album WHERE Album.album_id = Track.album_id AND title = 'Nevermind'",0.0,0.25,0.25
+"SELECT song FROM Track t, Album a WHERE a.album_id=t.album_id AND a.title=´Nevermind´;",0.8,0.25,-0.55
+SELECT song FROM Track NATURAL JOIN Album WHERE Album.title='Nevermind';,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind' ;",1.0,1.0,0.0
+SELECT T.track_id  FROM Track T NATURAL JOIN Album A WHERE A.title LIKE 'Nevermind';,0.0,0.25,0.25
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;",0.8,0.25,-0.55
+"SELECT song FROM Track, Album WHERE title='Nevermind' AND Track.album_id=Album.album_id;",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+SELECT song FROM Track NATURAL JOIN Album WHERE Album.title = 'Nevermind';,1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song  FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Album, Track WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';",1.0,1.0,0.0
+"SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';",1.0,1.0,0.0
+"SELECT song  FROM Track, Album  WHERE Track.album_id = Album.album_id   AND title = 'Nevermind';",1.0,1.0,0.0
+"SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';",1.0,1.0,0.0

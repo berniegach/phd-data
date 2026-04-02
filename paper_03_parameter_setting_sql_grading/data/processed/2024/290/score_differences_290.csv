@@ -1,0 +1,253 @@
+Answer_original,Score_original,Score_final,score_difference
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T On A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, SUM( SELECT duration FROM Track, Album WHERE Track.album_id = Album.album_id) AS total FROM Album;",0.0,0.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Track.album_id, title, duration FROM Track, Album WHERE Album.album_id = Track.album_id SUM duration;",0.0,0.0,0.0
+"SELECT title, COUNT(duration) AS total_duration FROM Album GROUP BY title ;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) AS album_duration FROM Track T, Album A WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT min(title), sum(duration) FROM Album NATURAL JOIN Track GROUP BY album_id;  -- Each group only has one distinct title, but we group by album_id (otherwise albums with identical titles are grouped together) so we use `min` to get *one* value for title.",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY A.album_id;",1.0,0.25,-0.75
+"SELECT DISTINCT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) AS total FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT a.title, SUM(t.duration) AS total_duration FROM Album a, Track t WHERE a.album_id = t.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration)  FROM album GROUP BY album_id",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, T.duration FROM Album A, Track T WHERE T.album_id=A.album_id   GROUP BY album_id HAVING COUNT(track_id)>=1;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) AS album_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+RENAME Track*Album (TA) SELECT title AND duration FROM TA,0.0,0.0,0.0
+"SELECT title, SUM(song) AS album_duration FROM Album a, Track t WHERE a.album_id = t.album_id",0.0,0.25,0.25
+"SELECT a.title, SUM(t.duration) FROM Album a INNER JOIN Track t ON a.album_id= t.album_id GROUP BY a.album_id;",1.0,0.25,-0.75
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration)  FROM Track T, Album A WHERE T.album_id = A.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Track.album_id;",1.0,0.25,-0.75
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration)  FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration)  FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT a.title, SUM(t.duration) AS album_duration FROM Album a, Track t WHERE t.album_id = a.album_id GROUP BY t.album_id;",1.0,0.25,-0.75
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) AS total FROM Track, Album WHERE Album.album_id = Track.track_id GROUP BY Album.title;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) AS album_duration FROM Track  JOIN Album ON Album.album_id = Track.album_id GROUP BY Album.title",1.0,1.0,0.0
+"SELECT title, SUM(duration) AS duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album NATURAL JOIN TRACK;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+SELECT title FROM Album; SELECT SUM(duration) FROM Track WHERE album_id = album_id.Album;,0.0,0.25,0.25
+"SELECT title, SUM(duration)  FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration)  FROM Album, Track  WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.track_id GROUP BY A.title;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS total_duration FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title,",0.0,0.0,0.0
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title ;",1.0,1.0,0.0
+"SELECT title, SUM(duration) AS total_duration FROM Album JOIN Track on Album.album_id = Track.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.album_id;",1.0,0.25,-0.75
+"select A.title, SUM(duration) from Album A, Track T where A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) AS tot_duration FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY duration;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.Duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Track.album_id;",1.0,0.25,-0.75
+"SELECT title, SUM(duration)  FROM Album NATURAL JOIN Track  GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album AS A, Track AS T WHERE A.album_id = T. album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+"SELECT A.title, SUM(T.duration) AS total_duration  FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title,SUM(Track.duration) FROM Album,Track WHERE Album.album_id=Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) AS album_duration FROM Album",0.0,0.25,0.25
+"SELECT Album.title, SUM(SELECT duration FROM Track WHERE Track.album_id = Album.album_id) FROM Album;",0.0,0.0,0.0
+"SELECT a.title as album_title, SUM(t.duration) as total_duration FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY album_title;",1.0,1.0,0.0
+"SELECT title, SUM(duration)  FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id, A.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id=Album.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Track T, Album A WHERE A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT title, duration FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT A.title, COUNT (T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id AND Track.duration = total_duration;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) AS total_duration FROM Track T, Album A GROUP BY A.title;",0.0,0.25,0.25
+"SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id  GROUP BY a.title;",1.0,1.0,0.0
+"SELECT Al.title, SUM(T.duration) AS total_duration FROM Track T, Album Al WHERE T.album_id = Al.album_id GROUP BY Al.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) AS total_duration FROM Album JOIN Track ON Album.album_id = Track.album_id",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration)  FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) AS TotalDuration FROM Album JOIN Track ON Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track, Album GROUP BY album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) as total_durtion FROM Track JOIN Album ON Track.album_id=Album.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration)  FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration)  FROM Track T, Album A WHERE T.album_id = A.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track GROUP BY title;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track  WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id=A.album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, duration COUNT (album_id) AS albums FROM Album JOIN Track ON Track.album_id = Album.album_id GROUP BY albums ;",0.0,0.0,0.0
+"SELECT title, sum(Track.duration) FROM Album JOIN Track WHERE Album.album_id=Track.album_id GROUP BY album_id;",0.0,0.0,0.0
+"SELECT a.title, SUM(t.duration) FROM Album a NATURAL JOIN Track t GROUP BY a.title;",1.0,1.0,0.0
+"SELECT COUNT MAX(duration), title FROM Album, Track  WHERE Track.album_id = Album.album_id",0.0,0.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album NATURAL JOIN Track GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Track.album_id;",1.0,0.25,-0.75
+"SELECT title, SUM(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM (T.duration) FROM Album A, Track T WHERE Track.album_id = A.album_id GROUP BY (A.title);",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Track AS T, Album AS A WHERE A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT a.title, sum(t.duration) FROM Album a, Track t WHERE a.album_id=t.album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title",1.0,1.0,0.0
+"SELECT DISTINCT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id=T.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY SUM(duration) HAVING title;",0.0,0.25,0.25
+"SELECT DISTINCT A.title, SUM(T.duration) AS totalDuration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id;",1.0,0.25,-0.75
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY T.album_id;",1.0,0.25,-0.75
+"SELECT title, SUM(duration) FROM Album, Track GROUP BY album_id;",0.0,0.25,0.25
+"SELECT FROM Track T, Album A WHERE ()",0.0,0.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album JOIN Track ON Album.album_id=Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+"SELECT Album.title, SUM(Track.duration) AS total FROM Album, Track GROUP BY Album.title;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) as totalDuration FROM Album A, Track T GROUP BY T.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY title;",1.0,1.0,0.0
+"select A.title, sum(T.duration) from Album A, Track T where A.album_id=T.album_id;",0.0,0.25,0.25
+"SELECT title,  SUM(duration) FROM Track NATURAL JOIN Album GROUP BY title",1.0,1.0,0.0
+"SELECT a.title, SUM(t.song) FROM Track t, Album a WHERE a.album_id = t.album_id GROUP BY (a.title);",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) as duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Track,Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id,title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY A.album_id;",1.0,0.25,-0.75
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track JOIN Track ON Album.album_id = Track.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.track_id GROUP BY Album.title;",0.0,0.25,0.25
+"SELECT A.title, SUM (T.duration) AS tot_dur FROM Album A NATURAL JOIN Track T GROUP BY A.title ORDER BY tot_dur DESC;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, T.duration FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT title, duration AS totalduration FROM Album, Track WHERE totalduration IS (SUM Track.duration WHERE Track.album_id = Album.album_id);",0.0,0.0,0.0
+"SELECT A.title, COUNT(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, Sum(duration) FROM Album, Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25
+"SELECT Title , Duration FROM Track , Album WHERE Track.album_id = Album.album_id ;",0.0,0.25,0.25
+"SELECT title, total_duration FROM Album a WHERE total_duration = SUM(  SELECT duration   FROM Track t  WHERE t.album_id = a.album_id;",0.0,0.0,0.0
+"SELECT title, SUM(duration) FROM Album,Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT SUM(duration) FROM Track, Album WHERE Album.album_id = Track.track_id GROUP BY title;",0.0,0.25,0.25
+"SELECT Album.title,SUM(Track.duration) FROM Album WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25
+"SELECT a.title, SUM(t.duration) FROM Album a, Track t;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album  WHERE Track.album_id = Album.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title ;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id= T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title ;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, COUNT(duration) AS total_duration FROM Track T, Album A WHERE A.album_id = T.album_id GROUP BY title;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id == Track_album_id GROUP BY title;",0.0,0.75,0.75
+"SELECT A.title, T.duration FROM Album A, Track T WHERE T.duration = ( SELECT SUM(T.duration)             FROM Track T, Album A             WHERE A.album_id = T.album_id              );",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track GROUP BY Album.title;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album JOIN Track ON Track.album_id=Album.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS total_dur FROM Track T,  Album A WHERE T.album_id = A.album_id GROUP BY A.album_id;",1.0,0.25,-0.75
+"SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.track_id GROUP BY A.album_id;",0.0,0.25,0.25
+"SELECT Album.title,SUM(Track.duration) FROM Track,Album WHERE Album.album_id=Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+"SELECT a.album_id, SUM(t.duration) FROM Album AS a, Track as t WHERE a.album_id = t.album_id GROUP BY a.album_id;",0.0,0.25,0.25
+"SELECT a.title, t.duration FROM Track t JOIN Album a ON Track.album_id=Album.album_id;",0.0,0.25,0.25
+"SELECT title, SUM (duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id",0.0,0.25,0.25
+"SELECT title, album_duration FROM Track WHERE EXISTS ( SELECT SUM(duration) AS album_duration FROM Album WHERE Track.album_id = Album.album_id);",0.0,0.25,0.25
+"SELECT title, SUM(duration)  FROM album, track  WHERE album.track_id = track.track_id  GROUP BY title;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track, Album WHERE Album.album_id = Track.album_id GROUP BY album_id",0.8,0.25,-0.55
+"SELECT Album.title,SUM(Track.duration) AS total_duration FROM Track,Album WHERE Track.album_id=Album.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT album.title, SUM(track.duration) FROM track, album WHERE track.album_id = album.album_id GROUP BY album.title;",1.0,1.0,0.0
+"SELECT Album.album_id, Album.title, SUM(Track.duration)   -- album_id is necessary for GROUP BY and to avoid selecting tracks from different albums with same title FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",0.0,0.25,0.25
+"SELECT title,SUM(duration) FROM Track,Album  WHERE Track.album_id=Album.album_id  GROUP BY title",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title",1.0,1.0,0.0
+"SELECT Album.title, COUNT SUM(Track.duration) FROM Album WHERE Track.album_id = Album.album_id;",0.0,0.0,0.0
+"select title, sum(duration) from Album a, Track t where a.album_id=t.album_id group by title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) as total FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.album_id, Album.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album, Track Where Album.album_id = Track.album_id GROUP BY Album.title",1.0,1.0,0.0
+"SELECT a.title, SUM(t.duration) AS duration FROM Album a,Track t WHERE (a.album_id = t.album_id) GROUP BY t.title;",0.0,0.25,0.25
+"CREATE VIEW album_duration AS SELECT SUM(duration) FROM Track  WHERE Track.album_id=Track.album_id;  SELECT Album.title, Track.album_duration FROM Album, Track;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) From Album, Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY album.title ;",1.0,1.0,0.0
+"SELECT A.title, T.duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY album_id",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY duration;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track T, Album A WHERE T.album_id=A.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album NATURAL JOIN Track GROUP BY title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id  GROUP BY A.title;",1.0,1.0,0.0
+"SELECT a.title, SUM(t.duration) FROM Track t, Album a WHERE t.album_id = a.album_id GROUP BY a.title ;",1.0,1.0,0.0
+"SELECT a.title, SUM(t.duration) AS duration FROM Album a  RIGHT JOIN Track t ON a.album_id = t.album_id GROUP BY a.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album AS A, Track AS T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title, COUNT(Track.duration) FROM Album, Track WHERE Track.album_id=Album.album_id GROUP BY Album.title;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT A.title AS album_title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY album_title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Track, Album WHERE Album.album_id=Track.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+"select Album.title, Sum(Track.duration) from Album join Track on Track.album_id = Album.album_id  group by Album.title",1.0,1.0,0.0
+"SELECT A.album_id, A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id ;",0.0,0.25,0.25
+"SELECT title, COUNT(duration) FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25
+"SELECT Album.title, COUNT (Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id ;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) AS album_total_duration FROM Album A INNER JOIN Track T ON A.album_id = T.album_id GROUP BY A.title HAVING SUM(T.duration) > 0;",1.0,1.0,0.0
+"select Album.id, Album.title, sum(Track.duration) from Track JOIN on Album.album_id=Track.album_id",0.0,0.0,0.0
+"SELECT A.title, SUM(T.duration) AS duration FROM Album A, Track T WHERE A.album_id=T.album_id; GROUP BY A.title;",0.0,0.125,0.125
+"SELECT title, COUNT(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY title;",0.0,0.25,0.25
+"SELECT abum_id , title ,  duration  FROM Track ,  Album WHERE duration = seconds AND album => 1 track",0.0,0.0,0.0
+"SELECT title, SUM(duration) AS total FROM Album A, Track T GROUP BY title HAVING T.album_id = A.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(Track.duration) FROM Album NATURAL JOIN Track GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.track_id GROUP BY Album.title;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id ORDER BY title;",0.0,0.25,0.25
+"WITH T1(album_id, sum) AS (   SELECT album_id, SUM(Track.duration) AS sum   FROM Album, Track   WHERE Album.album_id = Track.album_id   GROUP BY album_id ) SELECT album_name, T1.sum FROM Album, T1 WHERE Album.album_id = T1.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.title",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) AS total_duration FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) AS total_duration FROM Track JOIN Album ON Track.album_id = Album.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track, Album GROUP BY Track.title;",0.0,0.25,0.25
+"select title, sum(duration) from Album, Track where Album.album.id = Track.album_id group by title;",0.0,0.75,0.75
+"SELECT title, SUM(duration) FROM Track T, Album A WHERE T.album_id=A.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT title, album_duration FROM Album, Track WHERE SUM(duration) AS album_duration AND Track.album_id = Album.album_id",0.0,0.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Track NATURAL JOIN Album GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title,SUM(Track.duration) FROM Album,Track WHERE Album.album_id=Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id;",0.0,0.25,0.25
+"SELECT  title, SUM(duration)  FROM Track T, Album A  WHERE T.album_id = A.album_id ;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY T.album_id;",1.0,0.25,-0.75
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Track JOIN Album ON Track.album_id = Album.album_id GROUP BY album_id;",0.8,0.25,-0.55
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Album AS Album2(album_id2, title2), Track WHERE Album.album_id=Track.album_id AND Album.album_id = Album2.album_id2;",0.0,0.25,0.25
+"SELECT title, SUM(duration) as total_duration FROM Track t JOIN Album a ON(t.album_id= a.album_id) GROUP BY album_id;",0.0,0.25,0.25
+"SELECT Album.Title, SUM(duration)  FROM Track, Album WHERE Track.album_id = Album.album_id;",0.0,0.25,0.25
+"SELECT titel,SUM(duration) FROM Album,Track WHERE Track.album_id = Album.album_id GROUP BY title",0.0,0.25,0.25
+"SELECT a.title, SUM(t.duration) FROM Track t, Album a WHERE a.album_id=t.album_id;",0.0,0.25,0.25
+"SELECT Album.title, SUM(Track.duration) FROM Album NATURAL JOIN Track GROUP BY album_id;  -- group by album_id so that two album's with the same title don't show up as one album with their durations together in one total",1.0,0.25,-0.75
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title ;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration)  FROM Album A  NATURAL JOIN Track T GROUP BY A.album_id;",1.0,0.25,-0.75
+"SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT title, SUM(duration) FROM Track GROUP BY album_id;",0.0,0.25,0.25
+"SELECT A.title, SUM(T.duration) FROM Track T RIGHT JOIN Album A ON A.album_id = T.album_id GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album NATURAL JOIN Track GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.title;",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS total  FROM Track T, Album A  WHERE T.album_id=A.album_id  GROUP BY A.title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;",1.0,0.25,-0.75
+"SELECT A.title, SUM(T.duration) AS total FROM Track T, Album A WHERE A.album_id = T.album_id GROUP BY A.title HAVING SUM(T.duration);",1.0,1.0,0.0
+"SELECT A.title, SUM(T.duration) AS duration FROM Track T, Album A WHERE T.album_id=A.album_id GROUP BY album_id;",0.0,0.25,0.25
+"SELECT title, SUM(duration)  FROM Track, Album  WHERE Track.album_id = Album.album_id  GROUP BY title;",1.0,1.0,0.0
+"SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;",1.0,1.0,0.0
