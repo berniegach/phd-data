@@ -1,0 +1,1 @@
+﻿SELECT A.title FROM Album A WHERE NOT EXISTS( SELECT * FROM Release R WHERE A.album_id= R.album_id AND country='Belgium');

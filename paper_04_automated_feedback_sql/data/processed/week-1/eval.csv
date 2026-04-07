@@ -1,0 +1,2412 @@
+Org Defined ID,Q #,Answer,Score,Feedback,syntax error,All,select,from,where,group by,having,order by,parseable,semantics_error,num_correct_clauses,num_incorrect_clauses,goal_present,detailed_feedback_present
+1,9,"SELECT Theme.theme_id, Theme.name  FROM Teacher, Theme  WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+2,9,"SELECT theme_id, Theme.name from Teacher, Theme Where Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra'",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+3,9,"D SELECT Theme.theme_id, Theme.name   FROM Teacher, Theme   WHERE Teacher.teacher_id = Theme.teacher_id      AND Teacher.name = 'Djoerd Hiemstra';",0.97,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from teacher, theme where teacher.teacher_id = theme.teacher_id and teacher.name = 'djoerd hiemstra' ' make it parseable.
+
+""",1,0,,,,,,,1,1,0,0,0,0
+4,9,"SELECT Theme('theme_id, name) WHERE Teacher = 'Djoerd Hiermstra'",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+5,9,"SELECT * FROM Teacher, Theme WHERE Theme.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+6,9,"SELECT Theme.name  FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' ",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+7,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+8,9," SELECT * FROM Teacher, Theme  WHERE Teacher.teacher_id = Theme.teacher_id  AND Teacher.name =  'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+9,9,"SELECT  Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+10,9,"SELECT * FROM Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+11,9,"SELECT theme.theme_id , theme.name FROM Teacher, Theme WHERE teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+12,9,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra' ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+13,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE  Teacher.name = 'Djoerd Hiemstra'",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+14,9,"SELECT Theme.id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0.89,"""""",0,0,,,,,,,1,0,0,0,0,0
+15,9,"CREATE TABLE Teacher(teacher_id INT, name VARCHAR); CREATE TABLE Theme(theme_id INT, teacher_id INT, name VARCHAR); INSERT INTO Teacher(teacher_id, name) VALUES(1, 'Patrick van Bommel'); INSERT INTO Teacher(teacher_id, name) VALUES(2, 'Djoerd Hiemstra'); INSERT INTO Theme(theme_id, teacher_id, name) VALUES(1, 1, 'ORM'); INSERT INTO Theme(theme_id, teacher_id, name) VALUES(2, 2, 'SQL'); INSERT INTO Theme(theme_id, teacher_id, name) VALUES(3, 2, 'DB'); INSERT INTO Theme(theme_id, teacher_id, name) VALUES(4, 2, 'IR');   SELECT theme_id, name FROM Theme WHERE teacher_id = (     SELECT teacher_id     FROM Teacher     WHERE name = 'Djoerd Hiemstra' );",0.49,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,correct,,,,1,0,3,0,1,1
+16,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+17,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+18,9,"SELECT *  FROM Teacher, Theme WHERE teacher_id = 2",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+19,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+20,9,"SELECT * FROM Teacher, Theme WHERE name = 'Djoerd Hiemstra'.",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select * from teacher, theme where name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+21,9,"SELECT theme_id, name FROM Theme WHERE teacher_id IN (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+22,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; SELECT Theme.theme_id, Theme.name FROM Theme INNER JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'; SELECT Theme.theme_id, Theme.name FROM Theme WHERE teacher_id IN (SELECT teacher_id FROM Teacher WHERE name='Djoerd Hiemstra');   ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+23,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+24,9,SELECT Teacher FROM Theme WHERE Teacher.name = 'Djoerd Hiemstra';,0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+25,9,"SELECT name,theme_id FROM Theme  Where teacher_id=(     SELECT teacher_id FROM Teacher      WHERE name='Djoerd Hiemstra' );",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+26,9,"SELECT theme_id, name FROM Theme WHERE( Theme.teacher_id = Teacher.teacher_id(                                                       WHERE Teacher.name = 'Djoerd Hiemstra')               )   ",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+27,9,"SELECT  theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name == 'Djoerd Hiemstra'",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+28,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+29,9,"SELECT TH.theme_id, TH.name FROM Teacher TE, Themes TH WHERE TE.name =  'Djoerd Hiemstra'   ",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+30,9,"SELECT theme_id, theme.name FROM theme, teacher WHERE teacher.teacher_id = theme.teacher_id and teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+31,9,"SELECT * FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = ""Djoerd Hiemstra""",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+32,9,"SELECT theme_id, name  FROM Theme  WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra')",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+33,9,"select * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+34,9,"SELECT theme_id, name FROM Theme WHERE teacher_id=(SELECT teacher_id FROM Teacher WHERE name='Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+35,9,"SELECT theme_id,Theme.name FROM Teacher, Theme Where Teacher.teacher_id=theme.teacher_id AND Teacher.name='Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+36,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+37,9,"SELECT theme.theme_id, theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+38,9,"SELECT Theme.id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+39,9,"SELECT Theme.theme_id, Theme.name FROM Theme WHERE Theme.teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra' );",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+40,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+41,9,"SELECT Theme.theme_id, Theme.name  FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+42,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+43,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+44,9,"SELECT * FROM Teacher, Theme WHERE teacher_id = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+45,9,"SELECT theme_id, name FROM Theme WHERE Theme.teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra'); ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+46,9,"SELECT THEME.theme_id, THEME.name FROM TEACHER, THEME WHERE(TEACHER.teacher_id = THEME.teacher_id) AND (TEACHER.name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+47,9,"SELECT Theme.theme_id, Theme.name FROM Teacher WHERE Teacher.name = 'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+""",0,0,correct,incorrect,correct,,,,1,0,2,3,1,1
+48,9,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id                                      FROM Teacher                                      WHERE name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+49,9,"SELECT theme_id, name AS theme_name FROM Theme INNER JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+50,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND name = Djoerd Hiemstra; ",0.29,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme_id, theme.name from teacher, theme where teacher.teacher_id = theme.teacher_id and name = 'djoerd hiemstra' ' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,2,6,1,1
+51,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+52,9,"SELECT Theme.theme_id, Theme.name   FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+53,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = Djoerd Hiemstra, Teacher.teacher_id = Theme.teacher_id;",0.86,"""### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from teacher, theme where teacher.name = 'djoerd hiemstra' and teacher.teacher_id = theme.teacher_id;' make it parseable.
+
+""",1,0,,,,,,,1,0,0,0,0,0
+54,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name-'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+55,9,"SELECT Theme.theme_id, Theme.name; FROM Teacher; JOIN Theme ON Teacher.teacher_id = Theme.teacher_id;  WHERE Teacher.name = ""Djoerd Hiemstra"";",0.97,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from teacher join theme on teacher.teacher_id = theme.teacher_id where teacher.name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,,,,,,,1,1,0,0,0,0
+56,9," SELECT theme_id, Theme.name FROM Teacher INNER JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra ';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,correct,incorrect,incorrect,,,,1,0,1,6,1,1
+57,9,"SELECT theme_id, name FROM Theme WHERE teacher_id == (SELECT teacher_id FROM Teacher WHERE name == 'Djoerd Hiemstra'); ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+58,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+59,9,"SELECT theme_id, name  FROM Table Theme WHERE name = 'Djoerd Hiemstra'",0.03,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme_id, name from tale  theme  where name.tale = 'djoerd hiemstra';' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,0,12,1,1
+60,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+61,9,"SELECT Theme.theme_id, Theme.name FROM Theme, teacher WHERE teacher.teacher_id = theme.teacher_id and Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+62,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+63,9,"SELECT * FROM Teacher A, Theme B WHERE A.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+64,9,"SELECT C.theme_id FROM Teacher A, Theme C WHERE A.teacher_id= C.teacher_id, A.name = 'Djoerd Hiemstra'; SELECT C.name FROM Teacher A, Theme C WHERE A.teacher_id= C.teacher_id, A.name = 'Djoerd Hiemstra'; ",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+65,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+66,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+67,9,"SELECT* FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+68,9,"SELECT theme.theme_id, theme.name FROM teacher, theme WHERE teacher.teacher_id = theme.teacher_id AND teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+69,9,"SELECT theme_id, b.name  FROM Teacher a, Theme b WHERE name.Teacher = 'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+70,9,"SELECT theme_id, Name FROM Theme left join Teacher on Theme.teacher_id = Teacher.teacher_id where Teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Type: Mismatch in join type for join 0.
+Join Condition: Mismatch in join condition for join 0.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+71,9,"SELECT theme_id FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_id AND A.name='Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+72,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+73,9,"SELECT Theme.theme_id, Theme.name, FROM Theme, Teacher, WHERE Theme.theme_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",0.29,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from theme, teacher where theme.theme_id = teacher.teacher_id and teacher.name = 'djoerd hiemstra';' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,2,6,1,1
+74,9,"SELECT theme_id,Theme.name FROM Teacher,Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+75,9,"select t2.theme_id,t2.name  from Teacher t1, Theme t2    where t1.name='Djoerd Hiemstra'  and  t1.teacher_id=t2.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+76,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+77,9,"Select Theme.theme_id, Theme.name From Theme, Teacher Where teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+78,9,"SELECT * FROM Teacher, Theme WHERE Teacher.teacher_ID = Theme.teacher_ID AND Teacher.name = 'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+79,9,"SELECT theme_id, Theme.""name""    FROM Theme, Teacher   WHERE Theme.teacher_id= Teacher.teacher_id AND Teacher.""name""= 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+80,9,"SELECT theme_id, Theme.name from Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+81,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+82,9,"SELECT theme_id, name FROM Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+83,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+84,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+85,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+86,9,"SELECT theme_id, name from Teacher, Theme where name = Djoerd Hiemstra;",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme_id, name from teacher, theme where name = """"djoerd hiemstra"""";' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+87,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+88,9,"SELECT theme_id, name FROM Theme WHERE teacher_name = 'Djoerd Hiemstra'; ",0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+89,9,"                                                  ^ D SELECT Theme.theme_id,Theme.name ┬À FROM Teacher, Theme ┬À WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+90,9,"SELECT E.theme_id, E.name FROM Theme E, Teacher A WHERE E.teacher_id = A.teacher_id AND A.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+91,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+92,9,"SELECT theme_id, Theme.name FROM Theme WHERE Teacher.name = ""Djoerd Hiemstra""",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,correct,incorrect,incorrect,,,,1,0,1,6,1,1
+93,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Theme.Teacher_id = Teacher.Teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+94,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+95,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+96,9,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+97,9,"SELECT * FROM Teacher, Theme; WHERE teacher_name = Djoerd Hiemstra",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select * from teacher, theme where teacher_name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+98,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id   AND Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+99,9,"SELECT Theme.name, Theme.theme_id FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+100,9,"SELECT * FROM Teacher A, Theme B WHERE A.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+101,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher  WHERE Teacher.name = 'Djoerd Hiemstra' and Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+102,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE (Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra')",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+103,9,"SELECT * FROM Teacher, Theme WHERE Teacher.Name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+104,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+105,9,"SELECT theme_id, theme FROM Theme WHERE teacher_id IN ( SELECT teacher_id FROM Teacher WHERE teacher = 'Djoerd Hiemstra' )",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+106,9,"SELECT B.theme_id, A.name FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_id  AND A.name = 'Djoerd Hiemstra';",0.89,"""""",0,0,,,,,,,1,0,0,0,0,0
+107,9,"SELECT s.theme_id, s.name  FROM Teacher t, Theme s WHERE t.teacher_id = s.teacher_id AND t.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+108,9,"SELECT (theme_id, Theme.name) FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+Expressions: Mismatch in selected expressions.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+109,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+110,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id  WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+111,9,"SELECT * FROM Teacher, Theme WHERE name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+112,9,"SELECT theme_id, theme.name FROM theme, teacher WHERE teacher.teacher_id = theme.teacher_id and teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+113,9,SELECT * FROM Teacher WHERE name = 'Djoerd Hiemstra'; ,0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+114,9,"SELECT * FROM Teacher, Theme  WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+115,9," SELECT theme_id, name FROM Teacher, Theme where Teacher.name = ""Djoerd Hiemstra"";",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+116,9,"D FROM Teacher, Theme ┬╖ SELECT Teacher.name AND theme_id ┬╖ WHERE Teacher.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+117,9,"SELECT Theme.theme_id, Theme.name -- Can also be just theme_id, but I like being explicit. FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' ;",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,correct,incorrect,incorrect,,,,1,0,1,6,1,1
+118,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+119,9,"SELECT t.theme_id, t.name FROM Theme t JOIN Teacher te ON t.teacher_id = te.teacher_id WHERE te.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+120,9,"SELECT Theme.name, theme_id  FROM Teacher, Theme  WHERE Theme.teacher_ id = Teacher.teacher_id  AND Teacher.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+121,9,"SELECT theme_id, teacher_id FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id, Teacher.name = 'Djoerd Hiemstra'",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme_id, teacher_id from teacher, theme where teacher.teacher_id = theme.teacher_id and teacher.name = 'djoerd hiemstra' ' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+122,9,"SELECT theme_id, theme_name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+123,9,"SELECT Theme.theme_id, Theme.name, Teacher.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+124,9,"SELECT * FROM Teacher, Theme WHERE name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+125,9,"SELECT theme_id, name FROM Teacher WHERE name = ""Djoerd Hiemstra"";",0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+126,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+127,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name =  'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+128,9,"SELECT theme_id, name FROM Teacher, Theme WHERE teacher_id = teacher_id AND Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+129,9,"SELECT Theme.theme_id, Theme.name   FROM Teacher, Theme   WHERE Teacher.teacher_id = Theme.teacher_id   AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+130,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+131,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+132,9,"One of the applications that runs on the database executes the following SQL statements:       SELECT theme_id, name       FROM TEACHER , THEME       WHERE TEACHER.teacher_id=THEME.teacher_id         AND TEACHER.name= 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+133,9,"SELECT Theme.theme_id, Theme.name FROM Teacher,Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+134,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+135,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+136,9,"SELECT theme_id FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+137,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';   ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+138,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, theme teacher.teacher_id= theme.teacher_id teacher.name = 'Djoerd Hiemstra' ",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+139,9,"SELECT Theme.theme_id, Theme.name FROM Teacher tea, Theme WHERE tea.teacher_id = Theme.teacher_id AND tea.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+140,9,"SELECT * FROM Teacher T, Theme Th WHERE T.teacher_id = Th.teacher_id AND T.name = 'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+141,9,"SELECT name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+142,9,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+143,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+144,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id   AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+145,9,"SELECT * FROM Teacher, Theme; WHERE name = 'Djoerd Hiemstra'",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select * from teacher, theme where name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+146,9,"SELECT * FROM Teacher, Theme WHERE Teacher.TeacherName = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+147,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra'",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+148,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+149,9,"SELECT Theme.name, Theme.theme_id From Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+150,9,"SELECT A.theme_id, A.name FROM Theme A, Teacher B WHERE A.teacher_id = (      B.teacher_id     WHERE B.name = ""Djoerd Hiemstra"" );",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+151,9, SELECT name FROM Teacher WHERE Teacher.name = 'Djoerd Hiemstra';,0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+152,9,"select theme_id, Theme.name from Teacher, Theme where Teacher.name = 'Djoerd Hiemstra'  and Theme.teacher_id = Teacher.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+153,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+154,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+155,9,"SELECT *  FROM Teacher, Theme  WHERE name = ""Djoerd Hiemstra"";",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+156,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+157,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+158,9,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id == Theme.teacher_id; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+159,9,"SELECT theme.theme_id, theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+160,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+161,9,"SELECT * FROM TEACHER, THEME WHERE name = Djoerd Hiemstra;",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select * from teacher, theme where name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+162,9,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE A.name = 'Djoerd Hiemstra' AND A.teacher_id = B.teacher_id",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+163,9,"SELECT * FROM Teacher A, Theme B WHERE A.name = 'Djoerd Hiemstra' AND A.teacher_id = B.teacher_id",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+164,9,"SELECT Theme.teacher_id, Theme.name FROM Teacher, Theme WHERE (Teacher.name == 'Djoerd Hiemstra' AND Teacher.teacher_id == Theme.teacher_id);",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+165,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.Teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+166,9,"SELECT B.theme_id,B.name FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_id AND A.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+167,9,"SELECT * FROM Teacher T, Theme Th WHERE T.teacher_id = Th.teacher_id AND T.name = 'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+168,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = ""Djoerd Hiemstra""",0.89,"""""",0,0,,,,,,,1,0,0,0,0,0
+169,9,SELECT theme_id FROM Theme WHERE teacher_id = 2,0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+170,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.Teacher_id AND Teacher.name='Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+171,9,"SELECT TH.theme_id, TH.name FROM Teacher T, Theme TH WHERE T.name = 'Djoerd Hiemstra'; ",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+172,9,"SELECT * FROM Teacher, Theme WHERE name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+173,9,"SELECT theme_id, B.name  FROM Teacher A, Theme B WHERE  A.name = 'Djoerd Hiemstra';",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+174,9,,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+175,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+176,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+177,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+178,9,"SELECT name FROM Teacher, Theme WHERE name == ""Djoem Hiemstra""",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+179,9,"SELECT Theme.theme_id, Theme.name FROM Teacher,Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+180,9,"SELECT Theme.theme_id, theme.teacher_id, theme.name, FROM Teacher, JOIN teacher_id=teacher_id, WITH Teacher.name= 'Djoerd Hiemstra'",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+181,9,"SELECT*FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+182,9,"SELECT theme_id, A.name FROM Theme A, Teacher B WHERE B.name = 'Djoerd Hiemsta' ",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+183,9,"SELECT Th.theme_id, Th.name FROM Theme Th, Teacher T WHERE Th.teacher_id = T.teacher_id AND T.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+184,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+185,9,"SELECT theme_id, B.name FROM Teacher A, Theme B WHERE A.teacher_id = B.teacher_ID AND A.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+186,9,"SELECT *  FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'     AND Teacher.teacher_id = Theme.teacher_id;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+187,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+188,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+189,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+190,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id= Theme.teacher_id",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+191,9,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+192,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND teacher_id = 'Djoerd Hiemstra'; ",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+193,9,"FROM Teacher A, Theme B SELECT B.theme_id,B.name WHERE A.teacher_id = B.teacher_id AND A.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+194,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+195,9,"SELECT TH.theme_id, TH.name FROM Teacher TA, Theme TH WHERE TA.teacher_id = TH.teacher_id AND TA.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+196,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'  AND Teacher.teacher_id = Theme.teacher_id;    ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+197,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+198,9,"SELECT theme_id,Theme.name FROM Theme, Teacher WHERE Teacher.name ='Djoerd Hiemstra' AND Theme.teacher_id = Teacher.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+199,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+200,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme AND Teacher.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+201,9,"SELECT theme_id, theme_name  FROM Theme, Teacher  WHERE Teacher.teacher.id = Theme.teacher.id AND name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+202,9,"SELECT * FROM Djoerd_Hiemstra, Theme",0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+203,9,"SELECT theme_id,Theme.name FROM Teacher,Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id ;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+204,9,"Select Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+205,9,"SELECT Theme.theme_id, Theme.name  FROM Teacher  JOIN Theme ON Teacher.teacher_id = Theme.teacher_id  WHERE Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+206,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+207,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+208,9,"SELECT theme_id, name FROM Theme WHERE teacher_id = ( SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra' );",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+209,9,"SELECT *  FROM Teacher, Theme   WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra' ;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+210,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = ""Djoerd Hiemstra""",0.89,"""""",0,0,,,,,,,1,0,0,0,0,0
+211,9," SELECT * FROM Teacher, Theme; WHERE Teacher = ""Djoerd Hiemstra"";",0.17,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select * from teacher, theme where teacher = """"djoerd hiemstra"""";' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,1,9,1,1
+212,9,"SELECT th.theme_id, th.name AS theme_name FROM Theme th JOIN Teacher T on th.teacher_id = t.teacher_id WHERE t.name = 'Djoerd Hiemstra' ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+213,9,"SELECT B.theme_id, B.name FROM Teacher T, Theme B WHERE T.name = 'Djoerd Hiemstra'; ",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+214,9,"SELECT theme_id, theme.name FROM Teacher, Theme WHERE teacher.name='Djoerd Hiemstra' AND Theme.teacher_id=Teacher.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+215,9,"SELECT Theme.name, theme_id FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = ""Djoerd Hiemstra"";",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,correct,incorrect,incorrect,,,,1,0,1,6,1,1
+216,9,"SELECT theme_id, name FROM Theme INNER JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra' ;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+217,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND NOT Theme.name = 'ORM';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+218,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Teacher.teacher.id;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+219,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra' ;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+220,9,"SELECT Theme.theme_id, Theme.name FROM Teacher WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+221,9,"SELECT Theme.theme_id, Theme.name  FROM Teacher, Theme WHERE Teacher.teacher_name = ""Djoerd Hiemstra"" AND Teacher.teacher_id = Theme.teacher_id",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+222,9,"SELECT B.theme_id, B.name FROM Teacher A, Theme B WHERE A.teacher_id=B.teacher_id AND A.name='Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+223,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+224,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+225,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_ID AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+226,9,"SELECT @DHid = teacher_id FROM Teacher WHERE Teacher.name = ""Djoerd Hiemstra"";    SELECT Theme.name, Theme.theme_id FROM Theme WHERE Theme.teacher_id = @DHid;",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Expressions: Mismatch in selected expressions.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+227,9,"SELECT * FROM Teacher , Theme WHERE teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+228,9,"SELECT theme_id, name FROM Theme WHERE Theme.teacher_id =(  SELECT teacher_id  FROM Teacher  WHERE name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+229,9,"SELECT theme_id, name FROM Theme WHERE teacher_id = (SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra');",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+230,9,"SELECT Te.name, Th.theme_id, Th.name -- set columns  FROM Teacher Te, Theme Th -- set tables and aliasses WHERE Te.name = 'Djoerd Hiemstra' AND Te.teacher_id = Th.teacher_id; -- set filter ",0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+231,9," SELECT theme_id, name   FROM THEME   WHERE teacher_id = (   SELECT teacher_id   FROM Teacher   WHERE name = 'Djoerd Hiemstra'   );",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+232,9,"SELECT Theme.theme_id, Theme.name FROM Theme JOIN Teacher ON Theme.teacher_id = Teacher.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+233,9,"SELECT Theme(theme_id, name) FROM Teacher, Theme WHERE teacher.name = 'Djoerd Hiemstra'",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+Functions: Mismatch in selected functions.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+234,9,"SELECT b.theme_id, b.name FROM Teacher a, Theme b WHERE a.name ==  'Djoerd Hiemstra' AND a.teacher_id == b.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+235,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra', Teacher.teacher_id = Theme.theme_id;",0.29,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from teacher, theme where teacher.name = 'djoerd hiemstra' and teacher.teacher_id = theme.theme_id;' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,2,6,1,1
+236,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+237,9,"SELECT theme_id, Theme.name FROM Theme, Teacher WHERE Teacher.name = 'Djoerd Hiemstra' AND Theacher.teacher_id = Theme.teacher_id",0.89,"""""",0,0,,,,,,,1,0,0,0,0,0
+238,9,SELECT theme_id  FROM Theme WHERE teacher_id = 2,0.06,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,incorrect,incorrect,,,,1,0,0,9,1,1
+239,9,"SELECT Theme.theme_id, Theme.name; FROM Teacher; JOIN Theme ON Teacher.teacher_id = Theme.teacher_id; WHERE Teacher.name = 'Djoerd Hiemstra';",0.97,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from teacher join theme on teacher.teacher_id = theme.teacher_id where teacher.name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,,,,,,,1,1,0,0,0,0
+240,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = Djoerd Hiemstra",0.29,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select theme.theme_id, theme.name from teacher, theme where teacher.name = 'djoerd hiemstra'' make it parseable.
+
+""",1,0,incorrect,incorrect,incorrect,,,,1,0,2,6,1,1
+241,9,"SELECT teacher_id FROM Teacher WHERE name = 'Djoerd Hiemstra'   SELECT theme_id, name FROM Theme WHERE teacher_id = 2",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+242,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+243,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra'; ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+244,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id and Teacher.name = 'Djoerd Hiemstra' ",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+245,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+246,9,"SELECT theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra';",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+247,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+248,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+249,9,"SELECT Theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.37,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+""",0,0,correct,correct,incorrect,,,,1,0,2,3,1,1
+250,9,"SELECT Theme.theme_id, Theme.name FROM Teacher JOIN Theme ON Teacher.teacher_id = Theme.teacher_id WHERE Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+251,9,"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra' AND Teacher.teacher_id = Theme.teacher_id;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+252,9,"SELECT Theme.theme_id, Theme.name FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = ""Djoerd Hiemstra"";",0.89,"""""",0,0,,,,,,,1,0,0,0,0,0
+253,9,"SELECT *  FROM Theme.theme_id, Theme.name, Teacher.name WHERE Teacher.name = 'Djoerd Hiemstra';   ",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+""",0,0,incorrect,incorrect,correct,,,,1,0,1,6,1,1
+254,9,SELECT * FROM Theme WHERE teacher_id = name =Djoerd Hiemstra   SELECT * FROM Theme WHERE theme_id = name =Djoerd Hiemstra ,0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+255,9,"FROM Teacher T, Theme E SELECT E.theme_id, E.name WHERE T.Teacher_id = E.Teacher_id, T.name = ""Djoerd Hiemstra"" ",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+256,9,"SELECT Theme.theme_id, Theme.name  FROM Theme, Teacher WHERE Theme.teacher_id = Teacher.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+257,9,"SELECT theme.theme_id, theme.name   FROM Theme theme   JOIN Teacher teacher ON theme.teacher_id = teacher.teacher_id   WHERE teacher.name = 'Djoerd Hiemstra';",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+258,9,"SELECT theme_id, T.name FROM Theme T, Teacher R   WHERE T.teacher_id=R.teacher_id   AND R.name='Djoerd Hiemstra'   ;",1.00,"""Correct.""",0,1,,,,,,,1,0,0,0,0,0
+259,9,"SELECT Theme.theme_id  FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra';",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1
+260,9,"Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id=Theme.teacher_id AND Teacher.name='Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+261,9,"SELECT theme_id, name FROM Teacher, Theme WHERE Teacher.name = 'Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+262,9,"SELECT Theme.theme_id, Theme,name FROM Teacher, Theme WHERE Teacher.teacher_id, Theme.theme_id AND Teacher.name = 'Djoerd Hiemstra';",0.00,"""The query is not parseable. Therefore, the semantics could not be verified.
+""",0,0,,,,,,,0,1,0,0,0,0
+263,9,"SELECT * FROM Teacher, Theme WHERE Teacher.name='Djoerd Hiemstra';",0.20,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+""",0,0,incorrect,correct,incorrect,,,,1,0,1,6,1,1
+264,9,"SELECT *FROM Teacher,Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra'; ",0.31,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+""",0,0,incorrect,correct,correct,,,,1,0,2,3,1,1

@@ -1,0 +1,1 @@
+﻿"SELECT S.name, COUNT(*) AS students FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY students DESC;"

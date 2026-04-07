@@ -1,0 +1,3666 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';,0.8857142857142857,1,""""""
+2,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.8857142857142857,1,""""""
+3,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+4,1,9,FROM Track AND Artist AND Performs WHERE duration>300 AND name='Queen',0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+5,1,9,"""SELECT Track.track_title  FROM Track, Artist, Performs  WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+6,1,9,σduration>300(Track) ⨝ Performs ⨝ σname='Queen'(Artist),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+7,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Artist.name='Queen' AND Track.duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+8,1,9,"""FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.artist_id=Performs.artist_id AND Artist.name='Queen' AND Track.track_id = Performs.track_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+9,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+10,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+11,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name='Queen';,0.8857142857142857,1,""""""
+12,1,9,"""SELECT Track.track_title FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Track.duration>300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+13,1,9,"""SELECT Track.track_title, Artist.name FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration>300 AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+14,1,9,"""SELECT Track.track_title, Track.duration FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+15,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+16,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id  WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+17,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+18,1,9,SELECT artist_id FROM Track X Performs X Artist WHERE Track.duration>300 AND Track.track_id = Performs.track_id AND Artist.artist_id='Queen',0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+19,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id   AND Performs.artist_id = Artist.artist_id   AND Track.duration > 300   AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+21,1,9,"""SELECT *  FROM Track, Performs, Artist  WHERE Track.track_id = Performs.track_id  AND Artist.artist_id = Performs.artist_id  AND Track.duration > 300  AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+23,1,9,SELECT Track.*  FROM Track  JOIN Performs ON Track.track_id = Performs.track_id  JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+24,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND duration>300 AND name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+25,1,9,"""FROM Track,Performs,Artist SELECT * WHERE track.duration>300 AND Artist.name='Queen' AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+26,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id  WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+27,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name ='Queen' AND Track.artist_id = Performs.artist_id AND Performs.artist_id = Artist.artist_id""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+28,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+29,1,9,"""SELECT Track FROM Artist, Track, Performs  WHERE Artist.name = 'Queen'  AND Artist.artist_id = Performs.artist_id  AND Track.track_id = Performs.track_id AND Track.duration > 300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+30,1,9,"""select * from Track, Performs, Artist where Track.duration > 300 and Artist.name = 'Queen' and Artist.artist_id = Performs.artist_id and Performs.track_id = Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+31,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+32,1,9,"""from (FROM (from Track WHERE duration > 300) AS Track, Performs WHere Track.track_id = Performs.track_id) as Track,( FROM Artist WHERE name='Queen')as Artist  Where Track.artist_id = Artist.artist_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+33,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+34,1,9,SELECT * FROM (Artist JOIN (Performs JOIN Track USING (track_id)) USING (artist_id)) WHERE duration > 300 AND name ='Queen' ;,1,1,"""Correct."""
+35,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+36,1,9,SELECT DISTINCT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+37,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND name='Queen' AND duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+38,1,9,SELECT Track * From Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300  AND Artist.name = 'Queen';,0.17142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track from track join performs on track.track_id = performs.track_id join artist on performs.artist_id = artist.artist_id where track.duration > 300 and artist.name = 'queen';' make it parseable.
+
+"""
+39,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+40,1,9,SELECT * FROM Track JOIN Performs on Track.track_id = Performs.track_id JOIN Artist on Performs.artist_id = Artist.artist_id WHERE Track.duration>300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+41,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration>300 AND name='Queen';,1,1,"""Correct."""
+44,1,9,(WHERE duration>300 FROM Track) JOIN Performs JOIN (WHERE name='Queen' FROM Artist ;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+45,1,9,SELECT Track.track_title FROM Track  WHERE duration > 300 AND track_id IN (SELECT track_id FROM Performs WHERE artist_id IN (SELECT artist_id FROM Artist WHERE name = 'Queen'));,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+528,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+46,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+47,1,9,"""SELECT Track.*, Performs.*, Artist.* FROM Track  JOIN Performs ON Track.track_id = Performs.track_id  JOIN Artist ON Performs.artist_id = Artist.artist_id  WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+48,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300        AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+529,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE name='Queen' AND duration>300;,1,1,"""Correct."""
+49,1,9,SELECT * FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE name='Queen';,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+50,1,9,"""SELECT track_title FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND duration>300 AND name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+51,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen',0.8857142857142857,1,""""""
+530,1,9,SELECT * from track natural join performs natural join artist where name = 'Queen' and duration > 300;,1,1,"""Correct."""
+52,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+53,1,9,"""SELECT * From Track, Artist, Performs WHERE Track.duration >= 300 AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+54,1,9,SELECT*FROM Track JOIN Performs ON Performs.track_id=Track.track_id JOIN Artist ON Artist.artist_id=Performs.artist_id WHERE Track.duration>300 AND Artist.name='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+55,1,9,SELECT *  FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+56,1,9,SELECT * FROM Performs JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Track ON Performs.track_id = Track.track_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+57,1,9,"""SELECT DISTINCT track_title FROM Track, Performs, Artist WHERE Performs.artist_id = Artist.artist_id AND Track.track_id = Performs.track_id AND Artist.name='Queen' AND Track.duration > 300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+58,1,9,"""select * from track,performs,artist where track.duration > 300 and artist.name = 'Queen' and track.track_id=performs.track_id and performs.artist_id=artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+59,1,9,"""SELECT DISTINCT Track.*, Album.*, Artist.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Album ON Track.album_id = Album.album_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+60,1,9,"""SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen' AND Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+531,1,9,"""SELECT """"track_title"""" FROM Track, Performs, Artist WHERE Performs.artist_id=Artist.artist_id AND Track.track_id=Performs.track_id AND Artist.name='Queen' AND Track.duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+61,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration>300 AND name='Queen';,1,1,"""Correct."""
+62,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';,1,1,"""Correct."""
+63,1,9,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Join Tables: Mismatch in join tables for join 0.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+64,1,9,"""SELECT DISTINCT * FROM Artist, Performs, Track WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+65,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,9,"""SELECT * FROM Track, Performs, Artist WHERE duration>300 AND name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+67,1,9,SELECT,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+68,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration >300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+69,1,9,"""SELECT Track.duration, Artist.name FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+70,1,9,Select * from Track  join Performs on (Track.track_id = Performs.track_id) join Artist on (Performs.artist_id = Artist.artist_id) where duration < 300 and name = 'Queen',0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+71,1,9,SELECT *  FROM Track  NATURAL JOIN Performs  NATURAL JOIN Artist  WHERE duration > 300  AND name = 'Queen';,1,1,"""Correct."""
+72,1,9,SELECT *  FROM Track NATURAL JOIN Performs NATURAL JOIN Artist  WHERE Track.duration>300 AND Artist.name='Queen';,1,1,"""Correct."""
+73,1,9,"""SELECT*  FROM Track, Performs, Artist Where Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND duration>300 AND name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+74,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration>300 AND name='Queen';,1,1,"""Correct."""
+75,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen'""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+532,1,9,SELECT * FROM Track t JOIN Performs p ON t.track_id = p.track_id JOIN Artist a ON p.artist_id = a.artist_id WHERE t.duration > 300 AND a.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+76,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300 ;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+77,1,9,"""SELECT DISTINCT Artist.name FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+78,1,9,SELECT * FROM Track  JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen' ;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+79,1,9,"""SELECT *   FROM Track t, Performs p, Artist a   WHERE t.duration>300   AND a.""""name""""='Queen'   AND t.track_id=p.track_id   And p.artist_id=a.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+80,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name='Queen';,1,1,"""Correct."""
+81,1,9,SELECT DISTINCT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+83,1,9,"""SELECT Track.track_title, Artist.name FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+84,1,9,SELECT * FROM TRACK JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+85,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';,1,1,"""Correct."""
+86,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';,1,1,"""Correct."""
+87,1,9,"""SELECT Track.track_title FROM Track, Artist, Performs WHERE duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name ='Queen'""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+88,1,9,"""SELECT  DISTINCT *  FROM Track, Performs, Artist  WHERE Track.track_id=Performs.track_id AND(Performs.artist_id = Artist.artist_id AND (duration>300 AND name='Queen' ));""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+90,1,9,"""SELECT Track.track_id, album_id, track_title, duration, popularity, explicit, Performs.artist_id, name FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND duration>300 AND name='Queen';""",1,1,"""Correct."""
+91,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist Where Track.duration>300 AND Artist.name='Queen';,1,1,"""Correct."""
+92,1,9,"""SELECT Track FROM Track, Artist, Performs WHERE duration > 300 AND name = 'Queen'""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+93,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artit_id AND Artist.name = 'Queen' AND Track.duration > 300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+94,1,9,"""SELECT * FROM Track,Performs,Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+96,1,9,"""SELECT * FROM Artist, Performs, Track Where Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id AND Track.duration > 300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+98,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist Where Track.duration>300 AND Artist.name='Queen';,1,1,"""Correct."""
+100,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+101,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+102,1,9,"""SELECT * FROM Track, Performs, Artist  WHERE (Performs.artist_id = Artist.artist_id AND  Performs.track_id = Track.track_id AND  Track.duration > 300 AND  Artist.name = 'Queen');""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+103,1,9,"""SELECT track_title FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+104,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Track.duration > 300 AND Artist.""""name"""" = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+105,1,9,"""SELECT track FROM Track NATURAL JOIN Performs, Artist WHERE Artist.name = 'Queen' AND Track.duration > 300; AND""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+106,1,9,SELECT * FROM TRACK JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+107,1,9,"""SELECT *  FROM Track t, Performs p, Artist a WHERE a.name = 'Queen' AND     p.artist_id = a.artist_id AND     t.track_id = p.track_id AND     t.duration > 300;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+108,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Performs.track_id=Track.track_id AND Performs.artist_id=Artist.artist_id AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+109,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+110,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND Track.duration>300 AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+111,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+112,1,9,"""select * from Track, Performs, Artist where Artist.artist_id=Performs.artist_id and Performs.track_id=Track.track_id and Artist.name='Queen' and Track.duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+113,1,9,SELECT Track.duration  FROM Track JOIN Performs ON track.id JOIN Artist ON name.id WHERE name = 'Queen';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+114,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';,1,1,"""Correct."""
+115,1,9,"""Select * from Track, Performs, Artist where Track.duration > 300 and Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+116,1,9,"""SELECT Track.duration, Artist.name FROM Track, Artist, Performs WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+117,1,9,SELECT * FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE duration > 300 AND 	name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Using Clause: Mismatch in USING clause presence for join 0.
+Join Using Columns: Mismatch in USING columns for join 0.
+Join Using Clause: Mismatch in USING clause presence for join 1.
+Join Using Columns: Mismatch in USING columns for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+118,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Artist.name = 'Queen' AND Track.duration > 300;,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+119,1,9,"""SELECT Track.track_title, Album.album_title, Track.duration, Artist.name FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Album ON Track.album_id = Album.album_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+120,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Artist.name='Queen' AND Track.duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+121,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+122,1,9,SELECT Track.track_title  FROM Track  JOIN Performs ON Track.track_id = Performs.track_id  JOIN Artist ON Performs.artist_id = Artist.artist_id  WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+123,1,9,"""SELECT Track.track_title FROM Performs, Track, Artist WHERE Track.duration > 300 AND Performs.track_id = Track.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+124,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+125,1,9,"""SELECT Artist.name, Track.duration From (Track JOIN Performs ON Track.track_id=Performs.track_id) JOIN Artist ON Artist.artist_id=Performs.artist_id WHERE Artist.name='Queen' AND Track.duration > 300;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+126,1,9,SELECT *  FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300  AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+127,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+128,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+129,1,9,SELECT Track   FROM Track   JOIN Performs ON Track.track_id = Performs.track_id   JOIN Artist ON Performs.artist_id = Artist.artist_id   WHERE Track.duration > 300     AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+130,1,9,"""SELECT DISTINCT Track.track_title, Track.duration, Artist.name FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300   AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+533,1,9,FROM Artist WHERE Track.Performs. = Performs.name;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+132,1,9,--  Select the track titles of songs that meet the conditions SELECT Track.track_title  --  Select the track titles of songs that meet the conditions   -- From the Track table FROM Track    -- Join the Track table with the Performs table to connect tracks and performances JOIN Performs ON Track.track_id = Performs.track_id     -- Join the result with the Artist table to include artist details JOIN Artist ON Performs.artist_id = Artist.artist_id     -- Filter the results to include only tracks performed by 'Queen' and with duration greater than 300 seconds WHERE Artist.name = 'Queen' AND Track.duration > 300;,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+133,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+134,1,9,SELECT Track FROM Track JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Performs ON Track.track_id = Performs.track_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+135,1,9,"""SELECT track_title FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Artist.name = 'Queen' AND Track.duration > 300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+136,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+137,1,9,"""SELECT Track.track_title FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+138,1,9,"""SELECT Track.track_title, Artist.name FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+139,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+140,1,9,SELECT DISTINCT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+141,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+142,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+143,1,9,"""SELECT Track.* FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id   AND Performs.artist_id = Artist.artist_id   AND Track.duration > 300   AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+144,1,9,"""SELECT *  FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+145,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration>300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+147,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+148,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Artist.name = 'Queen' AND Artist.artist_id  = Performs.artist_id AND Performs.track_id = Track.track_id AND duration > 300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+149,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,9,"""SELECT * FROM Track, Artist, Performs WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+151,1,9,SELECT Track FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+152,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+153,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+154,1,9,"""SELECT *  FROM Track, Performs, Artist  WHERE Track.duration>300 AND Artist.name='Queen' AND Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+155,1,9,"""SELECT track_title FROM Track, Artist, Performs WHERE Track.duration>300 AND Artist.name = 'Queen' AND Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+156,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+157,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND Track.duration>300 AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+158,1,9,SELECT * FROM Track INNER JOIN Performs ON Track.track_id=Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration>300 AND Artist.name='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+159,1,9,"""SELECT Track, Performs, Artist   FROM Track   JOIN Performs ON Track.track_id = Performs.track_id   JOIN Artist ON Performs.artist_id = Artist.artist_id   WHERE Track.duration > 300 AND Artist.name = 'Queen'""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+160,1,9,"""SELECT Track.track_title  FROM Track, Performs , Artist  WHERE Track.track_id=Performs .track_id  AND Artist.artist_id=Performs.artist_id  AND Track.duration>300  AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+161,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE track.duration > 300 AND name = 'Queen';,1,1,"""Correct."""
+162,1,9,"""SELECT * FROM Track T, Artist A, Performs P WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id AND duration > 300 AND name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+163,1,9,SELECT DISTINCT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+164,1,9,"""SELECT Track, Performs, Artist FROM Track, Performs, Artist WHERE Track.duration>300 AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+165,1,9,"""SELECT * FROM Track, Artist, Performs WHERE Artist.name = 'Queen' AND Track.duration > 300 AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+166,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+167,1,9,SELECT DISTINCT Track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+168,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+169,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+170,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Performs.artist_id=Artist.artist_id AND Performs.track_id = Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+534,1,9,"""SELECT DISTINCT Artist.name, Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artists ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+171,1,9,SELECT * FROM Track NATURAL JOIN Performs  NATURAL JOIN Artist WHERE Artist.name='Queen' AND Track.duration > 300;,1,1,"""Correct."""
+172,1,9,"""SELECT Track.* FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+535,1,9,SELECT DISTINCT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+174,1,9,"""SELECT Track.track_title, Track.track_duration, Artist.name FROM Track, Performs, Artist WHERE Track.track_duration > 300 AND Artist.artist_name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+175,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+176,1,9,"""SELECT * FROM Artist, Track, Performs WHERE Track.duration>300  AND Artist.name='Queen' AND Performs.track_id=Track.track_id AND Performs.artist_id=Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+177,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+179,1,9,"""select * from Track,Performs,Artist where Artist.name = 'Queen' and Track.duration > 300 and Track.track_id = Performs.track_id and Artist.artist_id = Performs.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+181,1,9,SELECT Track.* FROM Track JOIN Performs ON Performs.track_id = Track.track_id JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE Artist.name ='Queen' AND Track.duration> 300;,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+183,1,9,"""SELECT * FROM Track T, Performs P, Artist A WHERE T.duration > 300 AND T.track_id = P.track_id AND P.artist_id = A.artist_id AND A.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+184,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen',1,1,"""Correct."""
+185,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE duration>300 AND name='Queen';,1,1,"""Correct."""
+186,1,9,"""SELECT track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+187,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+188,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+189,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+190,1,9,"""SELECT Track.* FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+191,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+192,1,9,SELECT Track.track_title FROM Track JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Performs ON Track.track_id = Performs.track_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+193,1,9,"""SELECT Track.track_id, album_id, track_title, duration, popularity, explicit, Performs.artist_id, name FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND duration > 300 AND name = 'Queen';""",1,1,"""Correct."""
+194,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+195,1,9,"""SELECT * FROM Track, Performs, Artist WHERE (Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300);""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+196,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+197,1,9,SELECT DISTINCT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+198,1,9,SELECT track_title FROM Track JOIN Performs ON Track.track_id=Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE duration > 300 AND name = 'Queen';,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+199,1,9,"""SELECT Track.track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+200,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+201,1,9,SELECT *  FROM Track JOIN Performs P  ON P.track_id = Track.track_id  JOIN Artist A ON  P.artist_id = A.artist_id WHERE A.name='Queen' AND duration>300;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+202,1,9,SELECT * FROM Performs JOIN Track ON Performs.track_id = Track.track_id JOIN Artist ON Track.artist_id = Artist.artist_id WHERE Performs.track_duration >= 300;,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+203,1,9,"""SELECT Track.track_title FROM Track, Performs, Artist WHERE Artist.name='Queen' AND Track.duration>300 AND Track.track_id=Perform.track_id AND Perform.artist_id=Artist.artist_id""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+204,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id=Performs.track_id JOIN Artist ON Performs.artist_id=Artist.artist_id WHERE Track.duration>300 AND Artist.name='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+206,1,9,"""FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+207,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300  AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+208,1,9,"""SELECT *  FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+209,1,9,SELECT *  FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen' ;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+536,1,9,SELECT * FROM (Track NATURAL JOIN Performs NATURAL JOIN Artist) WHERE (duration > 300 AND name ='Queen');,1,1,"""Correct."""
+210,1,9,"""SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND name='Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+211,1,9,SELECT Track.track_title; FROM Track NATURAL JOIN Performs NATURAL JOIN Artist; WHERE Track.duration > 300 AND Artist.name = 'Queen' AND  Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+212,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+213,1,9,"""SELECT track_title FROM Track, Performs, Artist WHERE Performs.track_id = Track.track_id and Performs.artist_id = Artist.artist_id   AND Track.duration > 300   AND Artist.name = 'Queen';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+214,1,9,"""SELECT Track.track_id FROM Track, Performs, Artist WHERE duration > 300 AND Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+215,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+216,1,9,SELECT * FROM Track  INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+217,1,9,"""SELECT Track.track_title, Artist.name FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+218,1,9,"""SELECT Track.track_title, Track.duration FROM Track JOIN Performs ON Performs.track_id = Track.track_id JOIN Artist ON Artist.artist_id = Performs.artist_id WHERE Artist.name = 'Queen' AND Track.duration > 300;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+219,1,9,"""SELECT * FROM Track, Perform, Artist WHERE name='Queen' AND duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+220,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+221,1,9,"""SELECT *  FROM Performs, Artist, Track WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+222,1,9,SELECT* FROM Artist NATURAL JOIN Performs NATURAL JOIN Track WHERE Track.duration>300 AND Artist.name='Queen';,1,1,"""Correct."""
+223,1,9,SELECT Track_name FROM Track WHERE Track.duration > 300 AND Artist.name = 'Queen' JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+224,1,9,"""SELECT Track.track_title, Track.duration, Artist.name FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+225,1,9,"""SELECT DISTINCT Track From Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;""",0.8857142857142857,1,""""""
+226,1,9,"""SELECT Track.*, Performs.*, Artist.* FROM Track  NATURAL JOIN Performs  NATURAL JOIN Artist WHERE Artist.name='Queen' AND Track.duration>300;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+227,1,9,"""SELECT Track.track_id FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+228,1,9,"""SELECT Track.title FROM Track, Performs, Artist WHERE Track.duration>300  AND Track.track_id = Performs.track_id AND Artist.name = 'Queen'""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+229,1,9,SELECT * FROM (SELECT *       FROM Track       WHERE duration > 300) AS t JOIN Performs p ON t.track_id = p.track_id JOIN (SELECT *       FROM Artist       WHERE name = 'Queen') AS a ON p.artist_id = a.artist_id;,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Join Tables: Mismatch in join tables for join 0.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+230,1,9,SELECT t.* FROM Track t JOIN Performs p ON t.track_id = p.track_id JOIN Artist a ON p.artist_id = a.artist_id WHERE t.duration > 300 AND a.name = 'Queen';,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+231,1,9,"""SELECT * FROM Track, Performs, Artist WHERE duration > 300 AND Performs.track_id = Track.track_id AND Performs.artist_id = Artist.artist_id AND name = 'Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+232,1,9,SELECT Track.* FROM Track JOIN Performs JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+233,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Performs.artist_id=Artist.artist_id AND duration>300 AND name='Queen';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+234,1,9,SELECT * FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE name='Queen' AND duration>300;,1,1,"""Correct."""
+236,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+237,1,9,"""SELECT Track.* FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+238,1,9,SELECT track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+239,1,9,SELECT *  FROM Track  JOIN Performs ON Track.track_id = Performs.track_id  JOIN Artist ON Performs.artist_id = Artist.artist_id  WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+240,1,9,SELECT DISTINCT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300  AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+241,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name='Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+242,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist on Artist.artist_id = Performs.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+243,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 And Artist.name ='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+244,1,9,SELECT Track.track_title FROM Track  JOIN Performs ON Track.track_id = Performs.track_id  JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+245,1,9,SELECT * FROM (SELECT * FROM Track WHERE duration > 300) NATURAL JOIN Performs NATURAL JOIN (SELECT * FROM Artist WHERE name = Queen);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+246,1,9,"""SELECT * FROM (SELECT * FROM Track WHERE duration>300), Performs, (SELECT * FROM Artist WHERE name='Queen');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+247,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+248,1,9,SELECT * FROM Track JOIN Performs JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+249,1,9,"""SELECT *  FROM Track,Performs,Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen' AND Track.duration > 300;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+250,1,9,SELECT DISTINCT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+251,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Track.duration > 300 AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+252,1,9,"""SELECT Track.track_title FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+253,1,9,SELECT DISTINCT * FROM TRACK JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name='Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+254,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.name = 'Queen' AND Track.duration > 300 AND Performs.artist_id = Artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+255,1,9,SELECT * FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+256,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration > 300 AND Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND Artist.name = 'Queen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+257,1,9,SELECT Track.* FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+258,1,9,"""Select DISTINCT * FROM Track t, Performs p, Artist a  WHERE a.name = 'Queen' AND t.duration > 300;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+259,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id AND duration>300 AND name='Queen';""",1,1,"""Correct."""
+260,1,9,SELECT Track.track_title FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""
+261,1,9,SELECT * FROM Performs INNER JOIN Artist On Performs.artist_id=Artist.artist_id INNER JOIN Track ON Track.track_id=Performs.track_id WHERE Artist.name='Queen' AND duration>300;,1,1,"""Correct."""
+262,1,9,"""SELECT DISTINCT  Track FROM Track, Performs, Artist WHERE Track.duration > 300 AND Artist.name = 'Queen' AND Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id;""",1,1,"""Correct."""
+263,1,9,"""SELECT * FROM Track, Performs, Artist WHERE Track.duration>300 AND Artist.name='Queen' AND Track.track_id = Performs.track_id AND Performs.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+264,1,9,SELECT DISTINCT Track.* FROM Track NATURAL JOIN Performs NATURAL JOIN Artist WHERE Track.duration > 300 AND Artist.name = 'Queen';,1,1,"""Correct."""

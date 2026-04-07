@@ -1,0 +1,1 @@
+﻿"SELECT Name, SUM(Revenue) FROM Fact_Table NATURAL JOIN Customer_DIM NATURAL JOIN Time_DIM WHERE City = 'Nijmegen' AND Year = 2021 GROUP BY Name;"

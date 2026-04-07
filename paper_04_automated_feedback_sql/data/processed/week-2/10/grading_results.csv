@@ -1,0 +1,774 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,10,SELECT Track.track_title FROM Track JOIN (SELECT Track.album_id AS album_id2       FROM Track       WHERE Track.track_title = 'Overpass Graffiti') AS album ON Track.album_id = album.album_id2;,1,1,"""Correct."""
+2,1,10,"""SELECT Track.track_title FROM Track, Track as T1 WHERE T1.track_title = 'Overpass Graffiti' AND Track,album_id = T1.album_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+3,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+4,1,10,"""SELECT Track2.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+5,1,10,"""SELECT track_title  FROM Track, (SELECT DISTINCT album_id  FROM Track WHERE track_title='Overpass Graffiti') AS Track2   WHERE Track.album_id = Track2.album_id;""",1,1,"""Correct."""
+6,1,10,πtrack_title(Track ⨝album_id=album_id2 ρalbum_id2(πalbum_id(σtrack_title='Overpass Graffiti'(Track)))),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+7,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+8,1,10,SELECT track_title FROM Track WHERE album_id=(SELECT album_id FROM Track WHERE track_title='Overpass Graffiti');,1,1,"""Correct."""
+9,1,10,"""SELECT t1.track_title FROM track AS t1, Track AS t2 WHERE t1.album_id = t2.album_id AND t2.track_title = 'Overpass Graffiti' ;""",1,1,"""Correct."""
+10,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (SELECT album_id AS album_id2            FROM Track            WHERE track_title = 'Overpass Graffiti') AS T2 ON T1.album_id = T2.album_id2;,1,1,"""Correct."""
+11,1,10,SELECT Track1.track_title FROM Track AS Track1 JOIN Track AS Track2 ON Track1.album_id = Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+12,1,10,"""SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2) WHERE Track.album_id = Track2.album_id2 AND Track.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+13,1,10,SELECT T1.track_title FROM Track T1 INNER JOIN Track T2  ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+14,1,10,SELECT t1.track_title FROM Track t1 JOIN (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+15,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+16,1,10,SELECT T1.track_title FROM Track AS T1 JOIN Track AS T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+17,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti' AND t1.track_title <> 'Overpass Graffiti';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+18,1,10,SELECT album_id as album_id2 FROM Track WHERE track_title='Overpass Graffiti'   SELECT track_title FROM Track WHERE album_id=album_id2,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+19,1,10,"""SELECT T1.track_title FROM Track T1, Track T2 WHERE T1.album_id = T2.album_id   AND T2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+21,1,10,"""SELECT DISTINCT Track1.track_title  FROM Track Track1, Track Track2  WHERE Track1.album_id = (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti');""",1,1,"""Correct."""
+23,1,10,SELECT T1.track_title FROM Track T1 JOIN  (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' )  AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+24,1,10,SELECT track_title FROM Track WHERE track_title= {    SELECT album_id    FROM Track    WHERE track_title='Overpass Graffiti' };,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+25,1,10,"""SELECT DISTINCT Track.track_title FROM Track AS number(track_id,album_id),Track WHERE Track.album_id=number.album_id AND number.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+26,1,10,SELECT Track.track_title FROM Track WHERE Track.album_id IN ( SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti' );   -- don't know renaming for sure..,1,1,"""Correct."""
+27,1,10,"""SELECT * FROM(SELECT album_id FROM Track WHERE track_title='Overpass Graffiti') AS album_id2 SELECT track_title FROM Track, album_id2 WHERE album_id=album_id2""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+28,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (SELECT album_id       FROM Track       WHERE track_title = 'Overpass Graffiti') AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+29,1,10,SELECT DISTINCT Track.track_title FROM Track WHERE Track.album_id = (SELECT album_id FROM Track where Track.track_title = 'Overpass Graffiti');,1,1,"""Correct."""
+30,1,10,"""select Track.track_title from Track, Track as Track2 where Track.album_id = Track2.album_id and Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+31,1,10,"""SELECT Track1.track_title FROM Track AS Track1, Track AS Track2 WHERE Track1.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+32,1,10,"""Select track_title from (FROM Track, (SElect album_id From (FROM Track Where track_title = 'Overpass Graffiti')) as Track2( album_id2)  WHERE Track.album_id =Track2.album_id2);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+33,1,10,"""SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') WHERE album_id=album_id2; -- I did not figure out how to rename the relation Track. Any advice?""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+34,1,10,SELECT track_title FROM (Track JOIN Album USING (album_id)) WHERE album_id=(SELECT album_id FROM Track WHERE track_title='Overpass Graffiti');,1,1,"""Correct."""
+35,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 Where Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;""",1,1,"""Correct."""
+36,1,10,SELECT DISTINCT t1.track_title FROM Track AS t1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+37,1,10,SELECT track_title FROM Track JOIN (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') ON album_id=album_id2;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+38,1,10,SELECT T1.track_title FROM Track JOIN Track ON album_id = album_id2 WHERE T2.track_title = 'Overpass Graffiti';,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Join Tables: Mismatch in join tables for join 0.
+Join Condition: Mismatch in join condition for join 0.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+39,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+40,1,10,SELECT Track.track_title FROM (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') AS RenamedTrack JOIN Track ON Track.album_id = RenamedTrack.album_id2;  --SELECT Track.track_title FROM Track WHERE Track.album_id = (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti');,1,1,"""Correct."""
+41,1,10,"""SELECT track_title, album_id FROM Track NATURAL JOIN Track AS Track2 (track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id=album_id2 AND track_title='Overpass Graffiti';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+44,1,10,SELECT Track WHERE (album_id = (SELECT album_id WHERE track_title = 'Overpass Graffiti'));,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+45,1,10,SELECT track_title  FROM Track  WHERE album_id = (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti');,1,1,"""Correct."""
+528,1,10,SELECT T1.track_title FROM Track AS T1 JOIN Track AS T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+46,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+47,1,10,SELECT t1.track_title FROM Track t1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+48,1,10,SELECT T1.track_title  FROM Track T1 JOIN Track T2 ON T1.Album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+529,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id;""",1,1,"""Correct."""
+49,1,10,SELECT t2.track_title FROM Track t1 INNER JOIN Track t2 ON t1.album_id = t2.album_id WHERE t1.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+50,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.track_id = Track2.track_id AND Track.track_title = Track2.track_title AND Track.duration = Track2.duration AND Track.popularity = Track2.popularity AND Track.explicit = Track2.explicit AND album_id = album_id2 AND Track.track_title = 'Overpass Graffiti';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+51,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+530,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+52,1,10,SELECT Track.track_title FROM Track WHERE Track.album_id = (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' );,1,1,"""Correct."""
+53,1,10,"""SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+54,1,10,SELECT DISTINCT track_title FROM Track   JOIN (SELECT album_id as album_id2 from Track WHERE track_title='Overpass Graffiti') AS Track2   ON Track.album_id=Track2.album_id2;zs,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+55,1,10,SELECT Track_copy_2.track_title FROM Track AS Track_copy_1 JOIN Track AS Track_copy_2 ON Track_copy_1.album_id = Track_copy_2.album_id WHERE Track_copy_1.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+56,1,10,SELECT a.track_title FROM Track a WHERE a.album_id = ( SELECT b.album_id FROM Track b WHERE b.track_title = 'Overpass Graffiti' );,1,1,"""Correct."""
+57,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti' ;""",1,1,"""Correct."""
+58,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,10,SELECT DISTINCT T1.track_title FROM Track T1 JOIN      (SELECT album_id AS album_id2     FROM Track     WHERE track_title = 'Overpass Graffiti' )  T2 ON T1.album_id = T2.album_id2 WHERE T1.track_title <> 'Overpass Graffiti';,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+60,1,10,"""SELECT T1.track_title FROM Track T1, Track T2 WHERE T1.album_id=T2.album_id AND T2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+531,1,10,"""SELECT """"track_title"""" FROM Track, (SELECT """"album_id"""" AS """"album_id2"""" FROM Track AS Track2 WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+61,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title ='Overpass Graffiti';""",1,1,"""Correct."""
+62,1,10,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+63,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+64,1,10,"""SELECT DISTINCT Track.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE track_title = 'Overpass Graffiti' AND Track.track_id = Track2.track_id AND Track.track_title = Track2.track_title AND Track.duration = Track2.duration AND Track.popularity = Track2.popularity AND Track.explicit = Track2.explicit;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+65,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,10,"""SELECT t1.track_title FROM Track t1, Track t2 WHERE t1.album_id = t2.album_id AND t2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+67,1,10,.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+68,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti' AND Track.track_title <> Track2.track_title;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+69,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+70,1,10,"""select Track.track_title from Track, Track as Track2(track_id, album_id2, track_title, duration, popularity, explicit) where  Track2.track_title = 'Overpass Graffiti' AND album_id = album_id2""",1,1,"""Correct."""
+71,1,10,"""SELECT Track2.track_title  FROM Track,Track AS Track2  WHERE Track.track_title='Overpass Graffiti'  AND Track.album_id = Track2.album_id;""",1,1,"""Correct."""
+72,1,10,SELECT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id = Track2.album_id WHERE Track2.track_title='Overpass Graffiti';,1,1,"""Correct."""
+73,1,10,"""SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id=album_id2 AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+74,1,10,"""SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title='Overpass Graffiti' AND album_id=album_id2;""",1,1,"""Correct."""
+75,1,10,SELECT track_title FROM,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+532,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+76,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti' ;""",1,1,"""Correct."""
+77,1,10,"""SELECT DISTINCT Track.track_title FROM Track, Album, Album AS Album2(album_id2, album_title, total_tracks, year, type) WHERE Album.album_id = Album2.album_id2 AND Track.album_id = Album.album_id AND Track.album_id = (SELECT Album_id FROM Track WHERE Track.track_title =  'Overpass Graffiti');""",1,1,"""Correct."""
+78,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 on t1.album_id = t2.album_id WHERE t2.track.title = 'Overpass Graffiti':,0.8571428571428571,1,"""### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select t1.track_title from track t1 join track t2 on t1.album_id = t2.album_id where t2.track.title = 'overpass graffiti';' make it parseable.
+
+"""
+79,1,10,"""SELECT Track.track_title   FROM Track, Track AS Track2(track_id, album_id2,track_title,duration,popularity,explicit)   WHERE Track2.track_title='Overpass Graffiti'   AND album_id2=album_id;""",1,1,"""Correct."""
+80,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND album_id = album_id2;""",1,1,"""Correct."""
+81,1,10,SELECT DISTINCT t1.track_title FROM Track AS t1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+83,1,10,SELECT Track.track_title FROM Track JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS filtered_album ON Track.album_id = filtered_album.album_id;,1,1,"""Correct."""
+84,1,10,SELECT track_title FROM Track WHERE album_id = (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' );,1,1,"""Correct."""
+85,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+86,1,10,SELECT T1.track_title FROM Track AS T1 JOIN Track AS T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+87,1,10,"""SELECT track_title FROM Track, Album WHERE Track.album_id = Album.album_id AND Track.album_id = 'Overpass Graffiti'""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+88,1,10,"""SELECT Track.track_title FROM Track,  Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti' ;""",1,1,"""Correct."""
+90,1,10,"""SELECT track_title    FROM Track, Track as Track2(track_id, album_id2, track_title2, duration, popularity, explicit)    WHERE track_title2='Overpass Graffiti' AND album_id=album_id2;""",1,1,"""Correct."""
+91,1,10,"""SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id=album_id2 AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+92,1,10,SELECT track_title FROM Track WHERE album_id = ( SELECT album_id FROM Album WHERE track_title = 'Overpass Graffiti' ),0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+93,1,10,"""FROM Track AS Track2(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE track_title2 = 'Overpass Graffiti' SELECT album_id2 ; SELECT track_title FROM Track, Track2 WHERE album_id = album_id2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+94,1,10,"""SELECT Track2.track_title FROM Track Track1, Track Track2 WHERE Track1 .album_id = Track2.album_id AND Track1.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+96,1,10,"""SELECT DISTINCT Track2.track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title),Album, Album AS Album2(album_id2) WHERE Album.album_id=Album2.album_id2 AND Track.track_title='Overpass Graffiti' AND Track.album_id = Album.album_id AND Track2.album_id2=Album2.album_id2;""",1,1,"""Correct."""
+98,1,10,"""SELECT DISTINCT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id=album_id2 AND Track2.track_title=""""Overpass Grafitti';""",0.8571428571428571,1,"""### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct track.track_title from track, track as track2(track_id, album_id2, track_title, duration, popularity, explicit) where album_id=album_id2 and track2.track_title='overpass grafitti';' make it parseable.
+
+"""
+100,1,10,SELECT T2.track_title FROM Track AS T1 JOIN Track AS T2 ON T1.album_id = T2.album_id WHERE T1.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+101,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+102,1,10,"""SELECT Track.track_title  FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE (Track.album_id = Track2.album_id2  AND Track2.track_title = 'Overpass Graffiti');""",1,1,"""Correct."""
+103,1,10,SELECT T1.track_title FROM Track T1 JOIN ( SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+104,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+105,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+106,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+107,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title2) WHERE track_title2 = 'Overpass Graffiti' AND album_id = album_id2;""",1,1,"""Correct."""
+108,1,10,"""SELECT Track2.track_title FROM Track AS Track2(track_id2, album_id2, track_title), Track, Album WHERE Track.track_title='Overpass Graffiti' AND Track.album_id=Album.album_id AND Track2.album_id2=Album.album_id;""",1,1,"""Correct."""
+109,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+110,1,10,"""SELECT Track.track_title FROM Track, Track as Track1 WHERE Track.album_id=Track1.album_id AND Track1.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+111,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+112,1,10,"""select Track.track_title from Track, Track as Track2 where Track.album_id = Track2.album_id and Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+113,1,10,SELECT Track.track_title FROM Track JOIN (     SELECT album_id AS album_id2     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS T ON Track.album_id = T.album_id2;,1,1,"""Correct."""
+114,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+115,1,10,"""select track_title from Track, Track where""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+116,1,10,FROM Track SELECT track_title WHERE,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+117,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+118,1,10,SELECT T1.track_title FROM Track AS T1 JOIN Track AS T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+119,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+120,1,10,"""SELECT track_title FROM Track, Track AS Track2 WHERE Track2.track_title='Overpass Graffiti' AND Track.album_id=Track2.album_id""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+121,1,10,"""SELECT Track.track_title FROM Track, Track AS album_id2 WHERE Track.album_id=album_id2.album_id AND album_id2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+122,1,10,SELECT Track.track_title  FROM Track  JOIN (     SELECT DISTINCT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS album_id2 ON Track.album_id = album_id2.album_id;,1,1,"""Correct."""
+123,1,10,"""SELECT Track.track_title  FROM Track, Album, Album AS Album2(album_id, album_title, total_tracks, year, type) WHERE Album.album_id = Album2.album_id AND Track.album_id = Album.album_id AND Track.track_title = 'Overpass Graffiti';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+124,1,10,SELECT t.track_title FROM Track t JOIN Track tt ON t.album_id = tt.album_id WHERE tt.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+125,1,10,"""SELECT Track.track_title FROM (Track JOIN Track AS Trackers(track_id, album_id2) ON Track.album_id= Trackers.album_id2 AND Trackers.track_title='Overpass Graffiti');""",1,1,"""Correct."""
+126,1,10,SELECT DISTINCT Track.track_title FROM Track JOIN Track AS Track2  ON Track.album_id = Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+127,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+128,1,10,SELECT T.track_title FROM Track AS T JOIN Track AS T2 ON T.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+129,1,10,SELECT T1.track_title   FROM Track T1   JOIN (       SELECT album_id       FROM Track       WHERE track_title = 'Overpass Graffiti') T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+130,1,10,SELECT DISTINCT t1.track_title FROM Track AS t1 JOIN (     SELECT album_id     FROM Track AS t2     WHERE t2.track_title = 'Overpass Graffiti' ) AS t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+533,1,10,"""SELECT track, title FROM Track WHERE album_id=album_id2;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+132,1,10,-- Select the track titles of tracks on the same album SELECT t1.track_title  -- Select the track titles of tracks on the same album   -- From the Track table (renamed as t1) FROM Track AS t1     -- Join the Track table again (renamed as t2) on the album_id JOIN Track AS t2 ON t1.album_id = t2.album_id     -- Filter the tracks where one of them is 'Overpass Graffiti' WHERE t2.track_title = 'Overpass Graffiti';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+133,1,10,SELECT Track.album_id FROM Track AS Track(album_id2) WHERE Track.track_title='Overpass Graffiti' AND Track.album_id=Track.album_id2;,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+134,1,10,?,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+135,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+136,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+137,1,10,"""SELECT T1.track_title FROM Track T1, Track T2 WHERE T1.album_id = T2.album_id AND T2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+138,1,10,SELECT Track.track_title FROM Track JOIN Track AS TrackOverpass ON Track.album_id = TrackOverpass.album_id WHERE TrackOverpass.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+139,1,10,"""SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id = album_id2 AND Track.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+140,1,10,SELECT DISTINCT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id = Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+141,1,10,SELECT track1.track_title FROM Track track1 JOIN Track track2 ON track1.album_id = track2.album_id WHERE track2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+142,1,10,SELECT T.track_title FROM Track T JOIN (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') AS FilteredTrack ON T.album_id = FilteredTrack.album_id2;,1,1,"""Correct."""
+143,1,10,"""SELECT t1.track_title FROM track AS t1, Track AS t2 WHERE t1.album_id = t2.album_id  AND t2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+144,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Grafitti'""",0.8857142857142857,1,""""""
+145,1,10,"""SELECT Track2.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+147,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti'""",1,1,"""Correct."""
+148,1,10,"""SELECT DISTINCT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track2.album_id = Track.album_id;""",1,1,"""Correct."""
+149,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,10,"""SELECT track_title FROM Track, Track AS Track2 (track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND  album_id2 = album_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+151,1,10,SELECT T1.track_title FROM Track T1 WHERE T2.track_title = 'Overpass Graffiti';   ??????? I am confused by the question,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,10,SELECT T.track_title FROM Track T JOIN Track T2 ON T.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+153,1,10,SELECT DISTINCT Track1.track_title FROM Track AS Track1 JOIN (SELECT album_id AS album_id2       FROM Track       WHERE track_title = 'Overpass Graffiti') AS Track2 ON Track1.album_id = Track2.album_id2;,1,1,"""Correct."""
+154,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+155,1,10,SELECT track_title FROM Track t1 JOIN (SELECT album_id FROM track WHERE track_title = 'Overpass Graffiti') t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+156,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti'""",1,1,"""Correct."""
+157,1,10,"""SELECT Track.track_title FROM Track T1, Track T2  WHERE T1.album_id=T2.album_id AND T1.track_title='Overpass Graffiti';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+158,1,10,SELECT DISTINCT Track.track_title FROM Track INNER JOIN ( SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') AS AlbumTracks ON Track.album_id=AlbumTracks.album_id2;,1,1,"""Correct."""
+159,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+160,1,10,"""SELECT track_title  FROM Track,  (SELECT DISTINCT Album_id  FROM Track  WHERE track_title='Overpass Graffiti') AS Track2  WHERE track.album_id=Track2.album_id;""",1,1,"""Correct."""
+161,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+162,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND album_id = album_id2;""",1,1,"""Correct."""
+163,1,10,SELECT DISTINCT t1.track_title FROM Track t1 JOIN ( SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti' ) t2 ON t1.album_id = t2.album_id2,1,1,"""Correct."""
+164,1,10,"""SELECT Track.track_title From Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+165,1,10,"""SELECT track_title FROM Track, (SELECT album_id FROM Track WHERE Track.track_title = 'Overpass Graffiti') AS album_id2 WHERE Track.album_id = album_id2.album_id;""",1,1,"""Correct."""
+166,1,10,"""SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE  Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+167,1,10,SELECT DISTINCT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id = Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+168,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+169,1,10,SELECT Track.track_title FROM Track JOIN ( SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') AS SameAlbum ON Track.album_id = SameAlbum.album_id2;,1,1,"""Correct."""
+170,1,10,"""SELECT track_title FROM Track , (SELECT album_id FROM Track WHERE track_title='Overpass Graffiti') AS album_id2 WHERE Track.album_id=album_id2.album_id;""",1,1,"""Correct."""
+534,1,10,SELECT DISTINCT Track.track_title FROM Track JOIN     (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS Alt ON Track.album_id = Alt.album_id;,1,1,"""Correct."""
+171,1,10,"""SELECT B.track_title FROM Track A, Track B WHERE A.album_id=B.album_id AND A.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+172,1,10,SELECT Track.track_title FROM Track WHERE Track.album_id = { SELECT Track.album_id  FROM Track WHERE Track.track_title = 'Overpass Graffiti';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+535,1,10,SELECT DISTINCT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+174,1,10,"""SELECT Track2.track_title FROM Track AS Track1, Track AS Track2 WHERE Track1.album_id = Track2.album_id   AND Track1.track_title = 'Overpass Graffiti'   AND Track1.track_id != Track2.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+175,1,10,SELECT T1.track_title FROM Track AS T1 JOIN Track AS T2 ON T1.album_id = T2.album_id  WHERE T2.track_title = 'Overpass Graffiti' AND T1.track_title != 'Overpass Graffiti';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+176,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+177,1,10,SELECT track_title FROM Track WHERE album_id = (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' );,1,1,"""Correct."""
+179,1,10,"""select table1.track_title from Track table1, (select album_id as album_id2 from Track where track_title = 'Overpass Graffiti') as table2 where table1.album_id = table2.album_id2;""",1,1,"""Correct."""
+181,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+183,1,10,"""SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id2, track_title) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+184,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+185,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;""",1,1,"""Correct."""
+186,1,10,"""SELECT Track.track_title FROM Track,         (SELECT album_id AS album_id2         FROM Track         WHERE track_title = 'Overpass Graffiti') AS Track2   WHERE album_id = album_id2;""",1,1,"""Correct."""
+187,1,10,SELECT Track_1.track_title FROM Track AS Track_1 JOIN Track AS Track_2 ON Track_1.album_id = Track_2.album_id WHERE Track_2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+188,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+189,1,10,SELECT Track.track_title FROM Track JOIN (SELECT DISTINCT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') AS AlbumAlias ON Track.album_id = AlbumAlias.album_id2;,1,1,"""Correct."""
+190,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti'""",1,1,"""Correct."""
+191,1,10,SELECT t2.track_title FROM Track track1 JOIN Track track2 ON track1.album_id = track2.album_id WHERE track1.track_title = 'Overpass Graffiti';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+192,1,10,SELECT Track.track_title FROM Track JOIN (SELECT Track.album_id AS album_id2 FROM Track WHERE Track.track_title = 'Overpass Graffiti') AS og_album ON Track.album_id = og_album.album_id2;,1,1,"""Correct."""
+193,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id, track_title, duration, popularity, explicit) WHERE Track2.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id;""",1,1,"""Correct."""
+194,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+195,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE (Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti');""",1,1,"""Correct."""
+196,1,10,SELECT A2.track_title FROM Track AS A1 JOIN Track AS A2 ON A1.album_id = A2.album_id WHERE A1.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+197,1,10,SELECT DISTINCT t1.track_title FROM Track t1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+198,1,10,SELECT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id=Track2.album_id WHERE Track2.track_title='Overpass Graffiti';,1,1,"""Correct."""
+199,1,10,"""SELECT t1.track_title FROM Track AS t1, Track AS t2 WHERE t1.album_id=t2.album_id AND t2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+200,1,10,SELECT t1.track_title FROM Track AS t1 JOIN Track AS t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+201,1,10,SELECT track_title  FROM Track  JOIN ( SELECT album_id AS album_id2  FROM Track WHERE track_title = 'Overpass Graffiti') AS new ON Track.album_id = new.album_id2;,1,1,"""Correct."""
+202,1,10,SELECT * FROM Track AS t1 WHERE t1.album_id =           (SELECT t2.album_id           FROM Track AS t2           WHERE t2.track_title = 'Overpass Graffiti'),0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+203,1,10,"""SELECT t1.track_title FROM Track t1, Track t2 WHERE t1.album_id=t2.album_id AND t2.track_title='Overpass Graffiti'""",1,1,"""Correct."""
+204,1,10,"""SELECT Track.track_title FROM Track, Track Track2 WHERE Track.album_id = Track2.album_id AND Track2. track_title = 'Overpass Graffiti';   -- Alternative: -- SELECT Track.track_title FROM Track JOIN ( SELECT album_id FROM Track WHERE track_title='Overpass Graffiti') AS Subquery ON Track.album_id=Subquery.album_id;""",1,1,"""Correct."""
+206,1,10,SELECT track_title FROM Track WHERE album_id = (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti');,1,1,"""Correct."""
+207,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+208,1,10,"""SELECT Track1.track_title FROM Track AS Track1, Track AS Track2 WHERE Track1.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+209,1,10,SELECT track_title FROM Track JOIN Track ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+536,1,10,"""SELECT track_title FROM Track , (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+210,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+211,1,10,?,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+212,1,10,SELECT T.track_title FROM Track T JOIN Track T2 ON T.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+213,1,10,"""SELECT Track.track_title, Track2.Album_id FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id     AND Track2.track_title = 'Overpass Graffiti';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+214,1,10,"""SELECT track_title FROM Track, WHERE album_id = album;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+215,1,10,SELECT t.track_title FROM Track t JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS subquery ON t.album_id = subquery.album_id;,1,1,"""Correct."""
+216,1,10,SELECT Track.track_title FROM Track INNER JOIN (   SELECT album_id   FROM Track   WHERE track_title = 'Overpass Graffiti' ) AS album_id2 ON Track.album_id = album_id2.album_id;,1,1,"""Correct."""
+217,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+218,1,10,SELECT track_title FROM Track JOIN ( SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti' ) ON album_id = album_id2;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+219,1,10,"""SELECT track_title FROM Track,  Track WHERE track_title='Overpass Graffiti' AS Track2(album_id2) WHERE album_id=album_id2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+220,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+221,1,10,"""SELECT track_title FROM Track, Album as Album_id2(track_title='Overpass Graffiti) WHERE Track.album_id = Album_id2.album_id""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+222,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id=Track2.album_id AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+223,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+224,1,10,SELECT t1.track_title FROM Track t1 JOIN (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+225,1,10,"""SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;""",1,1,"""Correct."""
+226,1,10,SELECT Track.track_title FROM Track JOIN Track AS Track2  ON Track.album_id = Track2.album_id; WHERE Track2.track_title = 'Overpass Graffiti';,0.8571428571428571,1,"""### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track.track_title from track join track as track2 on track.album_id = track2.album_id where track2.track_title = 'overpass graffiti';' make it parseable.
+
+"""
+227,1,10,"""SELECT Track_title FROM Track WHERE SELECT (SELECT album_id FROM Track WHERE track_title='Overpass Graffiti') AS album_id2 AND (FROM Track, album_id2 WHERE Track.album_id = album_id);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+228,1,10,"""SELECT Track_title FROM Track Track1, Track2 WHERE Track1.album_id =  Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+229,1,10,SELECT t.track_title FROM Track t JOIN (SELECT album_id AS album_id2       FROM Track       WHERE track_title = 'Overpass Graffiti') AS subquery ON t.album_id = subquery.album_id2;,1,1,"""Correct."""
+230,1,10,SELECT t2.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t1.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+231,1,10,SELECT Track.track_title FROM Track WHERE Track.album_id = (SELECT Track2.album_id FROM Track as Track2 WHERE Track2.track_title='Overpass Graffiti');,1,1,"""Correct."""
+232,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+233,1,10,SELECT track_title FROM Track WHERE album_id= {    SELECT album_id    FROM Track    WHERE track_title='Overpass Graffiti' };,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+234,1,10,SELECT track_title FROM Track JOIN (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') ON album_id=album_id2;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+236,1,10,"""SELECT Track.track_title FROM Track, Track as Track2 WHERE Track2.track_title = 'Overpass Graffiti' AND Track2.album_id = Track.album_id;""",1,1,"""Correct."""
+237,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+238,1,10,SELECT T1.track_title FROM Track AS T1 JOIN ( SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti' )  AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+239,1,10,SELECT New.track_title  FROM Track AS New2  JOIN Track AS New ON New2.album_id = New.album_id  WHERE New2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+240,1,10,SELECT DISTINCT t1.track_title FROM Track t1 JOIN (     SELECT album_id     FROM Track     WHERE track_title = 'Overpass Graffiti' ) t2 ON t1.album_id = t2.album_id;,1,1,"""Correct."""
+241,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE album_id=album_id2 AND Track2.track_title='Overpass Graffiti';""",1,1,"""Correct."""
+242,1,10,"""SELECT Track.track_title  FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+243,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+244,1,10,SELECT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+245,1,10,SELECT track_title FROM (TRACK JOIN (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti') ON album_id = album_id2);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+246,1,10,"""SELECT track_title FROM Track, (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+247,1,10,SELECT t1.track_title FROM Track AS t1 JOIN Track AS t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+248,1,10,"""SELECT Track.track_title FROM Track, Track as Track2  WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+249,1,10,SELECT track_title FROM Track WHERE album_id = (SELECT album_id AS album_id2 FROM Track WHERE track_title = 'Overpass Graffiti');,1,1,"""Correct."""
+250,1,10,SELECT Track.track_title FROM Track JOIN Track AS Track2 ON Track.album_id = Track2.album_id WHERE Track2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+251,1,10,"""SELECT T1.track_title FROM Track T1, Track T2 WHERE T1.album_id = T2.album_id AND T2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+252,1,10,"""SELECT Track.track_title FROM Track, Track AS Track2 WHERE Track.album_id = Track2.album_id AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+253,1,10,"""SELECT Track.track_title FROM Track, Track as Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+254,1,10,"""SELECT Track.track_title FROM Track, Track AS t2 WHERE Track.album_id = t2.album_id AND t2.track_title = 'Overpass Graffiti';""",1,1,"""Correct."""
+255,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+256,1,10,"""SELECT track_title FROM Track, Track AS Track2(track_id, album_id2, track_title2, duration, popularity, explicit) WHERE Track.album_id = Track2.album_id2 AND Track2.track_title2 = 'Overpass Graffiti';""",1,1,"""Correct."""
+257,1,10,SELECT t1.track_title FROM Track t1 JOIN Track t2 ON t1.album_id = t2.album_id WHERE t2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""
+258,1,10,"""Select DISTINCT t.track_title	  FROM Track t, Track AS Track2(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE Track2.track_title2 = 'Overpass Graffiti' AND Track2.album_id2 = t.album_id;""",1,1,"""Correct."""
+259,1,10,"""SELECT track_title FROM Track,  (SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti') WHERE album_id=album_id2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+260,1,10,SELECT T1.track_title FROM Track AS T1 JOIN (SELECT album_id FROM Track WHERE track_title = 'Overpass Graffiti') AS T2 ON T1.album_id = T2.album_id;,1,1,"""Correct."""
+261,1,10,SELECT track_title FROM Track WHERE album_id=(SELECT album_id AS album_id2 FROM Track WHERE track_title='Overpass Graffiti');,1,1,"""Correct."""
+262,1,10,"""SELECT Track2.track_title FROM Track, Track AS Track2(track_id, album_id2, track_title, duration, popularity, explicit) WHERE Track.track_title = 'Overpass Graffiti' AND Track.album_id = Track2.album_id2;""",1,1,"""Correct."""
+263,1,10,"""SELECT track_title FROM Track, Track AS Track2(track_id2, album_id2, track_title2, duration2, popularity2, explicit2) WHERE Track.album_id=Track2.album_id2 AND Track2.track_title2='Overpass Graffiti';""",1,1,"""Correct."""
+264,1,10,SELECT DISTINCT T1.track_title FROM Track T1 JOIN Track T2 ON T1.album_id = T2.album_id WHERE T2.track_title = 'Overpass Graffiti';,1,1,"""Correct."""

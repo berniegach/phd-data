@@ -1,0 +1,1 @@
+﻿CREATE ASSERTION library_size CHECK ( 1000000000 = (SELECT SUM(weight) FROM Copy) )

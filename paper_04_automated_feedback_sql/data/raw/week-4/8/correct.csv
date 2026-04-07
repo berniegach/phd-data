@@ -1,0 +1,1 @@
+﻿"SELECT S2.* FROM Scientist S1, Scientist S2, Teaches T WHERE S1.id = T.advisor AND S2.id = T.student AND S1.name = 'Desiderius Erasmus';"

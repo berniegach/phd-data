@@ -1,0 +1,1 @@
+﻿"SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;"

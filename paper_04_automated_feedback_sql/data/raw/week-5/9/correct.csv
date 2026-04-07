@@ -1,0 +1,1 @@
+﻿CREATE ASSERTION bookcase_size CHECK (1000000  ALL (SELECT SUM(weight) FROM Copy GROUP BY bookcase));

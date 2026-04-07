@@ -1,0 +1,988 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+2,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+4,1,10,"""WITH RECURSIVE Ancestors(advisor,student) AS ( SELECT advisor, student FROM Teaches UNION SELECT T.advisor,  A.student FROM Teaches T, Ancestors A Where T.student = A.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+5,1,10,"""WHITE RECURSIVE Ancestors(advisors, student) AS ( SELECT advisor, student FROM Teacher  UNION SELECT T.advisor , A.student FROM Teaches T, Ancestors A Where T.student=A.advisor) SELECT * FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+7,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+8,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT advisor, student FROM Teaches UNION  SELECT A.advisor, T.student FROM Ancestors A,  Teaches T WHERE A.student = T.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+9,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION  SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+10,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+11,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+12,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+13,1,10,"""WITH RECURSIVE Ancestors AS  (     SELECT T.advisor, T.student     FROM Teaches T     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+14,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+15,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base case: direct advisor-student relationships     SELECT          advisor,          student     FROM          Teaches     UNION     -- Recursive case: find ancestors by linking to the base case     SELECT          a.advisor,          t.student     FROM          Ancestors AS a     JOIN          Teaches AS t ON a.student = t.advisor ) SELECT      advisor,      student FROM      Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+16,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS ( SELECT advisor, student FROM Teaches T UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+17,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (       SELECT advisor, student       FROM Teaches       UNION       SELECT A.advisor, T.student       FROM Ancestors A       JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+18,1,10,"""WITH RECURSIVE Parent(name,id) AS( SELECT A.name, S.id FROM Scientist S, Scientist A, Teaches T WHERE S.id=T.student AND A.id=T.advisor UNION SELECT Parent.name, Parent.id FROM Parent, Scientist G, Teaches D WHERE Parent.id=D.student AND G.id=D.advisor ) SELECT DISTINCT Scientist.name, Parent.name FROM Scientist, Parent, Teaches WHERE (Parent.id=Scientist.id) ;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""",""""advisor"""",""""student"""",""""t"""".""""advisor"""".
+Extra columns: """"a"""".""""name"""",""""parent"""".""""id"""",""""parent"""".""""name"""",""""parent"""".""""name"""",""""s"""".""""id"""",""""scientist"""".""""name"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"parent"""", """"scientist"""", """"teaches"""".
+
+WHERE clause: Operands mismatch in condition '""""t"""".""""student"""" """"="""" """"a"""".""""advisor""""'.
+Expected: '""""t"""".""""student""""' and '""""a"""".""""advisor""""'.
+Found: '""""parent"""".""""id""""' and '""""scientist"""".""""id""""'.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: ,""""a"""".""""student"""",""""advisor"""",""""student"""",""""t"""".""""advisor"""" to your SELECT clause.
+- Remove the extra columns: """"a"""".""""name"""",""""parent"""".""""id"""",""""parent"""".""""name"""",""""parent"""".""""name"""",""""s"""".""""id"""",""""scientist"""".""""name"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+19,1,10,"""WITH RECURSIVE Ancestors(advisor,student) AS(    SELECT T.advisor, T.student    FROM Teaches T     UNION    SELECT T.advisor, A.student    FROM Ancestors A, Teaches T    WHERE A.advisor = T.student    AND NOT T.advisor IS NULL ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+20,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+21,1,10,"""WITH RECURSIVE Ancestor AS  ( SELECT advisor, student  FROM Teaches  UNION  SELECT A.advisor, T.student  FROM Ancestor A, Teaches T  WHERE A.student = T.advisor AND NOT T.advisor IS NULL )  SELECT advisor, student FROM Ancestor;""",1,1,"""Correct."""
+24,1,10,"""WITH RECURSIVE Ancestor AS ( SELECT t.advisor, t.student FROM Teaches t UNION SELECT a.advisor, t.student FROM Ancestor a JOIN Teaches t  ON a.student = t.advisor) SELECT advisor, student FROM Ancestor;""",1,1,"""Correct."""
+25,1,10,"""WITH RECURSIVE ancestors(advisor,student) AS  ( SELECT T.student as student, T.advisor as advisor   --Generates initial (advisor,student) pairs FROM Teaches T UNION SELECT T.advisor as advisor, A.student as student  --Should generate the ancestors of each advisor, but seems to generate too much... FROM Teaches T,ancestors A WHERE A.advisor=T.student ) SELECT * FROM ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+26,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT T.advisor, A.student     FROM Teaches T     JOIN Ancestors A ON T.student = A.advisor ) SELECT advisor, student FROM Ancestors;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: .
+Extra columns: """"advisor"""",""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns:  to your SELECT clause.
+- Remove the extra columns: """"advisor"""",""""student"""" from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+27,1,10,"""WITH RECURSIVE ancestors(id) AS ( SELECT advisor AS xd FROM Teaches UNION SELECT advisor FROM ancestors, Teaches WHERE ancestors.id = Teaches.student ) SELECT * FROM ancestors;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"a"""".""""advisor"""",""""student"""",""""student"""",""""t"""".""""student"""".
+Extra columns: .
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"a"""".""""advisor"""",""""student"""",""""student"""",""""t"""".""""student"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+- Remove the WHERE clause if it's not required.
+
+"""
+28,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base case: Direct advisor-student relationships     SELECT advisor, student     FROM Teaches     UNION ALL     -- Recursive case: Find indirect advisor-student relationships (ancestor-descendant)     SELECT t1.advisor, t2.student     FROM Teaches t1     JOIN Ancestors t2 ON t1.student = t2.advisor ) SELECT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+29,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT T.advisor, T.student     FROM Teaches T     UNION     SELECT T.advisor, A.student     FROM Teaches T     JOIN Ancestors A ON T.student = A.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+30,1,10,"""with recursive ancestordescendant as ( select advisor, student from Teaches union select T.advisor, AD.student from Teaches T, ancestordescendant AD where T.student = AD.advisor ) select advisor student from ancestordescendant;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: ,""""a"""".""""stid"""".
+Extra columns: """"ad"""".""""student"""",""""advisor"""".
+
+WHERE clause: Operator mismatch: Expected '""""==""""', but found '""""=""""'.
+
+
+Next steps:
+- Add the missing columns: ,""""a"""".""""stid"""" to your SELECT clause.
+- Remove the extra columns: """"ad"""".""""student"""",""""advisor"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+31,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+32,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+33,1,10,"""WITH RECURSIVE Pairs(advisor, student) AS ( SELECT * FROM Teaches UNION SELECT DISTINCT Pair.advisor, Teaches.student FROM Pairs, Teaches WHERE Pair.student = Teaches.advisor ) SELECT * FROM Pairs;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"advisor"""",""""p"""".""""advisor"""",""""student"""",""""t"""".""""student"""".
+Extra columns: ,""""pair"""".""""advisor"""",""""teaches"""".""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: """"advisor"""",""""p"""".""""advisor"""",""""student"""",""""t"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: ,""""pair"""".""""advisor"""",""""teaches"""".""""student"""" from your SELECT clause.
+- Remove the WHERE clause if it's not required.
+
+"""
+34,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+35,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+36,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base case: Direct advisor-student relationships     SELECT advisor, student     FROM Teaches     UNION     -- Recursive case: Add indirect ancestors     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+37,1,10,"""WITH RECURSIVE Ancestors AS (SELECT T.advisor, T.student FROM Teaches T UNION SELECT T.advisor, A.student FROM Teaches T, Ancestors A WHERE A.advisor==T.student) SELECT A.advisor, A.student FROM Ancestors A;""",1,1,"""Correct."""
+38,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (   SELECT advisor, student FROM Teaches    UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T On A.student=T.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+39,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base case: direct advisor-student relationship     SELECT advisor, student     FROM Teaches     UNION     -- Recursive case: find ancestors through intermediate advisors     SELECT a.advisor, t.student     FROM Ancestors a     JOIN Teaches t     ON a.student = t.advisor ) SELECT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+40,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT T1.advisor, T2.student     FROM Teaches T1     JOIN Ancestors T2 ON T1.student = T2.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+41,1,10,"""WITH RECURSIVE Grandfather(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT Teaches.advisor, Grandfather.student FROM Grandfather, Teaches WHERE Teaches.student = Grandfather.advisor) SELECT DISTINCT * FROM Grandfather;""",1,1,"""Correct."""
+45,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+46,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+47,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+48,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+529,1,10,"""WITH RECURSIVE Ancestor(child, parent) AS (  SELECT student AS child, advisor AS parent FROM Teaches UNION  SELECT A.child, T.advisor AS parent FROM Ancestor A, Teaches T WHERE A.parent=T.student) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+49,1,10,"""WITH RECURSIVE AdvisorAncestors(id) AS ( SELECT A.advisor AS id FROM Teaches A   UNION   SELECT A.advisor AS id FROM AdvisorAncestors B, Teaches A WHERE B.id = A.student AND NOT A.advisor IS NULL ) SELECT * FROM AdvisorAncestors;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"a"""".""""student"""",""""advisor"""",""""student"""",""""t"""".""""advisor"""".
+Extra columns: """"a"""".""""advisor"""",""""a"""".""""advisor"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"advisorancestors"""".
+
+WHERE clause: Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+Next steps:
+- Add the missing columns: """"a"""".""""student"""",""""advisor"""",""""student"""",""""t"""".""""advisor"""" to your SELECT clause.
+- Remove the extra columns: """"a"""".""""advisor"""",""""a"""".""""advisor"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+50,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT T.advisor, T.student FROM Teaches T UNION SELECT A.advisor, T.student FROM Ancestors A, Teaches T WHERE A.student = T.advisor AND T.student <> A.advisor  ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+52,1,10,"""WITH RECURSIVE AncestorRelation AS (     SELECT advisor, student     FROM Teaches     UNION       SELECT ar.advisor, t.student     FROM AncestorRelation ar     JOIN Teaches t ON ar.student = t.advisor ) SELECT DISTINCT advisor, student FROM AncestorRelation;""",1,1,"""Correct."""
+53,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+54,1,10,"""WITH RECURSIVE Ancestors AS (   SELECT advisor AS ancestor, student AS descendant    FROM Teaches   UNION   SELECT Ancestors.ancestor, Teaches.student   FROM Ancestors JOIN Teaches   ON Ancestors.descendant = Teaches.advisor)   SELECT ancestor, descendant    FROM Ancestors;""",1,1,"""Correct."""
+55,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+57,1,10,"""WITH RECURSIVE Recursive(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT T.advisor, R.student FROM Recursive R, Teaches T WHERE R.advisor = T.student) SELECT * FROM Recursive ;""",1,1,"""Correct."""
+58,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+60,1,10,"""WITH RECURSIVE Ancestry(Ancestor, Descendant) AS ( SELECT T.advisor AS Ancestor, T.student AS Descendant FROM Teaches T UNION SELECT T1.advisor AS Ancestor, A.Descendant AS Descendant FROM Teaches T1, Ancestry A WHERE T1.student = A.Ancestor AND NOT T1.advisor IS NULL ) SELECT * FROM Ancestry;""",1,1,"""Correct."""
+61,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT T.advisor, A.student FROM Teaches T, Ancestor A WHERE T.student = A.advisor) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+63,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A, Teaches T     WHERE A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+65,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT a.advisor, t.student FROM Ancestors a, Teaches t WHERE t. a.student = t.advisor) SELECT advisor, student FROM Ancestors;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+
+"""
+67,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+68,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS ( -- advisor, student pairs from teaches table SELECT advisor, student FROM Teaches   UNION   -- the students of the students -- by joining the current Ancestors table with the teaches table SELECT Ancestors.advisor, Teaches.student FROM Ancestors, Teaches WHERE Ancestors.student = Teaches.advisor)   SELECT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+69,1,10,it was not clear to me what a descendant or ancestor is supposed to be,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+70,1,10,"""WITH RECURSIVE Ancestors(advisor) AS ( select advisor, student from Teaches UNION select p.advisor, s.student from Ancestors s, Teaches p where s.advisor = p.student ) SELECT count(*) FROM Ancestors""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"a"""".""""advisor"""",""""advisor"""",""""student"""",""""t"""".""""student"""".
+Extra columns: """"p"""".""""advisor"""",""""s"""".""""student"""".
+Mismatch in selected functions.
+Extra functions: """"count""""().
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"a"""".""""advisor"""",""""advisor"""",""""student"""",""""t"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"p"""".""""advisor"""",""""s"""".""""student"""" from your SELECT clause.
+- Remove the extra functions: """"count""""() from your SELECT clause.
+- Remove the WHERE clause if it's not required.
+
+"""
+72,1,10,"""WITH RECURSIVE Ancestordescendant(adid, stid) AS  (  SELECT advisor AS adid, student AS stid FROM Teaches T UNION  SELECT T.advisor AS adid, A.stid FROM Ancestordescendant A, Teaches T WHERE A.adid == T.student )  SELECT * FROM Ancestordescendant;""",1,1,"""Correct."""
+73,1,10,"""WITH RECURSIVE ancestry(advisor, student) AS  (SELECT advisor, student FROM Teaches UNION SELECT ancestry.advisor, Teaches.student FROM ancestry, Teaches WHERE ancestry.student = Teaches.advisor ) SELECT advisor, student FROM ancestry;""",1,1,"""Correct."""
+74,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+75,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT DISTINCT         advisor,          student     FROM          Teaches       UNION ALL       SELECT DISTINCT         A.advisor,          T.student     FROM          Ancestors A     JOIN          Teaches T     ON          A.student = T.advisor ) SELECT DISTINCT     advisor,      student FROM      Ancestors;""",1,1,"""Correct."""
+532,1,10,"""with recursive ancestors as ( -- anchor member select advisor, student from teaches union all -- recursive part select t1.advisor, t2.student from Teaches t1, Teaches t2 join Ancestors t on t1.student = t2.advisor where t2.advisor is not null -- this does not work for some reason ) select advisor, student from ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+76,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS (SELECT advisor, student from Teaches UNION SELECT T.advisor, A.student FROM Teaches T, Ancestor A WHERE T.student = A.advisor) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+77,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+78,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base Case: Select the direct advisor-student relationship     SELECT advisor, student     FROM Teaches     UNION ALL     -- Recursive Case: Find advisors of the advisor (i.e., ancestors)     SELECT Teaches1.advisor, Teaches2.student     FROM Teaches Teaches1     JOIN Ancestors Teaches2 ON Teaches1.student = Teaches2.advisor ) -- Final Selection: Select all unique (advisor, student) pairs from the recursive result SELECT DISTINCT Ancestors.advisor, Ancestors.student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+80,1,10,"""WITH RECURSIVE AncestorRelation(advisor, student) AS ( -- Base case: Direct advisor-student relationships SELECT T.advisor, T.student FROM Teaches T UNION -- Recursive case: Find indirect relationships SELECT Recurse.advisor, T.student FROM AncestorRelation Recurse, Teaches T WHERE  Recurse.student = T.advisor ) SELECT DISTINCT advisor, student FROM AncestorRelation;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+81,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+82,1,10,"""SELECT P1.advisor, P3.student FROM""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+84,1,10,"""WITH RECURSIVE Ancestors(advisor,student) AS  (SELECT advisor, student FROM Teaches  UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student= T.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+85,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches       UNION ALL       SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+86,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base case: Select direct advisors for each student     SELECT advisor, student     FROM Teaches     WHERE advisor IS NOT NULL          UNION ALL          -- Recursive case: Find the advisors of the current advisors (i.e., find ancestors)     SELECT T1.advisor, T2.student     FROM Teaches T1     JOIN Ancestors T2 ON T1.student = T2.advisor ) SELECT advisor, student FROM Ancestors ORDER BY advisor, student;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+87,1,10,"""WITH RECURSIVE Ancestors (advi_id, stud_id) AS(   SELECT S.id AS advi_id, T.student AS stud_id FROM Scientist S, Teaches T WHERE S.id = T.advisor   UNION   SELECT A.advi_id, T.student AS stud_id FROM Ancestors A, Teaches T, Scientist S WHERE A.stud_id = T.advisor AND T.student IS NOT NULL ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+88,1,10,"""WITH RECURSIVE Ancestor AS ( SELECT advisor, student FROM Teaches UNION  SELECT A.advisor, T.student FROM AncestorA, Teaches T  WHERE A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: .
+Extra columns: """"advisor"""",""""student"""".
+
+
+Next steps:
+- Add the missing columns:  to your SELECT clause.
+- Remove the extra columns: """"advisor"""",""""student"""" from your SELECT clause.
+
+"""
+89,1,10,"""WITH RECURSIVE Ancestors AS (       SELECT advisor, student     FROM Teaches     UNION       SELECT t1.advisor, t2.student     FROM Teaches t1     JOIN Ancestors a ON t1.student = a.advisor     JOIN Teaches t2 ON a.student = t2.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+
+"""
+90,1,10,"""WITH RECURSIVE StudentAncestors(advisor, student) AS ( SELECT * FROM Teaches UNION SELECT SA.advisor, T.student FROM StudentAncestors SA, Teaches T WHERE SA.student=T.advisor AND NOT T.advisor IS NULL ) SELECT * FROM StudentAncestors;""",1,1,"""Correct."""
+91,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT t1.advisor, t2.student FROM Teaches t1 JOIN Ancestors t2 ON t1.student = t2.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+92,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+93,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS ( SELECT advisor, student FROM Teaches UNION  SELECT T.advisor, A.student FROM Teaches T, Ancestors A WHERE T.student = A.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+94,1,10,"""WITH RECURSIVE ancestor(ad, st) AS ( SELECT T1.advisor AS ad, T1.student AS st FROM Teaches T1 UNION SELECT T2.advisor AS ad, A.st AS st FROM ancestor A, Teaches T2 WHERE T2.student = A.ad AND NOT T2.advisor IS NULL ) SELECT * FROM ancestor;""",1,1,"""Correct."""
+96,1,10,"""WITH RECURSIVE Tree AS ( SELECT advisor, student FROM Teaches UNION  SELECT T.advisor, C.student FROM Tree AS T JOIN  Teaches AS C ON T.student = C.advisor) SELECT (advisor, student) FROM Tree;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""".
+Extra columns: """"c"""".""""student"""".
+Mismatch in selected expressions.
+Extra expressions: (unknown expression).
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"tree"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: ,""""a"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"c"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+98,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches       UNION ALL       SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+100,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+101,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+102,1,10,"""WITH RECURSIVE ancestor(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT Teaches.advisor, ancestor.student FROM ancestor, Teaches WHERE Teaches.student = ancestor.advisor) SELECT * FROM ancestor;""",1,1,"""Correct."""
+103,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+104,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+105,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+106,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS ( SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A, Teaches T WHERE A.student = T.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+107,1,10,"""WITH RECURSIVE Ancestors(student, ancestor) AS ( SELECT student, advisor FROM Teaches t UNION SELECT a.student, t.advisor FROM Teaches t, Ancestors a WHERE t.student = a.ancestor AND t.advisor IS NOT NULL ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+108,1,10,"""WITH RECURSIVE Rec(advisor, student) AS ( 	SELECT advisor, student 	FROM Teaches 	UNION 	SELECT R.advisor, T.student 	FROM Rec R, Teaches T 	WHERE R.student=T.advisor ) SELECT (advisor, student) FROM Rec;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""".
+Extra columns: """"r"""".""""advisor"""",""""t"""".""""student"""".
+Mismatch in selected expressions.
+Extra expressions: (unknown expression).
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"rec"""".
+
+WHERE clause: Operands mismatch in condition '""""t"""".""""student"""" """"="""" """"a"""".""""advisor""""'.
+Expected: '""""t"""".""""student""""' and '""""a"""".""""advisor""""'.
+Found: '""""r"""".""""student""""' and '""""t"""".""""advisor""""'.
+
+
+Next steps:
+- Add the missing columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""" to your SELECT clause.
+- Remove the extra columns: """"r"""".""""advisor"""",""""t"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+109,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT Ancestors.advisor, Teaches.student FROM Ancestors JOIN Teaches ON Ancestors.student = Teaches.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+110,1,10,"""WITH RECURSIVE AH AS ( SELECT advisor, student FROM Teaches WHERE advisor = 'Desiderius Erasmus' UNION ALL SELECT AH.advisor, T.student FROM AH INNER JOIN Teaches T ON AH.student = T.advisor ) SELECT DISTINCT advisor, student FROM AH;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""".
+Extra columns: """"advisor"""",""""ah"""".""""advisor"""",""""student"""",""""t"""".""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"ah"""".
+
+WHERE clause: Operands mismatch in condition '""""t"""".""""student"""" """"="""" """"a"""".""""advisor""""'.
+Expected: '""""t"""".""""student""""' and '""""a"""".""""advisor""""'.
+Found: '""""advisor""""' and ''""""Desiderius Erasmus""""''.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""" to your SELECT clause.
+- Remove the extra columns: """"advisor"""",""""ah"""".""""advisor"""",""""student"""",""""t"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+111,1,10,"""WITH RECURSIVE AncestorDescendant(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT AncestorDescendant.advisor, Teaches.student     FROM AncestorDescendant     JOIN Teaches ON AncestorDescendant.student = Teaches.advisor ) SELECT advisor, student FROM AncestorDescendant;""",1,1,"""Correct."""
+112,1,10,"""with recursive ancestor as (select * from Teaches union select Teaches.advisor, ancestor.student from ancestor, Teaches where ancestor.advisor = Teaches.student) select * from ancestor;""",1,1,"""Correct."""
+113,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT a.advisor, t.student     FROM Ancestors a     JOIN Teaches t     ON a.student = t.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+114,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+115,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+116,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+117,1,10,"""WITH RECURSIVE Descendants(advisor, student) AS ( 	( -- seed --> should be a student of Ancestor (ret Ancestor, student) 		SELECT T.advisor, T.student 		FROM Teaches T 	) 	UNION 	 ( -- recu --> student of a descendant of Ancestor (ret Descendant, student ... I think) 		SELECT D.advisor, T.student 		FROM Descendants D, Teaches T 		WHERE D.student = T.advisor 	) ) SELECT advisor Ancestor, student Descendant FROM Descendants ;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+118,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+119,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+121,1,10,"""WITH RECURSIVE ancestors(advisor) AS ( SELECT T.advisor, T.student FROM Teaches T UNION SELECT T.advisor, A.student FROM ancestors A, Teaches T WHERE A.advisor = T.student AND NOT T.advisor IS NULL) SELECT * FROM ancestors;""",1,1,"""Correct."""
+122,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (    SELECT advisor, student  FROM Teaches  UNION   SELECT A.advisor, T.student  FROM Ancestors A  JOIN Teaches T ON A.student = T.advisor)    SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+123,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+124,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION ALL SELECT Teaches.advisor, Ancestors.student FROM Teaches JOIN Ancestors ON Teaches.student = Ancestors.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+125,1,10,"""WITH RECURSIVE father(advisor, student) AS ( SELECT T.advisor, T.student FROM Teaches AS T UNION SELECT T.advisor, father.student FROM father, Teaches AS T WHERE T.student = father.advisor ) SELECT * FROM father;""",1,1,"""Correct."""
+126,1,10,"""WITH RECURSIVE Descendants(advisor, student) AS (     SELECT advisor, student     FROM Teaches     WHERE advisor != student      UNION     SELECT T1.advisor, T2.student     FROM Teaches T1, Descendants D, Teaches T2     WHERE T1.advisor = D.student ) SELECT advisor, student FROM Descendants;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestors"""".
+Extra tables: """"descendants"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+
+"""
+128,1,10,"""WITH RECURSIVE Ancestry AS (     -- base case: direct advisor-student relationships     SELECT advisor, student     FROM Teaches       UNION ALL       -- recursive case: extend by one generation each time     SELECT a.advisor, t.student     FROM Ancestry a     JOIN Teaches t ON a.student = t.advisor ) SELECT DISTINCT advisor, student FROM Ancestry;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+129,1,10,"""WITH RECURSIVE AncestorDescendant AS (            SELECT advisor, student       FROM Teaches          UNION ALL          SELECT AD.advisor, T.student       FROM AncestorDescendant AD       JOIN Teaches T ON AD.student = T.advisor   )   SELECT DISTINCT advisor, student   FROM AncestorDescendant;""",1,1,"""Correct."""
+130,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT T1.advisor, T2.student     FROM Teaches T1     JOIN Ancestors T2 ON T1.student = T2.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+131,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+533,1,10,.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+133,1,10,"""WITH RECURSIVE Ancestors(advisor,student) AS (SELECT advisor, student FROM Teaches UNION SELECT Ancestors.advisor,Teaches.student FROM Ancestors,Teaches WHERE Ancestors.student=Teaches.advisor) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+134,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+135,1,10,"""WITH RECURSIVE Ancestor (advisor, student) AS (   SELECT advisor, student from Teaches   UNION   SELECT T.advisor, A.student   FROM Teaches T, Ancestor A   WHERE T.student = A.advisor ) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+136,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT Ancestors.advisor, Teaches.student     FROM Ancestors, Teaches     WHERE Ancestors.student = Teaches.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+137,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+138,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT advisor, student FROM Teaches UNION SELECT a.advisor, t.student FROM Ancestors a JOIN Teaches t ON a.student = t.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+139,1,10,"""WITH RECURSIVE Ancestors(a_id, s_id) AS ( SELECT advisor AS a_id, student AS s_id FROM Teaches UNION SELECT t.advisor AS s_id, a.s_id AS a_id FROM Teaches t, Ancestors a WHERE t.student = a.a_id ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+140,1,10,"""WITH RECURSIVE Ancestors(advisor, student, level) AS (SELECT advisor, student,1 AS level FROM Teaches UNION ALL SELECT A.advisor, T.student, A.level + 1 FROM Ancestors A, Teaches t WHERE A.student = T.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+141,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+142,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (SELECT DISTINCT advisor, student FROM Teaches UNION ALL SELECT a.advisor, t.student FROM Ancestors as a, Teaches as t WHERE a.student == t.advisor) SELECT DISTINCT * FROM Ancestors;""",1,1,"""Correct."""
+143,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT t1.advisor, t2.student     FROM Teaches t1     JOIN Ancestors t2 ON t1.advisor = t2.student ) SELECT DISTINCT advisor, student FROM Ancestors;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+
+"""
+144,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS ( SELECT advisor, student from Teaches UNION SELECT T.advisor, A.student FROM Teaches T, Ancestor A WHERE T.student = A.advisor ) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+145,1,10,"""WITH RECURSIVE Ancestor(advisor,student) as( Select advisor, student From Teaches  UNION Select Teaches.advisor, Ancestor.student From Ancestor, Teaches  Where Teaches.student = Ancestor.advisor ) Select * from Ancestor;""",1,1,"""Correct."""
+146,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+147,1,10,"""WITH RECURSIVE Ancestor (advisor, student) AS ( SELECT advisor, student from Teaches UNION SELECT T.advisor, A.student FROM Teaches T, Ancestor A WHERE T.student = A.advisor SELECT * FROM Ancestor;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+148,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT Teaches2.advisor, M.student     FROM Teaches AS Teaches2, Ancestors M     WHERE Teaches2.student= M.advisor ) SELECT *  FROM Ancestors;""",1,1,"""Correct."""
+150,1,10,"""WITH RECURSIVE Ancestors (advisor, student) AS (      SELECT advisor, student      FROM Teaches T0        UNION            SELECT T1.advisor, Ancestors.student      FROM Teaches T1, Ancestors      WHERE T1.student = Ancestors.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+151,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION       SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+153,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+154,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS( SELECT advisor, student FROM Teaches UNION Select Teaches.advisor, Ancestor.student FROM Teaches  JOIN Ancestor ON Teaches.student = Ancestor.advisor ) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+155,1,10,"""WITH RECURSIVE test(ad,stu) AS(SELECT advisor, student FROM Teaches  UNION SELECT T.ad, T2.Student  FROM test T JOIN Teaches T2 ON T.stu = T2.advisor) SELECT * FROM test;""",1,1,"""Correct."""
+156,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches          UNION ALL       SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor) ) SELECT * FROM Ancestors""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'with recursive ancestors as ( select advisor, student from teaches union select a.advisor, t.student from ancestors a join teaches t on a.student = t.advisor ) select * from ancestors;' make it parseable.
+
+"""
+157,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS ( SELECT advisor, student FROM Teaches  UNION  SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T On A.student=T.advisor )  SELECT advisor, student  FROM Ancestors;""",1,1,"""Correct."""
+158,1,10,"""WITH RECURSIVE Ancestors AS (SELECT DISTINCT advisor, student FROM Teaches UNION ALL SELECT DISTINCT A.advisor, T.student FROM Ancestors AS A JOIN Teaches AS T ON A.student = T.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+160,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+161,1,10,"""WITH RECURSIVE AncestorPairs AS (     SELECT DISTINCT          T.advisor AS ancestor,         T.student AS descendant     FROM          Teaches T     UNION ALL     SELECT DISTINCT          AP.ancestor,         T.student     FROM          AncestorPairs AP     JOIN          Teaches T ON AP.descendant = T.advisor ) SELECT DISTINCT      ancestor,     descendant FROM      AncestorPairs;""",1,1,"""Correct."""
+162,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+163,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student FROM Teaches     UNION     SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+164,1,10,"""WITH RECURSIVE Ancestors(child, parent) AS( SELECT T.student AS child, T.advisor AS parent FROM Teaches T UNION  SELECT A.child AS child, T.advisor AS parent FROM Ancestors A, Teaches T WHERE A.parent = T.student AND NOT  T.advisor IS NULL ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+165,1,10,"""WITH RECURSIVE ancestor (advisor, student) AS  ( SELECT advisor, student FROM Teaches UNION ALL SELECT a.advisor, t.student FROM ancestor a, Teaches t WHERE a.student = t.advisor ) SELECT DISTINCT * FROM ancestor;""",1,1,"""Correct."""
+166,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+167,1,10,"""WITH RECURSIVE Ancestors(advisor, student, level) AS (SELECT advisor, student, 1 AS level FROM Teaches UNION ALL SELECT A.advisor, T.student, A.level + 1 FROM Ancestors A, Teaches T WHERE A.student = T.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+168,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION ALL SELECT teaches.advisor, t2.student FROM Teaches  JOIN Ancestors t2 ON teaches.student = t2.advisor WHERE teaches.advisor != t2.student  ) SELECT DISTINCT advisor, student FROM Ancestors WHERE advisor != student;""",1,1,"""Correct."""
+169,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT  advisor AS ancestor, student AS descendant FROM Teaches UNION SELECT  a.ancestor AS ancestor, t.student AS descendant FROM Ancestors a, Teaches t WHERE a.descendant = t.advisor AND NOT a.ancestor IS NULL ) SELECT ancestor, descendant FROM Ancestors;""",1,1,"""Correct."""
+170,1,10,"""WITH RECURSIVE Ancestor(advisor,student) AS ( SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestor A, Teaches T WHERE A.student=T.advisor ) SELECT DISTINCT * FROM Ancestor;""",1,1,"""Correct."""
+171,1,10,"""WITH RECURSIVE ChildOf (student, advisor) AS       (                  SELECT *                  FROM Teaches                  UNION                  SELECT DISTINCT T.advisor, C.student                  FROM Teaches T, ChildOf C                  WHERE C.student = T.advisor OR C.advisor = T.student                ) SELECT * FROM ChildOf;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"a"""".""""student"""",""""advisor"""",""""student"""".
+Extra columns: ,""""c"""".""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"childof"""".
+
+WHERE clause: Condition type mismatch: Expected SIMPLE, but found OR.
+
+
+Next steps:
+- Add the missing columns: """"a"""".""""student"""",""""advisor"""",""""student"""" to your SELECT clause.
+- Remove the extra columns: ,""""c"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+172,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT P.advisor, P.student FROM Teaches P   UNION ALL   SELECT M.advisor, P.student FROM Ancestors M JOIN Teaches P ON M.student = P.advisor   ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+173,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+535,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     -- Recursive case:     SELECT a.advisor, t.student     FROM Ancestors a     JOIN Teaches t ON a.student = t.advisor ) SELECT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+174,1,10,"""WITH RECURSIVE Descendant AS  ( SELECT T1.advisor, T1.student   FROM Teaches T1 UNION  SELECT M.advisor, T2.student FROM Descendant M, Teaches T2 WHERE M.student = T2.advisor ) SELECT  * FROM Descendant;""",1,1,"""Correct."""
+175,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+176,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT a.advisor, t.student     FROM Ancestors a, Teaches t     WHERE a.student = t.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+177,1,10,"""D WITH RECURSIVE Ancestors AS ( ┬╖     SELECT advisor, student ┬╖     FROM Teaches ┬╖     UNION ALL ┬╖     SELECT A.advisor, T.student ┬╖     FROM Ancestors A ┬╖     JOIN Teaches T ON A.student = T.advisor ┬╖ ) ┬╖ SELECT DISTINCT advisor, student ┬╖ FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+179,1,10,"""with recursive Ancestor(Advisor,student) as( select T1.advisor,T1.student from Teaches T1  union  select T2.advisor,T3.student from Teaches T2, Ancestor T3 where T2.student = T3.advisor)  Select * from Ancestor;""",1,1,"""Correct."""
+181,1,10,"""WITH RECURSIVE Ancestors AS  (SELECT advisor AS ancestor, student AS descendant   FROM Teaches UNION  SELECT Ancestors.ancestor, Teaches.student  FROM Ancestors JOIN Teaches  ON Ancestors.descendant = Teaches.advisor)  SELECT ancestor, descendant   FROM Ancestors;""",1,1,"""Correct."""
+183,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A, Teaches T     WHERE A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+184,1,10,"""WITH RECURSIVE Ancestors AS (         SELECT t.advisor, t.student         FROM Teaches t     UNION         SELECT A.advisor, t.student         FROM Ancestors A         JOIN Teaches t ON A.student = t.advisor ) SELECT advisor, student FROM Ancestors ORDER BY advisor, student;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""".
+Extra columns: """"a"""".""""advisor"""",""""t"""".""""student"""",""""t"""".""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add the missing columns: ,""""a"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"a"""".""""advisor"""",""""t"""".""""student"""",""""t"""".""""student"""" from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+185,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT advisor, student FROM Teaches UNION  SELECT A.advisor, T.student FROM Ancestors A, Teaches T WHERE A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+186,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+187,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestor A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestor;""",1,1,"""Correct."""
+188,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+189,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT T1.advisor, T2.student     FROM Teaches T1     JOIN Ancestors A ON T1.student = A.advisor     JOIN Teaches T2 ON T2.advisor = A.student ) SELECT DISTINCT advisor, student FROM Ancestors;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+
+"""
+190,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION ALL SELECT T1.advisor, T2.student FROM Teaches T1 JOIN Ancestors T2 ON T1.student = T2.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+191,1,10,"""WITH RECURSIVE Parents AS ( SELECT advisor, student from teaches UNION SELECT p.advisor,teaches.student FROM Parents p, teaches WHERE p.student = teaches.advisor ) SELECT * FROM Parents;""",1,1,"""Correct."""
+192,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT a.advisor, t.student     FROM Ancestors a     JOIN Teaches t ON a.student = t.advisor ) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+193,1,10,"""WITH RECURSIVE AdvisorHierarchy AS (SELECT advisor, student FROM Teaches UNION SELECT AdvisorHierarchy.advisor, Teaches.student FROM AdvisorHierarchy, Teaches WHERE AdvisorHierarchy.student = Teaches.advisor) SELECT DISTINCT advisor, student FROM AdvisorHierarchy;""",1,1,"""Correct."""
+194,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+195,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (       SELECT advisor, student       FROM Teaches       UNION       SELECT T1.advisor, T2.student       FROM Teaches T1, Ancestors T2       WHERE T1.student = T2.advisor   )   SELECT DISTINCT advisor, student   FROM Ancestors;""",1,1,"""Correct."""
+196,1,10,"""WITH RECURSIVE Ancestor AS  ( SELECT T1.advisor, T1.student   FROM Teaches T1 UNION  SELECT M.advisor, T2.student FROM Ancestor M, Teaches T2 WHERE M.student = T2.advisor ) SELECT  * FROM Ancestor;""",1,1,"""Correct."""
+197,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     -- Base case: Direct relationships from the Teaches table     SELECT advisor, student     FROM Teaches     UNION     -- Recursive case: Indirect relationships (ancestor of an ancestor)     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+198,1,10,"""WITH RECURSIVE StudentAncestors(ancestorid, descendantid) AS (SELECT T.advisor as ancestorid, T.student as descendantid FROM Teaches T UNION SELECT M.ancestorid, T.student FROM StudentAncestors M, Teaches T WHERE M.descendantid = T.advisor) SELECT * FROM StudentAncestors;""",1,1,"""Correct."""
+199,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT advisor, student FROM Teaches UNION ALL SELECT A.advisor, T.student FROM Ancestors AS A JOIN Teaches AS T ON A.student = T.advisor WHERE T.student != A.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+200,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+201,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+202,1,10,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+203,1,10,"""WITH RECURSIVE relation AS ( SELECT t.advisor, t.student FROM Teaches t UNION ALL SELECT r.advisor, t.student FROM relation r INNER JOIN Teaches t ON t.advisor= r.student ) SELECT DISTINCT s1.name AS advisor_name, s2.name AS student_name FROM relation r JOIN Scientist s1 ON r.advisor= s1.id JOIN Scientist s2 ON r.student= s2.id;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""",""""advisor"""",""""student"""".
+Extra columns: """"relation"""".""""advisor"""",""""scientist"""".""""name"""",""""scientist"""".""""name"""",""""t"""".""""student"""",""""t"""".""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"relation"""", """"scientist"""", """"scientist"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: ,""""a"""".""""student"""",""""advisor"""",""""student"""" to your SELECT clause.
+- Remove the extra columns: """"relation"""".""""advisor"""",""""scientist"""".""""name"""",""""scientist"""".""""name"""",""""t"""".""""student"""",""""t"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+204,1,10,"""WITH RECURSIVE Pairs(advisor, student) AS ( SELECT advisor, student FROM Teaches UNION SELECT P.advisor, T.student FROM Pairs P INNER JOIN Teaches T ON P.student = T.advisor ) SELECT * FROM Pairs;""",1,1,"""Correct."""
+206,1,10,"""WITH RECURSIVE Tree AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT DISTINCT advisor, student FROM Tree;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestors"""".
+Extra tables: """"tree"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+208,1,10,"""WITH RECURSIVE AncestorPair AS  ( SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM AncestorPair A JOIN Teaches T ON A.student = T.advisor ) SELECT * FROM AncestorPair;""",1,1,"""Correct."""
+209,1,10,"""WITH RECURSIVE Ancestors AS (     -- Base Case: Select the direct advisor-student relationship     SELECT advisor, student     FROM Teaches     UNION ALL     -- Recursive Case: Find advisors of the advisor (i.e., ancestors)     SELECT t1.advisor, t2.student     FROM Teaches t1     JOIN Ancestors t2 ON t1.student = t2.advisor ) -- Final Selection: Select all unique (advisor, student) pairs from the recursive result SELECT DISTINCT advisor, student FROM Ancestors;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+536,1,10,"""with recursive Ancestors(ancestor, student) as (select T1.advisor as ancestor, T2.student as student from Teaches T1, Teaches T2 where T1.advisor = T2.student union select T1.advisor as ancestor, T2.student as student from Ancestors A, Teaches T1, Teaches T2 where A.ancestor = T1.advisor and T1.advisor = T2.student and not T1.advisor is null) select * from Ancestors;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"a"""".""""advisor"""",""""advisor"""",""""advisor"""",""""student"""",""""student"""",""""t"""".""""student"""".
+Extra columns: ,""""t1"""".""""advisor"""",""""t1"""".""""advisor"""",""""t2"""".""""student"""",""""t2"""".""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"a"""".""""advisor"""",""""advisor"""",""""advisor"""",""""student"""",""""student"""",""""t"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: ,""""t1"""".""""advisor"""",""""t1"""".""""advisor"""",""""t2"""".""""student"""",""""t2"""".""""student"""" from your SELECT clause.
+- Remove the WHERE clause if it's not required.
+
+"""
+210,1,10,"""WITH RECURSIVE ancestors(advisor, student) AS ( 	SELECT * FROM Teaches 	UNION 	SELECT Teaches.advisor, ancestors.student 	FROM ancestors, Teaches 	WHERE ancestors.advisor = Teaches.student ) SELECT * FROM ancestors;""",1,1,"""Correct."""
+211,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT Teaches.advisor, Ancestors.student     FROM Ancestors JOIN Teaches ON Teaches.student = Ancestors.advisor ) SELECT DISTINCT advisor, student FROM Ancestors""",1,1,"""Correct."""
+212,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT Teacher.advisor, Teacher2.student FROM Teaches Teacher JOIN Ancestors Teacher2 ON Teacher.student = Teacher2.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+213,1,10,"""WITH RECURSIVE AdvisorHierarchy AS (     SELECT T.advisor, T.student     FROM Teaches T       UNION ALL       SELECT AH.advisor, AS.student     FROM AdvisorHierarchy AH              JOIN AdvisorStudent AS ON AH.student = AS.advisor     ) SELECT student, advisor FROM Teaches;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+214,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT advisor, student FROM Teaches UNION ALL SELECT A.advisor, T.Student FROM Ancestors A INNER JOIN Teaches T ON T.advisor = a.student ) SELECT DISTINCT * FROM Ancestors;""",1,1,"""Correct."""
+215,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT t.advisor AS ancestor, t.student AS descendant FROM Teaches AS t   UNION ALL   SELECT a.ancestor, t.student AS descendant FROM Ancestors a JOIN Teaches t ON a.descendant = t.advisor ) SELECT DISTINCT ancestor, descendant FROM Ancestors;""",1,1,"""Correct."""
+216,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+217,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+218,1,10,"""WITH RECURSIVE Ancestor AS ( SELECT advisor, student FROM Teaches UNION SELECT Teaches.advisor, Ancestor.student FROM Teaches, Ancestor WHERE Teaches.student = Ancestor.advisor ) SELECT advisor, student FROM Ancestor;""",1,1,"""Correct."""
+220,1,10,"""WITH RECURSIVE AdvisorDescendant(advisor, student) AS (    SELECT advisor, student    FROM Teaches        UNION ALL        SELECT T.advisor, AD.student    FROM Teaches T    JOIN AdvisorDescendant AD ON T.student = AD.advisor )   SELECT advisor, student FROM AdvisorDescendant;""",0.14285714285714285,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""".
+Extra columns: """"ad"""".""""student"""",""""advisor"""",""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"advisordescendant"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: ,""""a"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"ad"""".""""student"""",""""advisor"""",""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+221,1,10,"""WITH RECURSIVE Ancestor AS (  SELECT T.advisor, T.student FROM Teaches T WHERE T.advisor IS NOT NULL UNION SELECT T.advisor, T2.student FROM Teaches T, Teaches T2, Ancestor A WHERE T.advisor = T2.advisor  AND A.student = T.advisor ) SELECT advisor, student FROM Ancestors;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"a"""".""""advisor"""",""""advisor"""",""""student"""".
+Extra columns: """"t"""".""""advisor"""",""""t"""".""""advisor"""",""""t2"""".""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"a"""".""""advisor"""",""""advisor"""",""""student"""" to your SELECT clause.
+- Remove the extra columns: """"t"""".""""advisor"""",""""t"""".""""advisor"""",""""t2"""".""""student"""" from your SELECT clause.
+- Remove the WHERE clause if it's not required.
+
+"""
+222,1,10,"""WITH RECURSIVE Ancestor(advisor,student) AS ( SELECT T.advisor, T.student FROM Teaches T UNION SELECT T.advisor, A.student FROM Ancestor A, Teaches T WHERE A.advisor=T.student ) SELECT *  FROM Ancestor;""",1,1,"""Correct."""
+223,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches       UNION ALL       SELECT t1.advisor, t2.student     FROM Teaches t1     JOIN Ancestors t2 ON t1.student = t2.advisor ) SELECT advisor, student FROM Ancestors;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+224,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T     ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+225,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION ALL SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+226,1,10,"""WITH RECURSIVE Ancestordescendant(adid, stid) AS  (  SELECT advisor AS adid, student AS stid FROM Teaches T UNION  SELECT T.advisor AS adid, A.stid FROM Ancestordescendant A, Teaches T WHERE A.adid == T.student )  SELECT * FROM Ancestordescendant;""",1,1,"""Correct."""
+227,1,10,"""WITH RECURSIVE ancestors AS ( SELECT advisor, student FROM teaches P   UNION   SELECT P.advisor, M.student FROM ancestors M, teaches P WHERE P.student=M.advisor AND NOT P.advisor IS NULL ) SELECT * FROM ancestors;""",1,1,"""Correct."""
+228,1,10,"""WITH RECURSIVE ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT A.advisor, T.student     FROM ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT advisor, student FROM ancestors;""",1,1,"""Correct."""
+229,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches       UNION ALL       SELECT t.advisor, t.student     FROM Teaches t     JOIN Ancestors a ON t.advisor = a.student ) SELECT DISTINCT a.advisor, a.student FROM Ancestors a;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""".
+Extra columns: """"ancestors"""".""""advisor"""",""""ancestors"""".""""student"""",""""t"""".""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: ,""""a"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"ancestors"""".""""advisor"""",""""ancestors"""".""""student"""",""""t"""".""""student"""" from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+231,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+233,1,10,"""WITH RECURSIVE Ancestor AS ( SELECT Teaches.advisor, Teaches.student FROM Teaches UNION SELECT Ancestor.advisor, Teaches.student FROM Ancestor JOIN Teaches ON Ancestor.student = Teaches.advisor) SELECT advisor, student FROM Ancestor;""",1,1,"""Correct."""
+234,1,10,"""WITH RECURSIVE Ancestor(Student, Advisor) AS(     SELECT T.student as Student, T.advisor as Advisor FROM Teaches T     UNION      SELECT A1.Student as Student,                    T.advisor as Advisor                    FROM Ancestor A1, Teaches T                    WHERE A1.advisor = T.student ) Select * from Ancestor;""",1,1,"""Correct."""
+235,1,10,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+236,1,10,"""WITH RECURSIVE StudentAncestors(advisor, student) AS (   SELECT advisor, student   FROM Teaches   UNION   SELECT T.advisor AS advisor, S.student as student   FROM StudentAncestors S, Teaches T   WHERE S.advisor = T.student   AND NOT T.advisor IS NULL ) SELECT * FROM StudentAncestors;""",1,1,"""Correct."""
+238,1,10,"""WITH RECURSIVE Ancestors AS  ( SELECT advisor AS ancestor, student AS descendant FROM Teaches UNION  SELECT a.ancestor AS ancestor, t.student AS descendant FROM Ancestors a, Teaches t WHERE a.descendant = t.advisor AND NOT a.ancestor IS NULL ) SELECT ancestor, descendant FROM Ancestors;""",1,1,"""Correct."""
+239,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS (SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student FROM Ancestors A JOIN Teaches T ON A.student = T.advisor) SELECT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+240,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+241,1,10,"""WITH RECURSIVE AncestorsOfStudent AS ( SELECT advisor, student  FROM Teaches UNION SELECT t.advisor, a.student FROM Teaches t JOIN AncestorsOfStudent a ON t.student = a.advisor AND NOT t.advisor IS NULL ) SELECT advisor, student  FROM AncestorsOfStudent;""",1,1,"""Correct."""
+242,1,10,"""WITH RECURSIVE Ancestors(advisor, student) AS ( 	SELECT advisor, student 	FROM Teaches   	UNION   	SELECT Teaches.advisor, Ancestors.student 	FROM Teaches, Ancestors 	WHERE Teaches.student = Ancestors.advisor ) SELECT DISTINCT * FROM Ancestors;""",1,1,"""Correct."""
+243,1,10,"""WITH RECURSIVE Ancestors AS (   SELECT advisor, student   FROM Teaches   UNION   SELECT A.advisor, T.student   FROM Ancestors A   JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+245,1,10,"""WITH RECURSIVE Ancestry (advisor, student) AS ( SELECT * FROM Teaches UNION SELECT DISTINCT A.advisor, B.student FROM Teaches A, Ancestry B WHERE B.advisor = A.student AND B.advisor IS NOT NULL ) SELECT * FROM Ancestry;""",1,1,"""Correct."""
+246,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+247,1,10,"""WITH RECURSIVE AncestorTree AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT at.advisor, t.student     FROM AncestorTree at     JOIN Teaches t ON at.student = t.advisor ) SELECT advisor, student FROM AncestorTree""",1,1,"""Correct."""
+249,1,10,"""WITH RECURSIVE Ancestor(advisor,student)  AS (SELECT advisor, student from Teaches UNION SELECT T.advisor, A.student FROM Teaches T, Ancestor A WHERE T.student = A.advisor) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+250,1,10,"""WITH RECURSIVE Ancestors AS ( SELECT advisor, student FROM Teaches UNION ALL SELECT Teaches.advisor, Ancestors.student FROM Teaches JOIN Ancestors ON Teaches.student = Ancestors.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+251,1,10,"""WITH RECURSIVE Ancestors(advisor,student) AS(    SELECT T.advisor, T.student    FROM Teaches T     UNION    SELECT T.advisor, A.student    FROM Ancestors A, Teaches T    WHERE A.advisor = T.student    AND NOT T.advisor IS NULL ) SELECT * FROM Ancestors;""",1,1,"""Correct."""
+252,1,10,"""WITH RECURSIVE Ancestor (advisor, student) AS (    SELECT T.advisor, T.student FROM Teaches AS T    UNION    SELECT A.advisor, T.student FROM Teaches AS T, Ancestor AS A WHERE A.student = T.advisor )   SELECT * FROM Ancestor;""",1,1,"""Correct."""
+253,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS ( SELECT advisor, student FROM Teaches UNION SELECT A.advisor, T.student  FROM Ancestor A, Teaches T WHERE A.student = T.advisor ) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+254,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION ALL     SELECT a.advisor, t.student     FROM Ancestors a     JOIN Teaches t ON a.student = t.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+256,1,10,"""WITH RECURSIVE descendant(ad, st) AS (   SELECT advisor, student   UNION   SELECT N.advisor, N.student   FROM Teaches N, descendant WHERE N.advisor = st   )   SELECT DISTINCT advisor, st FROM Teaches, descendant;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 5 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""".
+Extra columns: """"advisor"""",""""n"""".""""advisor"""",""""n"""".""""student"""",""""st"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"ancestor"""".
+Extra tables: """"descendant"""", """"teaches"""".
+
+WHERE clause: Operands mismatch in condition '""""t"""".""""student"""" """"="""" """"a"""".""""advisor""""'.
+Expected: '""""t"""".""""student""""' and '""""a"""".""""advisor""""'.
+Found: '""""n"""".""""advisor""""' and '""""st""""'.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""" to your SELECT clause.
+- Remove the extra columns: """"advisor"""",""""n"""".""""advisor"""",""""n"""".""""student"""",""""st"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+257,1,10,"""WITH RECURSIVE Ancestors AS (     SELECT advisor, student     FROM Teaches     UNION       SELECT A.advisor, T.student     FROM Ancestors A     JOIN Teaches T ON A.student = T.advisor ) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+258,1,10,"""WITH RECURSIVE Ancestors(advisor, descendant) AS       (         SELECT t.advisor AS advisor, t.student AS descenant         FROM Teaches t         UNION         SELECT t.advisor AS advisor, a.descendant AS descentant         FROM Teaches t, Ancestors a         WHERE t.student = a.advisor       )   SELECT * FROM Ancestors;""",1,1,"""Correct."""
+259,1,10,"""WITH RECURSIVE Ancestor(advisor, student) AS (     SELECT advisor, student     FROM Teaches     UNION     SELECT DISTINCT Ancestor.advisor, Teaches.student     FROM Ancestor, Teaches     WHERE Ancestor.student = Teaches.advisor ) SELECT * FROM Ancestor;""",1,1,"""Correct."""
+260,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+261,1,10,"""WITH RECURSIVE Ancestors AS (SELECT advisor, student FROM Teaches UNION SELECT t.advisor, t2.student FROM Teaches t JOIN Ancestors t2 ON t.student = t2.advisor) SELECT DISTINCT advisor, student FROM Ancestors;""",1,1,"""Correct."""
+262,1,10,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+263,1,10,"""WITH RECURSIVE Pair(advisor, student) AS  ( SELECT advisor, student  FROM Teaches UNION SELECT p.advisor, t.student FROM Pair p, Teaches t WHERE p.student = t.advisor ) SELECT * FROM Pair;""",1,1,"""Correct."""
+264,1,10,"""WITH RECURSIVE AncestorPath AS(SELECT advisor, student FROM Teaches UNION ALL SELECT T1.advisor, T2.student FROM Teaches T1 JOIN AncestorPath T2 ON T1.student = T2.advisor WHERE T1.advisor !=T2.student) SELECT DISTINCT advisor, student FROM AncestorPath WHERE advisor != student;""",1,1,"""Correct."""

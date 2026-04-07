@@ -1,0 +1,2707 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,8,"""SELECT  name FROM Track, Writes, Artist WHERE Track.track_title='Californication'  AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0.8857142857142857,1,""""""
+2,1,8,"""SELECT * FROM Track , Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+3,1,8,"""SELECT *  FROM Track, Writes, Artist Where Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+4,1,8,FROM 'Track' and 'Writes' and 'Artist' WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+5,1,8,"""SELECT Artist.name  FROM Track, Writes, Artist  WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+6,1,8,σWrites.artist_id=Artist.artist_id(σTrack.track_id=Writes.track_id(σTrack.track_title='Californication'(Track x Writes x Artist))),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+7,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+8,1,8,"""FROM Writes, Artist, Track WHERE Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id AND Track.track_title='Californication';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+9,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+10,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californicatio';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+11,1,8,SELECT Artist.name FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Writes.track_id = Track.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Condition: Mismatch in join condition for join 0.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+12,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.8857142857142857,1,""""""
+13,1,8,"""SELECT Writes.role, Artist.name FROM Track NATURAL JOIN Writes NATURAL JOIN Artist WHERE Track.track_title = 'Californication';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+14,1,8,"""SELECT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id=Writes.track_id JOIN Artist ON Writes.artist_id=Artist.artist_id WHERE Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+15,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+16,1,8,"""SELECT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+17,1,8,"""SELECT Artist.artist_id, Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+18,1,8,SELECT artist_id FROM Track X Writes X Artist WHERE Track.track_title='Californication' AND Track.track_id = Writes.track_id,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+19,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id   AND Track.track_id = Writes.track_id   AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+21,1,8,"""SELECT *  FROM Track, Writes, Artist  WHERE Writes.artist_id=Artist.artist_id  AND Track.track_id=Writes.track_id  AND Track.track_title='Californication';""",1,1,"""Correct."""
+23,1,8,SELECT Artist.name  FROM Track  JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artist ON Writes.artist_id = Artist.artist_id  WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+24,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_title='Ca;ofprmocation' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+25,1,8,"""FROM Track,Writes,Artist SELECT * WHERE (Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+26,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+27,1,8,"""SELECT artist_name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id, Track.track_id=Writes.track_id, Track.track_title='Californication'""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+28,1,8,"""SELECT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+29,1,8,"""SELECT Writes.artist_id FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Track.track_title = 'Californication' AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+30,1,8,"""select * from Track, Writes, Artist where Track.track_title = 'Californication' and Track.track_id = Writes.track_id and Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+31,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+32,1,8,"""FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+33,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+34,1,8,SELECT * FROM (Artist JOIN (Writes JOIN Track USING (track_id)) USING (artist_id)) WHERE track_title='Californication' ;,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+35,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+36,1,8,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+37,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+38,1,8,SELECT artist.name FROM track  JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+39,1,8,"""SELECT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+40,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+41,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+44,1,8,SELECT Write.artist_id WHERE track_title='Californication' FROM (Track JOIN Write),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+45,1,8,SELECT name FROM Artist WHERE artist_id IN (SELECT artist_id FROM Writes WHERE track_id IN (SELECT track_id FROM Track WHERE track_title = 'Californication'));,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+528,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+46,1,8,SELECT name FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+47,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+48,1,8,SELECT DISTINCT Artist.* FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+529,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+49,1,8,SELECT name FROM Artist  INNER JOIN Produces ON Artist.artist_id = Produces.artist_id INNER JOIN Track ON Produces.track_id = Track.track_id WHERE track_title='Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+50,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+51,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+530,1,8,SELECT artist.name from Writes natural join track natural join artist where track_title = 'Californication';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+52,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+53,1,8,"""SELECT name, role FROM Artist, Writes, Track Where track.track_title = 'Californication' AND Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track _id;""",0.02857142857142857,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, role from track, writes, track where track.track_title = 'californication' and track.track = track.track and track.track = track.track;' make it parseable.
+
+"""
+54,1,8,"""SELECT*FROM Track,Writes,Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+55,1,8,SELECT name FROM track JOIN Writes ON Track.track-id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+56,1,8,"""SELECT Artist.artist_id FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+57,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id ;""",1,1,"""Correct."""
+58,1,8,"""select * from track, writes,artist where Writes.artist_id=Artist.artist_id and Track.track_id=Writes.track_id and Track_title='Californication';""",1,1,"""Correct."""
+59,1,8,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+60,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+531,1,8,"""SELECT """"name"""" FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.8857142857142857,1,""""""
+61,1,8,SELECT * FROM Track NATURAL JOIN Writes NATURAL JOIN Artist WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Natural: Mismatch in NATURAL join for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Natural: Mismatch in NATURAL join for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+62,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+63,1,8,"""SELECT Artist.name FROM Track, Writes, Artist JOIN Writes ON Writes.artist_id =  WHERE Writes.artist_id = Artist.artist_id WHERE Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+64,1,8,"""SELECT Artist.artist_id, Track.track_id, Track.track_title FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+65,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+67,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Track.artist_id = Writes.artist_id = Artist.artist_id AND Track.track_title= 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+68,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+69,1,8,"""SELECT DISTINCT name, role FROM Artist NATURAL JOIN Writes NATURAL JOIN Track WHERE track_title='Californication';""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+70,1,8,select * from Artist join Writes on (Writes.artist_id=Artist.artist_id) join Track on (Track.track_id=Writes.track_id) where track.track_title='Californication',1,1,"""Correct."""
+71,1,8,"""SELECT * -- I'm fairly sure that the select query would return the entire tuple. but if not ah well that's a -- couple points, i mean i'd just have to put name,role instead of star but it'll be fine... FROM Track,Writes,Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+72,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+73,1,8,"""SELECT *  FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+74,1,8,"""SELECT * FROM Track,Writes,Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+75,1,8,"""SELECT * FROM Track,Writes,Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id""",1,1,"""Correct."""
+532,1,8,"""select Writes from Writes, Artist, Track where Writes.artist_id=Artist.artist_id and Track.track_id=Writes.track_id and Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+76,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication' ;""",1,1,"""Correct."""
+77,1,8,"""SELECT Artist.name FROM Artist, Writes, Track WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+78,1,8,SELECT Artis.name FROM Track  JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication' ;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+79,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication'  AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+80,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+81,1,8,SELECT DISTINCT name FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Join Condition: Mismatch in join condition for join 0.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+83,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+84,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+85,1,8,"""SELECT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+86,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+87,1,8,"""SELECT name FROM Track, Writes, Artist WHERE track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+88,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND (Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id);""",0.8857142857142857,1,""""""
+90,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+91,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+92,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_title = """"Californication"""";""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+93,1,8,"""SELECT * WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication' FROM Track, Writes, Artist;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+94,1,8,"""SELECT * FROM Writes,Track,Artist WHERE Writes.track_id = Track.track_id AND Track.track_title = 'Californication' AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+96,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+98,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+100,1,8,SELECT Artist.* FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+101,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+102,1,8,"""SELECT DISTINCT * FROM Track, Writes, Artist  WHERE (Writes.artist_id=Artist.artist_id AND  Track.track_id = Writes.track_id AND  Track.track_title='Californication');""",1,1,"""Correct."""
+103,1,8,"""SELECT role, name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+104,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+105,1,8,"""SELECT * FROM Artist, Track, Writes WHERE Writes.artist_id = Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+106,1,8,"""SELECT name FROM Artist, Writes, Track WHERE Artist.artist_id = Writes.artist_id  AND Track.track_id = Writes.Track_id  AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+107,1,8,"""SELECT a.name FROM Track t, Writes w, Artist a WHERE t.track_title = 'Californication' AND t.track_id = w.track_id AND w.artist_id = a.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+108,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Tr ack.track_id=Writes.track_id AND Track.track_title='Californication';""",0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name from track, writes, artist where tr   and tr   and track.track_title  ;' make it parseable.
+
+"""
+109,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+110,1,8,"""SELECT * FROM track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+111,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+112,1,8,"""select * from Track, Writes, Artist where Writes.artist_id=Artist.artist_id and Track.track_id=Writes.track_id and Track.track_title='Californication';""",1,1,"""Correct."""
+113,1,8,SELECT Track.artist FROM Track JOIN Writes ON Writes.artist_id JOIN Artist ON Artist.artist_id Where Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+114,1,8,SELECT Artist.name  FROM Track  JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artist ON Writes.artist_id = Artist.artist_id  WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+115,1,8,"""SELECT name from Track, Writes, Artist where Writes.artist_id=Artist.artist_id and Track.track_id=Writes.track_id and Track.track_title='Californication';""",1,1,"""Correct."""
+116,1,8,"""SELECT Artist.name FROM Artist, Track, Writes WHERE Track.track_title = 'Californicatio' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+117,1,8,"""SELECT * -- I keep thinking that a tuple is just (var1, var2) instead of a row :( FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND  	Track.track_id = Writes.track_id AND  	Track.track_title = 'Californication';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+118,1,8,SELECT Artist.name FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Writes.track_id = Track.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Condition: Mismatch in join condition for join 0.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+119,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+120,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+121,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+122,1,8,"""SELECT name, role  FROM Track, Writes, Artist  WHERE Track.track_title = 'Californication' AND Artist.artist_id = Writes.artist_id AND Track.track_id =  Writes.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+123,1,8,"""SELECT Artist.name, Writes.role  FROM Artist, Writes, Track WHERE Track.track_title = 'Californication' AND Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+124,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+125,1,8,SELECT DISTINCT Artist.name FROM (Artist JOIN Writes ON Artist.artist_id=Writes.artist_id) JOIN Track ON Writes.track_id=Track.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Join Condition: Mismatch in join condition for join 0.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+126,1,8,"""SELECT *  FROM Writes, Artist, Track  WHERE Writes.artist_id = Artist.artist_id  AND Track.track_id = Writes.track_id  AND Track.track_title='Californication';""",1,1,"""Correct."""
+127,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+128,1,8,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+129,1,8,"""SELECT DISTINCT Artist.name   FROM Track, Writes, Artist   WHERE Track.track_id = Writes.track_id     AND Writes.artist_id = Artist.artist_id     AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+130,1,8,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+533,1,8,\select_{Writes.artist_id=Artist.artist_id} \select_{Track.track_id=Writes.track_id} \select_{Track.track_title='Californication'} (Track AND Writes AND Artist);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+132,1,8,"""-- This retrieves the names of artists, ensuring each artist is only listed once.  SELECT DISTINCT Artist.name -- From the Artist table FROM Artist   -- Join the Artist table with the Writes table where the artist_id matches JOIN Writes ON Artist.artist_id = Writes.artist_id     -- Join the Writes table with the Track table where the track_id matches JOIN Track ON Writes.track_id = Track.track_id     -- Filter the result to include only the track 'Californication' WHERE Track.track_title = 'Californication';""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+133,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+134,1,8,SELECT Artist.name FROM Track JOIN Artist ON Writes.artist_id = Artist.artist_id JOIN Writes ON Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Tables: Mismatch in join tables for join 0.
+Join Tables: Mismatch in join tables for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+135,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+136,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+137,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Track.track_title = 'Californication' AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+138,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+139,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+140,1,8,"""SELECT DISTINCT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+141,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+142,1,8,SELECT Artist.name FROM Artist JOIN Writes ON Writes.artist_id = Artist.artist_id JOIN Track ON Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+143,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id   AND Writes.artist_id = Artist.artist_id   AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+144,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication'""",1,1,"""Correct."""
+145,1,8,SELECT * from Track NATURAL JOIN Writes NATURAL JOIN Artist where Track.track_title='Californication' AND Track.track_id=Writes.track_id AND  Writes.artist_id=Artist.artist_id;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+"""
+147,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication'""",1,1,"""Correct."""
+148,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+149,1,8,"""SELECT Artist.artist_id, Artist.artist_name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+150,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+151,1,8,SELECT Artist.name FROM Track Track.track_id = Writes.track_id Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,8,"""SELECT Artist.name, Writes.Role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+153,1,8,"""SELECT * FROM Track, Writes, Artist  WHERE Track.track_title='Californification'  AND Track.track_id=Writes.track_id  AND Writes.artist_id = Artist.artist_id;""",0.8857142857142857,1,""""""
+154,1,8,"""SELECT*  FROM Track, Writes, Artist  WHERE Writes.artist_id=Artist.artist_id  AND Track.track_id=Writes.track_id  AND Track.track_title='Californication';""",1,1,"""Correct."""
+155,1,8,"""FROM Track, Artist, Writes SELECT name WHERE Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id AND Track.track_title='Californication';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+156,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication'""",1,1,"""Correct."""
+157,1,8,"""SELECT Artist.* FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+158,1,8,"""SELECT * FROM Artist, Writes, Track WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+159,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id   JOIN Artist ON Writes.artist_id = Artist.artist_id   WHERE Track.track_title = 'Californication',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+160,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id  AND Track.track_id=Writes.track_id  AND Track.track_title='Californication' ;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+161,1,8,SELECT name FROM Track  NATURAL JOIN Writes  NATURAL JOIN Artist  WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+162,1,8,"""SELECT Artist.name, role FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+163,1,8,SELECT DISTINCT Artist.* FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+164,1,8,"""SELECT Artist FROM Track, Writes, Artist  WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id  AND Track.track_title='Californication';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+165,1,8,"""SELECT * FROM Writes, Artist, Track WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+166,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+167,1,8,"""SELECT DISTINCT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+168,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id= Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+169,1,8,SELECT Artist FROM track JOIN writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+170,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication'  AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+534,1,8,SELECT DISTINCT Artist.name FROM Artist JOIN Writes ON Atist.artist_id = Writes.artist_id JOIN Track ON Writes.track_id = Track.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Join Condition: Mismatch in join condition for join 0.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+171,1,8,"""SELECT * FROM Artist, Track, Writes WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+172,1,8,"""SELECT Artist.name FROM  Track, Writes, Artist WHERE Writes.artist_id = Artist.atrist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+535,1,8,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+174,1,8,"""SELECT Writes.artist_id  FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+175,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+176,1,8,"""SELECT  * FROM Track, Writes, Artist WHERE Track.track_title='Californication'  AND Track.track_id=Writes.track_id  AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+177,1,8,"""SELECT DISTINCT Artist.artist_name FROM Track, Writes, Artist JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artistwrites.artist_id = Artist.Artist_id WHERE Track.track_title = 'Californication"""";""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+179,1,8,"""select * from Track,Writes,Artist where Track.track_title = 'Californication' and Track.track_id=Writes.track_id and Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+181,1,8,"""SELECT*FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Tra ck.track_id=Writes.track_id AND Track.track_title='Californication';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+183,1,8,"""SELECT * FROM Track T, Writes W, Artist A WHERE W.artist_id = A.artist_id AND T.track_id = W.track_id AND T.track_title = 'Californication';""",1,1,"""Correct."""
+184,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+185,1,8,"""SELECT * FROM Track T, Writes W, Artist A WHERE W.artist_id = A.artist_id AND T.track_id = W.track_id AND T.track_title = 'Californication';""",1,1,"""Correct."""
+186,1,8,"""SELECT DISTINCT Artist.name, Writes.role FROM Writes, Track, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+187,1,8,"""SELECT Artist.name, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+188,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+189,1,8,SELECT * FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,1,1,"""Correct."""
+190,1,8,"""SELECT Artist.name  FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+191,1,8,SELECT * FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,1,1,"""Correct."""
+192,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",0.8857142857142857,1,""""""
+193,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+194,1,8,"""SELECT * FROM Artist, Track, Writes WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+195,1,8,"""SELECT * FROM Track, Writes, Artist WHERE (Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication');""",1,1,"""Correct."""
+196,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+197,1,8,SELECT distinct artist_id FROM Artist WHERE Writer.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+198,1,8,"""SELECT name, role FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+199,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+200,1,8,SELECT name FROM Track * Writes * Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;,0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name from track, writes, artist where writes.artist_id = artist.artist_id and track.track_id = writes.track_id and writes.artist_id = artist.artist_id;' make it parseable.
+
+"""
+201,1,8,"""SELECT * FROM Track, Artist, Writes WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+202,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+203,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_id=Writes.track_id AND Track.track_title='Californication' AND Writes.artist_id=Artist.artist_id""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+204,1,8,"""SELECT DISTINCT Artist.*,Track.*,Writes.* FROM Track,Writes,Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+206,1,8,"""FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+207,1,8,SELECT Artist.* FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+208,1,8,"""SELECT *  FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+209,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication' ;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+536,1,8,"""SELECT*FROM Track, Writes, Artist WHERE (Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='Californication')""",1,1,"""Correct."""
+210,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Writes.track_id = Track.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+211,1,8,"""SELECT Artist.name; FROM Artist, Writes, Track; WHERE Track.track_title = 'Californication' AND Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id;""",0.02857142857142857,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track.name from track, writes, track where track.track_id = writes.track_id and writes.track_id = track.track_id and track.track_id = writes.track_id;' make it parseable.
+
+"""
+212,1,8,SELECT Artist.name FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Writes.track_id = Track.track_id WHERE Track.track_title = 'Californication';,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Join Condition: Mismatch in join condition for join 0.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+213,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND     Track.track_id=Writes.track_id AND     Track.track_title='Californication';""",1,1,"""Correct."""
+214,1,8,"""SELECT Artist.artist_id FROM Track, Writes, Artist WHERE Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track_id AND track_title = 'Californication';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+215,1,8,SELECT * FROM Track JOIN Writes ON Track.track_id=Writes.track_id JOIN Artist ON Writes.artist_id=Artist.artist_id WHERE Track.track_title='Californication';,1,1,"""Correct."""
+216,1,8,"""SELECT * FROM Track, Writes, Artists WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0.8857142857142857,1,""""""
+217,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+218,1,8,"""SELECT Artist.name, Writes.role FROM Artist JOIN   Writes ON Writes.artist_id = Artist.artist_id JOIN   Track ON Track.track_id = Writes.track_id WHERE Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+219,1,8,"""SELECT * FROM Track, Writes, Artist  WHERE Track.track_id=Writes.track_title AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+220,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+221,1,8,"""SELECT name FROM Artist, Track, Writes WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+222,1,8,"""SELECT * FROM Artist A, Track B, Writes C WHERE B.track_title='Californication' AND B.track_id=C.track_id AND A.artist_id=C.artist_id;""",1,1,"""Correct."""
+223,1,8,"""SELECT Artist.name FROM Artist, Writes, Artist JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+Join Condition: Mismatch in join condition for join 0.
+Join Tables: Mismatch in join tables for join 1.
+Join Condition: Mismatch in join condition for join 1.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+
+"""
+224,1,8,"""SELECT name FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title = 'Californication';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+225,1,8,"""SELECT Artist FROM Artist, Writes, Track WHERE Track.track_title = 'californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.8857142857142857,1,""""""
+226,1,8,"""SELECT * FROM Track, Writes, Artist  WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+227,1,8,"""SELECT Artist.artist_id FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title='californication';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+WHERE clause: Mismatch in conditions within AND clause.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the WHERE clause.
+
+"""
+228,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND Track.track_title='Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+229,1,8,SELECT * FROM Track t JOIN Writes w ON t.track_id = w.track_id JOIN Artist a ON w.artist_id = a.artist_id WHERE t.track_title = 'Californication';,1,1,"""Correct."""
+230,1,8,SELECT a.name FROM Track t JOIN Writes w ON t.track_id = w.track_id JOIN Artist a ON w.artist_id = a.artist_id WHERE t.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+231,1,8,"""SELECT * FROM Artist, Track, Writes WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+232,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+233,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+234,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title='Californication';""",1,1,"""Correct."""
+236,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+237,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+238,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+239,1,8,SELECT name  FROM Track  JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.8857142857142857,1,""""""
+240,1,8,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+241,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+242,1,8,"""SELECT *  FROM Track, Writes, Artist  WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+243,1,8,SELECT * FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,1,1,"""Correct."""
+244,1,8,SELECT Artist.name FROM Track  JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+245,1,8,SELECT * FROM (SELECT * FROM Track WHERE Track.track_title = 'Californication') NATURAL JOIN Writes NATURAL JOIN Artist;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+246,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+247,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+248,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+249,1,8,"""SELECT *  FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+250,1,8,SELECT DISTINCT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Not expected, but found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+251,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+252,1,8,"""SELECT Artist.name FROM Track, Writes, Artist WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+253,1,8,"""SELECT name FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id = Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+254,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Track.track_title = 'Californication' AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+255,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+256,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id = Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+257,1,8,SELECT Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Track.track_title = 'Californication';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+"""
+258,1,8,"""SELECT * FROM Artist a, Track t, Writes w -- select Californication WHERE t.track_title='Californication' -- make sure you link in a true way AND t.track_id=w.track_id AND w.artist_id=a.artist_id;""",1,1,"""Correct."""
+259,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Track.track_title='Californication'  AND Track.track_id=Writes.track_id  AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+260,1,8,"""SELECT * FROM Track,Writes,Artist WHERE Track.track_title='Californication' AND Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+261,1,8,SELECT * FROM Track INNER JOIN Writes ON Track.track_id=Writes.track_id INNER JOIN Artist ON Writes.artist_id=Artist.artist_id WHERE Track.track_title='Californication';,1,1,"""Correct."""
+262,1,8,"""SELECT Artist FROM Artist, Writes, Track WHERE Track.track_title = 'Californication' AND Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+263,1,8,"""SELECT * FROM Track, Writes, Artist WHERE Writes.artist_id=Artist.artist_id AND Track.track_id=Writes.track_id AND Track.track_title = 'Californication';""",1,1,"""Correct."""
+264,1,8,"""SELECT Artist.name, Writes.role FROM Track,Writes,Artist WHERE (Writes.artist_id = Artist.artist_id) AND (Track.track_id = Writes.track_id) AND (Track.track_title = 'Californication');""",1,1,"""Correct."""

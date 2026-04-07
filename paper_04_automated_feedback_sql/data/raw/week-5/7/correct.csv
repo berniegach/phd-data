@@ -1,0 +1,1 @@
+﻿"CREATE ASSERTION widom_needed CHECK (EXISTS (SELECT * FROM Book, Copy WHERE Book.isbn = Copy.isbn AND Book.author = 'Jennifer Widom'));"

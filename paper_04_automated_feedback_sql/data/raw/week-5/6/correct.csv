@@ -1,0 +1,2 @@
+﻿"CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, CHECK (weight >= 10 AND weight <= 1000),  bookcase INT,  PRIMARY KEY(isbn, serial_number),  FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE );"
+ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);

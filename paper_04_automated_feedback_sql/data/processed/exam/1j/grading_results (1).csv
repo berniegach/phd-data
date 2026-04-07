@@ -1,0 +1,3546 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+265,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+266,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title""",1,1,"""🟢 Correct."""
+267,1,1j,"""SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+268,1,1j,"""SELECT Album.title, Track.duration FROM Track, Album;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+269,1,1j,"""SELECT A.title, total_duration FROM Album A WHERE total_duration = (     SELECT SUM(T.duration)     FROM Track T     WHERE A.album_id = T.album_id );""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'total_duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. WHERE clause: ● Operands mismatch in condition 'album.album_id = track.album_id'.
+● Expected operands: 'album.album_id' and 'track.album_id'.
+● Found operands: 'total_duration' and '(subquery)'.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'total_duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+270,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Track T JOIN Album A ON T.album_id = A.album_id GROUP BY A.title""",1,1,"""🟢 Correct."""
+271,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track  WHERE Album.album_id = Track.Album_id GROUP BY Album.album_id, Album.title;""",1,1,"""🟢 Correct."""
+272,1,1j,"""SELECT title, SUM(duration) AS album_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+273,1,1j,"""SELECT title, SUM(duration) AS duration FROM Album A, Track T WHERE T.album_id = A.album_id GROUP  ;""",0.9714285714285714,1,"""Correct semantics.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select title, sum(duration) as duration from album a, track t where t.album_id = a.album_id group by title;' make it parseable.
+
+"""
+274,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON T.album_id = A.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+275,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+276,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A INNER JOIN Track T ON T.album_id = A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+277,1,1j,"""SELECT Album.title, SUM(duration) FROM Track, Album GROUP BY Album.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Add a WHERE clause to filter the data as specified.
+
+"""
+278,1,1j,"""SELECT A.title, SUM(T.Duration) FROM Album A, Track T WHERE A.album_id=T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+279,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+280,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+281,1,1j,"""SELECT title, SUM(duration)  FROM Album, Track WHERE Album.album_id=Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+282,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY album.id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+283,1,1j,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+284,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP  .;""",0.2857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+
+2. WHERE clause: ● Operands mismatch in condition 'track.album_id = album.album_id'.
+● Expected operands: 'track.album_id' and 'album.album_id'.
+● Found operands: 'album.album_id' and 'album.album_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select  sum(track.duration) from album, track where album.album_id = album.album_id group by album.title;' make it parseable.
+
+"""
+285,1,1j,"""SELECT l.title, COUNT(t.duration) AS Duration FROM Album l, Track t WHERE t.album_id = l.album_id GROUP BY l.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+● Extra functions: 'count(track.duration)'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'count(track.duration)' from your SELECT clause.
+
+"""
+286,1,1j,"""SELECT DISTINCT Album.title, SUM(Track.duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Track.album_id;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+287,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;""",1,1,"""🟢 Correct."""
+288,1,1j,"""SELECT title, SUM(duration) AS number  FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+289,1,1j,"""SELECT Album.title, SUM(Track.duration)  FROM Track, Album WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+290,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+291,1,1j,"""SELECT Album.title, SUM(Track.duration)  FROM Album, Track WHERE Album.album_id = Track.track_id GROUP BY Track.album_id;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'track.album_id = album.album_id'.
+● Expected operands: 'track.album_id' and 'album.album_id'.
+● Found operands: 'album.album_id' and 'track.track_id'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+292,1,1j,"""SELECT title, SUM(duration) AS length FROM Album AS A, Track AS T WHERE A.album_id = T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+293,1,1j,"""SELECT title, SUM(duration) AS album_duration FROM Track t, Album a  WHERE t.album_id = a.album_id  GROUP BY a.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+294,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+295,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+296,1,1j,"""SELECT Album.title AND SUM(Track.duration WHERE Track.album_id = Album.album_id) FROM Album, Track;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+297,1,1j,"""SELECT a.title, SUM(t.duration) as total_duration from Album a JOIN Track t ON a.album_id = t.album_id GROUP BY a.title ;""",1,1,"""🟢 Correct."""
+298,1,1j,"""SELECT Album.title, COUNT(Track.duration) FROM Album, Track WHERE Track.album_id=Album.album_id;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'count(track.duration)'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'count(track.duration)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+299,1,1j,"""SELECT title, SUM(duration) FROM Track NATURAL JOIN Album GROUP BY Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+300,1,1j,"""SELECT title , SUM(duration) AS total FROM Album , Track WHERE Album.album_id = Track.album_id GROUP BY title ;""",1,1,"""🟢 Correct."""
+301,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+302,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+303,1,1j,"""SELECT title, SUM(duration) FROM Album JOIN Track ON Album.album_id = Track.album_id GROUP BY title""",1,1,"""🟢 Correct."""
+304,1,1j,"""SELECT a.title , Sum(duration) From Album a Join ON Track t Where a.album_id = t.album_id GROUp By a.title;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+305,1,1j,"""SELECT title, COUNT(*) AS duration FROM Album A, Track T WHERE A.album_id = T.track_id AND A.title;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'count()'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'count()' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+306,1,1j,"""SELECT title, SUM (duration) FROM Album, Track WHERE Album.album_id = Track.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+307,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+308,1,1j,"""SELECT A.title, SUM(T.duration)        FROM Album A JOIN Track T ON A.album_id=T.album_id      GROUP BY A.title;""",1,1,"""🟢 Correct."""
+309,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id  GROUP BY Album.title""",1,1,"""🟢 Correct."""
+310,1,1j,"""select title, SUM(duration) from Album, Track where Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+311,1,1j,"""SELECT Album.title, SUM(Track.duration) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+312,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+313,1,1j,"""SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+314,1,1j,"""SELECT Album.title, SUM(Track.duration) AS total_duration From Album JOIN Track ON Album.album_id = Track.album_id GROUP BY Album.title""",1,1,"""🟢 Correct."""
+315,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+316,1,1j,"""SELECT Album.title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id  GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+317,1,1j,"""SELECT title, SUM(duration) AS Album_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+318,1,1j,"""SELECT A.title, SUM(T.duration)  FROM Album A, Track T  WHERE A.album_id = T.album_id  GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+319,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+320,1,1j,"""SELECT album.title, Track.duration FROM Album, Track;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+321,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T Where A.album_id = T.album_id GROUP BY T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+322,1,1j,"""SELECT Album.title and SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+
+● Mismatch in selected expressions.
+● Extra expressions: (unknown expression).
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+
+"""
+323,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A , Track T WHERE T.album_id=A.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+324,1,1j,SELECT title FROM Album  AND duration FROM Track WHERE total_duration = SUM(duration),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+325,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+326,1,1j,"""SELECT Album.title, COUNT(Track.duration) AS total_duration FROM Album, Track WHERE Album.album_id  .   .;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+327,1,1j,"""SELECT Album.title COUNT(Track.duration) FROM Track T, Album A WHERE A.album_id = T.album_id;""",0.2857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'count(track.duration)'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'count(track.duration)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select album.title, count(track.duration) from track t, album a where a.album_id = t.album_id;' make it parseable.
+
+"""
+328,1,1j,"""SELECT A.title, SUM(T.duration) FROM Track T, Album A WHERE T.album_id = A.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+329,1,1j,"""SELECT A.title, SUM(T.duration) FROM Track T JOIN Album A ON T.album_id=A.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+330,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+331,1,1j,"""SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+332,1,1j,"""SELECT A.title, T.duration FROM Album A, Track T""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+333,1,1j,"""SELECT title,SUM(duration) FROM Album,Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+334,1,1j,"""SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+335,1,1j,"""SELECT title, SUM(duration) AS total FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+336,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id GROUP  .;""",0.2857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+
+2. WHERE clause: ● Operands mismatch in condition 'track.album_id = album.album_id'.
+● Expected operands: 'track.album_id' and 'album.album_id'.
+● Found operands: 'album.album_id' and 'album.album_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select  sum(track.duration) from album, track where album.album_id = album.album_id group by album.title;' make it parseable.
+
+"""
+337,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title HAVING SUM(Track.duration);""",1,1,"""🟢 Correct."""
+338,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album,Track WHERE Track.album_id = Album.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+339,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+340,1,1j,"""SELECT A.title, sum(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+341,1,1j,"""SELECT Album.title, COUNT(Track.duration) FROM Track, Album GROUP BY(album_id) WHERE Track.album_id = Album.album_id COUNT(Track.duration);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+342,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+343,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album JOIN Track ON Album.track_id = Track.track_id GROUP BY album_id;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+344,1,1j,"""SELECT Album.title,SUM(Track.duration) AS album_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+345,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album, Track WHERE Track.album_id = Album.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+346,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album JOIN Track ON Track.album_id = Album.album_id GROUP BY Album.album_id HAVING SUM(Track.duration);""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+347,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+348,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id=t.album_id GROUP BY a.title;""",1,1,"""🟢 Correct."""
+349,1,1j,"""SELECT Album.title, COUNT(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.title;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.title;'?
+"""
+350,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title""",1,1,"""🟢 Correct."""
+351,1,1j,"""SELECT A.title, SUM(duration) AS total_duration FROM Album A, Track T WHERE A.album_id=T.album_id  GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+352,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+353,1,1j,"""SELECT A.title,SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id=T.album_id   .;""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'abum.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+● Extra tables: 'abum'.
+
+3. WHERE clause: ● Operands mismatch in condition 'album.album_id = track.album_id'.
+● Expected operands: 'album.album_id' and 'track.album_id'.
+● Found operands: 'track.abum_id' and 'abum.abum_id'.
+
+4. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'abum.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.title, sum(t.duration) as tota_duration from abum a, track t where t.abum_id = a.abum_id;' make it parseable.
+
+"""
+354,1,1j,"""SELECT Album.Title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id = Album.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+355,1,1j,"""SELECT title, SUM(duration) FROM Album,Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+356,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+357,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album a JOIN Track t ON a.album_id = t.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+358,1,1j,"""SELECT A.title, sum(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+359,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+360,1,1j,"""SELECT title, SUM(duration) AS total FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+361,1,1j,"""SELECT SUM(duration), title FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY title ;""",1,1,"""🟢 Correct."""
+362,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+363,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE ALbum.album_id=Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+364,1,1j,"""SELECT title, SUM(duration)  FROM Track, Album WHERE Track.album_id = Album.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+365,1,1j,"""SELECT title, SUM(duration) FROM ALbum NATURAL JOIN Track GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+366,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON T.track_id = A.track_id GROUP BY A.title;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+
+"""
+367,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Track, Album WHERE Track.album_id = Album.album_id Group By Album.title""",1,1,"""🟢 Correct."""
+368,1,1j,"""SELECT title, SUM(duration) FROM Ablum, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;'?
+"""
+369,1,1j,"""SELECT title, SUM(duration) FROM Track INNER JOIN Album ON Track.album_id = Album.album_id GROUP BY Album.album_id, title; --Prevent duplicate 'title'""",1,1,"""🟢 Correct."""
+370,1,1j,"""SELECT title, sum(Track.duration) FROM Album  JOIN Track ON Album.album_id = Track.album_id;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+● Extra columns: 'title'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+➡️ Remove the extra columns: 'title' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+371,1,1j,"""Select a.album,t.duration count(*) AS total_duration From Album a, track t GROUp BY a.title;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+372,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;""",1,1,"""🟢 Correct."""
+373,1,1j,"""SELECT al.title, SUM(t.duration) AS total_duration FROM Album al, Track t WHERE t.album_id = al.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+374,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A INNER JOIN Track T ON A.album_id=T.album_id GROUP BY .;""",0.17142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'a.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(t.duration)'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'a.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(t.duration)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.title, sum(t.duration) from album inner join track on a.album_idt.album_id   group by a.title' make it parseable.
+
+"""
+375,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+376,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP  .;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select  sum(track.duration) from album, track where album.album_id=track.album_id group by album.title' make it parseable.
+
+"""
+377,1,1j,"""SELECT Album.title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id  GROUP BY Album.album_id, Album.title""",1,1,"""🟢 Correct."""
+378,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+379,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+380,1,1j,"""SELECT title, SUM(duration) FROM Track T, Album A WHERE album_id.T = album_id.A;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'album.album_id = track.album_id'.
+● Expected operands: 'album.album_id' and 'track.album_id'.
+● Found operands: 'album_id.t' and 'album_id.a'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+381,1,1j,"""SELECT A.title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+382,1,1j,"""SELECT A.ALBUM_ID, A.TITLE, SUM(T.DURATION) FROM ALBUM A NATURAL JOIN TRACK T GROUP BY A.ALBUM_ID;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.album_id', 'album.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.album_id', 'album.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+383,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+384,1,1j,"""SELECT Album.title, SUM(Track.duration) AS 'Duration in seconds' FROM Album JOIN Track ON Album.album_id  .   .;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+385,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album JOIN Track ON Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+386,1,1j,"""SELECT title, SUM(duration) FROM Album NATURAL JOIN Track WHERE Track.album_id = Album.album_id;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+387,1,1j,"""SELECT title, SUM(duration) FROM Track JOIN Album ON album_id GROUP BY title;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+Excellent! Your query matches the reference query.
+
+"""
+388,1,1j,"""SELECT title, SUM(*) FROM Album NATURAL JOIN Track;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum()'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum()' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+389,1,1j,"""SELECT Album.title, SUM(Album.duration) AS total_duration FROM Album""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(album.duration)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+
+3. WHERE clause: Mismatch in WHERE clause presence.
+
+4. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(album.duration)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+390,1,1j,"""SELECT a.title, SUM(t.duration) AS total_duration FROM Album a JOIN Track t ON t.album_id = a.album_id   .;""",0.17142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.title, sum(t.duration) as total_duration from album a join track t on a.album_id = a.album_id ;' make it parseable.
+
+"""
+391,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T, WHERE 'A.album_id =T.album_id;""",0.17142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.total_duration)'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.total_duration)' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select  sum(t.total_duration) as total_duration from album a, track t where a.album_id =t.album_id  and a.a.title;' make it parseable.
+
+"""
+392,1,1j,"""SELECT A.title, SUM(T.duration) FROM Track T, Album A  WHERE T.album_id=A.album_id GROUP BY A.title; -- Adds the durations of 2 albums with the same name together, but whatever""",1,1,"""🟢 Correct."""
+393,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track Where Album.album_id = Track.album_id Group by album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+394,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id  GROUP BY A.title;""",1,1,"""🟢 Correct."""
+395,1,1j,"""SELECT Album.title, SUM(Track.duration) AS """"Duration""""      FROM Album, Track     WHERE Album.album_id=Track.album_id     GROUP BY Album.album_id      ORDER BY SUM(Track.duration) DESC;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+❌ ORDER BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+2. ORDER BY clause: 
+ ● Order By: Different number of order items.
+● Order By: Other query has additional order items.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+➡️ Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+396,1,1j,"""SELECT Album.title, Track.song, Track.duration FROM Album, Track""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration', 'track.song'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration', 'track.song' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+397,1,1j,"""SELECT A.title, SUM(T.duration) as total_duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+398,1,1j,"""SELECT Album.title, SUM(duration) FROM Album, Track WHERE Album.album_id=Track.album_id GROUP BY Album.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+399,1,1j,"""Select A.title, Sum(T.duration) As total_duration From Album A Join Track T on A.album_id = T.album_id Group by A.title""",1,1,"""🟢 Correct."""
+400,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+401,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id   .;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.title, sum(t.duration) as total_duration from album a, track t where a.album_id = t.album_id' make it parseable.
+
+"""
+402,1,1j,"""SELECT a.album, SUM(t.duration) AS album_duration FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.album;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.album'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.album' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+403,1,1j,"""SELECT album.title, SUM (Track.duration) FROM album, Track WHERE Album.album_id = Track.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+404,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+405,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+406,1,1j,"""SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+407,1,1j,"""SELECT Album.title, SUM(Track.duration) AS total_duration FROM Album JOIN Track ON Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+408,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+409,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T where A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+410,1,1j,"""SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id  GROUP BY title;""",1,1,"""🟢 Correct."""
+411,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+412,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+413,1,1j,"""SELECT A.title, T.duration FROM Track as T, Album AS A WHERE A.album_id = T.album_id GROUP BY SUM.;""",0.2857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'SELECT A.title, T.duration FROM Track as T, Album AS A WHERE A.album_id = T.album_id GROUP BY SUM;' make it parseable.
+
+"""
+414,1,1j,"""SELECT Album.title , SUM (Track.duration) AS total_duration  FROM Album , Track   WHERE""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+415,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.album_id, title;""",1,1,"""🟢 Correct."""
+416,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Track T, Album A WHERE A.album_id = T.album_id   .;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+417,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY T.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+418,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.title""",1,1,"""🟢 Correct."""
+419,1,1j,"""SELECT Album.title, SUM(duration) FROM Album, Track WHERE Album.album_id= Track.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+420,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+421,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+422,1,1j,"""SELECT title, (SELECT * FROM Track WHERE Track.album_id = Album.album_id) FROM Album, Track WHERE( SELECT Track.duration  SUM(Track.duration) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+423,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id ;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+424,1,1j,"""SELECT A.title, SUM(T.duration) AS Total FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title""",1,1,"""🟢 Correct."""
+425,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+426,1,1j,"""SELECT al.title, COUNT(t.duration) AS t2.total_duration FROM Album al, Track t WHERE al.album_id = t.album_id GROUP BY al.title;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+427,1,1j,"""SELECT duration, abum_id FROM Track SELECT album_id, title FROM Album GROUP By""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+428,1,1j,"""SELECT Album.title, SUM(Track.Duration) FROM Album,Track WHERE Album.album_id = Track.track_id;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'track.album_id = album.album_id'.
+● Expected operands: 'track.album_id' and 'album.album_id'.
+● Found operands: 'album.album_id' and 'track.track_id'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+429,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = Track.album_id GROUP BY A.title;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;'?
+"""
+430,1,1j,"""JOIN Track, Album SELECT title, duration From Track WHERE""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+431,1,1j,"""SELECT Album.title, SUM(Track.duration) AS album_duration FROM Album JOIN Track ON Album.album_id  .  .  .;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+432,1,1j,"""select A.title, Count(T.duration) From Album A, Track T Where T.album_id = A.album_id Group by A.title;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'select A.title, SUM(T.duration) from Album A, Track T where T.album_id = A.album_id group by A.title;'?
+"""
+433,1,1j,"""SELECT title, SUM(duration) FROM Track, Album WHERE Track.album_id = Album.album_id GROUP BY Album.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+434,1,1j,"""SELECT title, SUM(duration) FROM Track NATURAL JOIN Album GROUP BY title;""",1,1,"""🟢 Correct."""
+435,1,1j,"""SELECT title, SUM(duration) AS duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+436,1,1j,"""SELECT Album.title, Track.duration FROM Track, Album WHERE Album.album_id = Track.album_id""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+437,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id, A.title;""",1,1,"""🟢 Correct."""
+438,1,1j,"""SELECT Album.title, sum(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+439,1,1j,"""SELECT A.title, SUM(T.duration) AS total_duration FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+440,1,1j,"""SELECT A.title, SUM(T.duration) AS duration FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+441,1,1j,"""SELECT A.title, SUM(T.duration) FROM Track T, Album A WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+442,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+443,1,1j,"""SELECT Album.title, SUM(duration) FROM Album JOIN Track ON Album.album_id = Track.album_id GROUP  ., .;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+444,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY (Track.album_id);""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+445,1,1j,"""SELECT DISTINCT title, duration  FROM Album, Track;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Extra columns: 'duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Remove the extra columns: 'duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+446,1,1j,SELECT Album.title   SUM(Track.duration) AS total_duration  FROM Track  JOIN Album ON Track.album_id=Album.album_id  GROUP BY Album.title  ORDER BY total_duration DESC;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+447,1,1j,"""SELECT title, smth AS total_duration FROM Album JOIN Track on Album.album_id = Track.album_id GROUP BY Album.album_id""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+● Extra columns: 'smth', 'title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+➡️ Remove the extra columns: 'smth', 'title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+448,1,1j,"""SELECT title, SUM(duration) FROM Album NATURAL JOIN Track GROUP BY title;""",1,1,"""🟢 Correct."""
+449,1,1j,"""SELECT title, SUM(Track.duration) FROM Album GROUP BY title HAVING Album.album_id = Track.album_id;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ HAVING clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+
+3. WHERE clause: Mismatch in WHERE clause presence.
+
+4. HAVING clause: Mismatch in HAVING clause presence.
+
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+450,1,1j,"""SElECT A.title, SUM(T.duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id   .;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.title, sum(t.duration) as total_duration from album a, track t where a.album_id = t.album_id' make it parseable.
+
+"""
+451,1,1j,"""SELECT Album.title, SUM(Track.duration) AS total FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+452,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album A, Track T WHERE A.album_id = T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+453,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Track.album_id=Album.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+454,1,1j,"""SELECT A.title, SUM(duration)  FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title ;""",1,1,"""🟢 Correct."""
+455,1,1j,"""SELECT Album.title. SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'album.title'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'album.title' to your SELECT clause.
+
+"""
+456,1,1j,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+457,1,1j,"""SELECT DISTINCT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY album_id;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+458,1,1j,"""SELECT A.title, SUM(T.duration) as duration FROM Album A, Track T WHERE T.album_id = A.album_id GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+459,1,1j,"""SELECT Album.title, sum(duration) FROM Album,Track WHERE Album.Album_id = Track.album_id GROUP BY title, sum(duration)""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+● Functions: Mismatch in GROUP BY functions.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+460,1,1j,"""SELECT Album.title, COUNT(*) AS total_duration FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title ORDER BY total_duration DESC""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ ORDER BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+● Extra functions: 'count()'.
+
+2. ORDER BY clause: 
+ ● Order By: Different number of order items.
+● Order By: Other query has additional order items.
+
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'count()' from your SELECT clause.
+➡️ Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+461,1,1j,"""SELECT *,SUM(Track.duration) FROM Track JOIN Album.album_id ON Track.Album_id GROUP BY Album.album_id;""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: '*'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(track.duration)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+● Extra tables: 'album_id'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: Mismatch in WHERE clause presence.
+
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: '*' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duration)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+462,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Album A JOIN Track T ON A.album_id = T.album_id   ;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+463,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A JOIN Track T ON A.album_id = T.album_id GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+464,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;""",1,1,"""🟢 Correct."""
+465,1,1j,"""SELECT A.title, SUM(T.duration) AS tduration FROM Album A,Track T  WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+466,1,1j,"""SELECT A.title, SUM(T.duration) AS seconds FROM Album A, Track T WHERE A.album_id=T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+467,1,1j,"""SELECT track_id, COUNT(duration) FROM Track SUM(duration) FROM track_id GROUP BY album_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+468,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+469,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+470,1,1j,"""SELECT DISTINCT A.title, SUM(T.duraton) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+● Extra functions: 'sum(track.duraton)'.
+
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duraton)' from your SELECT clause.
+
+"""
+471,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+472,1,1j,"""SELECT title, SUM(duration) FROM Track, Album GROUP BY title WHERE Track.album_id = Album.album_id""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+473,1,1j,"""SELECT Album.title, SUM(DISTINCT Track.duration) AS album_duration FROM Album JOIN Track ON Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+474,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+475,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+476,1,1j,"""SELECT title, SUM(duration) AS total_duration  FROM Album, Track  WHERE Album.album_id=Track.album_id  GROUP BY title;""",1,1,"""🟢 Correct."""
+477,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title""",1,1,"""🟢 Correct."""
+478,1,1j,"""SELECT A.title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+479,1,1j,"""SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+480,1,1j,"""SELECT title, SUM(duration) FROM Album GROUP BY album_id;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+481,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album INNER JOIN Track ON Album.album_id = Track.album_id GROUP BY Album.title""",1,1,"""🟢 Correct."""
+482,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;""",1,1,"""🟢 Correct."""
+483,1,1j,"""SELECT Al.title, SUM(T.duration) AS total_duration From Album Al, Track T GROUP BY Al.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Add a WHERE clause to filter the data as specified.
+
+"""
+484,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+485,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+486,1,1j,"""SELECT A.title, SUM(T.duration) AS total FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.title""",1,1,"""🟢 Correct."""
+487,1,1j,"""SELECT title, SUM(duration) as seconds FROM Track T, Album A WHERE A.album_id = T.album_id   GROUP BY title""",1,1,"""🟢 Correct."""
+488,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A NATURAL JOIN Track T GROUP BY A.title;""",1,1,"""🟢 Correct."""
+489,1,1j,"""SELECT A.title, T.duration  FROM Album A, Track T WHERE A.album_id = T.album_id HAVING SUM(duration)""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.title', 'track.duration'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.title', 'track.duration' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+490,1,1j,"""SELECT title, SUM(duration) FROM (Album NATURAL JOIN Track) GROUP BY title;""",1,1,"""🟢 Correct."""
+491,1,1j,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+492,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id; GROUP BY a.title""",0.8571428571428571,1,"""Semantics minor error. Maybe you meant 'SELECT a.title, SUM(t.duration) FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;'?
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.a.title, sum(t.duration) from album a, track t where a.album_id = t.album_id group by a.a.title;' make it parseable.
+
+"""
+493,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t GROUP BY album_id""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: Mismatch in WHERE clause presence.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+494,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;""",1,1,"""🟢 Correct."""
+495,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+496,1,1j,"""SELECT title, SUM(duration) AS total_duration FROM Track T JOIN Album A ON T.album_id=A.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+497,1,1j,"""SELECT A.title  From Album A, Track.t  Where""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+498,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title""",1,1,"""🟢 Correct."""
+499,1,1j,"""SELECT A.title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+500,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track JOIN Track ON Album.album_id = Track.album_id;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+501,1,1j,"""SELECT A.title, SUM(T.duration) FROM Track T, Album A WHERE T.album_id = A.album_id GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+502,1,1j,"""SELECT A.title,  SUM(SELECT T.duration FROM Track T, Album A WHERE T.album_id = A.album_id) AS total_duration  FROM Album A;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+503,1,1j,"""SELECT title, SUM(Duration) FROM Album JOIN TRACK GROUP BY album_id""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album_id'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: Mismatch in WHERE clause presence.
+
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album_id' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select album_id, sum(duration) from track join track on track_id group by album_id;' make it parseable.
+
+"""
+504,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id = T.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+505,1,1j,"""SELECT a.title, SUM(t.duration) FROM Album a, Track t  WHERE a.album_id=t.album_id  GROUP BY a.title;""",1,1,"""🟢 Correct."""
+506,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id  GROUP BY Album.title --needs a subquery but im blankin""",1,1,"""🟢 Correct."""
+507,1,1j,"""SELECT title, SUM(duration) AS `total duration` FROM Track NATURAL JOIN Album a GROUP BY title; -- would prefer a.album_id, but only works in SQLite""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+508,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A, Track T WHERE A.album_id=T.album_id Group BY A.title;""",1,1,"""🟢 Correct."""
+509,1,1j,"""SELECT A.title, SUM(T.duration) FROM Album A NATURAL JOIN Track T GROUP BY A.title;""",1,1,"""🟢 Correct."""
+510,1,1j,"""select A.title, SUM(T.duration) from Album A, Track T where T.album_id = A.album_id group by A.title;""",1,1,"""🟢 Correct."""
+511,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+512,1,1j,"""SELECT A.title, SUM(T.duration) AS total FROM Album, Track WHERE T.album_id = A.album_id GROUP BY A.title""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'a.title'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(t.duration)'.
+
+2. WHERE clause: ● Operands mismatch in condition 'album.album_id = track.album_id'.
+● Expected operands: 'album.album_id' and 'track.album_id'.
+● Found operands: 't.album_id' and 'a.album_id'.
+
+3. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'a.title' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(t.duration)' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+513,1,1j,"""SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY A.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+514,1,1j,"""SELECT title, SUM(tracks) AS duration FROM Album NATURAL JOIN Tracks GROUP BY Album.album_id = Tracks.album_id;""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'sum(tracks)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+● Extra tables: 'tracks'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: Mismatch in WHERE clause presence.
+
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+● Expressions: Mismatch in GROUP BY expressions.
+
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(tracks)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+515,1,1j,"""SELECT sum(T.duration), A.title FROM album A, track T WHERE A.album_id = T.album_id GROUP BY A.title;""",1,1,"""🟢 Correct."""
+516,1,1j,"""SELECT a.title, SUM(t.duration) AS total FROM Album a, Track t WHERE a.album_id = t.album_id GROUP BY a.title;""",1,1,"""🟢 Correct."""
+517,1,1j,"""SELECT A.title, SUM(*) AS track_duration  FROM Album A, Track T WHERE A.album_id = T.Album_id GROUP BY A.title;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+● Extra functions: 'sum()'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum()' from your SELECT clause.
+
+"""
+518,1,1j,"""SELECT Album.title, SUM(Track.duratin) From Album JOIN Track ON Album.album_id = Track.album_id""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected functions.
+● Missing functions: 'sum(track.duration)'.
+● Extra functions: 'sum(track.duratin)'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing functions: 'sum(track.duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(track.duratin)' from your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+519,1,1j,"""SELECT title, SUM(duration) FROM Track NATURAL JOIN Album GROUP BY album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+520,1,1j,"""SELECT Album.title, SUM(duration) FROM Album;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+521,1,1j,"""SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.id;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Album.title, SUM(Track.duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY Album.title;'?
+"""
+522,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+523,1,1j,"""WITH album_info AS (     SELECT * FROM Album, Track     WHERE Album.album_id = Track.album_id     AND album_duration = SUM (Track.duration WHERE A.album_id = T.album_id) ) SELECT title, album_duration FROM album_info;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+524,1,1j,"""SELECT title, SUM(duration) FROM Album, Track WHERE Album.album_id = Track.album_id GROUP BY title;""",1,1,"""🟢 Correct."""
+525,1,1j,"""SELECT Album.titel, COUNT(Track.duration) AS total_duration FROM Album, Track;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'title'.
+● Extra columns: 'album.titel'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(duration)'.
+● Extra functions: 'count(track.duration)'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'title' to your SELECT clause.
+➡️ Remove the extra columns: 'album.titel' from your SELECT clause.
+➡️ Add the missing functions: 'sum(duration)' to your SELECT clause.
+➡️ Remove the extra functions: 'count(track.duration)' from your SELECT clause.
+➡️ Add a WHERE clause to filter the data as specified.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+526,1,1j,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+527,1,1j,"""SELECT Album.title SUM(Track.duration) AS total_duration FROM Album, Track WHERE Album.album_id=Track.album_id GrOUP BY Album.title;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'title' and 'sum(duration)'
+ ● Filter data where album.album_id = track.album_id
+ ●  Group the results by 'title', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Add a WHERE clause to filter the data as specified.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select album.title, sum(track.duration) as total_duration from album, track where album.album_id   group by album.title;' make it parseable.
+
+"""

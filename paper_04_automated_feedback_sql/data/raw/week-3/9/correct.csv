@@ -1,0 +1,1 @@
+﻿"SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P1, Produces P2, Writes W WHERE A.artist_id = P1.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = W.artist_id;"

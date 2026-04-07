@@ -1,0 +1,1 @@
+﻿"SELECT title, SUM(duration) FROM Album A, Track T WHERE A.album_id = T.album_id GROUP BY title;"

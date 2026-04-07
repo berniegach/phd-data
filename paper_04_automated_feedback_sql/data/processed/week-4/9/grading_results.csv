@@ -1,0 +1,2422 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,9,"""SELECT  T1.advisor, T2.student FROM  Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+2,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+4,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student=T2.advisor;""",1,1,"""Correct."""
+5,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 INNER JOIN Teaches t2 ON t1.student=t2.advisor;""",1,1,"""Correct."""
+7,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+8,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1, Teaches T2 WHERE T1.student=T2.advisor;""",1,1,"""Correct."""
+9,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+10,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+11,1,9,"""SELECT DISTINCT T1.advisor, T2.student  FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+12,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+13,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+14,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+15,1,9,"""SELECT      t1.advisor AS grandparent_id,     t2.student AS grandchild_id FROM      Teaches t1 JOIN      Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+16,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+17,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+18,1,9,"""SELECT DISTINCT S.name, G.name FROM Scientist S, Scientist A, Scientist G, Teaches T, Teaches D WHERE S.id=T.student AND A.id=T.advisor AND A.id=D.student AND G.id=D.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""".
+Extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""".
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""" from your SELECT clause.
+
+"""
+19,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+20,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+21,1,9,"""SELECT DISTINCT gp.advisor, gc.student  FROM Teaches gp, Teaches gc  WHERE gp.student = gc.advisor;""",1,1,"""Correct."""
+24,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+25,1,9,"""SELECT T1.student, T2.advisor FROM Teaches T1, Teaches T2 WHERE T1.advisor=T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+26,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+27,1,9,"""SELECT DISTINCT t2.advisor,t1.student FROM Teaches t1, Teaches t2 WHERE t1.advisor = t2.student;""",0.6571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+28,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+29,1,9,"""WITH RECURSIVE Ancestors(advisor, student, level) AS  (     SELECT T.advisor, T.student, 1 AS level     FROM Teaches T     UNION ALL     SELECT T.advisor, A.student, A.level + 1     FROM Teaches T     JOIN Ancestors A ON T.student = A.advisor     WHERE A.level < 2  ) SELECT * FROM Ancestors A1 WHERE A1.level = 2;""",0.14285714285714285,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""",""""t"""".""""advisor"""",""""t"""".""""student"""".
+Mismatch in selected expressions.
+Extra expressions: (""""a"""".""""level"""" """"+"""" 1), 1.
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""", """"teaches"""".
+Extra tables: """"ancestors"""".
+
+WHERE clause: Operands mismatch in condition '""""teaches"""".""""student"""" """"="""" """"teaches"""".""""advisor""""'.
+Expected: '""""teaches"""".""""student""""' and '""""teaches"""".""""advisor""""'.
+Found: '""""ancestors"""".""""level""""' and '2'.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: ,""""a"""".""""student"""",""""t"""".""""advisor"""",""""t"""".""""advisor"""",""""t"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+30,1,9,"""select distinct A.id, C.id from Scientist A, Scientist B, Scientist C, Teaches T1, Teaches T2 where A.id = T1.advisor and T1.student = B.id and B.id = T2.advisor and T2.student = C.id;""",1,1,"""Correct."""
+31,1,9,"""SELECT DISTINCT T2.advisor, T1.student FROM Teaches T1, Teaches T2 WHERE T2.student = T1.advisor;""",0.8857142857142857,1,""""""
+32,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches as  T1, Teaches as T2 WHERE  T1.student = T2.advisor;""",1,1,"""Correct."""
+33,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+34,1,9,"""SELECT Gf.advisor, Gs.student FROM Teaches Gf, Teaches Gs, WHERE Gf.student = Gs.advisor;""",0.45714285714285713,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select gf.advisor, gs.student from teaches gf, teaches gs where gf.student = gs.advisor;' make it parseable.
+
+Results Analysis: Correct results are contained within the query results.
+
+"""
+35,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+36,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+37,1,9,"""SELECT DISTINCT T2.advisor, T1.student FROM Teaches T1, Teaches T2 WHERE T1.advisor==T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operator mismatch: Expected '""""=""""', but found '""""==""""'.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+38,1,9,"""SELECT DISTINCT T1.advisor AS grandpa, T2.student as grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+39,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+40,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor WHERE T1.advisor != T2.student;""",1,1,"""Correct."""
+41,1,9,"""SELECT DISTINCT A.advisor, B.student FROM Teaches A, Teaches B WHERE A.student = B.advisor;""",1,1,"""Correct."""
+45,1,9,"""SELECT t1.advisor, t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+46,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+47,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+48,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+529,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student=T2.advisor;""",1,1,"""Correct."""
+49,1,9,"""SELECT DISTINCT a.advisor, b.student FROM Teaches a JOIN Teaches b ON a.student = b.advisor;""",1,1,"""Correct."""
+50,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+52,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+53,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+54,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild   FROM Teaches T1 JOIN Teaches T2   ON T1.student=T2.advisor;""",1,1,"""Correct."""
+55,1,9,"""SELECT T1.advisor AS grandpa, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+57,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student=T2.advisor;""",1,1,"""Correct."""
+58,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,9,"""SELECT DISTINCT A.id AS advisor_id, A.name AS advisor_name,                 S.id AS student_id, S.name AS student_name FROM Teaches AS T1 JOIN Teaches AS T2 ON T1.student = T2.advisor JOIN Scientist AS A ON T1.advisor = A.id JOIN Scientist AS S ON T2.student = S.id;""",0.14285714285714285,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""name"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"scientist"""", """"scientist"""", (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""name"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+60,1,9,"""SELECT DISTINCT Grand.advisor, Petit.student FROM Teaches AS Grand, Teaches AS Petit WHERE Grand.student = Petit.advisor;""",1,1,"""Correct."""
+61,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+63,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor AND t1.advisor != t2.student;""",1,1,"""Correct."""
+65,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,9,"""SELECT DISTINCT S1.advisor AS grandparent, S2.student AS grandchild FROM Teaches S1, Teaches S2, WHERE S2.advisor = S1.student;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct s1.advisor as grandparent,s2.student as grandchild from teaches s1, teaches s2 where s1.student = s2.advisor;' make it parseable.
+
+"""
+67,1,9,"""SELECT advisor, student FROM Teaches  WHERE advisor IN ( SELECT S.id FROM Scientist S, Teaches T WHERE S.id = T.advisor);""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"advisor"""",""""scientist"""".""""id"""",""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"scientist"""".
+
+WHERE clause: Operator mismatch: Expected '""""=""""', but found ' ANY'.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"advisor"""",""""scientist"""".""""id"""",""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+68,1,9,"""SELECT DISTINCT Teaches.advisor, Teaches2.student FROM Teaches, Teaches AS Teaches2 WHERE Teaches.student = Teaches2.advisor;""",1,1,"""Correct."""
+69,1,9,"""SELECT t1.advisor, t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+70,1,9,"""select p.advisor, s.student from Teaches s, Teaches p where s.advisor = p.student""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+72,1,9,"""SELECT DISTINCT gp.advisor, gc.student  FROM Teaches gp JOIN Teaches gc ON gp.student == gc.advisor;""",1,1,"""Correct."""
+73,1,9,"""SELECT T1.advisor, T2.student  FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+74,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+75,1,9,"""SELECT DISTINCT T1.advisor AS Grandparent, T2.student AS Grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+532,1,9,"""select distinct t1.advisor as grandparent, t2.student as grandchild from Teaches t1 join Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+76,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+77,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1  INNER JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+78,1,9,"""SELECT Teaches.advisor AS grandparent, Teaches.student AS grandchild FROM Teaches JOIN Teaches AS Teaches2 ON Teaches.student = Teaches2.advisor;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+80,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild   FROM Teaches T1   JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+81,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+82,1,9,"""SELECT P1.advisor, P3.student FROM""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+84,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.Student = T2.advisor;""",1,1,"""Correct."""
+85,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+86,1,9,"""SELECT DISTINCT T1.advisor AS grandparent_id, T2.student AS grandchild_id FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+87,1,9,"""SELECT DISTINCT S1.id, S3.id FROM Teaches T1, Teaches T2, Scientist S1, Scientist S2, Scientist S3 WHERE S1.id = T1.advisor AND S2.id = T1.student AND S2.id = T2.advisor AND S3.id = T2.student;""",1,1,"""Correct."""
+88,1,9,"""SELECT T1.advisor, T2.student  FROM Teaches T1, Teaches T2  WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+89,1,9,"""SELECT t1.advisor, t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor WHERE t1.advisor != t2.student;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+90,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student=T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+91,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor WHERE t1.advisor != t2.student;""",1,1,"""Correct."""
+92,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+93,1,9,"""SELECT S1.id FROM Scientist S1, Scientist S2, Scientist S3, Teaches T1, Teaches T2  WHERE  S1.id = T1.advisor  AND S2.id = T1.student AND S2.id = T2.advisor AND S3.id =T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"scientist"""".""""id"""" to your SELECT clause.
+
+"""
+94,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+96,1,9,"""SELECT D1.advisor AS Grandpa, D2.student AS Baby FROM Teaches AS D1  JOIN Teaches AS D2 ON  D1.student = D2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+98,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+100,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+101,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild  FROM Teaches t1  INNER JOIN Teaches t2 ON t1.student=t2.advisor;""",1,1,"""Correct."""
+102,1,9,"""SELECT DISTINCT A.advisor, B.student FROM teaches A, teaches B WHERE A.student = B.advisor;""",1,1,"""Correct."""
+103,1,9,"""SELECT DISTINCT T1.advisor AS grandparent_id, T2.student AS grandchild_id FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+104,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+105,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+106,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+107,1,9,"""SELECT t1.student, t2.advisor FROM Scientist s, Teaches t1, Scientist a, Teaches t2 WHERE t1.student = s.id AND t1.advisor = a.id AND t2.student= t1.advisor GROUP BY t1.student, t2.advisor;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""".
+Extra columns: """"teaches"""".""""student"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""teaches"""".""""advisor""""""""=""""""""scientist"""".""""id""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""scientist"""".""""id""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""scientist"""".""""id""""; 
+Found conditions: SIMPLE:""""teaches"""".""""advisor""""""""=""""""""scientist"""".""""id""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""scientist"""".""""id""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""teaches"""".""""advisor""""; 
+
+GROUP BY clause: GROUP BY clause unexpected
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"scientist"""".""""id"""" to your SELECT clause.
+- Remove the extra columns: """"teaches"""".""""student"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+108,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+109,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+110,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+111,1,9,"""SELECT Teaches.advisor AS grandparent, T2.student AS grandchild FROM Teaches JOIN Teaches AS T2 ON Teaches.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+112,1,9,"""select distinct T1.advisor, T2.student from Scientist GP, Scientist P, Scientist GC, Teaches T1, Teaches T2 where T1.student = T2.advisor and T1.student = P.id and T2.advisor = P.id and T1.advisor = GP.id and T2.student = GC.id;""",1,1,"""Correct."""
+113,1,9,"""SELECT DISTINCT t1.advisor , t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+114,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+115,1,9,"""SELECT distinct T1.advisor AS grandparent,T2.student AS grandchild FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+116,1,9,"""SELECT Teaches.advisor AS grandparent, Teaches2.student AS grandchild FROM Teaches, Teaches AS Teaches2 WHERE Teaches.student = Teaches2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+117,1,9,"""SELECT Parent.advisor, Parent.student -- So confusing...  FROM Teaches Parent, Teaches Grandchild WHERE Parent.student = Grandchild.advisor ; -- also, with DISTINCT, it matches 485 for some reason.""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"parent"""".""""advisor"""",""""parent"""".""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""", """"teaches"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"parent"""".""""advisor"""",""""parent"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+118,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+119,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+121,1,9,"""SELECT T1.student, T2.advisor FROM Teaches T1, Teaches T2 WHERE T2.student = T1.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+122,1,9,"""SELECT DISTINCT G.advisor, P.student FROM Teaches G, Teaches P WHERE G.student = P.advisor;""",1,1,"""Correct."""
+123,1,9,"""WITH RECURSIVE Grandparents(id) AS (SELECT T1.advisor AS grandparent, T2.advisor AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor) SELECT * FROM Grandparents;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: ,""""t1"""".""""advisor"""",""""t2"""".""""advisor"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""", """"teaches"""".
+Extra tables: """"grandparents"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: ,""""t1"""".""""advisor"""",""""t2"""".""""advisor"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+124,1,9,"""SELECT DISTINCT t.advisor, tt.student FROM Teaches t JOIN Teaches tt ON t.student = tt.advisor;""",1,1,"""Correct."""
+125,1,9,"""SELECT T.advisor, Q.student FROM Teaches T, Teaches Q WHERE Q.advisor = T.student;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+126,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+128,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t3.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor  -- t1's student is t2's advisor JOIN Teaches t3 ON t2.student = t3.advisor  -- t2's student is t3's advisor ;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"teaches"""".""""student"""".
+Extra columns: """"t3"""".""""student"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: """"teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"t3"""".""""student"""" from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+129,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild   FROM Teaches T1   JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+130,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+131,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T1.student AS parent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor WHERE T1.advisor <> T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"teaches"""".""""student"""".
+
+
+Next steps:
+- Remove the extra columns: """"teaches"""".""""student"""" from your SELECT clause.
+
+"""
+533,1,9,"""SELECT s2.student, a2.advisor FROM student s1, student s2 WHERE ...""",0.02857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"a2"""".""""advisor"""",""""student"""".""""student"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""", """"teaches"""".
+Extra tables: """"student"""", """"student"""".
+
+WHERE clause: Operands mismatch in condition '""""teaches"""".""""student"""" """"="""" """"teaches"""".""""advisor""""'.
+Expected: '""""teaches"""".""""student""""' and '""""teaches"""".""""advisor""""'.
+Found: '""""student"""".""""advisor""""' and '""""student"""".""""student""""'.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"a2"""".""""advisor"""",""""student"""".""""student"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select s2.student, a2.advisor from student s1, student s2 where s1.advisor=s2.student;' make it parseable.
+
+"""
+133,1,9,"""SELECT DISTINCT T1.advisor, T3.student FROM Teaches T1, Teaches T2, Teaches T3 WHERE T1.student = T2.advisor AND T2.student = T3.student;""",1,1,"""Correct."""
+134,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+135,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches t2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+136,1,9,"""SELECT DISTINCT P1.advisor AS grandparent, P2.student AS grandchild FROM Teaches P1, Teaches P2 WHERE P1.student = P2.advisor;""",1,1,"""Correct."""
+137,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+138,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+139,1,9,"""SELECT DISTINCT T.advisor, S1.id FROM Scientist S, Scientist S1, Teaches T, Teaches T1 WHERE T.student = S.id AND T1.advisor = S.id AND T1.student = S1.id;""",1,1,"""Correct."""
+140,1,9,"""SELECT DISTINCT t1.advisor, t2.student FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor;""",1,1,"""Correct."""
+141,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor WHERE t1.advisor != t2.student;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+142,1,9,"""WITH first_gen as (SELECT * FROM Scientist JOIN Teaches ON Scientist.id == Teaches.advisor) SELECT Teaches.advisor, Teaches.student FROM first_gen JOIN Teaches on first_gen.student == Teaches.advisor;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Extra columns: .
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""".
+Extra tables: """"first_gen"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+143,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.advisor = t2.advisor;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+144,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+145,1,9,"""select T1.advisor, T2.student  from Scientist S1, Scientist S2, Teaches T1, Teaches T2 where S1.id = T1.advisor AND S2.id = T2.student  AND T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""".
+Extra columns: """"teaches"""".""""student"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""teaches"""".""""advisor""""""""=""""""""scientist"""".""""id""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""scientist"""".""""id""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""scientist"""".""""id""""; 
+Found conditions: SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""advisor""""; SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""teaches"""".""""advisor""""; 
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"scientist"""".""""id"""" to your SELECT clause.
+- Remove the extra columns: """"teaches"""".""""student"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+146,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+147,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+148,1,9,"""SELECT DISTINCT Teaches2.student, Teaches1.advisor FROM Teaches AS Teaches1, Teaches AS Teaches2 WHERE  Teaches1.student = Teaches2. advisor;""",1,1,"""Correct."""
+150,1,9,"""SELECT DISTINCT G2.advisor, G0.student FROM Teaches G2, Teaches G0 WHERE G2.student = G0.advisor;""",1,1,"""Correct."""
+151,1,9,"""SELECT a1.advisor_id AS grandparent_id, a2.student_id AS student_id FROM Advisors a1 JOIN Advisors a2 ON a1.student_id = a2.advisor_id JOIN Scientists s1 ON a1.advisor_id = s1.id JOIN Scientists s2 ON a2.student_id = s2.id WHERE s1.name = 'Desiderius Erasmus' AND s2.name = 'Grandchild Name';""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"advisors"""".""""advisor_id"""",""""advisors"""".""""student_id"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""", """"teaches"""".
+Extra tables: """"advisors"""", """"advisors"""", """"scientists"""", """"scientists"""", (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"advisors"""".""""advisor_id"""",""""advisors"""".""""student_id"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+152,1,9,"""SELECT DISTINCT  T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+153,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+154,1,9,"""SELECT t2.advisor, t2.student FROM Teaches AS t1, Teaches AS t2 WHERE t2.student=t1.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+155,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+156,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+157,1,9,"""SELECT DISTINCT T1.advisor AS grandpa, T2.student as grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+158,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches AS T1 JOIN Teaches AS T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+160,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 INNER JOIN Teaches t2 ON t1.student=t2.advisor;""",1,1,"""Correct."""
+161,1,9,"""SELECT      S.id,     S.name,     S.university,     S.year FROM      Scientist S,     Scientist Erasmus,     Teaches T WHERE      Erasmus.name = 'Desiderius Erasmus'     AND Erasmus.id = T.advisor     AND S.id = T.student;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"teaches"""".
+Extra tables: """"scientist"""", """"scientist"""".
+
+WHERE clause: Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+162,1,9,"""SELECT DISTINCT Grandparent.advisor, Grandchild.student FROM Teaches Grandparent, Teaches Grandchild WHERE Grandparent.student = Grandchild.advisor;""",1,1,"""Correct."""
+163,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+164,1,9,"""FROM Teaches A, Teaches B SELECT A.student, B.advisor WHERE A.advisor= B.student;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+166,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+167,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+168,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches AS t1 JOIN Teaches AS t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+169,1,9,"""SELECT t1.advisor AS gp_advisor, t2.student AS gp_student FROM Teaches t1, Teaches t2, WHERE t1.student = t2.advisor;""",0.45714285714285713,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select t1.advisor as gp_advisor, t2.student as gp_student from teaches t1, teaches t2 where t1.student = t2.advisor;' make it parseable.
+
+Results Analysis: Correct results are contained within the query results.
+
+"""
+170,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM TEACHES T1, TEACHES T2 WHERE T1.Student = T2.Advisor;""",1,1,"""Correct."""
+171,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+172,1,9,"""SELECT DISTINCT A.advisor, B.student FROM Teaches A, Teaches B WHERE  A.student= B.advisor;""",1,1,"""Correct."""
+173,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+535,1,9,"""SELECT t1.advisor AS grandparent_advisor, t2.student AS grandchild_student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+174,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+175,1,9,"""SELECT DISTINCT T1.advisor AS Grandparent, T2.student AS Grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+176,1,9,"""SELECT DISTINCT gp.advisor AS grandparent, gc.student AS grandchild FROM Teaches gp, Teaches gc WHERE gp.student = gc.advisor;""",1,1,"""Correct."""
+177,1,9,"""D SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild ┬╖ FROM Teaches T1 ┬╖ JOIN Teaches T2 ON T1.student = T2.advisor;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+179,1,9,"""select distinct T1.advisor,T1.student from Teaches T1, Teaches T2 where T2.student = T1.Advisor;""",0.8857142857142857,1,""""""
+181,1,9,"""SELECT DISTINCT Te.advisor AS GP, T.student AS GC FROM Teaches Te JOIN Teaches T ON Te.student=T.advisor;""",1,1,"""Correct."""
+183,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+184,1,9,"""SELECT DISTINCT t1.advisor, t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+185,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+186,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+187,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+188,1,9,"""SELECT      T1.advisor AS grandparent,      T2.student AS grandchild FROM      Teaches T1 JOIN      Teaches T2 ON T1.student = T2.advisor ORDER BY      grandparent, grandchild;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+189,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+190,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+191,1,9,"""SELECT t1.advisor, t1.student from Teaches t1, Teaches t2 WHERE t1.advisor = t2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+192,1,9,"""SELECT DISTINCT Teaches1.advisor AS grandparent, Teaches2.student AS grandchild FROM Teaches AS Teaches1 JOIN Teaches AS Teaches2 ON Teaches1. student = Teaches2.advisor;""",1,1,"""Correct."""
+193,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor;""",1,1,"""Correct."""
+194,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+195,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+196,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+197,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+198,1,9,"""SELECT DISTINCT advisor.name, student.name FROM Scientist advisor, Scientist parent, Scientist student, Teaches T, Teaches T2 WHERE advisor.id=T.advisor AND parent.id=T.student AND parent.id=T2.advisor AND student.id=T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""".
+Extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""".
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""" from your SELECT clause.
+
+"""
+199,1,9,"""SELECT DISTINCT Grandparent.advisor AS grandparent_id, Grandchild.student AS grandchild_id  FROM Teaches AS Grandparent  JOIN Teaches AS Parent ON Grandparent.student = Parent.advisor  JOIN Teaches AS Grandchild ON Parent.student = Grandchild.student;""",1,1,"""Correct."""
+200,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+201,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+202,1,9,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+203,1,9,"""SELECT DISTINCT t2.advisor, t1.student FROM Teaches AS t1 JOIN Teaches AS t2 ON t1.advisor = t2.student WHERE t1.advisor != t2.advisor;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Operator mismatch: Expected '""""=""""', but found '""""<>""""'.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+204,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1 INNER JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+206,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+208,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 JOIN Scientist ON Scientist.id = T1.advisor WHERE T1.student = T2.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"scientist"""".
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+209,1,9,"""SELECT Teaches.advisor AS grandparent, Teaches.student AS grandchild FROM Teaches JOIN Teaches AS Teaches2 ON Teaches.student = Teaches2.advisor;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+536,1,9,"""select * from Teaches T1, Teaches T2 where T1.advisor = T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: .
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+210,1,9,"""SELECT DISTINCT T2.advisor, T1.student  FROM Teaches T1, Teaches T2 WHERE T2.student = T1.advisor;""",1,1,"""Correct."""
+211,1,9,"""SELECT DISTINCT teach1.advisor, teach2.student FROM Teaches teach1 JOIN Teaches teach2 ON teach1.student = teach2.advisor""",1,1,"""Correct."""
+212,1,9,"""SELECT DISTINCT Teacher1.advisor AS grandparent, Teacher2.student AS grandchild FROM Teaches Teacher1 JOIN Teaches Teacher2 ON Teacher1.student = Teacher2.advisor WHERE Teacher1.advisor != Teacher2.student;""",1,1,"""Correct."""
+213,1,9,"""WITH RECURSIVE studenting AS (   SELECT T.student, T.advisor   FROM Teaches T   UNION   SELECT T2.student, T2.advisor   FROM AdvisorHierarchy AH   JOIN AdvisorStudent AS ON AH.AdvisorID = AS.StudentID;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+214,1,9,"""SELECT DISTINCT A.advisor, B.student FROM Teaches A, Teaches B WHERE A.student = B.advisor;""",1,1,"""Correct."""
+215,1,9,"""SELECT DISTINCT t1.advisor, t2.student FROM Teaches AS t1 JOIN Teaches AS t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+216,1,9,"""SELECT t1.advisor, t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor WHERE t1.advisor != t2.student;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+217,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+218,1,9,"""SELECT Teaches1.advisor, Teaches2.student FROM Teaches Teaches1, Teaches Teaches2 WHERE Teaches1.student = Teaches2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+220,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor WHERE T1.advisor != T2.student;""",1,1,"""Correct."""
+221,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+222,1,9,"""SELECT DISTINCT T.advisor, T2.student FROM Teaches T ,Teaches T2 WHERE T.student=T2.advisor;""",1,1,"""Correct."""
+223,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+224,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+225,1,9,"""SELECT T2.advisor, T2.student FROM Teaches AS T1, Teaches AS T2 WHERE T1.advisor = T2.student;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+226,1,9,"""SELECT DISTINCT gp.advisor, gc.student  FROM Teaches gp JOIN Teaches gc ON gp.student == gc.advisor;""",1,1,"""Correct."""
+227,1,9,"""SELECT DISTINCT P1.student AS student, P2.advisor AS advisor FROM teaches P1 JOIN teaches P2 ON P1.advisor = P2.student WHERE P1.student != P2.student;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Operator mismatch: Expected '""""=""""', but found '""""<>""""'.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+228,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+229,1,9,"""SELECT DISTINCT T1.advisor, T1.student FROM Teaches T1, Teaches T2, Teaches T3 WHERE T1.advisor = T2.student AND T2.advisor = T3.student AND T3.advisor = T1.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch. Expected 2, but found 3.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+231,1,9,"""SELECT DISTINCT T1.student, T2.advisor   FROM Teaches T1, Teaches T2   WHERE T1.advisor = T2.student;""",0.6571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+233,1,9,"""SELECT DISTINCT t1.advisor AS grandparent, t2.student AS grandchild  FROM Teaches t1  JOIN Teaches t2  ON t1.student = t2.advisor;""",1,1,"""Correct."""
+234,1,9,"""Select DISTINCT t2.advisor, t1.student FROM Teaches t1,Teaches t2 WHERE t1.advisor = t2.student;""",0.6571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+235,1,9,"""SELECT DISTINCT s.name, grandparent.name FROM Scientist s, Scientist parent, Scientist grandparent, Teaches t, Teaches t2  WHERE s.id = t.student AND  parent.id = t.advisor AND  parent.id = t2.student AND  grandparent.id = t2.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""".
+Extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""".
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""" from your SELECT clause.
+
+"""
+236,1,9,"""SELECT T1.advisor, T3.student FROM Teaches T1, Teaches T2, Teaches T3 WHERE T1.advisor = T2.student AND T2.advisor = T3.student;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""teaches"""".""""student""""""""=""""""""teaches"""".""""advisor""""; SIMPLE:""""teaches"""".""""student""""""""=""""""""teaches"""".""""student""""; 
+Found conditions: SIMPLE:""""teaches"""".""""advisor""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""teaches"""".""""advisor""""""""=""""""""teaches"""".""""student""""; 
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+238,1,9,"""SELECT t1.advisor AS grandparent_advisor, t2.student AS grandchild_student FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+239,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+240,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+241,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+242,1,9,"""SELECT S1.id, S3.id FROM Scientist AS S1, Teaches AS T1, Scientist AS S2, Teaches AS T2, Scientist AS S3 WHERE S1.id = T1.advisor AND S2.id = T1.student AND S2.id = T2.advisor AND S3.id = T2.student;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+243,1,9,"""SELECT DISTINCT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",1,1,"""Correct."""
+245,1,9,"""SELECT DISTINCT A.advisor, B.student FROM Teaches A, Teaches B WHERE B.advisor = A.student;""",1,1,"""Correct."""
+246,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches AS t1, Teaches AS t2, Scientist AS s1, Scientist AS s2 WHERE t1.student = t2.advisor AND t1.advisor = s1.id AND t2.student = s2.id AND SUBSTRING_INDEX(s1.name, ' ', -1) = SUBSTRING_INDEX(s2.name, ' ', -1);""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""".
+Extra columns: """"teaches"""".""""student"""".
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 3, but found 4.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"scientist"""".""""id"""" to your SELECT clause.
+- Remove the extra columns: """"teaches"""".""""student"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+247,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+249,1,9,"""SELECT DISTINCT T1.advisor,T2.student  FROM Teaches T1, Teaches T2  WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+250,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+251,1,9,"""SELECT t1.advisor AS grandparent, t2.student AS grandchild FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+252,1,9,"""SELECT DISTINCT T.advisor, T2.student FROM Teaches AS T, Teaches AS T2 WHERE T.student = T2.advisor;""",1,1,"""Correct."""
+253,1,9,"""SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;""",1,1,"""Correct."""
+254,1,9,"""SELECT advisor, student FROM""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,9,"""SELECT DISTINCT t.advisor, t2.student FROM Teaches AS t JOIN Teaches AS t2 ON t.student = t2.advisor;""",1,1,"""Correct."""
+256,1,9,"""SELECT DISTINCT t1.advisor, t2.student FROM Teaches t1 JOIN Teaches t2 ON t1.student = t2.advisor;""",1,1,"""Correct."""
+257,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+258,1,9,"""SELECT t.advisor, t.student FROM Teaches t, Teaches as t2 WHERE t.student = t2.advisor;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+259,1,9,"""SELECT DISTINCT Teaches.advisor, Teaches2.student FROM Teaches, Teaches AS Teaches2 WHERE Teaches2.advisor = Teaches.student;""",1,1,"""Correct."""
+260,1,9,"""SELECT       DISTINCT        grandparent.advisor AS grandparent_id,        grandchild.student AS grandchild_id   FROM        Teaches AS grandparent   JOIN        Teaches AS parent   ON        grandparent.student = parent.advisor   JOIN        Teaches AS grandchild   ON        parent.student = grandchild.student;""",1,1,"""Correct."""
+261,1,9,"""SELECT T1.advisor, T2.student FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+262,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+263,1,9,"""SELECT DISTINCT t1.advisor, t2.student FROM Teaches t1, Teaches t2 WHERE t1.student = t2.advisor;""",1,1,"""Correct."""
+264,1,9,"""SELECT T1.advisor AS grandparent, T2.student AS grandchild FROM Teaches T1 JOIN Teaches T2 ON T1.student = T2.advisor;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""

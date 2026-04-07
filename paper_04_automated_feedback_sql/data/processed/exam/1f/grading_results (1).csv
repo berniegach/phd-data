@@ -1,0 +1,2511 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+265,1,1f,SELECT DISTINCT Artist.artist_id FROM Artist JOIN Performs ON Performs.artist_id = Artist.artist_id WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+266,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist'""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+267,1,1f,"""SELECT DISTINCT artist_id  FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id  AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+268,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+269,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND T.track_id = P.track_id AND P.role = ´guitarist´;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+270,1,1f,SELECT artist_id FROM Artist.A JOIN Performs P ON P.artist_id = A.artist_id WHERE P.role = 'guitarist';,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'a'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'performs.role' and 'guitarist'.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+271,1,1f,SELECT DISTINCT Performs.artist_id  FROM Performs  WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+272,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+273,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+274,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+275,1,1f,"""SELECT DISTINCT Artist.artist_id  FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role =  'guitarist';'?
+"""
+276,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+277,1,1f,SELECT DISTINCT artist_id  FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+278,1,1f,SELECT DISTINCT artist_id -- Distinct because artist can be guitarist on multiple tracks FROM Performs  WHERE role='guitarist';,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+
+"""
+279,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+280,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+281,1,1f,"""SELECT DISTINCT artist_id  FROM Artist, Performs  WHERE Artist.artist_id=Performs.artist_id  AND role='guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+282,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+283,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist',1,1,"""🟢 Correct."""
+284,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE P.role = 'guitarist' AND A.artist_id  .;""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist_id'.
+● Extra columns: 'a.artist_id'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'artist',  'p'.
+
+3. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Add the missing columns: 'artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'a.artist_id' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select distinct a.artist_id from artist, performs, p where p.role = 'guitarist' and p.p_id = performs.p_id;' make it parseable.
+
+"""
+285,1,1f,"""SELECT DISTINCT p.artist_id FROM Performs p WHERE p.role = """"guitarist""""; /*  TODO: if an artist plays on multiple tracks as a guitarist,  the artist will get named multiple times.  I don't believe that to be allowed, according to the phrasing   Now on to hope DISTINCT fixed it, I believe it should  Also in the case Djoerd (or someone else) reads this. Hi! <3 to databases */""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+286,1,1f,SELECT artist_id FROM Performs WHERE role = ´guitaritst´;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitaritst´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+287,1,1f,SELECT DISTINCT p.artist_id FROM Performs p WHERE p.role = 'guitarist';,1,1,"""🟢 Correct."""
+288,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Perfoms WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist';""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'artist',  'perfoms'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+289,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role =  'guitarist';""",1,1,"""🟢 Correct."""
+290,1,1f,SELECT Performs.artist_id FROM Performs WHERE Performs.role = ´guitarist´;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist_id'.
+● Extra columns: 'performs.artist_id'.
+
+2. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'performs.role' and '´guitarist´'.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'performs.artist_id' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+291,1,1f,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+292,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist AS A, Performs AS P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+293,1,1f,SELECT DISTINCT artist_id FROM Performs  WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+294,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+295,1,1f,SELECT DISTINCT artist_id  FROM Performs  WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+296,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+297,1,1f,Select DISTINCT a.artist_id from Artist a JOIN Performs p ON a.artist_id = p.artist_id where p.role = 'guitarist' ;,1,1,"""🟢 Correct."""
+298,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+299,1,1f,SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+300,1,1f,"""SELECT artist_id FROM Artist , Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.role = 'guitarist' ;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+301,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role='guitarist';,1,1,"""🟢 Correct."""
+302,1,1f,SELECT DISCTINCT artist_id FROM Performs WHERE role = 'guitarist';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';'?
+"""
+303,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+304,1,1f,SELECT artist_id FROM performs WHERE role = ´guitarist´;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+305,1,1f,"""SELECT artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+306,1,1f,SELECT artist_id FROM Performs WHERE role = ´guitarist´,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+307,1,1f,SELECT DISTINCT artist_id FROM Performs  WHERE role = ´guitarist´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';'?
+"""
+308,1,1f,SELECT P.artist_id FROM Performs P WHERE P.role='guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+309,1,1f,SELECT artist_id FROM Performs WHERE role='guitarist',0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+310,1,1f,select distinct artist_id from Performs where role = 'guitarist';,1,1,"""🟢 Correct."""
+311,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+312,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",1,1,"""🟢 Correct."""
+313,1,1f,"""SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+314,1,1f,SELECT DISTINCT Artist.artist.id FROM Artist JOIN Performs on Artist.artist_id = Performs.artist_id WHERE Performs.role = 'guitarist',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT Artist.artist_id FROM Artist JOIN Performs On Artist.artist_id = Performs.artist_id WHERE Performs.role = 'guitarist';'?
+"""
+315,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';'?
+"""
+316,1,1f,"""SELECT DISTINCT Artist.artist_id  FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",1,1,"""🟢 Correct."""
+317,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Performs, Track WHERE role = 'guitarist' AND Track.track_id = Performs.track_id;""",0.2571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+318,1,1f,SELECT DISTINCT artist_id  FROM Performs  WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+319,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+320,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = `guitarist`;,0.9714285714285714,1,"""Correct semantics.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select distinct artist_id from performs where role = 'guitarist';' make it parseable.
+
+"""
+321,1,1f,SELECT DISTINCT artist_id From Performs Where role = 'guitarist';,1,1,"""🟢 Correct."""
+322,1,1f,SELECT artist_id FROM Performs WHERE EXISTS ( SELECT Performs2.artist_id  FROM Performs AS Performs2 WHERE Performs.artist_id = Performs2.artist_id AND Performs.role = 'guitarist');,0.2571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: '*'.
+● Extra columns: 'performs.artist_id'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'artist'.
+● Extra tables: 'performs'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: '*' to your SELECT clause.
+➡️ Remove the extra columns: 'performs.artist_id' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+323,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+324,1,1f,SELECT artist_id FROM Artist  AND role FROM Perform  WHERE role IS 'guitarist',0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+325,1,1f,SELECT DISTINCT artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+326,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id  .  ;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 1.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select distinct artist.artist_id from artist, performs where artist.artist.artist_id=performs.artist.artist_id and performs.artist_id;' make it parseable.
+
+"""
+327,1,1f,SELECT artist_id FROM Performs WHERE  role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+328,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+329,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+330,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id=P.artist_id AND P.role='guitarist';""",1,1,"""🟢 Correct."""
+331,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,1,1,"""🟢 Correct."""
+332,1,1f,CREATE VIEW artist_id AS     SELECT *     FROM Performs     WHERE role = 'guitarist',0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+The reference statement is a SelectStmt but the student statement is a ViewStmt.
+"""
+333,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+334,1,1f,SELECT DISTINCT artist_id  FROM Performs WHERE role = ´guitarist´;,1,1,"""🟢 Correct."""
+335,1,1f,"""SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+336,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+337,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+338,1,1f,SELECT DISTINCT artist_id FROM Perfomrs WHERE role = 'guitarist',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';'?
+"""
+339,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+340,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Track T, Performs F WHERE A.artist_id = T.artist_id  AND T.track_id = P.track_id  AND P.role = ´guitarist´;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+341,1,1f,SELECT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+342,1,1f,SELECT artist_id FROM Performs WHERE role = ´guitarist´,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+343,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+344,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+345,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+346,1,1f,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+347,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+348,1,1f,"""SELECT DISTINCT a.artist_id FROM Artist a, Performs p WHERE a.artist_id=p.artist_id AND p.role='guitarist';""",1,1,"""🟢 Correct."""
+349,1,1f,SELECT artist_id FROM Performs WHEN role = 'guitarist';,0.45714285714285713,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select artist_id from performs where role = 'guitarist';' make it parseable.
+
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+350,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role= 'guitarist';,1,1,"""🟢 Correct."""
+351,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+352,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+353,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role='guitarist';,1,1,"""🟢 Correct."""
+354,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+355,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+356,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+357,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+358,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE P.role = 'guitarist' AND A.artist_id = P.artist_id;""",1,1,"""🟢 Correct."""
+359,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+360,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+361,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist' ;,1,1,"""🟢 Correct."""
+362,1,1f,SELECT DIStINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+363,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role=´guitarist´;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'performs.role = guitarist'.
+● Expected operands: 'performs.role' and 'guitarist'.
+● Found operands: 'performs.role' and '´guitarist´'.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+364,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs  WHERE role = ´guitarist´;'?
+"""
+365,1,1f,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+366,1,1f,SELECT DISTINCT A.artist_id FROM Artist A JOIN Performs P ON P.artist_id = A.artist_id WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+367,1,1f,"""SELECT Artist.artist_id FROM  Artist, Performs WHERE Artist.artit_id = Performs.artist_id AND Performs.role = 'guitarist'""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:artist.artist_id=performs.artist_id; SIMPLE:performs.role=´guitarist´; 
+ ● Found conditions: SIMPLE:artist.artit_id=performs.artist_id; SIMPLE:guitarist=performs.role; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+368,1,1f,"""SELECT DISTINCT artist_id  FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+369,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+370,1,1f,SELECT DISTINCT artist_id FROM Performs  WHERE Performs.role = ´guitarist´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id  FROM Performs WHERE Performs.role = 'guitarist';'?
+"""
+371,1,1f,"""Select distinct a.artist_id From artist a, track t Where role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+372,1,1f,SELECT artist_id FROM Preforms WHERE role = 'guitarist';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'preforms'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+373,1,1f,SELECT DISTINCT ar.artist_id FROM Artist ar INNER JOIN Performs p ON p.artist_id = ar.artist_id WHERE p.role = 'guitarist';,1,1,"""🟢 Correct."""
+374,1,1f,SELECT DISTINCT A.artist_id FROM Artist A INNER JOIN Performs P ON A.artist_id=P.artist_id WHERE .´´;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+375,1,1f,SELECT DISTINCT arist_id FROM Performs WHERE role = 'guitarist',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';'?
+"""
+376,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role=´guitarist´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs  WHERE role = ´guitarist´;'?
+"""
+377,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id AND Performs.role""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+378,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role=´guitarist´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs  WHERE role = ´guitarist´;'?
+"""
+379,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+380,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+381,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+382,1,1f,SELECT ARTIST_ID FROM PERFORMS WHERE ROLE = ´guitarist´;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+383,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist'; -- We use distinct because an artist can be a guitarist on multiple tracks,1,1,"""🟢 Correct."""
+384,1,1f,"""SELECT artist_id FROM Performs WHERE role = 'guitarist' GROUP BY artist_id; -- group by to avoid needing DISTINCT  -- (DISTINCT is much better, but it is not necessary for desired result)""",1,1,"""🟢 Correct."""
+385,1,1f,SELECT DISTINCT Artist.artist_id FROM Artist JOIN Perform ON Artist.artist_id = Perform.artist_id WHERE Perform.role = 'guitarist';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT Artist.artist_id FROM Artist JOIN Performs On Artist.artist_id = Performs.artist_id WHERE Performs.role = 'guitarist';'?
+"""
+386,1,1f,SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+387,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+388,1,1f,SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE role = ´guitarist´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE role = 'guitarist';'?
+"""
+389,1,1f,SELECT DISTINCT P.artist_id  FROM Performs P WHERE P.role = ´guitarist´,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';'?
+"""
+390,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,1,1,"""🟢 Correct."""
+391,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist' ;,1,1,"""🟢 Correct."""
+392,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+393,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+394,1,1f,SELECT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+395,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id=Performs.artist_id  .;""",0.45714285714285713,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select distinct artist.artist_id from artist, performs where artist.artist_id=performs.artist_id;' make it parseable.
+
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+396,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+397,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+398,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+399,1,1f,Select Distinct A.artist_id from Artist A Join Performs P on A.artist_id = P.artist_id where role = 'guitarist',1,1,"""🟢 Correct."""
+400,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+401,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+402,1,1f,"""SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+403,1,1f,SELECT DISTINCT performs.artist_id FROM performs WHERE performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+404,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+405,1,1f,SELECT DISTINCT Artist.artist_id FROM Artist JOIN Performs On Artist.artist_id = Performs.artist_id WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+406,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+407,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+408,1,1f,"""SELECT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+409,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+410,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.Artist_id AND role = ´guitarist´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;'?
+"""
+411,1,1f,"""SELECT A.artist_id  FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+412,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE P.role = 'guitarist'""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+413,1,1f,"""SELECT A.artist_id FROM Artist AS A, Performs AS P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+414,1,1f,SELECT DISTINCT Performs.artist_id  FROM Performs  WHERE Performs.role = 'guitarist' ;,1,1,"""🟢 Correct."""
+415,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+416,1,1f,SELECT A.artist_id FROM Artist A WHERE EXISTS ( SELECT * FROM Performs P WHERE A.artist_id = P.artist_id  .  ;,0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist_id'.
+● Extra columns: 'artist.artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist.artist_id' from your SELECT clause.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select a.artist_id from artist a where exists ( select * from performs p where a.a.artist_id=p.a.artist_id and p.artist_id );' make it parseable.
+
+"""
+417,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist',1,1,"""🟢 Correct."""
+418,1,1f,SELECT DISTRINCT artist_id FROM Performs WHERE role = 'guitarist',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISCTINCT artist_id FROM Performs WHERE role = 'guitarist';'?
+"""
+419,1,1f,"""SELECT DISTINCT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist';""",1,1,"""🟢 Correct."""
+420,1,1f,"""SELECT artist_id FROM Perform WHERE role = """"guitarist"""";""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'perform'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+421,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist'""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+422,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE (Performs.role = ¨guitarist¨);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs  WHERE Performs.role = ´guitarist´;'?
+"""
+423,1,1f,SELECT artist_id FROM Performs WHERE artist.role = guitarist;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'artist.role' and 'guitarist'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+424,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+425,1,1f,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+426,1,1f,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+427,1,1f,SELECT name FROM Performs GROUP BY role WHERE artist_id = guitarist;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+428,1,1f,SELECT artist_id FROM Artist WHERE artist_id IN (SELECT artist_id FROM Performs WHERE role = 'guitarist';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+429,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+430,1,1f,SELECT artist_id FROM Performs WHERE role = guitarist,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+431,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+432,1,1f,Select artist_id from Performs where role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+433,1,1f,"""SELECT distinct artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role = 'guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'artist_id'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artist_id' from your SELECT clause.
+
+"""
+434,1,1f,SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE P.role = 'guitarist';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE role = 'guitarist';'?
+"""
+435,1,1f,"""SELECT DISTINCT Artist.artist_id  FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id  AND role = 'guitarist';""",1,1,"""🟢 Correct."""
+436,1,1f,SELECT DISTINCT artist_id FROM Artist  WHERE role = ´guitarist´,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'artist'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+437,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+438,1,1f,"""SELECT DISTINCT Artist.artist_id  FROM Artist, Performs  WHERE Artist.artist_id = Performs.artist_id  AND Performs.role = 'guitarist';""",1,1,"""🟢 Correct."""
+439,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+440,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+441,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id=p.artist_id AND P.role='guitarist';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+442,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+443,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+444,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+445,1,1f,SELECT DISTINCT artist_id FROM Performs  WHERE role = ´guitarist´;,1,1,"""🟢 Correct."""
+446,1,1f,SELECT DISTINCT Artist.artist_id AS atrist_id  FROM Track  JOIN Performs on Track.artist_id=Performs.artist_id  WHERE Performs.role=´guitarist´;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'artist'.
+● Extra tables: 'track'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'artist',  'performs'.
+● Found tables: 'performs',  'track'.
+● Join 1: Mismatch in join condition.
+● Expected condition: performs.artist_id = artist.artist_id.
+● Found condition: track.artist_id = performs.artist_id.
+
+2. WHERE clause: ● Operands mismatch in condition 'performs.role = guitarist'.
+● Expected operands: 'performs.role' and 'guitarist'.
+● Found operands: 'performs.role' and '´guitarist´'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+447,1,1f,SELECT Artist.artist_id FROM Artist JOIN Performs on Artist.artist_id = Performs.artist_id WHERE Performs.role = 'Guitarist';,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+2. WHERE clause: ● Operands mismatch in condition 'performs.role = guitarist'.
+● Expected operands: 'performs.role' and 'guitarist'.
+● Found operands: 'performs.role' and 'Guitarist'.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+448,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+449,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+450,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+451,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+452,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND role = ´guitarist´;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+453,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs WHERE role='guitarist';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'artist'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+454,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´ ;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;'?
+"""
+455,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE Role = 'guitarist';,1,1,"""🟢 Correct."""
+456,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = guitarist""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';'?
+"""
+457,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+458,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist'; --DISTINCT necessary as artist can be guitarist for multiple tracks.,1,1,"""🟢 Correct."""
+459,1,1f,SELECT artist_id FROM Performs WHERE role=´guitarist´,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+460,1,1f,SELECT DISTINCT A.artist_id FROM Artists A NATURAL JOIN Performs P NATURAL JOIN Track WHERE P.role = ´guitarist´,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist_id'.
+● Extra columns: 'artists.artist_id'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: '(nested join)',  'artists',  'track'.
+● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'artists.artist_id' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+461,1,1f,SELECT DISTINCT artist_id  FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+462,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND role = ;""",0.17142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'artist.artist_id'.
+● Extra columns: 'a.artist_id'.
+
+2. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 1.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'artist.artist_id' to your SELECT clause.
+➡️ Remove the extra columns: 'a.artist_id' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select distinct a.artist_id from artist, performs where artist.a.artist_id = performs.a.artist_id and role ;' make it parseable.
+
+"""
+463,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+464,1,1f,SELECT DISTINCT artist_id FROM Perform  WHERE role = 'guitarist';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';'?
+"""
+465,1,1f,"""SELECT DISTINCT A.artist_id  FROM Artist A,Performs P WHERE A.artist_id=P.artist_id AND P.role=´guitarist´;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+466,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+467,1,1f,SELECT artist_id FROM Performs  WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+468,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+469,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+470,1,1f,"""SELECT  A.artist_id FROM Artist A , Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+471,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs wHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+472,1,1f,"""SELECT artist_id FROM Performs WHERE role=""""guitarist""""""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+473,1,1f,SELECT DISTINCT Artist.artist_id  FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id WHERE Performs.role = ´guitarist´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT Artist.artist_id FROM Artist JOIN Performs On Artist.artist_id = Performs.artist_id WHERE Performs.role = 'guitarist';'?
+"""
+474,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+475,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE P.role = 'guitarist' AND A.artist_id = P.artist_id;""",1,1,"""🟢 Correct."""
+476,1,1f,SELECT DISTINCT artist_id  FROM Performs  WHERE role='guitarist';,1,1,"""🟢 Correct."""
+477,1,1f,"""SELECT Artist.artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.role = 'guitarist'""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+478,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+479,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Track T, Performs P WHERE P.role = 'guitarist' AND A.artist_id  .  .  .;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+480,1,1f,SELECT DISTINCT artist_id FROM Artist WHERE role = 'guitarist';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'artist'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+481,1,1f,SELECT artist_id FROM Performs WHERE role = ´guitarist´;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+482,1,1f,SELECT DISTINCT artist_id  FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+483,1,1f,"""SELECT Ar.artist_id FROM Artist Ar, Performs P WHERE P.role = 'guitarist'; -- The Foreign key rule""",0.2571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+2. FROM clause: ● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+484,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+485,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+486,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+487,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND role = ´guitarist´""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+488,1,1f,SELECT DISTINCT Ar.artist_id FROM Artist Ar NATURAL JOIN Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+489,1,1f,SELECT Performs.artist_id  FROM Performs P WHERE P.role = 'guitarist' DISTINCT,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+490,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+491,1,1f,SELECT artist_id FROM Track WHERE role = ´guitarist´,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'track'.
+
+2. WHERE clause: ● Operands mismatch in condition 'role = guitarist'.
+● Expected operands: 'role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+492,1,1f,SELECT DISTINCT p.artist_id FROM Performs p WHERE p.role = 'guitarist';,1,1,"""🟢 Correct."""
+493,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+494,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+495,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+496,1,1f,SELECT DISTINCT A.artist_id FROM Artist A JOIN Performs P ON A.artist_id=P.artist_id where P.role=´guitarist´ AND P.track_id IS NOT NULL;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+497,1,1f,"""SELECT DISTINCT A.artist_id FROM Artists A, Performs P WHERE A.artist_id = P.artist_id and role = 'guitarist'""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';'?
+"""
+498,1,1f,"""SELECT artist_id FROM Artist, Peforms WHERE Artist.artist_id = Performs.artist_id AND Performs.role = ´guitarist´""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'artist',  'peforms'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+499,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+500,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+501,1,1f,SELECT DISTINCT artist_id  FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+502,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id  AND P.role = 'guitarist';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+503,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist',1,1,"""🟢 Correct."""
+504,1,1f,"""SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = 'guitarist';""",1,1,"""🟢 Correct."""
+505,1,1f,SELECT artist_id FROM Artist a WHERE EXISTS (     SELECT * FROM Performs p WHERE a.artist_id=p.artist_id AND p.role='guitarist' );,1,1,"""🟢 Correct."""
+506,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist'; --Distinct because artist can be guitarist in multiple tracks,1,1,"""🟢 Correct."""
+507,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+508,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P WHERE A.artist_id=P.artist_id AND P.role=´guitarist´;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+509,1,1f,SELECT DISTINCT P.artist_id FROM Performs P WHERE P.role = 'guitarist';,1,1,"""🟢 Correct."""
+510,1,1f,select distinct artist_id from Performs where Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+511,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,1,1,"""🟢 Correct."""
+512,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role='guitarist';,1,1,"""🟢 Correct."""
+513,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+514,1,1f,SELECT DISTINCT artist_id FROM Artist NATURAL JOIN Performs WHERE role =  'guitarist';,1,1,"""🟢 Correct."""
+515,1,1f,SELECT DISTINCT artist_id FROM Performs WHERE role = ´guitarist´;,1,1,"""🟢 Correct."""
+516,1,1f,"""SELECT DISTINCT p.artist_id FROM Artist a, Performs p WHERE a.artist_id = p.artist_id AND p.role = ´guitarist´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT A.artist_id FROM Artist A, Performs P WHERE A.artist_id = P.artist_id AND P.role = ´guitarist´;'?
+"""
+517,1,1f,"""SELECT A.artist_id FROM Artist A, Performs P  WHERE A.artist_id = P.artist_id    AND P.role = ´guitarist´;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+"""
+518,1,1f,SELECT DISTINCT Artist.artist_id FROM Artist JOIN Performs on Artist.artist_id = Performs.artist_id WHere role = ´guitarist´,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'performs.role = guitarist'.
+● Expected operands: 'performs.role' and 'guitarist'.
+● Found operands: 'role' and '´guitarist´'.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+519,1,1f,SELECT DISTINCT artist_id  FROM Performs  WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+520,1,1f,SELECT DISTINCT Artist.artist_id FROM Artist INNER JOIN Performs ON Artist.artist_id = Performs.artist_id  .  ´´;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: performs.artist_id = artist.artist_id.
+● Found condition: artist.artist_id = .
+
+2. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Add a WHERE clause to filter the data as specified.
+
+"""
+521,1,1f,"""SELECT Artist.artist_id FROM Artist, Performs WHERE      Artist.artist_id = Performs.artist_id     AND     Performs.role = 'guitarist' ;""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Missing DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+522,1,1f,SELECT artist_id FROM Performs WHERE role = 'guitarist';,0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+523,1,1f,SELECT DISTINCT Performs.artist_id FROM Performs WHERE Performs.role = 'guitarist';,1,1,"""🟢 Correct."""
+524,1,1f,"""SELECT DISTINCT artist_id FROM Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND role  ;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'artist'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+525,1,1f,SELECT DISTINCT artist_id FROM Performs  WHERE role = 'guitarist';,1,1,"""🟢 Correct."""
+526,1,1f,SELECT DISTINCT artist_id FROM Artist WHERE role = ´guitarist´,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'performs'.
+● Extra tables: 'artist'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+527,1,1f,SELECt DISTINCT artist_id FROM Artist JOIN Performs ON Artist.artist_id=Performs.artist.id WHERE role = ´guitarist´:,0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'performs', 
+ ● Select 'artist_id', 
+ ● Filter data where role = guitarist
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: Mismatch in WHERE clause presence.
+
+
+4️⃣ Next steps:
+➡️ Add a WHERE clause to filter the data as specified.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select distinct artist_id from artist join performs on artist.artist_idperforms.artist.id   where role  'guitarist'' make it parseable.
+
+"""

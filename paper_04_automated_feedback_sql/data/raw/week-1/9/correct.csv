@@ -1,0 +1,1 @@
+﻿"SELECT Theme.theme_id, Theme.name FROM Teacher, Theme WHERE Teacher.teacher_id = Theme.teacher_id AND Teacher.name = 'Djoerd Hiemstra' "

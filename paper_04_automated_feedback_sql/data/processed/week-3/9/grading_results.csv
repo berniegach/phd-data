@@ -1,0 +1,1131 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,9,"""SELECT A.artist_id, A.name FROM Artist A WHERE A.artist_id IN (   SELECT artist_id    FROM Performs   WHERE artist_id IN (SELECT artist_id FROM Produces)     AND artist_id IN (SELECT artist_id FROM Writes) );""",1,1,"""Correct."""
+2,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces R, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = R.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+4,1,9,"""SELECT DISTINCT      Artist.artist_id, Artist.name FROM      Artist JOIN      Performs ON Artist.artist_id = Performs.artist_id JOIN      Produces ON Artist.artist_id = Produces.artist_id JOIN      Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+5,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id  AND A.artist_id = Pr.artist_id  AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+7,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A  JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces R ON A.artist_id = R.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+8,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Track T, Performs P, Produces Pr, Writes W WHERE A.artist_id=P.artist_id AND P.track_id=T.track_id AND W.artist_id=A.artist_id AND Pr.artist_id=A.artist_id;""",1,1,"""Correct."""
+9,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+10,1,9,"""SELECT DISTINCT      A.artist_id,       A.name FROM      Artist A JOIN       Performs P ON A.artist_id = P.artist_id JOIN      Produces Pr ON A.artist_id = Pr.artist_id JOIN  Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+11,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T1 ON P.track_id = T1.track_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Track T2 ON Pr.track_id = T2.track_id JOIN Writes W ON A.artist_id = W.artist_id JOIN Track T3 ON W.track_id = T3.track_id;""",1,1,"""Correct."""
+12,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+13,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+14,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+16,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+17,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+18,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Writes W, Produces Pr, Performs P, Track T WHERE A.artist_id = P.artist_id   AND A.artist_id = Pr.artist_id   AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+19,1,9,"""SELECT DISTINCT Artist.artist_id, name FROM Artist, Performs, Writes, Produces WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+20,1,9,"""SELECT DISTINCT A.artist_id, A.name  FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND P.track_id = Pr.track_id  AND Pr.track_id = W.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch. Expected 3, but found 5.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+21,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T, Produces Pr, Writes w WHERE A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = Pr.artist_id AND Pr.track_id=T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id;""",0.8857142857142857,1,""""""
+23,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+24,1,9,"""SELECT DISTINCT Artist.artist_id, name  FROM Artist  JOIN Performs ON Artist.artist_id = Performs.artist_id  JOIN Produces ON Artist.artist_id = Produces.artist_id  JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+25,1,9,"""SELECT DISTINCT name FROM Artist A,Performs P,Writes W, Produces Pr WHERE A.artist_id=P.artist_id AND A.artist_id=W.artist_id AND A.artist_id=Pr.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"name"""".
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+26,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+27,1,9,"""SELECT DISTINCT A.artist_id,name FROM Artist AS A,Performs AS Pf, Produces AS Pd,Writes AS W WHERE A.artist_id =  Pf.artist_id AND  A.artist_id =  Pd.artist_id AND  A.artist_id =  W.artist_id;""",1,1,"""Correct."""
+29,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+30,1,9,"""select distinct Artist.artist_id, Artist.name from Artist, Performs, Produces, Writes where Artist.artist_id = Performs.artist_id and Artist.artist_id = Produces.artist_id and Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+31,1,9,"""SELECT DISTINCT A.artist_id, A.name   FROM Artist A, Performs PE, Produces PR, Writes W   WHERE A.artist_id = PE.artist_id     AND A.artist_id = PR.artist_id     AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+32,1,9,"""SELECT DISTINCT A.artist_id, A.name   FROM Artist A, Produces P, Writes W, Performs    WHERE A.artist_id = P.artist_id   AND P.artist_id= W.artist_id   AND Performs.artist_id = A.artist_id;""",1,1,"""Correct."""
+33,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+34,1,9,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+35,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces R, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = R.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+36,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+37,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id=P.artist_id JOIN Produces Pr ON A.artist_id=Pr.artist_id JOIN Writes W ON A.artist_id=W.artist_id;""",1,1,"""Correct."""
+38,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+39,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+40,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+41,1,9,"""SELECT DISTINCT A.* FROM Artist A, Performs P, Track T, Produces P1, Writes W WHERE A.artist_id = P.artist_id  AND P.track_id=T.track_id  AND A.artist_id = P1.artist_id  AND A.artist_id = W.artist_id  AND W.track_id=T.track_id;""",1,1,"""Correct."""
+44,1,9,"""SELECT DISTINCT artist.artist_id, artist.name FROM artist  JOIN performs ON artist.artist_id = performs.artist_id JOIN produces ON artist.artist_id = produces.artist_id JOIN writes ON artist.artist_id = writes.artist_id JOIN track ON performs.track_id = track.track_id AND produces.track_id = track.track_id AND writes.track_id = track.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"track"""", (nested join), (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+45,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces P2, Writes Q WHERE A.artist_id = P.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = Q.artist_id;""",1,1,"""Correct."""
+46,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+47,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+48,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+529,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces R, Writes W WHERE A.artist_id=P.artist_id AND A.artist_id = R.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+49,1,9,"""select distinct A.artist_id, A.name from Artist A join Performs P on A.artist_id = P.artist_id join Produces Pr on A.artist_id = Pr.artist_id join Writes W on A.artist_id = W.artist_id;""",1,1,"""Correct."""
+50,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Writes W, Produces Pr WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND P.track_id = Pr.track_id AND P.track_id = W.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch. Expected 3, but found 5.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+530,1,9,"""SELECT DISTINCT name from Artist, Track, Performs, Writes, Produces where Performs.artist_id = Artist.artist_id AND Writes.artist_id = Artist.artist_id AND Produces.artist_id = Artist.artist_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"name"""".
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 4, but found 3.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+52,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+53,1,9,"""SELECT DISTINCT artist_id, name FROM Artist A NATURAL JOIN Performs JOIN Produces P ON A.artist_id = P.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+54,1,9,SELECT DISTINCT A.*   FROM Artist A   JOIN Performs Pe ON A.artist_id=Pe.artist_id   JOIN Produces Pr ON A.artist_id = Pr.artist_id   JOIN Writes W ON A.artist_id=W.artist_id;,1,1,"""Correct."""
+55,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+56,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+57,1,9,"""SELECT DISTINCT name FROM Artist A, Track T, Performs Pe, Produces Pr, Writes W WHERE A.artist_id = Pe.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND T.track_id = W.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"name"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""performs"""".""""track_id""""""""=""""""""track"""".""""track_id""""; SIMPLE:""""produces"""".""""artist_id""""""""=""""""""artist"""".""""artist_id""""; SIMPLE:""""writes"""".""""artist_id""""""""=""""""""artist"""".""""artist_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""artist"""".""""artist_id""""""""=""""""""produces"""".""""artist_id""""; SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""writes"""".""""track_id""""; 
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+58,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+60,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Track T1, Track T2, Track T3, Writes W WHERE A.artist_id = P.artist_id AND P.track_id = T1.track_id AND A.artist_id = Pr.artist_id AND Pr.track_id = T2.track_id AND A.artist_id = W.artist_id AND W.track_id = T3.track_id;""",1,1,"""Correct."""
+531,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+61,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P1, Produces P2, Writes W WHERE A.artist_id = P1.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+62,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id WHERE P.track_id = Pr.track_id AND Pr.track_id = W.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+
+"""
+63,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W, Track T WHERE A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch. Expected 4, but found 6.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+64,1,9,"""SELECT A.artist_id, A.name FROM Artist A WHERE EXISTS (   SELECT *   FROM Performs P, Track T   WHERE A.artist_id = P.artist_id   AND P.track_id=T.track_id ) AND EXISTS (   SELECT *   FROM Produces P, Track T   WHERE A.artist_id = P.artist_id   AND P.track_id=T.track_id ) AND EXISTS (   SELECT *   FROM Writes W, Track T   WHERE A.artist_id = W.artist_id   AND W.track_id=T.track_id );""",1,1,"""Correct."""
+66,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Track T, Performs Pf   WHERE A.artist_id = Pf.artist_id AND P.track_id=T.track_id   AND EXISTS (   SELECT *   FROM Produces P, Track T   WHERE A.artist_id = P.artist_id   AND P.track_id=T.track_id ) AND EXISTS (   SELECT *   FROM Writes W, Track T   WHERE A.artist_id = W.artist_id   AND W.track_id=T.track_id );""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: ,.
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 6, but found 4.
+
+
+Next steps:
+- Remove the extra columns: , from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+67,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Track T, Performs P, Produces R, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = R.artist_id AND A.artist_id = W.artist_id AND ( R.track_id = T.track_id OR P.track_id = T.track_id OR W.track_id = T.track_id);""",1,1,"""Correct."""
+68,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name  FROM Artist, Performs, Produces, Writes  WHERE Artist.artist_id = Performs.artist_id  AND Artist.artist_id = Produces.artist_id  AND Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+69,1,9,"""SELECT DISTINCT a.artist_id, a.name FROM Artist a JOIN Performs b ON a.artist_id = b.artist_id JOIN Produces c ON a.artist_id = c.artist_id JOIN Writes d ON a.artist_id = d.artist_id;""",1,1,"""Correct."""
+70,1,9,"""SELECT A.artist_id, A.name FROM Artist A join Performs P on A.artist_id = P.artist_id join Produces Pr on A.artist_id = Pr.artist_id join Writes W on A.artist_id = W.artist_id group by A.artist_id, A.name having count(P.track_id) > 0 and count(Pr.track_id) > 0 and count(W.track_id) > 0""",1,1,"""Correct."""
+72,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A WHERE EXISTS ( SELECT * FROM Track T, Performs P, Produces D, Writes W WHERE (A.artist_id = P.artist_id  AND P.track_id = T.track_id) AND (A.artist_id = D.artist_id AND D.track_id = T.track_id) AND (A.artist_id = W.artist_id AND W.track_id = T.track_id) );""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+73,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Writes, Performs, Produces WHERE Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id AND Artist.artist_id = Performs.artist_id;""",1,1,"""Correct."""
+74,1,9,"""SELECT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id GROUP BY A.artist_id, A.name;""",1,1,"""Correct."""
+532,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A join Performs P on A.artist_id = P.artist_id join Produces Pr on A.artist_id = Pr.artist_id join Writes W on A.artist_id = W.artist_id;""",1,1,"""Correct."""
+76,1,9,"""SELECT A.artist_id, A.name FROM Artist A, Performs P1, Produces P2, Writes W WHERE A.artist_id = P1.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = W.artist_id ;""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+77,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Performs, Produces, Writes WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Produces.artist_id AND Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+78,1,9,"""SELECT DISTINCT      A.artist_id,      A.name FROM      Artist A JOIN      Performs P ON A.artist_id = P.artist_id JOIN      Track T1 ON P.track_id = T1.track_id JOIN      Produces Pr ON A.artist_id = Pr.artist_id JOIN      Track T2 ON Pr.track_id = T2.track_id JOIN      Writes W ON A.artist_id = W.artist_id JOIN      Track T3 ON W.track_id = T3.track_id;""",1,1,"""Correct."""
+80,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A   JOIN Performs Per ON A.artist_id = Per.artist_id   JOIN Produces Pro ON A.artist_id = Pro.artist_id   JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+81,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+82,1,9,"""SELECT DISTINCT Artist.artist_id, name FROM Artist JOIN Performs ON Artist.artist_id=Performs.artist_id JOIN Writes ON Artist.artist_id=Writes.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+83,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+84,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+85,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+86,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id   AND A.artist_id = Pr.artist_id   AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+87,1,9,"""SELECT DISTINCT name FROM Artist, Performs, Writes, Produces WHERE  Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"name"""".
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+88,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes Wr WHERE A.artist_id=Pe.artist_id AND A.artist_id=Pr.artist_id AND A.artist_id=Wr.artist_id;""",1,1,"""Correct."""
+89,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A WHERE A.artist_id IN (   SELECT P.artist_id FROM Performs P )  AND A.artist_id IN (   SELECT Pr.artist_id FROM Produces Pr ) AND A.artist_id IN (   SELECT W.artist_id FROM Writes W );""",1,1,"""Correct."""
+90,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+91,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id JOIN Track T1 ON P.track_id = T1.track_id JOIN Track T2 ON PR.track_id = T2.track_id JOIN Track T3 ON W.track_id = T3.track_id;""",1,1,"""Correct."""
+92,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+93,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Track T, Writes W, Performs P WHERE A.artist_id = P.artist_id   AND P.track_id=T.track_id AND A.artist_id = P.artist_id   AND P.track_id=T.track_id AND A.artist_id = W.artist_id   AND W.track_id=T.track_id;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"produces"""", (nested join), (nested join).
+Extra tables: """"track"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+94,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Writes W, Performs P, Produces Pr WHERE A.artist_id = W.artist_id AND A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id;""",1,1,"""Correct."""
+96,1,9,"""SELECT DISTINCT A.artist_id, A.name  FROM Artist A, Performs P, Track T, Produces Pr, Writes W WHERE A.artist_id=P.artist_id  AND  A.artist_id=Pr.artist_id AND A.artist_id=W.artist_id;""",1,1,"""Correct."""
+97,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T   WHERE A.artist_id = P.artist_id   AND P.track_id=T.track_id   AND A.artist_id = P.artist_id   AND P.track_id=T.track_id   AND A.artist_id = W.artist_id   AND W.track_id=T.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"produces"""", """"writes"""", (nested join), (nested join).
+Extra tables: """"track"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+98,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+100,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs Pe ON A.artist_id = Pe.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+101,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+102,1,9,"""SELECT DISTINCT A.Artist_id, A.name FROM Artist A, Performs P, Produces Q, Writes W, Track T WHERE A.artist_id = P.artist_id AND A.artist_id = Q.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+103,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T1 ON P.track_id = T1.track_id JOIN Produces P2 ON A.artist_id = P2.artist_id JOIN Track T2 ON P2.track_id = T2.track_id JOIN Writes W ON A.artist_id = W.artist_id JOIN Track T3 ON W.track_id = T3.track_id;""",1,1,"""Correct."""
+104,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.""""name"""" FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+105,1,9,"""SELECT A.artist_id, A.name FROM Artist A WHERE EXISTS (   SELECT *   FROM Performs P, Produces pr, Writes W, Track T    WHERE A.artist_id = P.artist_id   WHERE pr.artist_id = P.artist_id   WHERE W.artist_id = P.artist_id   AND P.track_id=T.track_id )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+106,1,9,"""SELECT DISTINCT artist_id, name FROM Artist A NATURAL JOIN Performs JOIN Produces P ON A.artist_id = P.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+107,1,9,"""SELECT DISTINCT a.artist_id, a.name FROM Artist a, Performs per, Produces pro, Writes w, Track t1, Track t2, Track t3 WHERE per.track_id = t1.track_id AND pro.track_id = t2.track_id AND w.track_id = t3.track_id AND  a.artist_id = per.artist_id AND a.artist_id = pro.artist_id AND a.artist_id = w.artist_id;""",1,1,"""Correct."""
+108,1,9,"""SELECT DISTINCT A.* FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id=P.artist_id  AND  A.artist_id=Pr.artist_id  AND A.artist_id=W.artist_id;""",1,1,"""Correct."""
+109,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+110,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Writes W, Produces Pr WHERE A.artist_id = Pe.artist_id AND A.artist_id = W.artist_id AND A.artist_id = Pr.artist_id;""",1,1,"""Correct."""
+111,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+112,1,9,"""select distinct A.name, A.artist_id from Artist A, Performs P, Produces Pr, Writes W where A.artist_id = P.artist_id and A.artist_id = Pr.artist_id and A.artist_id = W.artist_id;""",1,1,"""Correct."""
+113,1,9,"""select a.artist_id, a.name from Artist a join Performs pe on a.artist_id = pe.artist_id join Produces pr on a.artist_id = pr.artist_id join Writes w on a.artist_id = w.artist_id group by a.artist_id, a.name having count(pe.track_id) > 0 and count(pr.track_id) > 0 and count(w.track_id) > 0;""",1,1,"""Correct."""
+114,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+115,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+116,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+117,1,9,"""SELECT DISTINCT A.* -- foreign key shenanigans(?) FROM Artist A, Performs P, Produces PR, Writes W WHERE A.artist_id = P.artist_id -- performer 	AND A.artist_id = PR.artist_id -- producer 	AND A.artist_id = W.artist_id; -- writer""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"artist"""", """"performs"""", """"produces"""", """"track"""", """"writes"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+118,1,9,"""SELECT DISTINCT a.artist_id, a.name FROM Artist a JOIN Performs p ON a.artist_id = p.artist_id JOIN Produces pr ON A.artist_id = pr.artist_id JOIN Writes w ON a.artist_id = w.artist_id;""",1,1,"""Correct."""
+119,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Performs P ON A.artist_id = P.artist_id JOIN Writes W ON A.artist_id = W.artist_id ORDER BY A.artist_id;""",1,1,"""Correct."""
+121,1,9,"""SELECT DISTINCT A.name FROM Artist A, Track T, Performs P, Writes W, Produces PR WHERE A.artist_id = P.artist_id AND A.artist_id = W.artist_id AND PR.artist_id = A.artist_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""".
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 4, but found 3.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""artist_id"""" to your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+122,1,9,"""SELECT DISTINCT A.artist_id, A.name  FROM Artist A  JOIN Performs P ON A.artist_id = P.artist_id  JOIN Produces PR ON A.artist_id = PR.artist_id  JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+123,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+124,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+125,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T, Writes W, Produces Pr WHERE A.artist_id = P.artist_id AND P.artist_id=W.artist_id AND W.artist_id=Pr.artist_id;""",1,1,"""Correct."""
+126,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces R ON A.artist_id = R.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+128,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+129,1,9,"""SELECT DISTINCT A.artist_id, A.name   FROM Artist A   JOIN Performs P ON A.artist_id = P.artist_id   JOIN Produces PR ON A.artist_id = PR.artist_id   JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+130,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+533,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+133,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A WHERE EXISTS (SELECT * FROM Performs P WHERE A.artist_id = P.artist_id) AND EXISTS (SELECT * FROM Produces Pr WHERE A.artist_id = Pr.artist_id) AND EXISTS (SELECT * FROM Writes W WHERE A.artist_id = W.artist_id);""",1,1,"""Correct."""
+135,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W WHERE A.artist_id = Pe.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+136,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces PR, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = PR.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+137,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE      A.artist_id = P.artist_id     AND A.artist_id = Pr.artist_id     AND A.artist_id = W.artist_id     AND P.track_id = Pr.track_id     AND P.track_id = W.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Number of conditions in AND clause mismatch. Expected 3, but found 5.
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+138,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id WHERE P.track_id = Pr.track_id AND Pr.track_id = W.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+
+"""
+139,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pf, Track T1, Track T2, Track T3, Produces Pd, Writes W WHERE A.artist_id = Pf.artist_id AND Pf.track_id = T1.track_id AND A.artist_id = Pd.artist_id AND Pd.track_id = T2.track_id AND A.artist_id = W.artist_id AND W.tr ack_id = T3.track_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+140,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+141,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+142,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+143,1,9,"""SELECT DISTINCT A.name FROM Artist A WHERE EXISTS (   SELECT 1 FROM Performs P, Track T WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id ) AND EXISTS (   SELECT 1 FROM Produces PR, Track T WHERE A.artist_id = PR.artist_id AND PR.track_id = T.track_id ) AND EXISTS (   SELECT 1 FROM Writes W, Track T WHERE A.artist_id = W.artist_id AND W.track_id = T.track_id );""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: ,,,""""artist"""".""""artist_id"""".
+Mismatch in selected expressions.
+Extra expressions: 1, 1, 1.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: ,,,""""artist"""".""""artist_id"""" to your SELECT clause.
+
+"""
+144,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W WHERE A.artist_id = Pe.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+145,1,9,"""SELECT DISTINCT A.artist_id, A.name  FROM Artist A, Performs P1, Produces P2, Writes W  WHERE A.artist_id = P1.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+146,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+147,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Arist A, Performs Pe, Produces Pr, Writes W WHERE A.artist_id = Pe.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",0.8857142857142857,1,""""""
+148,1,9,"""SELECT A.artist_id, A.name FROM Artist A, Performs P, Track T, Writes W WHERE A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = P.artist_id  AND A.artist_id = P.artist_id AND A.artist_id = W.artist_id AND A.artist_id = W.artist_id;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"produces"""", (nested join), (nested join).
+Extra tables: """"track"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+149,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,9,"""SELECT A.artist, A.name FROM Artist A;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""".
+Extra columns: """"artist"""".""""artist"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""", """"produces"""", """"writes"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""artist_id"""" to your SELECT clause.
+- Remove the extra columns: """"artist"""".""""artist"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+151,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id JOIN Track T ON P.track_id = T.track_id            AND Pr.track_id = T.track_id            AND W.track_id = T.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"track"""", (nested join), (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+152,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A NATURAL JOIN Performs NATURAL JOIN Writes, Produces PR         WHERE A.artist_id = PR.artist_id;""",1,1,"""Correct."""
+153,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+154,1,9,"""SELECT      Artist.artist_id,      Artist.name FROM      Artist,      Performs,      Produces,      Track,      Writes WHERE      Artist.artist_id = Performs.artist_id      AND Produces.artist_id = Writes.artist_id      AND Track.track_id = Performs.track_id      AND Produces.track_id = Writes.track_id;""",0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: (nested join), (nested join).
+Extra tables: """"track"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+155,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Performs, Writes, Produces WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+156,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id WHERE P.track_id IS NOT NULL    AND PR.track_id IS NOT NULL    AND W.track_id IS NOT NULL""",1,1,"""Correct."""
+157,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Performs, Produces, Writes, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id AND Artist.artist_id = Produces.artist_id AND Produces.track_id = Track.track_id AND Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+158,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id  = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+159,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+160,1,9,?,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+161,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id  AND A.artist_id = Pr.artist_id  AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+162,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W WHERE A.artist_id = Pe.artist_id AND A.Artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+163,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+164,1,9,"""SELECT DISTINCT Artist.artist_id, name FROM Artist, Performs, Writes, Produces WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+165,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = W.artist_id AND EXISTS (   SELECT *   FROM Produces P, Track T   WHERE A.artist_id = P.artist_id   AND P.track_id=T.track_id );""",1,1,"""Correct."""
+166,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs, Produces, Writes WHERE A.artist_id = Performs.artist_id AND A.artist_id = Produces.artist_id AND A.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+167,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+168,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+169,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = Pr.artist_id AND P.track_id=T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id;""",1,1,"""Correct."""
+170,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+171,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Writes W, Produces PROD  WHERE A.artist_id = P.artist_id AND P.artist_id = W.artist_id AND W.Artist_id = PROD.artist_id;""",1,1,"""Correct."""
+172,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs, Produces, Writes, Track T, Track S, Track R WHERE A.artist_id = Performs.artist_id AND Performs.track_id= T.track_id AND A.artist_id = Produces.artist_id AND Produces.track_id=S.track_id AND A.artist_id = Writes.artist_id AND Writes.track_id = R.track_id;""",1,1,"""Correct."""
+173,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+535,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id WHERE P.track_id IS NOT NULL   AND PR.track_id IS NOT NULL   AND W.track_id IS NOT NULL;""",1,1,"""Correct."""
+174,1,9,"""SELECT DISTINCT A.artist_id, A.name  FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND Pr.track_id = W.track_id;""",1,1,"""Correct."""
+176,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Track, Performs, Writes, Produces WHERE Artist.artist_id=Performs.artist_id AND Artist.artist_id=Writes.artist_id AND Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+177,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+179,1,9,"""select distinct Artist.artist_id, Artist.name from Artist, Performs, Produces, Writes where Artist.artist_id = Performs.artist_id and Artist.artist_id = Produces.artist_id and Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+181,1,9,"""SELECT DISTINCT Artist.name, Artist.artist_id  FROM Performs, Writes, Produces, Artist  WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+183,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+184,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces P2, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+185,1,9,"""SELECT DISTINCT A.artist_id, name FROM Artist A, Performs Pe, Writes W, Produces Pr WHERE A.artist_id == Pe.artist_id AND A.artist_id == W.artist_id AND A.artist_id == Pr.artist_id;""",1,1,"""Correct."""
+186,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A WHERE A.artist_id IN (     SELECT P.artist_id     FROM Performs P ) AND A.artist_id IN (     SELECT Pr.artist_id     FROM Produces Pr ) AND A.artist_id IN (     SELECT W.artist_id     FROM Writes W );""",1,1,"""Correct."""
+187,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+188,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+189,1,9,"""SELECT A.artist_id, A.name FROM Artist A JOIN Performs Pe ON A.artist_id = Pe.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+190,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Performs ON Artist.artist_id = Performs.artist_id;""",1,1,"""Correct."""
+191,1,9,SELECT DISTINCT artist.name FROM Artist INNER JOIN Performs ON Artist.artist_id = Performs.artist_id INNER JOIN Produces ON Produces.artist_id = Performs.artist_id INNER JOIN Writes ON Writes.artist_id = Performs.artist_id;,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""" to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+192,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+193,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+194,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T, Produces P, Writes W WHERE A.artist_id = P.artist_id, AND P.track_id = T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+195,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+196,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P,Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND Pr.track_id = W.track_id;""",1,1,"""Correct."""
+197,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+198,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces P2, Writes W WHERE A.artist_id=P.artist_id AND P2.artist_id=A.artist_id AND A.artist_id=W.artist_id;""",1,1,"""Correct."""
+199,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+200,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+201,1,9,"""SELECT DISTINCT(A.artist_id), A.name FROM Artist A, Produces P, Track T, Writes W, Performs Pf WHERE (   A.artist_id = P.artist_id   AND A.artist_id = Pf.artist_id   AND P.track_id=T.track_id   AND A.artist_id = W.artist_id   AND W.track_id=T.track_id );""",1,1,"""Correct."""
+202,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id""",1,1,"""Correct."""
+203,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Writes, Produces, Performs Where Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id ;""",1,1,"""Correct."""
+206,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id  AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+208,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Produces, Performs, Writes WHERE Artist.artist_id = Produces.artist_id AND Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+209,1,9,"""SELECT DISTINCT      A.artist_id,      A.name FROM      Artist A JOIN       Performs P ON A.artist_id = P.artist_id JOIN       Produces Pr ON A.artist_id = Pr.artist_id JOIN      Track T1 ON P.track_id = T1.track_id JOIN        Track T2 ON Pr.track_id = T2.track_id JOIN       Track T3 ON Pr.track_id = T3.track_id JOIN        Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+536,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W  WHERE A.artist_id = Pe.artist_id   AND A.artist_id = Pr.artist_id  AND A.artist_id = W.artist_id  AND EXISTS (    SELECT *    FROM Performs P, Track T    Where P.track_id=T.track_id )  AND EXISTS (   SELECT *    FROM Produces P, Track T    WHERE P.track_id=T.track_id )  AND EXISTS (   SELECT *   FROM Writes W, Track T    WHERE W.track_id=T.track_id );""",1,1,"""Correct."""
+210,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W WHERE A.artist_id = Pe.artist_id AND Pe.artist_id = Pr.artist_id AND Pr.artist_id = W.artist_id;""",1,1,"""Correct."""
+211,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist JOIN Performs ON Artist.artist._id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id""",0.8857142857142857,1,""""""
+212,1,9,"""SELECT DISTINCT ART.artist_id, ART.name FROM Artist ART JOIN Performs PER ON ART.artist_id = PER.artist_id JOIN Produces PRO ON ART.artist_id = PRO.artist_id JOIN Writes WRI ON ART.artist_id = WRI.artist_id;""",1,1,"""Correct."""
+213,1,9,/,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+214,1,9,"""SELECT DISTINCT name FROM Artist, Performs, Produces, Writes WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Produces.artist_id AND Artist.artist_id = Writes.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"name"""".
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+215,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+216,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+217,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+218,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W, Track T WHERE A.artist_id = Pe.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND Pr.track_id = T.track_id;""",1,1,"""Correct."""
+219,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+221,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T1 ON P.track_id = T1.track_id JOIN Produces P2 ON A.artist_id = P2.artist_id JOIN Writes W ON A.artist_id = W.artist_id WHERE P2.track_id = T1.track_id AND W.track_id = T1.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"track"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+222,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces B, Writes W WHERE A.artist_id=P.artist_id AND A.artist_id=B.artist_id AND A.artist_id=W.artist_id;""",1,1,"""Correct."""
+223,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id JOIN Produces Pr ON A.artist_id = Pr.artist_id AND Pr.track_id = T.track_id JOIN Writes W ON A.artist_id = W.artist_id AND W.track_id = T.track_id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"track"""", (nested join), (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+224,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name  FROM Artist, Performs, Writes, Produces WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+225,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name  FROM Artist JOIN Performs ON performs.artist_id = Artist.artist_id JOIN Produces ON Produces.artist_id = Artist.artist_id JOIN Writes ON Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+226,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+227,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces R, Writes W, Track T WHERE A.artist_id = P.artist_id AND A.artist_id = R.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+228,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+229,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Track T INNER JOIN Performs Per ON Per.artist_id = A.artist_id INNER JOIN Produces Pro ON A.artist_id = Pro.artist_id INNER JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+230,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces R ON A.artist_id = R.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+233,1,9,"""SELECT DISTINCT Artist.artist_id, name FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Produces ON Artist.artist_id = Produces.artist_id JOIN Writes ON Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+234,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W  WHERE A.artist_id = Pe.artist_id  AND A.artist_id  = Pr.artist_id and A.artist_id = W.artist_id;""",1,1,"""Correct."""
+235,1,9,"""SELECT DISTINCT a.artist_id, a.name FROM Artist a, Performs per, Produces pro, Writes w, Track t WHERE a.artist_id = per.artist_id 	AND a.artist_id = pro.artist_id 	AND a.artist_id = w.artist_id;""",1,1,"""Correct."""
+236,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Produces Pr, Performs Pe, Writes W, Track T WHERE A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id AND A.artist_id = Pe.artist_id AND Pr.track_id = T.track_id AND Pr.track_id = T.track_id AND W.track_id = T.track_id;""",1,1,"""Correct."""
+237,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+238,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = Pr.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+239,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+240,1,9,"""SELECT DISTINCT  A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+241,1,9,"""SELECT DISTINCT artist_id, name FROM Artist, Performs, Writes, Produces WHERE Artist.artist_id = Performs.artist_id AND Performs.artist_id = Produces.artist_id AND Produces.artist_id = Writes.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"artist_id"""",""""name"""".
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"artist_id"""",""""name"""" from your SELECT clause.
+
+"""
+242,1,9,"""SELECT DISTINCT Artist.name FROM Artist, Performs, Produces, Writes WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Produces.artist_id AND Artist.artist_id = Writes.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""".
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""" to your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+243,1,9,"""SELECT DISTINCT A.* FROM Artist A, Performs P, Produces PR, Writes W WHERE A.artist_id = P.artist_id AND A.artist_id = PR.artist_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+244,1,9,"""SELECT DISTINCT A.artist_id, A_name  FROM Artists A JOIN Performs P ON A.artist_id = P.artist_id  JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",0.8857142857142857,1,""""""
+245,1,9,"""SELECT A.artist_id, A.name FROM Artist A, Performs, Produces, Writes WHERE A.artist_id = Performs.artist_id AND A.artist_id = Produces.artist_id AND A.artist_id = Writes.artist_id GROUP BY A.artist_id, A.name HAVING COUNT(Performs.track_id) >0 AND COUNT(Produces.track_id) >0 AND COUNT(Writes.track_id) >0;""",1,1,"""Correct."""
+246,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name FROM Artist, Performs, Produces, Writes WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Produces.artist_id AND Artist.artist_id = Writes.artist_id;""",1,1,"""Correct."""
+247,1,9,SELECT DISTINCT A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;,0.2,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""".
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""" to your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+248,1,9,"""SELECT DISTINCT A.name, A.artist_id FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id  AND A.artist_id = Pr.artist_id  AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+249,1,9,"""SELECT DISTINCT name FROM Artist A, Performs P1, Produces P2, Writes W WHERE A.artist_id = P1.artist_id AND A.artist_id = P2.artist_id AND A.artist_id = W.artist_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""".
+Extra columns: """"name"""".
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"artist"""".""""artist_id"""",""""artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+250,1,9,too late,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+251,1,9,"""SELECT DISTINCT Artist.artist_id, name FROM Artist, Performs, Writes, Produces WHERE Artist.artist_id = Performs.artist_id AND Artist.artist_id = Writes.artist_id AND Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+252,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Writes W, Produces Pr WHERE A.artist_id = Pe.artist_id AND A.artist_id = W.artist_id AND Pr.artist_id = A.artist_id;""",1,1,"""Correct."""
+253,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Produces Pro, Performs Per, Track T, Writes W WHERE A.artist_id = Pro.artist_id AND Pro.track_id=T.track_id AND A.artist_id = Per.artist_id AND Per.track_id=T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+254,1,9,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id WHERE P.track_id = Pr.track_id AND Pr.track_id = W.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+
+"""
+256,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Per, Writes W, Produces Prod WHERE A.artist_id = Per.artist_id AND A.artist_id = W.artist_id AND A.artist_id = Prod.artist_id ;""",1,1,"""Correct."""
+257,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Produces Pr, Writes W WHERE A.artist_id = P.artist_id   AND A.artist_id = Pr.artist_id   AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+258,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs P, Track T, Produces P2, Writes W WHERE A.artist_id = p.artist_id AND P.track_id=T.track_id AND A.artist_id = P2.artist_id AND P2.track_id=T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id ;""",0.8857142857142857,1,""""""
+259,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A, Performs Pe, Produces Pr, Writes W, Track T, Track AS T2, Track AS T3 WHERE A.artist_id = Pe.artist_id AND Pe.track_id=T.track_id AND A.artist_id = Pr.artist_id AND Pr.track_id=T2.track_id AND A.artist_id = W.artist_id AND W.track_id=T3.track_id;""",1,1,"""Correct."""
+260,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces Pr ON A.artist_id = Pr.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""
+261,1,9,"""SELECT DISTINCT Artist.artist_id, name FROM Artist INNER JOIN Performs ON Performs.artist_id=Artist.artist_id INNER JOIN Writes ON Writes.artist_id=Artist.artist_id INNER JOIN Produces ON Produces.artist_id=Artist.artist_id;""",1,1,"""Correct."""
+262,1,9,"""SELECT DISTINCT Artist.artist_id, Artist.name  FROM Artist JOIN Performs ON performs.artist_id = Artist.artist_id JOIN Produces ON Produces.artist_id = Artist.artist_id JOIN Writes ON Writes.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+263,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Produces Pr, Artist A, Performs P, Track T, Writes W WHERE A.artist_id = P.artist_id AND P.track_id=T.track_id AND A.artist_id = Pr.artist_id AND Pr.track_id=T.track_id AND A.artist_id = W.artist_id AND W.track_id=T.track_id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 4 tables; select 2 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+264,1,9,"""SELECT DISTINCT A.artist_id, A.name FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Produces PR ON A.artist_id = PR.artist_id JOIN Writes W ON A.artist_id = W.artist_id;""",1,1,"""Correct."""

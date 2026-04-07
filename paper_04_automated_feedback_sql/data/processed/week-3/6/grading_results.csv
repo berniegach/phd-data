@@ -1,0 +1,1090 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,6,"""SELECT        year,        COUNT(*) AS num_albums   FROM        Album   GROUP BY        year;""",1,1,"""Correct."""
+2,1,6,"""SELECT Album.year , COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+4,1,6,SELECT COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+
+"""
+5,1,6,"""SELECT COUNT(album_title), year  FROM Album  GROUP BY year;""",1,1,"""Correct."""
+7,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+8,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+9,1,6,"""SELECT year, count(album_title) FROM Album GROUP BY Album.year ;""",1,1,"""Correct."""
+10,1,6,SELECT      year      COUNT (*) AS number_of_albums FROM      Album GROUP BY      year,0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select year, count(*) as number_of_albums from album group by year;' make it parseable.
+
+"""
+11,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+12,1,6,"""SELECT year, COUNT(*) AS total FROM Album GROUP BY year ORDER BY total DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+13,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+14,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+16,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+17,1,6,"""SELECT year, COUNT(album_id) AS number_of_albums FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+18,1,6,"""SELECT year, COUNT(year) FROM Album GROUP BY year;""",1,1,"""Correct."""
+19,1,6,"""SELECT year, COUNT(year) FROM Album GROUP BY year;""",1,1,"""Correct."""
+20,1,6,"""SELECT year, COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+21,1,6,"""SELECT year, COUNT(*)  FROM Album  GROUP BY year  ORDER BY year;""",1,1,"""Correct."""
+23,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+24,1,6,"""SELECT year, COUNT (*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+25,1,6,"""SELECT Year, count(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+26,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+27,1,6,"""SELECT COUNT(album_id), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+29,1,6,"""FROM Album SELECT year, COUNT(*) WHERE NOT year IS NULL GROUP BY year;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+30,1,6,"""select year, count(*) from Album group by year;""",1,1,"""Correct."""
+31,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+32,1,6,"""SELECT year, COUNT(*) AS total  FROM Album  GROUP BY year  ORDER BY total DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+33,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+34,1,6,"""SELECT COUNT(album_id), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+35,1,6,"""SELECT year, COUNT(*) AS total FROM Album GROUP BY year ORDER BY total DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+36,1,6,"""SELECT Album.year, COUNT(*) AS album_count FROM Album GROUP BY Album.year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+37,1,6,"""SELECT """"year"""", COUNT(*) FROM Album GROUP BY """"year"""";""",1,1,"""Correct."""
+38,1,6,"""SELECT year , COUNT(*) AS Album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+39,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+40,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+41,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+44,1,6,"""SELECT year, COUNT(*) FROM album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+45,1,6,"""SELECT year, COUNT(*) AS nrs FROM Album GROUP BY year;""",1,1,"""Correct."""
+46,1,6,"""SELECT year, Count(*) AS nr_of_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+47,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+48,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+529,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+49,1,6,"""select year, count(*) as album_count from Album  group by year;""",1,1,"""Correct."""
+50,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+530,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+52,1,6,"""SELECT year, COUNT(*) AS num_albums FROM Album GROUP BY year ORDER BY num_albums DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+53,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+54,1,6,"""SELECT Album.year, COUNT (*)   FROM Album   GROUP BY year;""",1,1,"""Correct."""
+55,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+56,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+57,1,6,"""SELECT year, Count(album_title) FROM Album GROUP BY year;""",1,1,"""Correct."""
+58,1,6,"""select year, count(*) as album_count from album group by year;""",1,1,"""Correct."""
+59,1,6,"""Select role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role <> 'unkown' GROUP BY role;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+Extra columns: """"role"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"album"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Remove the extra columns: """"role"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+60,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+531,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+61,1,6,"""SELECT year, COUNT(*) AS count FROM Album GROUP BY year;""",1,1,"""Correct."""
+62,1,6,"""SELECT year, COUNT(*) AS num_albums FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+63,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+64,1,6,"""SELECT year, COUNT (*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+66,1,6,"""SELECT year, COUNT(*) AS number_of_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+67,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+68,1,6,"""SELECT year, COUNT (*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+69,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year ORDER BY year DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+70,1,6,"""Select year, count(*) from main.Album a group by a.year""",1,1,"""Correct."""
+72,1,6,"""SELECT COUNT(Album_id), year FROM Album GROUP BY Year;""",1,1,"""Correct."""
+73,1,6,"""SELECT year, COUNT(*)  FROM Album GROUP BY year;""",1,1,"""Correct."""
+74,1,6,"""SELECT year,COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+532,1,6,"""select count(album_id), year from Album group by year;""",1,1,"""Correct."""
+76,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+77,1,6,"""SELECT year, COUNT(album_title) FROM Album GROUP BY year;""",1,1,"""Correct."""
+78,1,6,"""SELECT year, COUNT(*) as album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+80,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+81,1,6,"""SELECT year, COUNT(*) AS num_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+82,1,6,"""SELECT COUNT(album_id), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+83,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+84,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+85,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+86,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+87,1,6,SELECT COUNT(Album) FROM Album GROUP BY year,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""album"""").
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""album"""") from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+88,1,6,"""SELECT year, COUNT(total_tracks) FROM Album GROUP BY year;""",1,1,"""Correct."""
+89,1,6,"""SELECT year, COUNT(*)  FROM Album  GROUP BY year;""",1,1,"""Correct."""
+90,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year ORDER BY year DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+91,1,6,"""SELECT year, COUNT(*) AS num_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+92,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+93,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+94,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+96,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+97,1,6,"""SELECT year, COUNT(*)  FROM Album GROUP BY year;""",1,1,"""Correct."""
+98,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+100,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+101,1,6,SELECT album_year COUNT (*) FROM Album GROUP BY release_year;,0.17142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+Extra columns: """"album_year"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Remove the extra columns: """"album_year"""" from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select album_year, count (*) from album group by album_year ;' make it parseable.
+
+"""
+102,1,6,"""SELECT Year, COUNT(album_id) FROM Album GROUP BY (Year);""",1,1,"""Correct."""
+103,1,6,"""SELECT year, COUNT(year) AS year_number FROM Album GROUP BY year;""",1,1,"""Correct."""
+104,1,6,"""SELECT """"year"""", COUNT(*) FROM Album GROUP BY """"year"""";""",1,1,"""Correct."""
+105,1,6,"""SELECT year, COUNT(year) FROM Album GROUP BY year;""",1,1,"""Correct."""
+106,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+107,1,6,"""SELECT year, COUNT (*) AS """"number of albums"""" FROM Album  GROUP BY year;""",1,1,"""Correct."""
+108,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+109,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+110,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+111,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+112,1,6,"""select year, COUNT(*) from Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+113,1,6,"""Select year, count(*) from Album  group by year;""",1,1,"""Correct."""
+114,1,6,"""SELECT Year,  COUNT(*) AS AlbumCount FROM Albums GROUP BY Year ORDER BY AlbumCount DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"album"""".
+Extra tables: """"albums"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+115,1,6,"""select year,count(distinct album_id) from album group by year;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+116,1,6,"""SELECT year, COUNT(album_id) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+117,1,6,"""SELECT COUNT(*), Album.year FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+118,1,6,"""SELECT year, COUNT(*) AS nr_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+119,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+121,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year ORDER BY year desc;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+122,1,6,"""SELECT COUNT(album_id), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+123,1,6,"""FROM Album SELECT year, Count(*) GROUP BY year;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+124,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+125,1,6,"""SELECT year, COUNT(year) FROM Album GROUP BY year;""",1,1,"""Correct."""
+126,1,6,"""SELECT year, COUNT(*) AS count FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+128,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+129,1,6,"""SELECT year, COUNT(*) AS album_count   FROM Album   GROUP BY year   ORDER BY year;""",1,1,"""Correct."""
+130,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+533,1,6,"""SELECT year, COUNT(*), FROM Album GROUP BY year;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select year, count(*) from album group by year;' make it parseable.
+
+"""
+133,1,6,"""SELECT year,COUNT (*) FROM Album WHERE NOT year  IS NULL GROUP BY year;""",1,1,"""Correct."""
+135,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+136,1,6,"""SELECT Album.year, COUNT(Album.album_id) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+137,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+138,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+139,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+140,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+141,1,6,"""SELECT year, COUNT(*) AS album_number FROM Album GROUP BY year;""",1,1,"""Correct."""
+142,1,6,"""Select year, count(*) from Album GROUP BY year;""",1,1,"""Correct."""
+143,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC, year DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+144,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+145,1,6,"""SELECT year, COUNT (album_id) FROM Album  GROUP BY year;""",1,1,"""Correct."""
+146,1,6,"""SELECT year, COUNT AS album_count FROM Album GROUP BY year;""",0.8857142857142857,1,""""""
+147,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+148,1,6,"""SELECT COUNT(album_id), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+149,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,6,"""SELECT year, COUNT (*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+151,1,6,"""SELECT Year, COUNT(*) AS AlbumCount FROM Album GROUP BY Year;""",1,1,"""Correct."""
+152,1,6,"""SELECT year, COUNT(*) AS number_of_albums FROM album GROUP BY year;""",1,1,"""Correct."""
+153,1,6,"""SELECT year, COUNT(*)  FROM Album GROUP BY year;""",1,1,"""Correct."""
+154,1,6,"""SELECT year, COUNT(*)  FROM Album GROUP BY year;""",1,1,"""Correct."""
+155,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+156,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY Album.year""",1,1,"""Correct."""
+157,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+158,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+159,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+160,1,6,"""SELECT year, COUNT(Album)  FROM Album  GROUP BY year;""",1,1,"""Correct."""
+161,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+162,1,6,"""SELECT year, Count(*) AS Total FROM Album GROUP BY year;""",1,1,"""Correct."""
+163,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+164,1,6,"""FROM Album  Select year, COUNT(*) GROUP BY year;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+166,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+167,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+168,1,6,"""SELECT year, COUNT(*) AS nu_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+169,1,6,"""SELECT COUNT(Album), year FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+170,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+171,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+172,1,6,"""SELECT Album.year, COUNT( Album.album_id) FROM Album GROUP BY Album.year ORDER BY Album.year DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+173,1,6,SELECT COUNT(*) FROM Album GROUP BY year;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+535,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+174,1,6,"""SELECT year, COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+176,1,6,"""SELECT year, COUNT(*) AS nr_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+177,1,6,"""SELECT year, COUNT(*) AS album_count  FROM Album  GROUP BY year  ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+179,1,6,"""select year, count(*) AS album_count from Album group by year order by year;""",1,1,"""Correct."""
+181,1,6,"""SELECT Album.year , COUNT (*) AS total FROM Album GROUP BY Album.year ;""",1,1,"""Correct."""
+183,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+184,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+185,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+186,1,6,"""SELECT Album.year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+187,1,6,"""SELECT year, COUNT(*) AS count_album FROM Album GROUP BY year ORDER BY count_album DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+188,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+189,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+190,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+191,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+192,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+193,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year ORDER BY year DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+194,1,6,"""SELECT year, COUNT(album_id) AS album_amount FROM Album GROUP BY year;""",1,1,"""Correct."""
+195,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+196,1,6,"""SELECT year, COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+197,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+198,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+199,1,6,"""SELECT year, count(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+200,1,6,SELECT a.Title  FROM Albums a LEFT JOIN Availability av ON a.AlbumID = av.AlbumID AND av.Country = 'DE' WHERE av.Country IS NULL;,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+Extra columns: """"albums"""".""""title"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"album"""".
+Extra tables: """"albums"""", """"availability"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Remove the extra columns: """"albums"""".""""title"""" from your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+201,1,6,"""SELECT year, COUNT(*)  FROM Album  GROUP BY year;""",1,1,"""Correct."""
+202,1,6,"""SELECT year, COUNT (*)  FROM Album WHERE year IS NOT NULL GROUP BY year""",1,1,"""Correct."""
+203,1,6,"""SELECT Album.year, COUNT (*) FROM Album GROUP BY Album.year ;""",1,1,"""Correct."""
+206,1,6,"""SELECT Album.year, COUNT(*) AS Total FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+208,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+209,1,6,"""SELECT year, COUNT(*) as album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+536,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+210,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+211,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year""",1,1,"""Correct."""
+212,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+213,1,6,"""SELECT year, count(*) FROM Album GROUP BY year""",1,1,"""Correct."""
+214,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+215,1,6,"""SELECT year, COUNT(*) AS num_albums FROM Album GROUP BY year;""",1,1,"""Correct."""
+216,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+217,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+218,1,6,"""SELECT year, COUNT(Album.album_title) FROM Album GROUP BY Album.year ORDER BY count(Album.album_title) DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"count""""(""""album_title"""").
+Extra functions: """"count""""(""""album"""".""""album_title"""").
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add the missing functions: """"count""""(""""album_title"""") to your SELECT clause.
+- Remove the extra functions: """"count""""(""""album"""".""""album_title"""") from your SELECT clause.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+219,1,6,"""SELECT year, COUNT (*)  FROM Album GROUP BY year;""",1,1,"""Correct."""
+221,1,6,"""SELECT Album.year, COUNT(Album.album_id) AS album_count FROM Album GROUP BY Album.year ORDER BY Album.year;""",1,1,"""Correct."""
+222,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+223,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+224,1,6,"""SELECT Album.year, COUNT (*)  FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+225,1,6,"""SELECT Album.year, COUNT(*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+226,1,6,"""SELECT COUNT(Album_id), year FROM Album GROUP BY Year;""",1,1,"""Correct."""
+227,1,6,"""SELECT Album.year, COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+228,1,6,"""SELECT year, COUNT(*) AS NumberOfAlbums FROM Album GROUP BY year;""",1,1,"""Correct."""
+229,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+230,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY year;""",1,1,"""Correct."""
+233,1,6,"""SELECT year, COUNT (*)  FROM Album  GROUP BY year;""",1,1,"""Correct."""
+234,1,6,"""SELECT year, count(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+235,1,6,"""SELECT a.""""year"""", COUNT(*) FROM Album a GROUP BY a.""""year"""";""",1,1,"""Correct."""
+236,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+237,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+238,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+239,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year ORDER BY album_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+240,1,6,"""SELECT  COUNT(*), year FROM Album GROUP BY year""",1,1,"""Correct."""
+241,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+242,1,6,SELECT COUNT(Album_id) AS num_albums FROM Album GROUP BY year;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""album_id"""").
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""album_id"""") from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+243,1,6,"""SELECT year, COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+244,1,6,"""SELECT release_year AS year, COUNT(*) AS album_count FROM Albums GROUP BY release_year;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"year"""".
+Extra columns: """"release_year"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"album"""".
+Extra tables: """"albums"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Add the missing columns: """"year"""" to your SELECT clause.
+- Remove the extra columns: """"release_year"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+245,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+246,1,6,"""SELECT year, COUNT(*) AS album_count FROM Album GROUP BY year;""",1,1,"""Correct."""
+247,1,6,"""SELECT COUNT(year), year FROM Album GROUP by year""",1,1,"""Correct."""
+248,1,6,"""SELECT COUNT(album_id), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+249,1,6,"""SELECT year, COUNT (album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+250,1,6,"""SELECT year, COUNT (*) FROM Album GROUP BY Album.year;""",1,1,"""Correct."""
+251,1,6,"""SELECT year, COUNT(year) FROM Album GROUP BY year;""",1,1,"""Correct."""
+252,1,6,"""SELECT COUNT(*), year FROM Album GROUP BY year;""",1,1,"""Correct."""
+253,1,6,"""SELECT year, COUNT(album_title) FROM Album GROUP BY year;""",1,1,"""Correct."""
+254,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,6,"""FROM Album SELECT """"year"""", COUNT(*) AS album_count GROUP BY """"year"""";""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+256,1,6,"""SELECT year, COUNT(album_id) FROM Album GROUP BY year;""",1,1,"""Correct."""
+257,1,6,"""select year, count(album_title) from Album group by Album.year;""",1,1,"""Correct."""
+258,1,6,"""SELECT a.year, COUNT(a.album_id) FROM Album a GROUP BY a.year ORDER BY a.year DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+259,1,6,"""SELECT year, COUNT(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+260,1,6,"""SELECT year,COUNT(*) FROM Album WHERE NOT year IS NULL GROUP BY year;""",1,1,"""Correct."""
+261,1,6,"""SELECT year, COUNT(year) FROM Album GROUP BY year;""",1,1,"""Correct."""
+262,1,6,"""SELECT COUNT(*), Album.year FROM Album GROUP BY Album.year ORDER BY Album.year;""",1,1,"""Correct."""
+263,1,6,"""SELECT  year, count(*) FROM Album GROUP BY year;""",1,1,"""Correct."""
+264,1,6,"""SELECT COUNT(*), Album.year FROM Album GROUP BY year;""",1,1,"""Correct."""

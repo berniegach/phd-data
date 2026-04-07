@@ -1,0 +1,1 @@
+﻿"SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';"

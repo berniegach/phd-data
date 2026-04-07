@@ -1,0 +1,1 @@
+﻿"INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781523853960', 1, 200, 23);"

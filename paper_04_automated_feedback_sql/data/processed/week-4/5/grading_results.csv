@@ -1,0 +1,313 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+2,1,5,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.id FROM Scientist WHERE Scientist.university LIKE '%Nijmegen';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: .
+Extra columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""".
+
+
+Next steps:
+- Add the missing columns:  to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""" from your SELECT clause.
+
+"""
+4,1,5,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+5,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+7,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+8,1,5,SELECT * FROM Scientist WHERE  university LIKE '%Nijmegen%';,1,1,"""Correct."""
+9,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+10,1,5,"""SELECT id, name, university, year FROM Scientists  WHERE university LIKE '%Nijmegen%';""",0.8857142857142857,1,""""""
+11,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+12,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+13,1,5,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S WHERE S.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+14,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+15,1,5,"""SELECT      id,      name,      university,      year FROM      Scientist WHERE      university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+16,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+17,1,5,"""SELECT id, name, university, year  FROM Scientist  WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+18,1,5,"""SELECT id, name, university, year   FROM Scientist  WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+19,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+20,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+21,1,5,SELECT *  FROM Scientist  WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+24,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+25,1,5,SELECT * FROM Scientist WHERE University LIKE '%Nijmegen%';,1,1,"""Correct."""
+26,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+27,1,5,"""SELECT id,name,university,year FROM Scientist WHERE university LIKE '%Nijmegen';""",1,1,"""Correct."""
+28,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+29,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+30,1,5,"""select id, name, university, year from Scientist where university like '%Nijmegen%';""",1,1,"""Correct."""
+31,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE  '%Nijmegen%';""",1,1,"""Correct."""
+32,1,5,"""SELECT id, name, university, year FROM Scientist  WHERE university  LIKE '%Nijmegen%';""",1,1,"""Correct."""
+33,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+34,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+35,1,5,"""SELECT id,name,university,year FROM Scientist WHERE university LIKE '%Nijmegen';""",1,1,"""Correct."""
+36,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+37,1,5,"""SELECT S.id, S.""""name"""", S.university, S.""""year"""" FROM Scientist S WHERE S.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+38,1,5,SELECT * FROM scientist WHERE university LIKE '%Nijmegen';,1,1,"""Correct."""
+39,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+40,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+41,1,5,SELECT name FROM Scientist WHERE university LIKE '%Nijmegen%';,0.8857142857142857,1,""""""
+45,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+46,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+47,1,5,"""SELECT id, name, university, year FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+48,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+529,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+49,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+50,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+52,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+53,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen';,1,1,"""Correct."""
+54,1,5,SELECT * FROM Scientist   WHERE Scientist.university LIKE '%Nijmegen%';,1,1,"""Correct."""
+55,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+57,1,5,SELECT * FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%' ;,1,1,"""Correct."""
+58,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+59,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+60,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+61,1,5,"""FROM Scientist SELECT id, name, university, year WHERE university LIKE '%Nijmegen%';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+63,1,5,SELECT * FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';,1,1,"""Correct."""
+65,1,5,"""SELECT id, name, university, year   FROM Scientist   WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+66,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+67,1,5,SELECT * FROM Scientist WHERE university = '%Nijmegen%';,0.8857142857142857,1,""""""
+68,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+69,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+70,1,5,"""select id, name, university, year from Scientist where university like '%Nijmegen%'""",1,1,"""Correct."""
+72,1,5,"""SELECT id, name, university, year  FROM Scientist  WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+73,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+74,1,5,"""SELECT id, name, university, year FROM Scientist where university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+75,1,5,select * from Scientist where Scientist.university LIKE '%Nijmegen%';,1,1,"""Correct."""
+532,1,5,select * from Scientist where university like '%Nijmegen%';,1,1,"""Correct."""
+76,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%',1,1,"""Correct."""
+77,1,5,"""SELECT id, name, university, year  FROM Scientist  WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+78,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+80,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+81,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+82,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+84,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+85,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+86,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+87,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%'""",1,1,"""Correct."""
+88,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+89,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+90,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+91,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+92,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+93,1,5,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE  S.university LIKE '%Nijmegen%' GROUP BY S.id, S.name, S.university, S.year;""",1,1,"""Correct."""
+94,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+96,1,5,"""SELECT (id, name, university, year) FROM Scientist  WHERE university LIKE '%Nijmegen%';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: .
+Mismatch in selected expressions.
+Extra expressions: (unknown expression).
+
+
+Next steps:
+- Add the missing columns:  to your SELECT clause.
+
+"""
+98,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+100,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+101,1,5,SELECT * FROM Scientist WHERE university like '%Nijmegen%';,1,1,"""Correct."""
+102,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+103,1,5,SELECT* FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+104,1,5,"""SELECT id, """"name"""", university, """"year"""" FROM Scientist WHERE university ILIKE '%Nijmegen%';""",1,1,"""Correct."""
+105,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+106,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+107,1,5,SELECT *  FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+108,1,5,SELECT * FROM Scientist  WHERE Scientist.university  LIKE '%Nijmegen%';,1,1,"""Correct."""
+109,1,5,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+110,1,5,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S WHERE S.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+111,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+112,1,5,"""select id, name, university, year from Scientist where Scientist.university like '%Nijmegen%';""",1,1,"""Correct."""
+113,1,5,"""select id, name, university, year  from Scientist  where university like '%Nijmegen%';""",1,1,"""Correct."""
+114,1,5,"""SElECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegne%';""",0.8857142857142857,1,""""""
+115,1,5,"""select id, name, university, year from Scientist where university like '%Nijmegen%';""",1,1,"""Correct."""
+116,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+117,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%' 	AND (NOT year IS NULL);""",1,1,"""Correct."""
+118,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+119,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+121,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+122,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+123,1,5,SELECT Scientist FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: .
+Extra columns: """"scientist"""".
+
+
+Next steps:
+- Add the missing columns:  to your SELECT clause.
+- Remove the extra columns: """"scientist"""" from your SELECT clause.
+
+"""
+124,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+125,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+126,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+128,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+129,1,5,"""SELECT id, name, university, year   FROM Scientist   WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+130,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+131,1,5,"""SELECT id,name,university,year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+533,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+133,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+134,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+135,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+136,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+137,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+138,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+139,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+140,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen';""",1,1,"""Correct."""
+141,1,5,SELECT * From Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+142,1,5,select * from Scientist where university like '%Nijmegen%';,1,1,"""Correct."""
+143,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+144,1,5,SELECT* FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+145,1,5,"""select id, name, university, year  from Scientist  where university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+146,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+147,1,5,SELECT*FROM Scientist WHERE university LIKE '% Nijmegen%';,1,1,"""Correct."""
+148,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+150,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+151,1,5,"""SELECT id, name, university, year FROM Scientists WHERE university LIKE '%Nijmegen%';""",0.8857142857142857,1,""""""
+152,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+153,1,5,SELECT * FROM Scientist WHERE University LIKE '%Nijmegen%';,1,1,"""Correct."""
+154,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+155,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+156,1,5,"""SELECT id, name, university, year FROM Scientist WHERE LOWER(university) LIKE '%nijmegen%'""",1,1,"""Correct."""
+157,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+158,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+160,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+161,1,5,SELECT * FROM Scientist WHERE university ILIKE '%Nijmegen%';,1,1,"""Correct."""
+162,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+163,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+164,1,5,FROM Scientist SELECT * WHERE university LIKE '%Nijmegen%';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,5,SELECT *  FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+166,1,5,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S WHERE S.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+167,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+168,1,5,"""SELECT * id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",0.9714285714285714,1,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select id, name, university, year from scientist where university like '%nijmegen%';' make it parseable.
+
+"""
+169,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+170,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+171,1,5,SELECT * FROM Scientist S WHERE S.university LIKE '%Nijmegen%';,1,1,"""Correct."""
+172,1,5,SELECT * FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';,1,1,"""Correct."""
+173,1,5,"""SELECT DISTINCT S1.* FROM Scientist S1, Teaches T1 WHERE S1.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+535,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+174,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen';""",1,1,"""Correct."""
+175,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+176,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+177,1,5,"""D SELECT id, name, university, year ┬╖ FROM Scientist ┬╖ WHERE university LIKE '%Nijmegen%';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+179,1,5,"""Select id,name,university,year from Scientist where university Like '%Nijmegen%';""",1,1,"""Correct."""
+181,1,5,SELECT*FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+183,1,5,"""SELECT id, name, university, year  FROM Scientist  WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+184,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+185,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+186,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+187,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+188,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+189,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+190,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+191,1,5,SELECt * from Scientist where university LIKE '%Nijmegen%';,1,1,"""Correct."""
+192,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+193,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+194,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+195,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+196,1,5,"""SELECT id,name,university,year FROM Scientist WHERE university LIKE '%Nijmegen';""",1,1,"""Correct."""
+197,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+198,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+199,1,5,"""SELECT id, name, university, year  FROM Scientist  WHERE University LIKE '%Nijmegen%';""",1,1,"""Correct."""
+200,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+201,1,5,"""SELECT DISTINCT(id), name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+202,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+203,1,5,"""SELECT scientist.id, name, university, year FROM scientist WHERE university LIKE '%Nijmegen%' ;""",1,1,"""Correct."""
+204,1,5,SELECT *  FROM Scientist  WHERE university  LIKE '%Nijmegen%';,1,1,"""Correct."""
+206,1,5,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+208,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+209,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+536,1,5,select * from Scientist where university like '%Nijmegen%';,1,1,"""Correct."""
+210,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+211,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%',1,1,"""Correct."""
+212,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+213,1,5,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S WHERE S.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+214,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijme gen%';""",0.8857142857142857,1,""""""
+215,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+216,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+217,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+218,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+220,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+221,1,5,"""SELECT id, name, university, year FROM scientist WHERE university LIKE '%Nijmegen%':""",0.9714285714285714,1,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select id, name, university, year from scientist where university like '%nijmegen%';' make it parseable.
+
+"""
+222,1,5,SELECT * FROM Scientist WHERE Scientist.university LIKE '%Nijmegen%';,1,1,"""Correct."""
+223,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+224,1,5,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist WHERE  Scientist.university LIKE  '%Nijmegen%';""",1,1,"""Correct."""
+225,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+226,1,5,"""SELECT id, name, university, year  FROM Scientist  WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+227,1,5,"""SELECT id, name, university, year FROM scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+228,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+229,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+231,1,5,"""SELECT id, name, university, year   FROM Scientist   WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+233,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+234,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+235,1,5,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s WHERE s.university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+236,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+238,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+239,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+240,1,5,"""SELECT  id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+241,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+242,1,5,SELECT * FROM Scientist WHERE university like '%Nijmegen%';,1,1,"""Correct."""
+243,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+245,1,5,SELECT * FROM Scientist  WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+246,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+247,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%'""",1,1,"""Correct."""
+249,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+250,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+251,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+252,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+253,1,5,SELECT *  FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+254,1,5,"""SELECT * id, university, year, name, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,5,"""FROM Scientist AS s SELECT s.id, s.""""name"""", s.university, s.""""year"""" WHERE s.university LIKE '%Nijmegen%';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+256,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+257,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+258,1,5,SELECT * FROM Scientist WHERE university LIKE '%Nijmegen%';,1,1,"""Correct."""
+259,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+260,1,5,"""SELECT id,name,university,year   FROM Scientist   WHERE university LIKE'%Nijmegen%';""",1,1,"""Correct."""
+261,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+262,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+263,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""
+264,1,5,"""SELECT id, name, university, year FROM Scientist WHERE university LIKE '%Nijmegen%';""",1,1,"""Correct."""

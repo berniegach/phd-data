@@ -1,0 +1,1 @@
+﻿"SELECT A.name, COUNT(*) AS number FROM Artist A, Performs P, Track T WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id AND P.role = 'vocals' GROUP BY A.name HAVING COUNT(*) >= 3 ORDER BY number DESC;"

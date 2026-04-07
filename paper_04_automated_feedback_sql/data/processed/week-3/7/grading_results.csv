@@ -1,0 +1,997 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,7,"""SELECT        role,        COUNT(*) AS role_count   FROM        Writes   WHERE        NOT role = 'unknown'   GROUP BY        role;""",1,1,"""Correct."""
+2,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE NOT Writes.role = 'unkown' GROUP BY Writes.role;""",1,1,"""Correct."""
+4,1,7,SELECT COUNT(Writes.role='composer' AND Writes.role='lyrisist') FROM Writes WHERE NOT Writes.role IS NULL GROUP BY role;,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""((unknown expression)).
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""((unknown expression)) from your SELECT clause.
+
+"""
+5,1,7,SELECT COUNT(role)  FROM Writes  GROUP BY role  HAVING role <> 'NULL';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""role"""").
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""role"""") from your SELECT clause.
+- Add a WHERE clause to filter the data as specified.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+7,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE (role IS NOT NULL) GROUP BY role;""",1,1,"""Correct."""
+8,1,7,"""SELECT role, COUNT (*) FROM WRITES WHERE role is NOT NULL GROUP BY role;""",1,1,"""Correct."""
+9,1,7,"""SELECT role, count(role) FROM Writes WHERE role IS NOT null GROUP BY role ;""",1,1,"""Correct."""
+10,1,7,"""SELECT      role,      COUNT(*) AS role_count FROM      TrackArtist WHERE      role IS NOT NULL GROUP BY      role;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"trackartist"""".
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+11,1,7,"""SELECT role, COUNT(*) AS total_occurrences FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+12,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+13,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL  GROUP BY role;""",1,1,"""Correct."""
+14,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+16,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+17,1,7,"""SELECT role, COUNT(*) AS number_of_roles FROM Writes GROUP BY role HAVING role IS NOT NULL ORDER BY Writes.role;""",1,1,"""Correct."""
+18,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+19,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role NOT NULL GROUP BY role;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select role, count(role) from writes where role is not null group by role ;' make it parseable.
+
+"""
+20,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+21,1,7,"""SELECT role, COUNT(*)  FROM Writes  GROUP BY role  HAVING role IS NOT NULL  ORDER BY role;""",1,1,"""Correct."""
+23,1,7,"""SELECT role, COUNT(*) AS role_count FROM writes WHERE artist.id IS NOT NULL GROUP BY artist.id;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+24,1,7,"""SELECT role, COUNT (*) FROM Writes WHERE Role <> 'unkown' GROUP BY role;""",1,1,"""Correct."""
+25,1,7,"""select count(role),role  from writes,artist,track  WHERE writes.artist_id=artist.artist_id  AND track.track_id=writes.track_id AND NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+26,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role != 'unknown' GROUP BY role ORDER BY role;""",1,1,"""Correct."""
+27,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+29,1,7,"""FROM Writes SELECT role, COUNT(*) WHERE NOT role IS NULL GROUP BY role;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+30,1,7,"""select role, count(*) from Writes where not role is null group by role;""",1,1,"""Correct."""
+31,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+32,1,7,"""SELECT role, COUNT(*) AS total FROM Writes WHERE role IS NOT NULL  GROUP BY role;""",1,1,"""Correct."""
+33,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+34,1,7,"""SELECT COUNT(artist_id), role FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+35,1,7,"""SELECT role, COUNT(*) AS total FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+36,1,7,"""SELECT Writes.role, COUNT(*) AS role_count FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+37,1,7,"""SELECT """"role"""", COUNT (*) FROM Writes WHERE NOT """"role"""" IS NULL GROUP BY """"role"""";""",1,1,"""Correct."""
+38,1,7,"""SELECT role, COUNT(*) AS roles FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+39,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+40,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+41,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+44,1,7,"""SELECT role, COUNT(*) AS role_count FROM writes WHERE role IS NOT NULL AND role != 'unknown' GROUP BY role ORDER BY role_count;""",1,1,"""Correct."""
+45,1,7,"""SELECT role, COUNT(*) AS roles FROM Writes WHERE role != 'unknown' GROUP BY role;""",1,1,"""Correct."""
+46,1,7,"""SELECT role, COUNT(*) AS num_occurences FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+47,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+48,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role <> '' GROUP BY role;""",1,1,"""Correct."""
+529,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+49,1,7,"""select role, count(*) as occurances from Writes  where role is not null  group by role;""",1,1,"""Correct."""
+50,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+530,1,7,"""SELECT role, COUNT(*) FROM Writes where role is not null group by role;""",1,1,"""Correct."""
+52,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+53,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+54,1,7,"""SELECT Writes.role, COUNT (*) AS Number_of_times   FROM Writes   WHERE Writes.role IS NOT NULL   GROUP BY role;""",1,1,"""Correct."""
+55,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+56,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+57,1,7,"""SELECT role, Count(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+58,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role <> 'unknown'""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: GROUP BY clause missing
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+60,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+531,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+61,1,7,"""SELECT role, COUNT(*) AS count FROM Writes WHERE role <> 'unknown' GROUP BY role;""",1,1,"""Correct."""
+62,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role != 'unknown' GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+63,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+64,1,7,"""SELECT role, COUNT (*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+66,1,7,"""SELECT role, COUNT(*) AS total_occurrences FROM Writes WHERE role IS NOT NULL AND role != 'unknown GROUP BY role;""",0.4,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'SELECT role, COUNT(*) AS total_occurrences FROM Writes WHERE role IS NOT NULL AND role != UNKNOWN GROUP BY role;' make it parseable.
+
+"""
+67,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+68,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+69,1,7,"""SELECT role, COUNT(*) AS amount FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+70,1,7,"""Select w.role, count(w.role) from main.Writes w  group by w.role""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+72,1,7,"""SELECT COUNT(role), artist_id FROM Writes WHERE NOT role IS NULL  GROUP BY artist_id, role;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Extra columns: """"artist_id"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""role"""").
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Remove the extra columns: """"artist_id"""" from your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""role"""") from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+73,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL  GROUP BY role;""",1,1,"""Correct."""
+74,1,7,"""SELECT role,COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+532,1,7,"""select count(role), role from Writes where role = 'lyricist' or role = 'composer' group by role;""",1,1,"""Correct."""
+76,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+77,1,7,"""SELECT role, COUNT(artist_id) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+78,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role <> 'unknown' GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+80,1,7,"""SELECT role, COUNT(artist_id) FROM Writes WHERE role <> '' GROUP BY role;""",1,1,"""Correct."""
+81,1,7,"""SELECT role, COUNT(*) AS total_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+82,1,7,"""SELECT COUNT(track_id), role FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+83,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role != 'unknown' GROUP BY role ORDER BY role;""",1,1,"""Correct."""
+84,1,7,"""SELECT role, COUNT (*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+85,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+86,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role <> 'unknown' GROUP BY role ORDER BY role;""",1,1,"""Correct."""
+87,1,7,SELECT COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""role"""").
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""role"""") from your SELECT clause.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+88,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+89,1,7,"""SELECT role, COUNT(*)  FROM Writes  WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+90,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+91,1,7,"""SELECT role, COUNT(*) AS role_occurs FROM (SELECT DISTINCT artist_id, track_id, role FROM Writes WHERE role IS NOT NULL AND role != 'unknown') AS unique_roles GROUP BY role;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Extra columns: """"artist_id"""",""""role"""",""""track_id"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Remove the extra columns: """"artist_id"""",""""role"""",""""track_id"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+92,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+93,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+94,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+96,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+97,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+98,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role <> 'unknown' GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+100,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role NOT IN ('unknown') GROUP BY Writes.role;""",1,1,"""Correct."""
+101,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+102,1,7,"""SELECT COUNT(role), role FROM Writes WHERE role IS NOT NULL GROUP BY (role);""",1,1,"""Correct."""
+103,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role <> 'unknown' GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+104,1,7,"""SELECT """"role"""", COUNT(*) FROM Writes WHERE """"role"""" IS NOT NULL GROUP BY """"role"""";""",1,1,"""Correct."""
+105,1,7,"""SELECT COUNT(role), role FROM WRITES WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+106,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+107,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+108,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+109,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+110,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+111,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+112,1,7,"""select role, count(role) from Writes where not role is null group by role;""",1,1,"""Correct."""
+113,1,7,"""select role, count(role) from Writes where role is not NULL group by role;""",1,1,"""Correct."""
+114,1,7,"""SELECT Role,  COUNT(*) AS RoleCount FROM Artists_Roles WHERE Role IS NOT NULL GROUP BY Role ORDER BY RoleCount DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"artists_roles"""".
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+115,1,7,"""select role,count(role) from writes where role is not null group by role;""",1,1,"""Correct."""
+116,1,7,"""SELECT role, COUNT(role) AS role_count FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+117,1,7,"""SELECT COUNT(*), Writes.role FROM Writes WHERE NOT Writes.role IS NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+118,1,7,"""SELECT role, COUNT(*) AS nr_roles FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+119,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role != 'unknown' GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+121,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+122,1,7,"""SELECT COUNT(role), role FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+123,1,7,"""SELECT role, Count(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+124,1,7,"""SELECT Writes.role, COUNT(Writes.role) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+125,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+126,1,7,"""SELECT role, COUNT(*) AS count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+128,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+129,1,7,"""SELECT role, COUNT(*) AS total_occurrences   FROM Writes   WHERE role IS NOT NULL   GROUP BY role   ORDER BY total_occurrences DESC;""",1,1,"""Correct."""
+130,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+533,1,7,"""SELECT role, COUNT(*), FROM Writes WHERE NOT role IS NULL GROUP BY role;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select role, count(*) from writes where not role is null group by role;' make it parseable.
+
+"""
+133,1,7,"""SELECT role,COUNT (*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+135,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+136,1,7,"""SELECT Writes.role, COUNT(Writes.role) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+137,1,7,"""SELECT role, COUNT(*) FROM Writers WHERE role IS NOT NULL GROUP BY role;""",0.8857142857142857,1,""""""
+138,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role != 'unknown' GROUP BY role;""",1,1,"""Correct."""
+139,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE Role IS NOT NULL GROUP BY Role;""",1,1,"""Correct."""
+140,1,7,"""SELECT role, Count(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+141,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+142,1,7,"""SELECT role, count(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+143,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+144,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+145,1,7,"""SELECT role, COUNT(role)  FROM Writes  WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+146,1,7,"""SELECT role, COUNT AS role_count FROM Writes WHERE role != 'unknown' GROUP BY role;""",0.8857142857142857,1,""""""
+147,1,7,"""SELECT role, Count(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+148,1,7,"""SELECT COUNT(role),role FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+149,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,7,"""SELECT role, COUNT (*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+151,1,7,"""SELECT Role, COUNT(*) AS RoleCount FROM TrackArtist WHERE Role != 'unknown' GROUP BY Role;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"trackartist"""".
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+152,1,7,"""SELECT role, COUNT(*) AS number_of_occurrences FROM writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+153,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+154,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+155,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role <> '' GROUP BY Writes.role;""",1,1,"""Correct."""
+156,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role""",1,1,"""Correct."""
+157,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+158,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+159,1,7,"""SELECT role, COUNT(*) AS role_count FROM ArtistRole WHERE role IS NOT NULL GROUP BY role;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"artistrole"""".
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+160,1,7,"""SELECT role, COUNT(role)  FROM Writes  WHERE role IS NOT NULL  GROUP BY role;""",1,1,"""Correct."""
+161,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+162,1,7,"""SELECT role, count(*) AS Total FROM Writes WHERE role IS NOT Null GROUP BY role;""",1,1,"""Correct."""
+163,1,7,"""SELECT role, COUNT(*) AS role_entries FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+164,1,7,"""FROM Writes  SELECT role, COUNT(*) WHERE NOT role IS NULL GROUP By role;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE NOT Writes.role IS NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+166,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+167,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+168,1,7,SELECT Writes.role COUNT(*) AS total_occurrences FROM Writes WHERE Writers.role IS NOT NULL AND Writers.role != 'unknown' GROUP BY role;,0.17142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Extra columns: .
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select writes.writers.writers.role, count(*) as total_occurrences from writes where writers.writers.role is not null and writers.writers.role != 'unknown' group by writers.writers.role;' make it parseable.
+
+"""
+169,1,7,"""SELECT COUNT (role), role FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+170,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+171,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+172,1,7,"""SELECT Writes.role, COUNT(Writes.role) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role ORDER BY Writes.role;""",1,1,"""Correct."""
+173,1,7,SELECT COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""role"""").
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""role"""") from your SELECT clause.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+535,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role != 'unknown' GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+174,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+176,1,7,"""SELECT role, COUNT(*) AS k_roles FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+177,1,7,"""SELECT role, COUNT(*) AS role_count  FROM Writes  WHERE role IS NOT NULL  GROUP BY role  ORDER BY role_count DESC;""",1,1,"""Correct."""
+179,1,7,"""select role, count(*) as role_count from Writes where role is not null and role <> 'unknown' group by role order by role_count;""",1,1,"""Correct."""
+181,1,7,"""SELECT Writes.role, COUNT (*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+183,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+184,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+185,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+186,1,7,"""SELECT Writes.role, COUNT(Writes.role) FROM Writes WHERE NOT Writes.role IS NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+187,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes GROUP BY role HAVING role IS NOT NULL ORDER BY role_count DESC;""",1,1,"""Correct."""
+188,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role_count DESC;""",1,1,"""Correct."""
+189,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+190,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+191,1,7,"""SELECT Count(role), role from Writes where role not null Group by role;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select count(role), role from writes where role is not null group by role;' make it parseable.
+
+"""
+192,1,7,"""SELECT role, COUNT(*) AS total_occurrences FROM Writes WHERE role <> 'unknown' GROUP BY role;""",1,1,"""Correct."""
+193,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+194,1,7,"""SELECT role, COUNT(*) AS role_amount FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+195,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+196,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+197,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role ORDER BY role;""",1,1,"""Correct."""
+198,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+199,1,7,"""SELECT role, count(artist_id) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+200,1,7,"""SELECT YEAR(ReleaseDate) AS Year, COUNT(*) AS AlbumCount FROM Albums GROUP BY YEAR(ReleaseDate);""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Mismatch in selected functions.
+Extra functions: """"year""""(""""releasedate"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"albums"""".
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+Functions: Mismatch in GROUP BY functions.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Remove the extra functions: """"year""""(""""releasedate"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+201,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role NOT NULL GROUP BY role;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select role, count(*) from writes where role is not null group by role;' make it parseable.
+
+"""
+202,1,7,"""SELECT role, COUNT (*)  FROM Writes WHERE role IS NOT NULL GROUP BY year""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+203,1,7,"""SELECT Writes.role, COUNT (*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role ;""",1,1,"""Correct."""
+206,1,7,"""SELECT Writes.role, COUNT(*) AS Total FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+208,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+209,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role<> 'unknown' GROUP BY role ODER BY role_count DESC;""",0.5142857142857142,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select role, count(*) as role_count from writes where role  'unknown' group by role order by role_count desc;' make it parseable.
+
+"""
+536,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+210,1,7,"""SELECT role, COUNT(*) FROM Writes GROUP BY role HAVING role IS NOT NULL;""",1,1,"""Correct."""
+211,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role""",1,1,"""Correct."""
+212,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role!= 'unknown' GROUP BY role ORDER BY role;""",1,1,"""Correct."""
+213,1,7,"""SELECT role, count(*) FROM Writes WHERE NOT role IS NULL GROUP BY role""",1,1,"""Correct."""
+214,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+215,1,7,"""SELECT role, COUNT(*) AS times FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+216,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+217,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role != 'unknown' GROUP BY role;""",1,1,"""Correct."""
+218,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+219,1,7,"""SELECT role, COUNT (*)  FROM Writes WHERE NOT role = NULL GROUP BY role;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+221,1,7,"""SELECT Writes.role, COUNT(Writes.role) AS role_count FROM Writes WHERE Writes.role != 'unknown' GROUP BY Writes.role ORDER BY role_count DESC;""",1,1,"""Correct."""
+222,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+223,1,7,"""SELECT Writes.role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role != 'unknown' GROUP BY role;""",1,1,"""Correct."""
+224,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role NOT NULL GROUP BY Writes.role;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select writes.role, count(*) from writes where writes.role is not null group by writes.role;' make it parseable.
+
+"""
+225,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+226,1,7,"""SELECT COUNT(role), artist_id  FROM Writes WHERE NOT role IS NULL  GROUP BY artist_id, role;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Extra columns: """"artist_id"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""role"""").
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Remove the extra columns: """"artist_id"""" from your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""role"""") from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+227,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+228,1,7,"""SELECT role, COUNT(*) AS RoleCount FROM Writes WHERE role != 'Unknown' GROUP BY role;""",1,1,"""Correct."""
+229,1,7,"""SELECT COUNT(role), role FROM Writes WHERE role != '' GROUP BY role;""",1,1,"""Correct."""
+230,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL AND role <> 'unknown' GROUP BY role ORDER BY role;""",1,1,"""Correct."""
+233,1,7,"""SELECT Role, COUNT (*) FROM Writes WHERE Role <> 'unknown' GROUP BY role;""",1,1,"""Correct."""
+234,1,7,"""SELECT count(*), role FROM Writes W WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+235,1,7,"""SELECT w.""""role"""" , COUNT(*) FROM Writes w WHERE w.""""role"""" IS NOT NULL GROUP BY w.""""role"""";""",1,1,"""Correct."""
+236,1,7,"""SELECT A.name, W.role, COUNT(*) FROM Artist A, Writes W WHERE A.artist_id = W.artist_id AND W.role IS NOT NULL GROUP BY A.name, W.role;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Extra columns: """"artist"""".""""name"""",""""writes"""".""""role"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"artist"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Remove the extra columns: """"artist"""".""""name"""",""""writes"""".""""role"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+237,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+238,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+239,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+240,1,7,"""SELECT COUNT(*) as Count_role, role FROM Writes WHERE role IS NOT NULL AND role <> 'unknown' GROUP BY role""",1,1,"""Correct."""
+241,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+242,1,7,"""SELECT role, COUNT(Writes.role) FROM Writes WHERE Writes IS NOT NULL GROUP BY Writes.role HAVING role IS NOT NULL;""",1,1,"""Correct."""
+243,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL  GROUP BY role;""",1,1,"""Correct."""
+244,1,7,"""SELECT role, COUNT(*) AS role_count FROM Track_writers  WHERE role != 'unknown' GROUP BY role;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"track_writers"""".
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+245,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+246,1,7,"""SELECT role, COUNT(*) AS role_count FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+247,1,7,SELECT COUNT(role) FROM Writes WHERE role is NOT NULL GROUP BY role,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"role"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""role"""").
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"role"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""role"""") from your SELECT clause.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+248,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+249,1,7,"""SELECT role, Count(role) AS count FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+250,1,7,"""SELECT role, COUNT (*) FROM Writes WHERE NOT Writes.role = NULL GROUP BY role;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+251,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role NOT NULL GROUP BY role;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select role, count(role) from writes where role is not null group by role ;' make it parseable.
+
+"""
+252,1,7,"""SELECT COUNT(*), role FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+253,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+254,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,7,"""SELECT """"role"""", COUNT(""""role"""") AS count_role FROM Writes GROUP BY """"role"""";""",0.4857142857142857,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 2 columns; filter data based on certain conditions; group the results by 1 element; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+256,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+257,1,7,"""select role, count(role) from Writes where role is not null group by role;""",1,1,"""Correct."""
+258,1,7,"""SELECT w.role, COUNT(w.role) FROM Writes w WHERE w.role IS NOT NULL GROUP BY w.role;""",1,1,"""Correct."""
+259,1,7,"""SELECT role, COUNT(*) FROM Writes WHERE NOT role IS NULL GROUP BY role;""",1,1,"""Correct."""
+260,1,7,"""SELECT role, COUNT(*) AS total_count   FROM Writes   WHERE role IS NOT NULL   GROUP BY role;""",1,1,"""Correct."""
+261,1,7,"""SELECT role, COUNT(role) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+262,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""
+263,1,7,"""SELECT role, count(*) FROM Writes WHERE role IS NOT NULL GROUP BY role;""",1,1,"""Correct."""
+264,1,7,"""SELECT Writes.role, COUNT(*) FROM Writes WHERE Writes.role IS NOT NULL GROUP BY Writes.role;""",1,1,"""Correct."""

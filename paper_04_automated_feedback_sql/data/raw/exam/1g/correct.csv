@@ -1,0 +1,1 @@
+﻿SELECT album_id FROM Release WHERE country='Belgium';

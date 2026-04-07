@@ -1,0 +1,838 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,7,SELECT* FROM      Scientist WHERE      Scientist.id IN (         SELECT Teaches.advisor         FROM Teaches         WHERE Teaches.student = (             SELECT id             FROM Scientist             WHERE name = 'Desiderius Erasmus'         )     );,1,1,"""Correct."""
+2,1,7,"""SELECT S.id,S.name,S.university,S.year FROM Scientist S, Scientist S1, Teaches T WHERE S.id = T.advisor AND S1.name = 'Desiderius Erasmus' AND T.student = S1.id;""",1,1,"""Correct."""
+4,1,7,"""SELECT S2.id, S2.name, S2.university, S2.year FROM Scientist S1, Scientist S2, Teaches WHERE S1.name='Desiderius Erasmus'  AND S1.id=Teaches.student AND S2.id=Teaches.advisor;""",1,1,"""Correct."""
+5,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s INNER JOIN Teaches t ON s.id=t.advisor WHERE t.student=(SELECT id FROM Scientist WHERE name='Desiderius Erasmus');""",1,1,"""Correct."""
+7,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist student ON t.student = student.id WHERE student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+8,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T, Scientist S2 WHERE S.id=T.advisor AND T.student=S2.id AND S2.name= 'Desiderius Erasmus' ;""",1,1,"""Correct."""
+9,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+10,1,7,"""SELECT s.id, s.name, s.university, s.year, FROM Scientists s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+11,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor JOIN Scientist AS Student ON Teaches.student = Student.id WHERE Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+12,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id AND Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+13,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+14,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor JOIN Scientist SE ON SE.id = T.student WHERE SE.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+15,1,7,"""SELECT      s.id,      s.name,      s.university,      s.year FROM      Scientist AS s JOIN      Teaches AS t ON s.id = t.advisor WHERE      t.student = (         SELECT id          FROM Scientist          WHERE name = 'Desiderius Erasmus'     );""",1,1,"""Correct."""
+16,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+17,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+18,1,7,"""SELECT A.id, A.name, A.university, A.year FROM Scientist A, Teaches, Scientist S WHERE A.id=Teaches.advisor AND Teaches.student = S.id AND S.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+19,1,7,"""SELECT id, name, university, year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student =(     SELECT id     FROM Scientist S     WHERE S.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+20,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+21,1,7,"""SELECT id, name, university, year  FROM Scientist, Teaches  WHERE id = advisor  AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+24,1,7,"""SELECT id, name, university, year FROM Scientist WHERE Scientist.id = Teaches.advisor AND name = 'Desiderius Erasmus';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""",""""teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"id"""",""""name"""",""""university"""",""""year"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""scientist"""".""""name""""""""=""""'""""Desiderius Erasmus""""'; 
+Found conditions: SIMPLE:""""name""""""""=""""'""""Desiderius Erasmus""""'; SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""advisor""""; 
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""",""""teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"id"""",""""name"""",""""university"""",""""year"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+25,1,7,"""SELECT S2.id,S2.name,S2.university,S2.year  FROM Teaches T,Scientist S1,Scientist S2  WHERE S1.name='Desiderius Erasmus'  AND S1.id=T.student  AND S2.id=T.advisor;""",1,1,"""Correct."""
+26,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+27,1,7,"""SELECT id, name, university, year FROM Teaches, Scientist WHERE Scientist.id=Teaches.advisor AND student =  (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+28,1,7,"""SELECT s.name, COUNT(t.student) AS student_count FROM Scientist s JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY student_count DESC;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"s1"""".
+Extra columns: """"scientist"""".""""name"""".
+Mismatch in selected functions.
+Extra functions: """"count""""(""""teaches"""".""""student"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause unexpected
+ORDER BY clause: Order By: Different number of order items.
+Order By: Other query has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"s1"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""" from your SELECT clause.
+- Remove the extra functions: """"count""""(""""teaches"""".""""student"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+29,1,7,"""SELECT DISTINCT * FROM Scientist, Teaches WHERE id = advisor AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"id"""",""""name"""",""""university"""",""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"id"""",""""name"""",""""university"""",""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+30,1,7,"""select A.id, A.name, A.university, A.year from Scientist A, Scientist B, Teaches T where A.id = T.advisor and B.id = T.student and B.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+31,1,7,"""SELECT id, name, university, year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student = (SELECT id FROM Scientist where name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+32,1,7,"""SELECT id, name, university, year FROM  Scientist, Teaches  WHERE Scientist.id = Teaches.advisor AND Teaches.student = (Select id from scientist where name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+33,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE id = advisor AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+34,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON id=advisor WHERE student = (SELECT id FROM Scientist WHERE name='Desiderius Erasmus');""",1,1,"""Correct."""
+35,1,7,"""SELECT S2.id, S2.name, S2.university, S2.year FROM Teaches, Scientist S1, Scientist S2 WHERE S1.name = 'Desiderius Erasmus' AND S1.id = Teaches.student AND S2.id = Teaches.advisor;""",1,1,"""Correct."""
+36,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+37,1,7,"""SELECT S.id, S.""""name"""", S.university, S.""""year"""" FROM Scientist S WHERE S.id IN (SELECT T.advisor FROM Teaches T JOIN Scientist S ON T.student==S.id WHERE S.""""name""""=='Desiderius Erasmus');""",1,1,"""Correct."""
+38,1,7,"""SELECT scientist.id, scientist.name, scientist.university, scientist.year FROM scientist JOIN teaches ON scientist.id= teaches.advisor WHERE scientist.name = 'Desiderius Erasmus';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+39,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+40,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor JOIN Scientist AS Student ON Teaches.student = Student.id WHERE Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+41,1,7,"""SELECT id, name, university, year FROM Scientist WHERE id IN (SELECT advisor FROM Teaches WHERE Student=(SELECT id FROM Scientist WHERE name='Desiderius Erasmus'));""",1,1,"""Correct."""
+45,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist s_erasmus ON t.student = s_erasmus.id WHERE s_erasmus.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+46,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+47,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+48,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor JOIN Scientist S2 ON T.student = S2.id WHERE S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+529,1,7,"""SELECT * FROM Scientist S, Teaches T WHERE S.id=T.advisor AND T.student=(SELECT id FROM Scientist WHERE Scientist.name ='Desiderius Erasmus');""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"id"""",""""name"""",""""university"""",""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"id"""",""""name"""",""""university"""",""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+49,1,7,SELECT * FROM Scientist a JOIN Teaches ON a.id = Teaches.advisor JOIN Scientist s ON Teaches.student = s.id WHERE s.name = 'Desiderius Erasmus';,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+50,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student IN ( SELECT S.id FROM Scientist S WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+52,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+53,1,7,"""SELECT A.id, A.name, A.university, A.year FROM Scientist A, Scientist B, Teaches WHERE A.id = Teaches.advisor AND B.id = Teaches.student AND B.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+54,1,7,"""SELECT id, name, university, year    FROM Scientist JOIN Teaches    ON Teaches.advisor=Scientist.id   WHERE Teaches.student= (SELECT Scientist.id FROM Scientist   WHERE Scientist.name='Desiderius Erasmus');""",1,1,"""Correct."""
+55,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+57,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches T WHERE S1.id = T.advisor AND S2.id = T.student AND S2.name = 'Desiderius Erasmus' ;""",1,1,"""Correct."""
+58,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist student ON t.student = student.id AND student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+59,1,7,"""SELECT      Advisor.id,      Advisor.name,      Advisor.university,      Advisor.year FROM      Scientist AS Advisor JOIN      Teaches AS T      ON Advisor.id = T.advisor JOIN      Scientist AS Student      ON T.student = Student.id WHERE      Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+60,1,7,"""SELECT Teacher.name FROM Scientist AS Teacher, Scientist AS Student, Teaches WHERE Teaches.advisor = Teacher.id AND Student.id = Teaches.student AND Student.name = 'Desiderius Erasmus';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" to your SELECT clause.
+
+"""
+61,1,7,selectat toate detaliile select s1 * from ...,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+63,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s, Teaches t, Scientist student WHERE s.id = t.advisor AND t.student = student.id AND student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+65,1,7,"""SELECT S.id, S.name, S.university, S.year   FROM Scientist S   JOIN Teaches T ON S.id = T.advisor   WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+66,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university , Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+67,1,7,"""SELECT id, name, university, year  FROM Scientist WHERE id IN (SELECT T.advisor  FROM Scientist S, Teaches T WHERE S.id = T.student AND S.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+68,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT Scientist.id FROM Scientist WHERE Scientist.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+69,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON id = advisor WHERE student = (SELECT id FROM Scientist WHERE name='Desiderius Erasmus');""",1,1,"""Correct."""
+70,1,7,"""select id, name, university, year from Scientist s join Teaches t on s.id = t.advisor where t.student in ( select id from Scientist s join Teaches t on s.id = t.student where s.name = 'Desiderius Erasmus' )""",1,1,"""Correct."""
+72,1,7,"""SELECT id, name, university, year  FROM Scientist JOIN Teaches ON Scientist.id == Teaches.advisor  WHERE Teaches.student ==   (SELECT id  FROM Scientist  WHERE name == 'Desiderius Erasmus');""",1,1,"""Correct."""
+73,1,7,"""SELECT S1.id,  S1.name,  S1.university,  S1.year FROM Scientist S1, Scientist S2, Teaches T Where T.student = S2.id  AND T.advisor = S1.id  AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+74,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist student ON t.student = student.id WHERE student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+75,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T, Scientist E WHERE E.name = 'Desiderius Erasmus' AND E.id = T.student AND S.id = T.advisor;""",1,1,"""Correct."""
+532,1,7,select s.* from Scientist s join Teaches t on s.id = t.advisor join Scientist student on t.student = student.id where student.name = 'Desiderius Erasmus';,1,1,"""Correct."""
+76,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches T WHERE S1.id = T.advisor AND S2.id = T.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+77,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE id = advisor AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+78,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (      Select id      From Scientist      WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+80,1,7,"""SELECT Adv.*  FROM Scientist Adv, Scientist Stu, Teaches  WHERE Adv.id = advisor AND Stu.id = student  AND Stu.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+81,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+82,1,7,"""SELECT P2.id, P2.name, P2.university, P2.year FROM Scientist P2 JOIN Teaches ON P2.id=Teaches.advisor JOIN Scientist P1 ON Teaches.student=P1.id WHERE P1.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+84,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+85,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+86,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S WHERE S.id IN (     SELECT T.advisor     FROM Teaches T     WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus') );""",1,1,"""Correct."""
+87,1,7,"""SELECT S2.* FROM Scientist S1, Scientist S2, Teaches WHERE S1.name = 'Desiderius Erasmus' AND S1.id = student AND S2.id = advisor""",1,1,"""Correct."""
+88,1,7,"""SELECT S1.id, S1.name, S1.university, S1.year FROM Scientist S1, Scientist S2, Teaches T WHERE T.student= S2.id AND T.advisor = S1.id AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+89,1,7,"""D SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist e ON t.student = e.id WHERE e.name = 'Desiderius Erasmus';""",0.9714285714285714,1,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select s.id, s.name, s.university, s.year from scientist s join teaches t on s.id = t.advisor join scientist e on t.student = e.id where e.name = 'desiderius erasmus';' make it parseable.
+
+"""
+90,1,7,"""SELECT * FROM Scientist WHERE id IN (SELECT DISTINCT T.advisor FROM Scientist S, Teaches T WHERE S.id=T.student AND S.name='Desiderius Erasmus');""",1,1,"""Correct."""
+91,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s, Teaches t WHERE s.id = t.advisor  AND t.student =(SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+92,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+93,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches T  WHERE  S1.id = T.advisor  AND S2.id =T.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+94,1,7,"""SELECT S1.id, S1.name, S1.university, S1.year FROM Scientist S1, Teaches, Scientist S2 WHERE S1.id = Teaches.advisor AND S2.id = Teaches.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+96,1,7,"""SELECT (id, name, university, year) FROM Scientist, Teaches  WHERE Scientist.id = Teaches.advisor  AND Teaches.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"id"""",""""name"""",""""university"""",""""year"""".
+Mismatch in selected expressions.
+Extra expressions: (unknown expression).
+
+
+Next steps:
+- Add the missing columns: """"id"""",""""name"""",""""university"""",""""year"""" to your SELECT clause.
+
+"""
+98,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+100,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+101,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches  WHERE id = advisor AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+102,1,7,"""SELECT DISTINCT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches, Teaches AS Teaches2, Scientist AS Scientist2 WHERE Scientist.id=Teaches.advisor AND Scientist2.id=Teaches2.student AND Teaches.student=Teaches2.student AND Scientist2.name='Desiderius Erasmus';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"advisor"""",""""id"""",""""teaches"""".""""advisor"""".
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 2, but found 4.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"advisor"""",""""id"""",""""teaches"""".""""advisor"""" to your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+103,1,7,"""SELECT Advisor.id, Advisor.name, Advisor.university, Advisor.year FROM Scientist AS Student JOIN Teaches ON Teaches.student = Student.id JOIN Scientist AS Advisor ON Teaches.advisor = Advisor.id WHERE Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+104,1,7,"""SELECT Scientist.id, Scientist.""""name"""", Scientist.university, Scientist.""""year"""" FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE """"name"""" = 'Desiderius Erasmus');""",1,1,"""Correct."""
+105,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+106,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON id = advisor WHERE student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+107,1,7,"""SELECT a.* FROM Scientist s, Teaches t, Scientist a WHERE t.student = s.id AND t.advisor = a.id AND s.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+108,1,7,"""SELECT id, name, university, year  FROM Scientist, Teaches  WHERE Scientist.id=Teaches.advisor  AND Teaches.student =  (SELECT id FROM Scientist WHERE Scientist.name='Desiderius Erasmus');""",1,1,"""Correct."""
+109,1,7,"""SELECT DISTINCT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+110,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor    AND T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+111,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+112,1,7,"""select Ad.* from Scientist Ad, Scientist St, Teaches where Ad.id = Teaches.advisor and St.id = Teaches.student and St.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+113,1,7,"""select s.id, s.name, s.university, s.year from Scientist s join Teaches t on s.id = t.advisor join Scientist s2 on t.student = s2.id where s2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+114,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id      FROM Scientist      WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+115,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+116,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches, Scientist AS Student WHERE Student.name = 'Desiderius Erasmus' AND Student.id = Teaches.student AND Teaches.advisor = Scientist.id;""",1,1,"""Correct."""
+117,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor -- is an advisor (maybe I should use a j*in?) 	AND Teaches.student = ( -- subqueries my beloved 		SELECT id 		FROM Scientist 		WHERE name = 'Desiderius Erasmus'  	) ;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"s1"""".
+Extra columns: """"id"""",""""name"""",""""university"""",""""year"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""".
+
+WHERE clause: Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+Next steps:
+- Add the missing columns: """"s1"""" to your SELECT clause.
+- Remove the extra columns: """"id"""",""""name"""",""""university"""",""""year"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+118,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+119,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+121,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist INNER JOIN Teaches ON Teaches.student = Scientist.id WHERE Scientist.name = 'Desiderius Erasmus';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+122,1,7,SELECT * FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+123,1,7,"""SELECT Scientist FROM Teaches, Scientist, Scientist AS Scientist2(id2, name, university, year) WHERE Scientist.id = Teaches.advisor AND Scientist2.id2 = Teaches.student AND Scientist2.name = 'Desiderius Erasmus';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"s1"""".
+Extra columns: """"scientist"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""advisor""""; SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""scientist"""".""""name""""""""=""""'""""Desiderius Erasmus""""'; 
+Found conditions: SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""advisor""""; SIMPLE:""""scientist"""".""""id2""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""scientist"""".""""name""""""""=""""'""""Desiderius Erasmus""""'; 
+
+
+Next steps:
+- Add the missing columns: """"s1"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+124,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist WHERE Scientist.id IN (SELECT DISTINCT Teaches.advisor FROM Teaches WHERE Teaches.student IN (SELECT Scientist.id FROM Scientist WHERE Scientist.name='Desiderius Erasmus'));""",1,1,"""Correct."""
+125,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM (SELECT Scientist.id, Teaches.student, Teaches.advisor FROM Teaches, Scientist WHERE Scientist.name='Desiderius Erasmus' AND Scientist.id=Teaches.student) AS Teaching, Scientist WHERE Scientist.id=Teaching.advisor;""",1,1,"""Correct."""
+126,1,7,SELECT * FROM Scientist WHERE id IN (     SELECT advisor     FROM Teaches     WHERE student = (         SELECT id         FROM Scientist         WHERE name = 'Desiderius Erasmus'     ) );,1,1,"""Correct."""
+128,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist e ON e.id = t.student WHERE e.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+129,1,7,"""SELECT S.id, S.name, S.university, S.year   FROM Scientist S   JOIN Teaches T ON S.id = T.advisor   WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+130,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor JOIN Scientist Erasmus ON T.student = Erasmus.id WHERE Erasmus.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+131,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+533,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND university = 'Desiderius Erasmus';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""".
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 3, but found 2.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+133,1,7,SELECT * FROM Scientist WHERE id IN(SELECT advisor FROM Teaches WHERE student IN(SELECT id FROM Scientist WHERE name='Desiderius Erasmus'));,1,1,"""Correct."""
+134,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor JOIN Scientist E ON T.student = E.id WHERE E.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+135,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches T WHERE S1.id = T.advisor AND S2.id = T.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+136,1,7,"""SELECT P1.id, P1.name, P1.university, P1.year FROM Scientist P1, Teaches, Scientist P2 WHERE P1.id = advisor AND P2.id = Student AND P2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+137,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+138,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+139,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student IN( SELECT S1.id FROM Scientist S1 WHERE T.student = S1.id AND S1.name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+140,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+141,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist student ON t.student = student.id WHERE student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+142,1,7,select * from Scientist join Teaches on Scientist.id == Teaches.advisor where Teaches.student == (select id from Scientist where name == 'Desiderius Erasmus');,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"id"""",""""name"""",""""university"""",""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"id"""",""""name"""",""""university"""",""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+143,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id=t.advisor WHERE t.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+144,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches T WHERE S1.id = T.advisor AND S2.id = T.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+145,1,7,"""select S1.* from Scientist S1, Scientist S2, Teaches  where Teaches.advisor = S1.id AND Teaches.student = S2.id AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+146,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+147,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches T WHERE S1.id = T.advisor AND S2.id = T.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+148,1,7,"""SELECT id, name, university, year FROM Teaches, Scientist WHERE Scientist.id = Teaches.advisor AND Teaches.student = ( SELECT id FROM Scientist WHERE name ='Desiderius Erasmus' );""",1,1,"""Correct."""
+150,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = ( SELECT id                                           FROM Scientist                                           WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+151,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientists s JOIN Advisors a ON s.id = a.advisor_id JOIN Scientists erasmus ON erasmus.name = 'Desiderius Erasmus'  WHERE a.scientist_id = erasmus.id;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"s1"""".
+Extra columns: """"scientists"""".""""id"""",""""scientists"""".""""name"""",""""scientists"""".""""university"""",""""scientists"""".""""year"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""", """"scientist"""", """"teaches"""".
+Extra tables: """"advisors"""", """"scientists"""", """"scientists"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+Next steps:
+- Add the missing columns: """"s1"""" to your SELECT clause.
+- Remove the extra columns: """"scientists"""".""""id"""",""""scientists"""".""""name"""",""""scientists"""".""""university"""",""""scientists"""".""""year"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+152,1,7,"""SELECT S.* FROM Scientist S, Teaches T WHERE id = advisor AND T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+153,1,7,"""SELECT A.id, A.name, A.university, A.year FROM Scientist A JOIN Teaches T ON A.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+154,1,7,"""SELECT s1.id, s1.name, s1.university, s1.year FROM Scientist AS s1, Teaches, Scientist AS s2 WHERE s2.name='Desiderius Erasmus' AND s1.id=Teaches.advisor AND s2.id=Teaches.student;""",1,1,"""Correct."""
+155,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT Scientist.id FROM scientist WHERE Scientist.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+156,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.student WHERE T.advisor = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Join 1: Mismatch in join condition.
+Expected condition: """"scientist"""".""""id"""" """"="""" """"teaches"""".""""advisor"""".
+Found condition: """"scientist"""".""""id"""" """"="""" """"teaches"""".""""student"""".
+
+WHERE clause: Operands mismatch in condition '""""teaches"""".""""student"""" """"="""" (subquery)'.
+Expected: '""""teaches"""".""""student""""' and '(subquery)'.
+Found: '""""teaches"""".""""advisor""""' and '(subquery)'.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+157,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S WHERE S.id IN (SELECT advisor FROM Teaches) AND S.id IN ( SELECT T.advisor FROM Teaches T WHERE T.student = (SELECT id FROM Scientist WHERE name='Desiderius Erasmus'));""",1,1,"""Correct."""
+158,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+160,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s INNER JOIN Teaches t ON s.id=t.advisor WHERE t.student=(SELECT id FROM Scientist WHERE name='Desiderius Erasmus');""",1,1,"""Correct."""
+161,1,7,"""SELECT *  COUNT(T.student) AS student_count  FROM  Scientist S,  Teaches T  WHERE  S.id = 'Desiderius Erasmus' AND S.id = T.advisor  GROUP BY  S.id, S.name  ORDER BY  student_count DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+162,1,7,"""SELECT A.id, A.name, A.university, A.year FROM Scientist A, Teaches T, Scientist S WHERE A.id = T.advisor AND S.id = T.student AND S.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+163,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+164,1,7,"""FROM Scientist Er, Scientist Ad, Teaches SELECT Ad.* WHERE Er.name = 'Desiderius Erasmus' AND Er.id = student AND Ad.id = advisor;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor AND student =  (SELECT Scientist.id  FROM Scientist WHERE Scientist.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+166,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+167,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+168,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year  FROM Scientist  JOIN Teaches ON Scientist.id = Teaches.advisor  JOIN Scientist AS Student ON Teaches.student = Student.id  WHERE Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+169,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+170,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches Where Scientist.id=Teaches.advisor AND student =  (SELECT Scientist.id  FROM Scientist Where Scientist.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+171,1,7,"""SELECT S2.* FROM Scientist S1, Teaches T, Scientist S2 WHERE T.student = S1.id AND S1.name = 'Desiderius Erasmus' AND S2.id = T.advisor;""",1,1,"""Correct."""
+172,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+173,1,7,"""SELECT S1.id, S1.name, S1.university, S1.year FROM Scientist S1, Scientist S2, Teaches T1 WHERE S1.id = T1.advisor AND S2.id = T1.student AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+535,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+174,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus')""",1,1,"""Correct."""
+175,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+176,1,7,"""SELECT a.id, a.name, a.university, a.year FROM Scientist a, Scientist s, Teaches WHERE a.id = Teaches.advisor AND Teaches.student=s.id AND s.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+177,1,7,"""D SELECT S.id, S.name, S.university, S.year ┬╖ FROM Scientist S ┬╖ JOIN Teaches T ON S.id = T.advisor ┬╖ WHERE T.student = ( ┬╖     SELECT id ┬╖     FROM Scientist ┬╖     WHERE name = 'Desiderius Erasmus' ┬╖ );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+179,1,7,"""select id, name, university, year from Scientist where id in (     select advisor     from Teaches     where student in (         select id         from Scientist         where name = 'Desiderius Erasmus'     ) );""",1,1,"""Correct."""
+181,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Teaches.advisor = Scientist.id WHERE Teaches.student =( SELECT Scientist.id FROM Scientist WHERE Scientist.name= 'Desiderius Erasmus');""",1,1,"""Correct."""
+183,1,7,"""SELECT S1.id, S1.name, S1.university, S1.year FROM Scientist S1 JOIN Teaches T ON S1.id = T.advisor JOIN Scientist S2 ON T.student = S2.id WHERE S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+184,1,7,"""SELECT Teacher.id, Teacher.name, Teacher.university, Teacher.year FROM Scientist Teacher, Scientist Student, Teaches WHERE Teacher.id = Teaches.advisor AND Student.id = Teaches.student AND Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+185,1,7,"""SELECT id, name, university, year FROM Scientist WHERE id IN ( SELECT T.advisor FROM Scientist S, Teaches T WHERE S.name = 'Desiderius Erasmus' AND S.id = T.student );""",1,1,"""Correct."""
+186,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+187,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+188,1,7,"""SELECT      S.id,      S.name,      S.university,      S.year FROM      Scientist S INNER JOIN      Teaches T ON      S.id = T.advisor WHERE      T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+189,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+190,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+191,1,7,SELECt * from Scientist WHERE id IN (SELECT advisor from Teaches WHERE student = (SELECT id from scientist where name = 'Desiderius Erasmus'));,1,1,"""Correct."""
+192,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+193,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches, Scientist AS s WHERE Scientist.id = Teaches.advisor AND Teaches.student = s.id AND s.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+194,1,7,SELECT *FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+195,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+196,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN TEACHES T ON S.id = T.advisor WHERE T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+197,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+198,1,7,"""SELECT * FROM Scientist advisor WHERE EXISTS(SELECT * FROM Scientist S1, Teaches WHERE advisor.id=Teaches.advisor AND S1.id=Teaches.student AND S1.name='Desiderius Erasmus');""",1,1,"""Correct."""
+199,1,7,"""SELECT Advisor.id, Advisor.name, Advisor.university, Advisor.year  FROM Scientist AS Advisor  JOIN Teaches ON Advisor.id = Teaches.advisor  JOIN Scientist AS Student ON Teaches.student = Student.id  WHERE Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+200,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+201,1,7,"""SELECT S2.id, S2.name, S2.university, S2.year  FROM Scientist S1, Scientist S2, Teaches T1  WHERE S1.name='Desiderius Erasmus' AND S1.id = T1.student and t1.advisor=s2.id;""",1,1,"""Correct."""
+202,1,7,"""SELECT id, name, university, year FROM Scientist  JOIN Teaches  ON Scientist.id = Teaches.advisor WHERE Teaches.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' )""",1,1,"""Correct."""
+203,1,7,"""SELECT advisor.id, advisor.name, advisor.university, advisor.year FROM scientist AS student JOIN teaches ON teaches.student = student.id JOIN scientist AS advisor ON teaches.advisor = advisor.id  WHERE student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+204,1,7,"""SELECT id, name, university, year FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor WHERE student IN (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus') ;""",1,1,"""Correct."""
+206,1,7,"""SELECT id, name, university, year FROM Scientist WHERE Scientist.id IN (SELECT Teaches.advisor FROM Scientist, Teaches WHERE Scientist.name = 'Desiderius Erasmus' AND Teaches.student = Scientist.id);""",1,1,"""Correct."""
+208,1,7,"""SELECT S1.id, S1.name, S1.university, S1.year FROM Scientist S1, Scientist S2 JOIN Teaches ON S2.id = Teaches.student AND S1.id = Teaches.advisor WHERE S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+209,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+536,1,7,"""select id,name,university,year from Scientist,Teaches where Scientist.id=Teaches.advisor and Teaches.student in (select id from Scientist where name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+210,1,7,"""SELECT Scientist.* FROM Scientist, Teaches WHERE Scientist.id = advisor AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+211,1,7,SELECT * FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus'),0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+212,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor JOIN Scientist AS Student ON Teaches.student = Student.id WHERE Student.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+213,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE S.id = T.advisor   AND T.student = (SELECT S2.id                    FROM Scientist S2                    WHERE S2.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+214,1,7,"""SELECT A.id, A.name, A.university, A.year FROM Scientist A, Scientist B, Teaches WHERE A.id = advisor AND B.id = student AND B.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+215,1,7,"""SELECT id, name, university, year  FROM Scientist  JOIN Teaches ON Teaches.advisor = Scientist.id  WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+216,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s INNER JOIN Teaches t ON s.id=t.advisor WHERE t.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+217,1,7,"""SELECT a.id, a.name, a.university, a.year FROM Scientist a JOIN Teaches t ON a.id = t.advisor JOIN Scientist s ON t.student = s.id WHERE s.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+218,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student IN (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+220,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+221,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+222,1,7,"""SELECT S.* FROM Scientist S, Teaches T, Scientist S2 WHERE S.id = T.advisor AND T.student = S2.id AND S2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+223,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor JOIN Scientist e ON t.student = e.id WHERE e.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+224,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student  = (SELECT Scientist.id FROM Scientist WHERE Scientist.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+225,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+226,1,7,"""SELECT id, name, university, year  FROM Scientist JOIN Teaches ON Scientist.id == Teaches.advisor  WHERE Teaches.student == (  SELECT id  FROM Scientist  WHERE name == 'Desiderius Erasmus' );""",1,1,"""Correct."""
+227,1,7,SELECT * FROM scientist WHERE id IN (SELECT advisor  FROM teaches  WHERE student IN (SELECT id  FROM scientist  WHERE name='Desiderius Erasmus'));,1,1,"""Correct."""
+228,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+229,1,7,SELECT name FROM Scientist WHERE id IN (SELECT Teaches.advisor FROM Scientist JOIN Teaches ON Scientist.id = Teaches.student WHERE Scientist.name = 'Desiderius Erasmus');,0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: ,""""id"""".
+Extra columns: """"name"""".
+
+FROM clause: Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Add the missing columns: ,""""id"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+231,1,7,"""SELECT A.id, A.name, A.university, A.year   FROM Scientist A, Teaches, Scientist S   WHERE A.id = Teaches.advisor   AND S.id = Teaches.student   AND S.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+233,1,7,"""SELECT id, name, university, year  FROM Scientist  WHERE Scientist.id = Teaches.advisor  AND name = 'Desiderius Erasmus';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""",""""teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: """"id"""",""""name"""",""""university"""",""""year"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""scientist"""".""""name""""""""=""""'""""Desiderius Erasmus""""'; 
+Found conditions: SIMPLE:""""name""""""""=""""'""""Desiderius Erasmus""""'; SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""advisor""""; 
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""id"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""",""""teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns: """"id"""",""""name"""",""""university"""",""""year"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+234,1,7,"""SELECT S2.name FROM Scientist S1, Scientist S2, Teaches T WHERE T.advisor = S2.id AND T.student = S1.id AND S1.name = 'Desiderius Erasmus';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" to your SELECT clause.
+
+"""
+235,1,7,"""SELECT s.id, s.name, s.university , s.year FROM Scientist s, Scientist s2 , Teaches t WHERE s2.name LIKE '%Desiderius%' AND s2.id = t.student AND s.id = t.advisor;""",1,1,"""Correct."""
+236,1,7,"""SELECT * FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student = (   SELECT id   FROM Scientist   WHERE name = 'Desiderius Erasmus' );""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"id"""",""""name"""",""""university"""",""""year"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"id"""",""""name"""",""""university"""",""""year"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+238,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches  WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+239,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+240,1,7,"""SELECT  S.id, S.name, S.university, s.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE student = (SELECT id                  FROM Scientist                  WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+241,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student IN ( SELECT id FROM Scientist, Teaches WHERE Scientist.id = Teaches.student AND name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+242,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches, Scientist as SE WHERE Scientist.id = Teaches.advisor AND SE.id = Teaches.student AND SE.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+243,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE student = (   SELECT id   FROM Scientist   WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+245,1,7,"""SELECT A.id, A.name, A.university, A.year  FROM Scientist A, Scientist B, Teaches WHERE A.id = advisor AND B.id = student AND B.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+246,1,7,"""SELECT id, name, university, year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+247,1,7,"""SELECT s.id, s.name, s.university, s.year FROM Scientist s JOIN Teaches t ON s.id = t.advisor WHERE t.student = (     SELECT id     FROM Scientist     WHERE name = 'Desiderius Erasmus' )""",1,1,"""Correct."""
+249,1,7,"""SELECT S.id, S.name, S.university,S.year FROM Scientist AS S, Teaches AS T WHERE S.id =T.advisor AND T.student = (SELECT id FROM Scientist WHERE name ='Desiderius Erasmus');""",1,1,"""Correct."""
+250,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+251,1,7,"""SELECT id, name, university, year FROM Scientist S, Teaches T WHERE S.id = T.advisor AND T.student =(     SELECT id     FROM Scientist S     WHERE S.name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+252,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor AND Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+253,1,7,"""SELECT S1.* FROM Scientist S1, Scientist S2, Teaches WHERE S2.name = 'Desiderius Erasmus' AND S2.id = Teaches.student AND Teaches.advisor = S1.id;""",1,1,"""Correct."""
+254,1,7,"""SELECT id,name, university, year FROM Scientist WHERE id IN (SELECT advisor FROM Teaches WHERE student= (SELECT id FROM Scientist WHERE name='Desiderius Erasmus'));""",1,1,"""Correct."""
+255,1,7,"""SELECT s.id, s.""""name"""", s.university, s.""""year"""" FROM Scientist AS s, Teaches AS t WHERE s.id = t.advisor AND t.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+256,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, (SELECT * FROM Teaches, Scientist WHERE id = student AND name = 'Desiderius Erasmus') sq where Scientist.id = sq.id;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""id"""",""""teaches"""".""""advisor"""",""""teaches"""".""""student"""".
+Extra columns: .
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""scientist"""".""""id""""""""=""""""""teaches"""".""""student""""; SIMPLE:""""scientist"""".""""name""""""""=""""'""""Desiderius Erasmus""""'; 
+Found conditions: SIMPLE:""""id""""""""=""""""""student""""; SIMPLE:""""name""""""""=""""'""""Desiderius Erasmus""""'; 
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""id"""",""""teaches"""".""""advisor"""",""""teaches"""".""""student"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+257,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = ( SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus' );""",1,1,"""Correct."""
+258,1,7,"""SELECT s.name, s.name, s.university, s.year FROM Scientist s, Teaches t, Scientist as s2 WHERE s.id = t.advisor AND s2.id = t.student AND s2.name = 'Desiderius Erasmus';""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"s1"""".
+Extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+
+
+Next steps:
+- Add the missing columns: """"s1"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""",""""scientist"""".""""name"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" from your SELECT clause.
+
+"""
+259,1,7,"""SELECT Scientist.id, Scientist.name, Scientist.university, Scientist.year FROM Scientist, Teaches, Scientist AS Scientist2 WHERE Scientist.id = advisor AND Scientist2.id = student AND Scientist2.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+260,1,7,"""SELECT        Scientist.id,        Scientist.name,        Scientist.university,        Scientist.year   FROM        Scientist   JOIN        Teaches   ON        Teaches.advisor = Scientist.id   JOIN        Scientist AS s   ON        Teaches.student = s.id   WHERE        s.name = 'Desiderius Erasmus';""",1,1,"""Correct."""
+261,1,7,"""SELECT id, name, university, year FROM Scientist INNER JOIN Teaches ON Teaches.advisor=Scientist.id WHERE Teaches.student=(SELECT id FROM Scientist WHERE name='Desiderius Erasmus');""",1,1,"""Correct."""
+262,1,7,"""SELECT id, name, university, year FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor WHERE Teaches.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""
+263,1,7,"""SELECT s1.id, s1.name, s1.university, s1.year FROM Scientist s1, Scientist s2 , Teaches WHERE s1.id = advisor AND s2.name = 'Desiderius Erasmus' AND s2.id = student;""",1,1,"""Correct."""
+264,1,7,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S JOIN Teaches T ON S.id = T.advisor WHERE T.student = (SELECT id FROM Scientist WHERE name = 'Desiderius Erasmus');""",1,1,"""Correct."""

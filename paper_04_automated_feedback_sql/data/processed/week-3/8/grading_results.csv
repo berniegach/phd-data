@@ -1,0 +1,1582 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,8,"""SELECT         Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM     Artist, Track, Performs WHERE     Artist.artist_id = Performs.artist_id     AND Track.track_id = Performs.track_id GROUP BY     Artist.name ORDER BY     total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+2,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total, AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total DESC LIMIT 5;""",1,1,"""Correct."""
+4,1,8,"""SELECT      Artist.name,      SUM(Track.duration) AS total_duration,      AVG(Track.popularity) AS average_popularity FROM      Artist JOIN      Performs ON Artist.artist_id = Performs.artist_id JOIN      Track ON Performs.track_id = Track.track_id GROUP BY      Artist.name ORDER BY      total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+5,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.Artist_id  AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+7,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_pop FROM Artist JOIN Writes ON Artist.artist_id = Writes.artist_id JOIN Track ON Writes.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+8,1,8,"""SELECT A.name, SUM(T.duration) , ROUND (AVG(T.popularity),1) FROM Artist A, Track T, Performs P WHERE A.artist_id=P.artist_id AND T.track_id=P.track_id GROUP BY A.name ORDER BY SUM(T.duration) DESC LIMIT 5;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity"""").
+Extra functions: """"round""""(""""avg""""(""""track"""".""""popularity""""), 1).
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing functions: """"avg""""(""""track"""".""""popularity"""") to your SELECT clause.
+- Remove the extra functions: """"round""""(""""avg""""(""""track"""".""""popularity""""), 1) from your SELECT clause.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+9,1,8,"""SELECT  Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+10,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+11,1,8,"""SELECT Artist.name, SUM(Track.duration) AS ttd, AVG(Track.popularity) FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY ttd desc LIMIT 5;""",1,1,"""Correct."""
+12,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name, Track.duration, Track.popularity ORDER BY SUM(Track.duration) DESC LIMIT 5""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+13,1,8,"""SELECT name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+14,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+16,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration  DESC LIMIT 5;""",1,1,"""Correct."""
+17,1,8,"""SELECT Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+18,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE  Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.name HAVING SUM(Track.duration) AND AVG(Track.popularity) ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+19,1,8,"""SELECT Artist.name, SUM(duration) AS sum_duration, AVG(popularity) AS avg_pop  FROM Artist, Track, Performs  WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.name ORDER BY sum_duration DESC LIMIT 5;""",1,1,"""Correct."""
+20,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name GROUP BY SUM(duration) DESC LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration), avg(popularity) from artist, performs, track where artist.artist_id = performs.artist_id and performs.track_id = track.track_id group by name order by sum(duration) desc limit 5;' make it parseable.
+
+"""
+21,1,8,"""SELECT name, SUM(duration), AVG(popularity)  FROM Artist, Track, Performs  WHERE Performs.track_id = Track.track_id  AND Performs.artist_id = Artist.artist_id  GROUP BY Artist.name  ORDER BY SUM(duration) DESC  LIMIT 5;""",1,1,"""Correct."""
+23,1,8,"""SELECT a.name AS artist_name,        SUM(t.duration) AS total_duration,        AVG(t.popularity) AS avg_popularity FROM Artist a JOIN TrackArtists ta ON a.artist_id = ta.artist_id JOIN Track t ON ta.track_id = t.track_id GROUP BY a.name ORDER BY total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"trackartists"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+24,1,8,"""SELECT name,  SUM(duration) AS total_duration,  AVG(popularity) AS avg_popularity  FROM Artist, Track, Performs  WHERE Artist.artist_id = Performs.artist_id  AND Performs.track_id = Track.track_id  GROUP BY name  ORDER BY total_duration DESC  LIMIT 5;""",1,1,"""Correct."""
+25,1,8,"""SELECT name,sum(duration),avg(popularity) FROM Artist,Track,Performs WHERE Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id GROUP BY name ORDER BY sum(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+26,1,8,"""SELECT a.name,         SUM(t.duration) AS total_duration,        AVG(t.popularity) AS average_popularity FROM Artist a JOIN Performs p ON a.artist_id = p.artist_id JOIN Track t ON p.track_id = t.track_id GROUP BY a.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+27,1,8,"""SELECT Artist.name, SUM(Track.duration) AS duration, round(AVG(Track.popularity),1) AS popularity  FROM Artist, Track, Performs  WHERE Performs.artist_id = Artist.artist_id  AND Performs.track_id = Track.track_id  GROUP BY Artist.name  ORDER BY duration DESC  LIMIT 5;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity"""").
+Extra functions: """"round""""(""""avg""""(""""track"""".""""popularity""""), 1).
+
+
+Next steps:
+- Add the missing functions: """"avg""""(""""track"""".""""popularity"""") to your SELECT clause.
+- Remove the extra functions: """"round""""(""""avg""""(""""track"""".""""popularity""""), 1) from your SELECT clause.
+
+"""
+29,1,8,"""SELECT A.name,         SUM(T.duration) AS total_duration,         AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+30,1,8,"""select Artist.name as artist_name, SUM(Track.duration) as total_duration, AVG(Track.popularity) as average_popularity from Artist, Performs, Track where Artist.artist_id = Performs.artist_id and Performs.track_id = Track.track_id group by Artist.name order by total_duration DESC limit 5;""",1,1,"""Correct."""
+31,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+32,1,8,"""SELECT name, SUM(track.duration) as SUM, avg(track.popularity)   FROM Artist, Track, Performs   WHERE Performs.track_id = Track.track_id AND Artist.artist_id = Performs.artist_id   GROUP BY name   ORDER BY SUM DESC   LIMIT 5;""",1,1,"""Correct."""
+33,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.Track_id = Track.track_id GROUP BY name ORDER BY sum(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+34,1,8,"""SELECT name, SUM(duration), AVG(popularity), artist_id     FROM (Track FULL OUTER JOIN (Artist JOIN Performs ON Artist.artist_id = Performs.artist_id))   ORDER BY duration DESC    LIMIT 5   GROUP BY artist_id;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+35,1,8,"""SELECT Artist.name, SUM(duration) AS dur, AVG(popularity) AS pop FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY dur DESC LIMIT 5;""",1,1,"""Correct."""
+36,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+37,1,8,"""SELECT Artist.""""name"""", SUM (Track.duration), AVG(Track.popularity) FROM Artist JOIN Performs ON Artist.artist_id=Performs.artist_id JOIN Track ON Track.track_id=Performs.track_id GROUP BY Artist.""""name"""" ORDER BY SUM (Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+38,1,8,"""SELECT      Artist.name AS artist_name,     SUM(Track.duration) AS total_duration,     AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+39,1,8,"""SELECT      Artist.name AS artist_name,     SUM(Track.duration) AS total_duration,     AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+40,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.artist_id, Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+41,1,8,"""SELECT name, SUM( duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id GROUP BY name ORDER BY sum(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+44,1,8,"""SELECT DISTINCT artist.name, sum(track.duration), avg(track.popularity)  FROM track JOIN performs ON track.track_id = performs.track_id JOIN artist ON performs.artist_id=artist.artist_id  GROUP BY artist.name  ORDER BY sum(track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+45,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+46,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+47,1,8,"""SELECT A.name AS artist_name, SUM(T.duration) AS total_duration, AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+48,1,8,"""SELECT A.name, SUM(T.duration) AS total_duration,  AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+529,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+49,1,8,"""select name, sum(duration) as total_duration, avg(popularity) as average_popularity from Artist  full join Performs on Artist.artist_id = Performs.artist_id  full join Track on Performs.track_id = Track.track_id  group by name  order by -total_duration  limit 5;""",1,1,"""Correct."""
+50,1,8,"""SELECT name, SUM(duration), AVG(popularity)  FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+530,1,8,"""select name, sum(duration) as sum1, avg(popularity) from artist, track, performs where artist.artist_id = performs.artist_id and performs.track_id = track.track_id group by name order by sum1 desc limit 5;""",1,1,"""Correct."""
+52,1,8,"""SELECT A.name AS artist_name,         SUM(T.duration) AS total_duration,         AVG(T.popularity) AS avg_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+53,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track NATURAL JOIN Performs Where Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+54,1,8,"""SELECT DISTINCT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity   FROM Artist, Track, Performs   WHERE Artist.artist_id= Performs.artist_id   AND Performs.track_id=Track.track_id   GROUP BY Artist.name   ORDER BY total_duration DESC   LIMIT 5;""",1,1,"""Correct."""
+55,1,8,"""SELECT Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) as average_popularity FROM Performs JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDERED BY total_duration DESC LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select artist.name as artist_name, sum(track.duration) as total_duration, avg(track.popularity) as average_popularity from performs join artist on performs.artist_id = artist.artist_id join track on performs.track_id = track.track_id group by artist.name order by total_duration desc limit 5;' make it parseable.
+
+"""
+56,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist LEFT JOIN Performs ON Artist.artist_id = Performs.artist_id LEFT JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.artist_id, name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+57,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+58,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,8,"""SELECT A.name, SUM(T_duration) AS total_duration,  AVG(T.popularity) AS average popularity From Artist A JOIN Performs P ON A.artist_id = P.artst_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.name ORDER BY total_duration DESC LIMIT 5;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+60,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+531,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+61,1,8,"""select name, sum(duration), avg(popularity) from artist,track,performs where artist.artist_id=performs.artist_id and track.track_id=performs.track_id group by name order by sum(duration) desc limit 5;""",1,1,"""Correct."""
+62,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+63,1,8,"""SELECT  Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM  Artist, Performs, Track WHERE Artist.artist_id == Performs.artist_id AND Performs.track_id == Track.track_id GROUP BY  Artist.name ORDER BY  SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+64,1,8,"""SELECT name AS artist, SUM (duration) AS Duration,AVG (popularity) AS Popularity FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY name ORDER BY duration DESC LIMIT 5;""",1,1,"""Correct."""
+66,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY artist_id ORDER BY SUM(duration) LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+67,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+68,1,8,"""SELECT Artist.name, SUM (Track.duration) AS total, AVG (Track.popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total DESC LIMIT 5;""",1,1,"""Correct."""
+69,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+70,1,8,"""Select a.name, sum(t.duration), AVG(t.popularity)  from main.Artist a  join main.Performs p on a.artist_id = p.artist_id join main.Track t on p.track_id = t.track_id  group by a.name""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+72,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name ORDER BY SUM(T.duration)*-1 LIMIT 5;""",1,1,"""Correct."""
+73,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(Track.popularity) FROM Artist, writes, track WHERE Artist.artist_id = Writes.Artist_id AND Writes.track_id = Track.track_id GROUP BY name  ORDER BY total_duration DESC LIMIT 5;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"avg""""(""""popularity"""").
+Extra functions: """"avg""""(""""track"""".""""popularity"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""performs"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""writes"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+
+
+Next steps:
+- Add the missing functions: """"avg""""(""""popularity"""") to your SELECT clause.
+- Remove the extra functions: """"avg""""(""""track"""".""""popularity"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+74,1,8,"""SELECT SUM(duration),AVG(popularity) FROM Track NATURAL JOIN Writes NATURAL JOIN Artist GROUP BY name ORDER BY SUM(duration) LIMIT 5;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"name"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Add the missing columns: """"name"""" to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+532,1,8,"""select name, sum(Track.duration), avg(Track.popularity) from Artist join Performs on Artist.artist_id = Performs.artist_id join Track on Track.track_id = Performs.track_id group by Artist.name order by sum(Track.duration) desc limit 5;""",1,1,"""Correct."""
+76,1,8,"""SELECT name, SUM(duration) AS total, AVG(popularity), FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY total DESC LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration) as total, avg(popularity) from artist, performs, track where artist.artist_id = performs.artist_id and performs.track_id = track.track_id group by name order by total desc limit 5;' make it parseable.
+
+"""
+77,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Performs, Artist, Track WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+78,1,8,"""SELECT name AS artist_name,     SUM(t.duration) AS total_duration,     AVG(t.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track t ON t.track_id = Performs.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+80,1,8,"""SELECT name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS mean_popularity FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+81,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+82,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist JOIN Performs ON Artist.artist_id=Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+83,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+84,1,8,"""SELECT Artist.name, SUM (Track.duration) AS summed_duration, AVG (popularity) avg_popularity FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND  Track.track_id = Performs.track_id GROUP BY Artist.name ORDER BY summed_duration DESC LIMIT 5;""",1,1,"""Correct."""
+85,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+86,1,8,"""SELECT A.name AS artist_name,         SUM(T.duration) AS total_duration,         AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.artist_id, A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+87,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track WHERE Artist.artist_id = Track.album_id AND  GROUP BY name ORDER BY SUM(Track.duration) LIMIT 5""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+88,1,8,"""SELECT DISTINCT name, SUM(duration) AS total_duration, AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+89,1,8,"""SELECT name, SUM(duration), AVG(popularity)   FROM Artist A, Track T, Performs P  WHERE A.artist_id =P.artist_id  AND P.track_id = T.track_id  GROUP BY A.name  ORDER BY SUM(duration) DESC  LIMIT 5;""",1,1,"""Correct."""
+90,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Performs P, Track T WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name ORDER BY SUM(T.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+91,1,8,"""SELECT      Artist.name AS artist_name,     SUM(DISTINCT Track.duration) AS total_duration,     AVG(Track.popularity) AS avg_popularity FROM      Performs JOIN      Artist ON Performs.artist_id = Artist.artist_id JOIN      Track ON Performs.track_id = Track.track_id GROUP BY      Artist.name ORDER BY      total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+92,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+93,1,8,"""FROM Artist, Track,  Performs SELECT Artist.name, Track.duration, AVG(Track.popularity) WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY Artist.name, Track.duration ORDER BY Track.duration DESC LIMIT 5;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+94,1,8,"""SELECT name, SUM(duration), avg(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_i d = Track.track_id GROUP BY name ORDER BY sum(duration) DESC LIMIT 5;""",0.8571428571428571,1,"""### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration), avg(popularity) from artist, performs, track where artist.artist_id = performs.artist_id and performs.track_i = track.track_id group by name order by sum(duration) desc limit 5;' make it parseable.
+
+"""
+96,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id GROUP BY Artist.name ORDER BY Track.duration DESC LIMIT 5;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+97,1,8,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+98,1,8,"""SELECT      a.name AS artist_name,     SUM(t.duration) AS total_duration,     AVG(t.popularity) AS average_popularity FROM Artist a JOIN Performs p ON a.artist_id = p.artist_id JOIN Track t ON p.track_id = t.track_id GROUP BY a.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+100,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Track T, Performs P WHERE P.artist_id = A.artist_id AND P.track_id = T.track_id GROUP BY A.name ORDER BY SUM(T.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+101,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+102,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY(Artist.name) ORDER BY SUM(Track.duration) DESC LIMIT(5 );""",1,1,"""Correct."""
+103,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+104,1,8,"""SELECT Artist.""""name"""", SUM(Track.duration), AVG(Track.popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.""""name"""" ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+105,1,8,"""SELECT      a.name AS artist_name,     SUM(t.duration) AS total_duration,     AVG(t.popularity) AS average_popularity FROM      Artist a JOIN      Performs p ON a.artist_id = p.artist_id JOIN      Track t ON p.track_id = t.track_id GROUP BY      a.artist_id, a.name ORDER BY      total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+106,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Track NATURAL JOIN Performs NATURAL JOIN Artist GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+107,1,8,"""SELECT name AS """"artist name"""", SUM(duration), AVG(popularity) FROM Track NATURAL JOIN Performs NATURAL JOIN Artist GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+108,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity)  FROM Artist, Track, Performs  WHERE Performs.artist_id=Artist.artist_id AND Performs.track_id=Track.track_id  GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+109,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) FROM Performs JOIN Track ON Performs.track_id = Track.track_id JOIN Artist ON Performs.artist_id = Artist.artist_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+110,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Track T, Performs P WHERE P.track_id = T.track_id AND P.artist_id = A.artist_id GROUP BY A.name ORDER BY SUM(T.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+111,1,8,"""SELECT      Artist.name AS artist_name,      SUM(Track.duration) AS total_duration,      AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+112,1,8,"""select name, sum(duration), avg(popularity) from Artist, Track, Performs where Artist.artist_id = Performs.artist_id andTrack.track_id = Performs.track_id group by Artist.name order by sum(duration) desc limit 5;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+113,1,8,"""Select a.name, sum(t.duration), AVG(t.popularity)  from Artist a  join Performs p on a.artist_id = p.artist_id join Track t on p.track_id = t.track_id  group by a.name order by sum(t.duration) desc limit 5;""",1,1,"""Correct."""
+114,1,8,"""SELECT A.Name AS ArtistName, SUM(T.Duration) AS TotalDuration, AVG(T.Popularity) AS AveragePopularity FROM Artists A JOIN Tracks T ON A.ArtistID = T.ArtistID GROUP BY A.Name ORDER BY TotalDuration DESC LIMIT 5;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""name"""".
+Extra columns: """"artists"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""").
+Extra functions: """"avg""""(""""tracks"""".""""popularity""""),""""sum""""(""""tracks"""".""""duration"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"artist"""", """"performs"""", """"track"""".
+Extra tables: """"artists"""", """"tracks"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"artists"""".""""name"""" from your SELECT clause.
+- Add the missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Remove the extra functions: """"avg""""(""""tracks"""".""""popularity""""),""""sum""""(""""tracks"""".""""duration"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+115,1,8,"""select A.name, T.duration, avg(T.popularity) from Artist A, Track T group by A.name, T.duration order by duration desc limit 5;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"track"""".""""duration"""".
+Mismatch in selected functions.
+Missing functions: """"sum""""(""""track"""".""""duration"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Remove the extra columns: """"track"""".""""duration"""" from your SELECT clause.
+- Add the missing functions: """"sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+116,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+117,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id  	AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+118,1,8,"""SELECT a.name, SUM (t.duration) AS total_duration, AVG (t.popularity) AS average_popularity FROM Artist a JOIN Performs p ON p.artist_id = a.artist_id JOIN Track t ON t.track_id = p.track_id GROUP BY a.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+119,1,8,"""SELECT Artist.name AS artist_name,        SUM(Track.duration) AS total_duration,        AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+121,1,8,"""SELECT Artist.name, Track.duration, AVG(Track.popularity) FROM Track INNER JOIN Performs ON Track.track_id = Performs.track_id INNER JOIN Artist ON Artist.artist_id = Performs.artist_id GROUP BY Artist.name, Track.duration ORDER BY Track.duration desc LIMIT 5;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"track"""".""""duration"""".
+Mismatch in selected functions.
+Missing functions: """"sum""""(""""track"""".""""duration"""").
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Remove the extra columns: """"track"""".""""duration"""" from your SELECT clause.
+- Add the missing functions: """"sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+122,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity)  FROM Track  JOIN Performs ON Track.track_id = Performs.track_id  JOIN Artist ON Performs.artist_id = Artist.artist_id  GROUP BY Artist.name  ORDER BY SUM(Track.duration) DESC  LIMIT 5;""",1,1,"""Correct."""
+123,1,8,"""FROM Artist SELECT Artist.name AS artist_name, SUM(Track.duration) as total_duration, AVG(Track.popularity) as avg_popularity GROUP BY artist_name ORDER BY total_duration LIMIT 5;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+124,1,8,"""SELECT Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+125,1,8,"""SELECT Artist.name, AVG(Track.popularity), SUM(Track.duration) FROM Track, Performs, Artist WHERE Track.track_id = Performs.track_id AND Artist.artist_id=Performs.artist_id GROUP BY Artist.name, Track.popularity, Track.duration ORDER BY Track.popularity DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+126,1,8,"""SELECT A.name,          SUM(T.duration) AS total_duration,          AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+128,1,8,"""SELECT Artist.name AS artist_name,        SUM(Track.duration) AS total_duration,        AVG(Track.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+129,1,8,"""SELECT Artist.name AS artist_name,           SUM(Track.duration) AS total_duration,           AVG(Track.popularity) AS average_popularity   FROM Artist   JOIN Performs ON Artist.artist_id = Performs.artist_id   JOIN Track ON Performs.track_id = Track.track_id   GROUP BY Artist.name   ORDER BY total_duration DESC   LIMIT 5;""",1,1,"""Correct."""
+130,1,8,"""SELECT A.name AS artist_name,         SUM(T.duration) AS total_duration,         AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+533,1,8,"""SELECT name, COUNT(*) AS duration, AVG(popularity) FROM Artist, Track GROUP BY name, duration ORDER BY duration DESC LIMIT 5;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""name"""".
+Extra columns: """"name"""".
+Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""").
+Extra functions: """"avg""""(""""popularity""""),""""count""""().
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Add the missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Remove the extra functions: """"avg""""(""""popularity""""),""""count""""() from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+133,1,8,"""SELECT name,SUM(duration),AVG(popularity) FROM Artist,Track,Performs WHERE Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+135,1,8,"""SELECT Artist.name, SUM(Track.duration) AS summed_duration, AVG(Track.popularity) AS average_popularity FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id GROUP BY Artist.name ORDER BY summed_duration DESC LIMIT 5;""",1,1,"""Correct."""
+136,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.Artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+137,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name GROUP BY SUM(duration) DESC LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration), avg(popularity) from artist, performs, track where artist.artist_id = performs.artist_id and performs.track_id = track.track_id group by name order by sum(duration) desc limit 5;' make it parseable.
+
+"""
+138,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+139,1,8,"""SELECT A.name, T.duration, AVG(T.popularity) FROM Artist A, Track T, Writes W WHERE T.track_id = W.track_id AND A.artist_id = W.artist_id GROUP BY T.duration, A.name ORDER BY T.duration DESC LIMIT 5;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"track"""".""""duration"""".
+Mismatch in selected functions.
+Missing functions: """"sum""""(""""track"""".""""duration"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""performs"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""writes"""".""""track_id""""; 
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Remove the extra columns: """"track"""".""""duration"""" from your SELECT clause.
+- Add the missing functions: """"sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+140,1,8,"""SELECT DISTINCT name, SUM(duration) as total_duration, AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+141,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+142,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) from Artist, Track, Writes WHERE Artist.artist_id == Writes.artist_id AND Writes.track_id == Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""performs"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""==""""""""writes"""".""""artist_id""""; SIMPLE:""""writes"""".""""track_id""""""""==""""""""track"""".""""track_id""""; 
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+143,1,8,"""SELECT      Artist.name AS artist_name,     SUM(Track.duration) AS total_duration,     AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+144,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+145,1,8,"""SELECT name, SUM(duration), AVG(popularity)  FROM Track, Artist, Performs  WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id  GROUP BY name  ORDER BY SUM(duration) DESC  LIMIT 5;""",1,1,"""Correct."""
+146,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Track ON Performs.track_id = Track.track_id JOIN Performs ON Artist.artist_id = Performs.artist_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+147,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+148,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+149,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,8,"""SELECT name, SUM (duration), AVG (popularity) FROM Artist, Track GROUP BY artist_id ORDER BY SUM(duration) DESC LIMIT 5;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+151,1,8,??????,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,8,"""SELECT        Artist.name AS artist_name,        SUM(track.duration) AS total_duration,        AVG(track.popularity) AS average_popularity FROM Artist, Performs, Track  WHERE Artist.artist_id = Performs.artist_id and Performs.track_id = track.track_id GROUP BY artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+153,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+154,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Track, Artist, Performs WHERE Track.track_id=Performs.track_id AND Artist.artist_id=Performs.artist_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+155,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Track, Artist, Performs WHERE Track.track_id = Performs.track_id AND Artist.artist_id = Performs.artist_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+156,1,8,"""SELECT Artist.name, Track.duration, AVG(Track.popularity) FROM Artist, Track, Produces WHERE Artist.artist_id = Produces.artist_id AND Track.track_id = Produces.track_id GROUP BY Artist.name, Track.duration ORDER BY Track.duration DESC LIMIT 5""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"track"""".""""duration"""".
+Mismatch in selected functions.
+Missing functions: """"sum""""(""""track"""".""""duration"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"produces"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""performs"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""produces"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""produces"""".""""track_id""""; 
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Remove the extra columns: """"track"""".""""duration"""" from your SELECT clause.
+- Add the missing functions: """"sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+157,1,8,"""SELECT Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist, Performs, Track WHERE Artist.artist_id=Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.artist_id, Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+158,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+159,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+160,1,8,"""SELECT name, SUM(duration), AVG(popularity)  FROM Artist  NATURAL JOIN Performs  NATURAL JOIN Track  GROUP BY name  ORDER BY SUM(duration) DESC  LIMIT 5;""",1,1,"""Correct."""
+161,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.Artist_id  AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+162,1,8,"""SELECT name, SUM(duration) AS Total_duration, AVG(popularity) AS Average_popularity FROM Artist A, Performs P, Track T WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY name ORDER BY Total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+163,1,8,"""SELECT Artist.name, SUM(Track.track_id) as total_duration, AVG(Track.popularity) as average_popularity FROM Artist JOIN Performance ON Artist.artist_id = Performance.artist_id JOIN Track ON Performance.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- GROUP BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"sum""""(""""track"""".""""duration"""").
+Extra functions: """"sum""""(""""track"""".""""track_id"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"performance"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing functions: """"sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Remove the extra functions: """"sum""""(""""track"""".""""track_id"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+164,1,8,"""SELECT DISTINCT name, SUM(Track.duration) AS total, AVG(Track.popularity) FROM Artist Natural JOIN Performs NATURAL JOIN Track GROUP BY name ORDER BY total DESC LIMIT 5;""",1,1,"""Correct."""
+165,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id AND NOT duration IS NULL GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+166,1,8,"""SELECT Artist.name, SUM(Track.duration) AS duration, AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id ORDER BY duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity"""").
+Extra functions: """"avg""""(""""popularity"""").
+
+GROUP BY clause: GROUP BY clause missing
+
+Next steps:
+- Add the missing functions: """"avg""""(""""track"""".""""popularity"""") to your SELECT clause.
+- Remove the extra functions: """"avg""""(""""popularity"""") from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+167,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Artist, Track, Performs WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+168,1,8,"""SELECT  Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+169,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Track T, Artist A, Performs P WHERE T.track_id = P.track_id AND A.artist_id = P.artist_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+170,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Track.track_id = Performs.track_id AND Performs.artist_id = Artist.artist_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+171,1,8,"""SELECT name, SUM(duration) AS duration, ROUND(AVG(popularity), 1) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY name ORDER BY duration DESC LIMIT 5;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"avg""""(""""popularity"""").
+Extra functions: """"round""""(""""avg""""(""""popularity""""), 1).
+
+
+Next steps:
+- Add the missing functions: """"avg""""(""""popularity"""") to your SELECT clause.
+- Remove the extra functions: """"round""""(""""avg""""(""""popularity""""), 1) from your SELECT clause.
+
+"""
+172,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+173,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Track, Artist GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+535,1,8,"""SELECT Artist.name,         SUM(Track.duration) AS total_duration,         AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+174,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name GROUP BY SUM(duration) DESC LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration), avg(popularity) from artist, performs, track where artist.artist_id = performs.artist_id and performs.track_id = track.track_id group by name order by sum(duration) desc limit 5;' make it parseable.
+
+"""
+176,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) as popularity FROM Artist, Track, Performs WHERE Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id GROUP BY Artist.artist_id, Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+177,1,8,"""SELECT A.name,         SUM(T.duration) AS total_duration,         AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.artist_id, A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+179,1,8,"""select Artist.name,  sum(Track.duration) as total_duration,  avg(Track.popularity) as average_popularity from Artist, Track, Performs where Artist.artist_id = Performs.artist_id and Track.track_id = Performs.track_id group by Artist.name order by total_duration desc limit 5;""",1,1,"""Correct."""
+181,1,8,"""SELECT DISTINCT Artist.name, SUM(Track.duration) AS dura ,  AVG(Track.popularity) AS popu  FROM Artist , Performs, Track  WHERE Artist.artist_id = Performs.artist_id  AND Performs.track_id= Track.track_id  GROUP BY Artist.name  ORDER BY dura DESC  LIMIT 5;""",1,1,"""Correct."""
+183,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND T.track_id = P.track_id GROUP BY A.name ORDER BY SUM(T.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+184,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Performs P, Track T WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name ORDER BY SUM(T.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+185,1,8,"""SELECT name, SUM(duration) AS duration_sum, AVG(popularity) AS popularity_avg FROM Track T, Artist A, Performs P WHERE T.track_id == P.track_id AND P.artist_id == A.artist_id GROUP BY name ORDER BY duration_sum DESC LIMIT 5;""",1,1,"""Correct."""
+186,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS avg_popularity FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+187,1,8,"""SELECT Artist.name AS artist_name,         SUM(Track.duration) AS total_duration,         ROUND(AVG(Track.popularity), 1) AS avg_pop FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity"""").
+Extra functions: """"round""""(""""avg""""(""""track"""".""""popularity""""), 1).
+
+
+Next steps:
+- Add the missing functions: """"avg""""(""""track"""".""""popularity"""") to your SELECT clause.
+- Remove the extra functions: """"round""""(""""avg""""(""""track"""".""""popularity""""), 1) from your SELECT clause.
+
+"""
+188,1,8,"""SELECT      Artist.name,     SUM(Track.duration) AS total_duration,     AVG(Track.popularity) AS average_popularity FROM      Artist JOIN      Performs ON Artist.artist_id = Performs.artist_id JOIN      Track ON Performs.track_id = Track.track_id GROUP BY      Artist.name ORDER BY      total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+189,1,8,"""-- for this one only I had to use ChatGPT, therefore I didn't feel like it was ethical to include the solution, but I still don't quite understand how it should work :/""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"artist"""", """"performs"""", """"track"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""name"""" to your SELECT clause.
+- Add the missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+190,1,8,"""SELECT name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+191,1,8,"""SELECT Artist.name, SUM(Track.duration) as total_duration, AVG(Track.popularity) as avg_popularity FROM Artist INNER JOIN Performs ON Artist.artist_id = Performs.artist_id INNER JOIN Track ON Performs.track_id = Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5""",1,1,"""Correct."""
+192,1,8,"""SELECT     Artist.name,     SUM(Track.duration) AS total_duration,     AVG(Track.popularity) AS average_popularity FROM     Artist JOIN     Performs ON Artist.artist_id = Performs.artist_id JOIN     Track ON Performs.track_id = Track.track_id GROUP BY     Artist.name ORDER BY     total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+193,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs, Writes WHERE Performs.artist_id = Artist.artist_id AND Writes.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""performs"""".""""track_id""""; 
+Found conditions: SIMPLE:""""performs"""".""""artist_id""""""""=""""""""artist"""".""""artist_id""""; SIMPLE:""""writes"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+194,1,8,"""SELECT Artist.name, SUM(Track.duration WHERE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+195,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Track, Artist, Performs WHERE Artist.artist_id=Performs.artist_id AND Performs.track_id=Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+196,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+197,1,8,"""SELECT      a.name AS artist_name,      SUM(t.duration) AS total_duration,      AVG(t.popularity) AS avg_popularity FROM      Artist a JOIN      Performs p ON a.artist_id = p.artist_id JOIN      Track t ON p.track_id = t.track_id GROUP BY      a.name ORDER BY      total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+198,1,8,"""SELECT name, SUM(duration) AS totaltime, AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id=Performs.artist_id AND Track.track_id=Performs.track_id GROUP BY name ORDER BY totaltime DESC LIMIT 5;""",1,1,"""Correct."""
+199,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+200,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+201,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity)  FROM Track T, Artist A, Performs P  WHERE T.track_id=P.track_id AND  A.artist_id=P.artist_id  GROUP BY name  ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+202,1,8,"""SELECT  name, SUM(duration), AVG(popularity) FROM Artist JOIN Perform ON Artist.artist_id = Perform.artist_id JOIN Track ON Perform.track_id = Track.track_id GROUP BY name ORDER BY duration DESC LIMIT 5""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"perform"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+203,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Writes, Artist, Track WHERE Writes.artist_id = Artist.artist_id AND Writes.track_id = Track.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""performs"""".""""track_id""""; 
+Found conditions: SIMPLE:""""writes"""".""""artist_id""""""""=""""""""artist"""".""""artist_id""""; SIMPLE:""""writes"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+206,1,8,"""SELECT  Artist.name,  SUM(Track.duration) AS Total, AVG(Track.popularity) AS Avg_Popularity FROM Track, Artist, Performs WHERE  Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY Total DESC LIMIT 5;""",1,1,"""Correct."""
+208,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Produces WHERE Artist.artist_id = Produces.artist_id AND Track.track_id = Produces.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"produces"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""performs"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""produces"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""produces"""".""""track_id""""; 
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+209,1,8,"""SELECT name AS artist_name,      SUM(t.duration) AS total_duration,      AVG(t.popularity) AS avg_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track t ON t.track_id = Performs.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+536,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist,Track,Performs WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY sum(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+210,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+211,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Track, Artist, Performs GROUP BY name, duration, popularity ORDER BY total_duration DESC LIMIT 5""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+212,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+213,1,8,"""SELECT a.name, SUM(t.duration),     AVG(t.popularity) FROM Artist a, Track, Performs   join Performs p on a.artist_id = p.artist_id join Track t on p.track_id = t.track_id   GROUP BY a.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"performs"""", """"track"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+214,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+215,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+216,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+217,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+218,1,8,"""SELECT Artist.name, SUM (Track.duration) AS total_duration, AVG (Track.popularity) AS average_popularity FROM Performs, Artist, Track WHERE Performs.artist_id = Artist.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+219,1,8,"""SELECT name, SUM(duration) AS total_duration, AVG(popularity) FROM Artist, Writes, Track WHERE Artist.artist_id=Writes.artist_id AND Writes.track_id=Track.track_id GROUP BY name ORDER total_duration LIMIT 5;""",0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Number of conditions in AND clause mismatch. Expected 2, but found 0.
+
+ORDER BY clause: Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration) as total_duration, avg(popularity) from artist, writes, track where artist.artist_id   and track.track_id   group by name order by total_duration  limit 5;' make it parseable.
+
+"""
+221,1,8,"""SELECT      A.name,     SUM(T.duration) AS total_duration,     AVG(T.popularity) AS average_popularity FROM      Artist A WHERE      EXISTS (         SELECT 1         FROM Performs P         JOIN Track T ON P.track_id = T.track_id         WHERE A.artist_id = P.artist_id     ) GROUP BY      A.name ORDER BY      total_duration DESC LIMIT 5;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected expressions.
+Extra expressions: 1.
+
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+222,1,8,"""SELECT A.name, SUM(B.duration),AVG(B.popularity) FROM Artist A, Track B, Performs C WHERE A.artist_id=C.artist_id AND B.track_id=C.track_id GROUP BY A.name ORDER BY SUM(B.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+223,1,8,"""SELECT      a.name AS artist_name,      SUM(t.duration) AS total_duration,      AVG(t.popularity) AS avg_popularity FROM      Artist a JOIN      Track t ON a.artist_id = t.artist_id GROUP BY      a.name ORDER BY      total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+224,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Track, Artist, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+225,1,8,"""SELECT Artist.name, SUM(Track.duration) AS sum_duration, AVG(Track.popularity) FROM Artist JOIN Performs ON Performs.artist_id = Artist.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY sum_duration DESC LIMIT 5;""",1,1,"""Correct."""
+226,1,8,"""SELECT A.name, SUM(T.duration), AVG(T.popularity) FROM Artist A, Track T, Performs P WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.name ORDER BY SUM(T.duration)*-1 LIMIT 5;""",1,1,"""Correct."""
+227,1,8,"""SELECT  DISTINCT Artist.name, SUM (Track.duration), AVG (Track.popularity) FROM Artist, Track, Performs WHERE (Artist.artist_id=Performs.artist_id AND Track.track_id = Performs.track_id) GROUP BY (Artist.name) ORDER BY SUM (duration) DESC LIMIT 5;""",1,1,"""Correct."""
+228,1,8,"""SELECT Artist.name AS ArtistName,        SUM(Track.duration) AS TotalDuration,        AVG(Track.popularity) AS AveragePopularity FROM Artist JOIN Artist.artist_id = Performs.artist_id GROUP BY Artist.name ORDER BY TotalDuration DESC LIMIT 5;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+229,1,8,"""SELECT A.name, SUM(T.duration) D, AVG(T.popularity) FROM Artist A JOIN Performs P ON P.artist_id=A.artist_id JOIN Track T ON T.track_id=P.track_id GROUP BY A.name ORDER BY D DESC LIMIT 5;""",1,1,"""Correct."""
+230,1,8,"""SELECT a.name AS artist_name,        SUM(t.duration) AS total_duration,        AVG(t.popularity) AS average_popularity FROM Artist a JOIN Performs p ON a.artist_id = p.artist_id JOIN Track t ON p.track_id = t.track_id GROUP BY a.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+233,1,8,"""SELECT name,  SUM(duration) AS total_duration,  AVG(popularity) AS avg_popularity  FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist.id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",0.8857142857142857,1,""""""
+234,1,8,"""SELECT name, sum(duration), avg(popularity) FROM Artist A, Track T, Performs P, where A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY name ORDER BY sum(duration) desc LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration), avg(popularity) from artist a, track t, performs p where a.artist_id = p.artist_id and p.track_id = t.track_id group by name order by sum(duration)*-1 limit 5;' make it parseable.
+
+"""
+235,1,8,"""SELECT a.name , SUM(t.duration), AVG(t.popularity) FROM Artist a, Track t, Writes w WHERE a.artist_id = w.artist_id AND w.track_id = t.track_id GROUP BY a.artist_id ORDER BY SUM(t.duration) DESC  LIMIT 5;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""performs"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""writes"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+236,1,8,"""SELECT Artist.name, SUM(Track.duration) as total_duration, AVG(Track.popularity) as average_popularity FROM Artist, Track, Writes WHERE Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id GROUP BY Artist.name ORDER BY total_duration DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""performs"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""writes"""".""""track_id""""; 
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+237,1,8,"""SELECT name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+238,1,8,"""SELECT A.name AS artist_name, SUM(T.duration) AS total_duration, AVG(T.popularity) AS average_popularity FROM Artist A, Performs P, Track T WHERE A.artist_id = P.artist_id AND P.track_id = T.track_id GROUP BY A.artist_id, A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+239,1,8,"""SELECT Artist.name AS artist_name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Performs JOIN Artist ON Performs.artist_id = Artist.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+240,1,8,"""SELECT A.name AS artist_name, SUM(T.duration) AS total_duration, AVG(T.popularity) AS average_popularity FROM Artist A JOIN Performs P ON A.artist_id = P.artist_id JOIN Track T ON P.track_id = T.track_id GROUP BY A.artist_id, A.name ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+241,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+242,1,8,"""SELECT Artist.name, SUM(Track.duration), AVG(Track.popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.name ORDER BY SUM(Track.duration) DESC LIMIT 5;""",1,1,"""Correct."""
+243,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+244,1,8,"""SELECT a.name, SUM(t.duration) AS total_duration,  AVG(t.popularity) AS average_popularity FROM Artists a JOIN Track_Performers tp ON a.artist_id = tp.artist_id JOIN Tracks t ON tp.track_id = t.track_id GROUP BY a.artists_id, a.name ORDER BY total_duration DESC  LIMIT 5;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"artist"""".""""name"""".
+Extra columns: """"artists"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""").
+Extra functions: """"avg""""(""""tracks"""".""""popularity""""),""""sum""""(""""tracks"""".""""duration"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"artist"""", """"performs"""", """"track"""".
+Extra tables: """"artists"""", """"track_performers"""", """"tracks"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing columns: """"artist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"artists"""".""""name"""" from your SELECT clause.
+- Add the missing functions: """"avg""""(""""track"""".""""popularity""""),""""sum""""(""""track"""".""""duration"""") to your SELECT clause.
+- Remove the extra functions: """"avg""""(""""tracks"""".""""popularity""""),""""sum""""(""""tracks"""".""""duration"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+245,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+246,1,8,"""SELECT Artist.name, SUM(Track.duration) AS duration, AVG(Track.popularity) AS avg_popularity FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY Artist.artist_id, Artist.name ORDER BY total_duration DESC LIMIT 5;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+247,1,8,"""SELECT name,         SUM(duration) AS total_duration,         AVG(popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5""",1,1,"""Correct."""
+248,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+249,1,8,"""SELECT name, SUM(duration) AS total, AVG(popularity), FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY total DESC LIMIT 5;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(duration) as total, avg(popularity) from artist, performs, track where artist.artist_id = performs.artist_id and performs.track_id = track.track_id group by name order by total desc limit 5;' make it parseable.
+
+"""
+250,1,8,"""SELECT Artist.name, SUM (Track.duration) AS total_duration, AVG (Track.popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name ORDER BY total_duration LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+251,1,8,"""SELECT Artist.name, SUM(duration) AS sum_duration, AVG(popularity) AS avg_pop  FROM Artist, Track, Performs  WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.name ORDER BY sum_duration DESC LIMIT 5;""",1,1,"""Correct."""
+252,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY Artist.Name ORDER BY total_duration DESC;""",0.7142857142857143,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Excellent! Your query matches the reference query.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+253,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total, AVG(Track.popularity) FROM Artist, Track NATURAL JOIN Performs GROUP BY Artist.name ORDER BY total DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+254,1,8,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,8,"""SELECT Artist.""""name"""",  SUM(Track.duration) AS total_duration,  AVG(Track.popularity) AS average_popularity FROM Track JOIN Performs ON Track.track_id = Performs.track_id JOIN Artist ON Artist.artist_id = Performs.artist_id GROUP BY Artist.""""name"""" ORDER BY total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+256,1,8,"""SELECT name, SUM(duration), AVG(popularity)   FROM Artist NATURAL JOIN Performs NATURAL JOIN Track   GROUP BY name   ORDER BY SUM(duration) DESC   LIMIT 5;""",1,1,"""Correct."""
+257,1,8,"""select name, sum(duration) as total_duration, avg(popularity) from artist join performs on artist.artist_id=performs.artist_id join track on performs.track_id=track.track_id group by name order by total_duration desc limit 5;""",1,1,"""Correct."""
+258,1,8,"""SELECT a.name, SUM(t.duration), AVG(t.popularity) FROM Artist a, Track t, Performs p WHERE a.artist_id = p.artist_id AND t.track_id = p.track_id GROUP BY a.name ORDER BY AVG(t.popularity) DESC LIMIT 5 ;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- HAVING clause
+- ORDER BY clause
+
+Details of the problems:
+HAVING clause: Mismatch in HAVING clause presence.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+259,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist, Track, Performs WHERE Artist.artist_id = Performs.artist_id AND Track.track_id = Performs.track_id GROUP BY name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+260,1,8,"""SELECT      Artist.name AS artist_name,      SUM(Track.duration) AS total_duration,      AVG(Track.popularity) AS average_popularity FROM      Artist JOIN      Performs ON Artist.artist_id = Performs.artist_id JOIN      Track ON Performs.track_id = Track.track_id GROUP BY      Artist.name ORDER BY      total_duration DESC LIMIT 5;""",1,1,"""Correct."""
+261,1,8,"""SELECT name, SUM(duration), AVG(popularity) FROM Artist NATURAL JOIN Performs NATURAL JOIN Track GROUP By name ORDER BY SUM(duration) DESC LIMIT 5;""",1,1,"""Correct."""
+262,1,8,"""SELECT Artist.name, SUM(Track.duration) AS sum_duration, AVG(Track.popularity) FROM Artist JOIN Performs ON Performs.artist_id = Artist.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER BY sum_duration DESC LIMIT 5;""",1,1,"""Correct."""
+263,1,8,"""SELECT name, SUM(duration) AS total_duration,  AVG(popularity) FROM Artist, Writes, Track WHERE Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id GROUP BY name ORDER BY total_duration DESC LIMIT 5;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 3 tables; select 3 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"performs"""".
+Extra tables: """"writes"""".
+
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""performs"""".""""artist_id""""; SIMPLE:""""performs"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+Found conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""writes"""".""""track_id""""; 
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+264,1,8,"""SELECT Artist.name, SUM(Track.duration) AS total_duration, AVG(Track.popularity) AS average_popularity FROM Artist JOIN Performs ON Artist.artist_id = Performs.artist_id JOIN Track ON Performs.track_id = Track.track_id GROUP BY Artist.name ORDER by total_duration DESC LIMIT 5;""",1,1,"""Correct."""

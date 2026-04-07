@@ -1,0 +1,1 @@
+﻿"SELECT DISTINCT T1.advisor, T2.student FROM Teaches T1, Teaches T2 WHERE T1.student = T2.advisor;"

@@ -1,0 +1,1738 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,7,"""SELECT DISTINCT name  FROM Artist,  Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+2,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+3,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+4,1,7,SELECT name FROM 'Artist' AND 'Produces',0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+5,1,7,"""SELECT DISTINCT name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+6,1,7,πname(Artist ⨝ Produces),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+7,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Produces.name=Artist.name;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+8,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+9,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+10,1,7,SELECT Artist.name FROM Artist,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+
+Next steps:
+- Review and correct the FROM clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+11,1,7,SELECT DISTINCT Artist.name FROM Artist  JOIN Produces ON Artist.artist_id=Produces.artist_id;,1,1,"""Correct."""
+12,1,7,"""SELECT DISTINCT name  FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+13,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+14,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id=Produces.artist_id;,1,1,"""Correct."""
+15,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+16,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+17,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+18,1,7,SELECT name FROM Artist X Produces WHERE artist.id = producer.id,0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name from artist, produces where artist.id = producer.id;' make it parseable.
+
+"""
+19,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+21,1,7,"""SELECT DISTINCT name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+23,1,7,SELECT Artist.name  FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+24,1,7,"""SELECT Artist.name FROM Artist, Produces""",0.9428571428571428,1,"""Semantics minor error. Maybe you meant ''?
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+25,1,7,"""SELECT DISTINCT name FROM Artist,Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+26,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+27,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+28,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+29,1,7,"""SELECT DISTINCT  """"name"""" FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+30,1,7,"""select distinct name from Artist, Produces where Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+31,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+32,1,7,"""SELECT name FROM Produces, Artist WHERE Produces.artist_id = Artist.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+33,1,7,"""SELECT name FROM Artist NATURAL JOIN Produces; -- This gives 307 artist names, where some are duplicates (like the algebra query says)""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+Excellent! Your query matches the reference query.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+34,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id=Produces.artist_id;,1,1,"""Correct."""
+35,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+36,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+37,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+38,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+39,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+40,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+41,1,7,SELECT name FROM Album NATURAL JOIN Artist;,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+44,1,7,SELECT name FROM (Artist NATURAL JOIN Produces),0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+45,1,7,SELECT name FROM Artist WHERE artist_id IN (SELECT artist_id FROM Produces);,0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+528,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+46,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+47,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+48,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+529,1,7,Select name FROM Artist NATURAL JOIN Produces;,0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+49,1,7,SELECT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+50,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+51,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+530,1,7,SELECT DISTINCT name FROM artist NATURAL JOIN produces;,1,1,"""Correct."""
+52,1,7,SELECT DISTINCT Artist.name  FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+53,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+54,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+55,1,7,SELECT DISTINCT name FROM Artist  NATURAL JOIN Produces,1,1,"""Correct."""
+56,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces;,0.34285714285714286,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct artist.name from artist, produces;' make it parseable.
+
+Results Analysis: Correct results are contained within the query results.
+
+"""
+57,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+58,1,7,"""select * from track, writes,artist where Writes.artist_id=Artist.artist_id and Track.track_id=Writes.track_id and Track_title='Californication';""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Condition type mismatch.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+59,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+60,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+531,1,7,"""SELECT """"name"""" FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+61,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+62,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+63,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+64,1,7,"""SELECT name FROM Artist,Produces;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+65,1,7,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+67,1,7,"""SELECT name  FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+68,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+69,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+70,1,7,select name from artist join Produces on (artist.artist_id = Produces.artist_id),0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+71,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+72,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+73,1,7,"""SELECT DISTINCT name FROM Artist, Produces Where Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+74,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+75,1,7,SELECT name FROM Artist NATURAL JOIN Produces,0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+532,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+76,1,7,"""SELECT  name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id ;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+77,1,7,"""SELECT DISTINCT Name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+78,1,7,SELECT Artist.name FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+79,1,7,"""SELECT DISTINCT """"name""""  FROM Artist, Produces  WHERE Artist.artist.id=Produces.artist.id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+80,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+81,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+83,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+84,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+85,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+86,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+87,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id""",1,1,"""Correct."""
+88,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+90,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+91,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+92,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+93,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+94,1,7,"""SELECT name FROM Artist,Produces WHERE Artist.artist_id = Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+96,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+98,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+100,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+101,1,7,SELECT Artist.name FROM Artist WHERE Artist.track_id = Produces.track_id;,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+102,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+103,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+104,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+105,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+106,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+107,1,7,"""SELECT DISTINCT name FROM Artist a, Produces p WHERE a.artist_id = p.artist_id;""",1,1,"""Correct."""
+108,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+109,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Produces.artist_id = Artist.artist_id;,1,1,"""Correct."""
+110,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id= Produces.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+111,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+112,1,7,"""select distinct name from Artist, Produces where Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+113,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+114,1,7,SELECT Artist.name  FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+115,1,7,"""SELECT name FROM Artist, Producers;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+116,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+117,1,7,SELECT DISTINCT name FROM Artist  INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+118,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+119,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+120,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.name = Produces.name;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+121,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+122,1,7,SELECT DISTINCT Artist.name  FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+123,1,7,"""SELECT DISTINCT Artist.name  FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+124,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+125,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id= Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+126,1,7,SELECT DISTINCT name  FROM Artist JOIN Produces ON Artist.artist.id = Produces.artist_id;,0.8857142857142857,1,""""""
+127,1,7,"""SELECT name FROM Artist, Produces""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+128,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+129,1,7,SELECT name   FROM Artist   JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+130,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+533,1,7,"""SELECT name FROM Artist, Produces WHERE Produces.Artist = Artist.name;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+132,1,7,-- Select the names of artists who produced a track SELECT DISTINCT Artist.name -- The Artist table contains information about artists FROM Artist -- Join Artist table with Produces    JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+133,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+134,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+135,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+136,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+137,1,7,SELECT name FROM Artist JOIN Produces USING (artist_id);,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+138,1,7,SELECT name FROM artist NATURAL JOIN Produces;,0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+139,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+140,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+141,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+142,1,7,SELECT DISTINCT name from ARTIST where artist_id in (SELECT artist_id from PRODUCES);,1,1,"""Correct."""
+143,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+144,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id""",1,1,"""Correct."""
+145,1,7,SELECT name FROM Artist  NATURAL JOIN Produces;,0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+147,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id""",1,1,"""Correct."""
+148,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+149,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+150,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+151,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+152,1,7,SELECT DISTINCT Artist.name  FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+153,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.name = Produces.name;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+154,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+155,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+156,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id""",1,1,"""Correct."""
+157,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+158,1,7,SELECT DISTINCT name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+159,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+160,1,7,SELECT DISTINCT name  FROM Artist NATURAL JOIN Produces ;,1,1,"""Correct."""
+161,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+162,1,7,"""SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;""",1,1,"""Correct."""
+163,1,7,"""SELECT DISTINCT name FROM Artist A, Produces P WHERE P.artist_id = A.artist_id""",1,1,"""Correct."""
+164,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+165,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+166,1,7,"""SELECT DISTINCT name FROM Artist, Produces;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+167,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+168,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+169,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+170,1,7,"""SELECT DISTINCT name FROM Artist, Produces  WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+534,1,7,"""SELECT DISTINCT Artist,name FROM Artist JOIN Produces ON Artist.artist_id = produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+171,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+172,1,7,"""SELECT DISTINCT Artist.name  FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+535,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+174,1,7,"""SELECT DISTINCT name FROM Artist, Produces""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+175,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+176,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+177,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+179,1,7,"""select name from Artist,Produces where Artist.artist_id = Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+181,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+183,1,7,"""SELECT DISTINCT name FROM Artist A, Produces P WHERE A.artist_id = P.artist_id;""",1,1,"""Correct."""
+184,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+185,1,7,SELECT DISTINCT name FROM Artist a JOIN Produces p ON a.artist_id = p.artist_id;,1,1,"""Correct."""
+186,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+187,1,7,SELECT DISTINCT Artist.name FROM Artist  JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+188,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+189,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+190,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+191,1,7,SELECT DISTINCT Artist.name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+192,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+193,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+194,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+195,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+196,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+197,1,7,SELECT name FROM Artist INNER JOIN Produces ON Artist.artist_id= Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+198,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+199,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+200,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+201,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+202,1,7,"""SELECT DISTICT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct artist.name from artist, produces where artist.artist_id = produces.artist_id;' make it parseable.
+
+"""
+203,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+204,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+206,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+207,1,7,SELECT name FROM artist WHERE produces='yes',0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+208,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+209,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+536,1,7,SELECT name FROM Artist NATURAL JOIN Produces;,0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+210,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+211,1,7,SELECT DISTINCT Artist.name; FROM Artist NATURAL JOIN Produces; WHERE Artist.artist_id = Produces.artist_id;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+212,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+213,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+214,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produced.artist_id;""",0.8857142857142857,1,""""""
+215,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+216,1,7,SELECT name FROM Artists NATURAL JOIN Produces ON Artist.artist_id = Poduces.artist_id;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+217,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+218,1,7,SELECT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+219,1,7,"""SELECT DISTINCT name FROM Artist, Produces;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+220,1,7,SELECT Artist.name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+221,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+222,1,7,SELECT DISTINCT name FROM Artist WHERE A.artist_id=B.artist_id;,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: Operands mismatch in non-commutative operator.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+223,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id= Produces.artist_id;,1,1,"""Correct."""
+224,1,7,"""SELECT DISTINCT name FROM Artist, Produces  WHERE Produces.artist_id = Artist.artist_id;""",1,1,"""Correct."""
+225,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+226,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+227,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",0.8857142857142857,1,"""### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+228,1,7,SELECT Artist.name FROM Artists WHERE Artists.artist_id = Produces.artist_id;,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Tables: Mismatch in FROM clause tables.
+
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the FROM clause.
+- Review and correct the WHERE clause.
+
+"""
+229,1,7,SELECT DISTINCT a.name FROM Artist a JOIN Produces p ON a.artist_id = p.artist_id;,1,1,"""Correct."""
+230,1,7,SELECT DISTINCT a.name FROM Artist a JOIN Produces p ON a.artist_id = p.artist_id;,1,1,"""Correct."""
+231,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+232,1,7,SELECT Artist.name FROM Artist JOIN Produces;,0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select artist.name from artist, produces' make it parseable.
+
+"""
+233,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+234,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+236,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+237,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+238,1,7,SELECT DISTINCT name FROM Artist WHERE artist_id IN (SELECT DISTINCT artist_id FROM Produces);,1,1,"""Correct."""
+239,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+240,1,7,SELECT DISTINCT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+241,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+242,1,7,"""SELECT name FROM Artist, Produces;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+243,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+244,1,7,SELECT Artist.name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id,0.2571428571428571,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Distinct: Expected, but not found.
+Columns: Mismatch in selected columns.
+
+
+Next steps:
+- Review and correct the SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+245,1,7,SELECT DISTINCT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+246,1,7,"""SELECT name FROM Artist, Produces;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+247,1,7,SELECT DISTINCT name FROM Artist JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+248,1,7,SELECT name FROM Artist JOIN Produces;,0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select name from artist,produces;' make it parseable.
+
+"""
+249,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+250,1,7,SELECT DISTINCT Artist.name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+251,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+252,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+253,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+254,1,7,"""SELECT Artist.name FROM Artist, Produces WHERE Artist.track_id = Produces.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: One query has a WHERE clause while the other does not.
+
+
+Next steps:
+- Review and correct the WHERE clause.
+
+"""
+255,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+256,1,7,"""SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+257,1,7,SELECT DISTINCT Artist.name FROM Artist INNER JOIN Produces ON Artist.artist_id = Produces.artist_id;,1,1,"""Correct."""
+258,1,7,"""-- selects only names SELECT DISTINCT a.name FROM Artist a, Produces;""",1,1,"""Correct."""
+259,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id=Produces.artist_id;""",1,1,"""Correct."""
+260,1,7,SELECT name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""
+261,1,7,SELECT DISTINCT Artist.name FROM Artist INNER JOIN Produces ON Produces.artist_id = Artist.artist_id;,1,1,"""Correct."""
+262,1,7,"""SELECT DISTINCT Artist.name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+263,1,7,"""SELECT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;""",1,1,"""Correct."""
+264,1,7,SELECT DISTINCT  name FROM Artist NATURAL JOIN Produces;,1,1,"""Correct."""

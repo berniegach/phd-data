@@ -1,0 +1,2051 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,6,"""SELECT      (SELECT Name       FROM Customer_DIM       WHERE Customer_DIM.Customer_ID = Fact_Table.Customer_ID) AS Customer_Name,     SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table, Time_DIM WHERE      Fact_Table.Time_ID = Time_DIM.Time_ID     AND Fact_Table.Customer_ID IN (         SELECT Customer_ID          FROM Customer_DIM          WHERE City = 'Nijmegen'     )     AND Time_DIM.Year = 2021 GROUP BY      Fact_Table.Customer_ID;""",1,1,"""🟢 Correct."""
+2,1,6,"""SELECT  C.Name AS Customer_Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table Fa JOIN  Customer_DIM C ON Fa.Customer_ID = C.Customer_ID  JOIN  Time_DIM T ON Fa.Time_ID = T.Time_ID WHERE  C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY  C.Name""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT      c.Name AS Customer_Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'     AND t.Year = 2021 GROUP BY      c.Name;'?
+"""
+4,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Customer_DIM NATURAL JOIN Fact_Table NATURAL JOIN Time_DIM WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name""",1,1,"""🟢 Correct."""
+5,1,6,"""SELECT Customer_DIM.name, Fact_Table.Revenue FROM Customer_DIM, Fact_Table, Time_DIM WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 4, but found 2.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+7,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+8,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_Table F, Customer_DIM C, Time_DIM T WHERE F.Customer_ID=C.Customer_ID AND F.Time_ID=T.Time_ID WHERE C.City='Nijmegen' AND T.Year=2021 GROUP BY C.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+9,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen'   AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+10,1,6,"""SELECT  Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM  Fact_Table JOIN  Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN  Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE  Customer_DIM.City = 'Nijmegen' AND  Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+11,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+12,1,6,"""SELECT Name, SUM(Revenue) FROM Customer_DIM, Fact_Table WHERE Time_DIM.Time_ID = Fact_Table.Time_ID AND Customer_DIM.Customer_ID = Fact_Table.Customer_ID AND City = 'Nijmegen' AND Year = '2021' GROUP BY Name;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'time_dim'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+13,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+15,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+16,1,6,"""SELECT C.Name, SUM(F.Revenue) AS total_revenue FROM Fact_Table F JOIN Customer_Dim C ON C.Customer_ID = F.Customer_ID JOIN Time_Dim T ON T.Time_ID = F.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+18,1,6,"""SELECT Name, Revenue FROM Customer_DIM C, Fact_Table F WHERE C.Customer_ID = F.Customer_ID AND C.City = Nijmegen;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'time_dim'.
+
+2. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 4, but found 2.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+19,1,6,"""SELECT      Customer_DIM.Name AS Customer_Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table, Customer_DIM, Time_DIM WHERE      Fact_Table.Customer_ID = Customer_DIM.Customer_ID     AND Fact_Table.Time_ID = Time_DIM.Time_ID     AND Customer_DIM.City = 'Nijmegen'     AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+21,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_table F, Customer_DIM C, Time_DIM T WHERE C.Customer_ID = F.Customer_ID AND T.Time_ID = F.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+24,1,6,"""SELECT Name, SUM(Revenue) FROM Customer_DIM, Fact_Table, Time_DIM JOIN Customer_DIM ON Fact_Table.Customer_ID=Customer_DIM.Customer_ID JOIN Time_DIM ON Time_DIM.Time_ID=Fact_Table.Time_ID WHERE Year = 2021 AND City = 'Nijmegen';""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'customer_dim',  'time_dim'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'customer_dim',  'time_dim'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact_table.customer_id = customer_dim.customer_id.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: time_dim.time_id = fact_table.time_id.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+25,1,6,"""SELECT Name,Revenue FROM Customer_DIM C,Fact_Table F,Time_DIM T WHERE C.Customer_ID=F.Customer_id AND T.Time_ID=F.Time_ID AND C.City='Nijmegen' AND T.Year=2021;""",1,1,"""🟢 Correct."""
+26,1,6,"""SELECT      c.Name AS Customer_Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'     AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+27,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table F, Customer_DIM C, Time_DIM T WHERE F.Customer_id = C.Customer_id AND F.Time_ID = T.Time_ID AND City = 'Nijmegen' AND Year = 2021""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+28,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+29,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Customer_DIM,  Fact_Table, Time_DIM JOIN Fact_Table ON Customer_DIM.Customer_ID = Fact_Table.Customer_ID JOIN Time_DIM ON Time_DIM.Time_ID = Fact_Table.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'fact_table',  'time_dim'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'fact_table',  'time_dim'.
+● Join 2: Mismatch in join condition.
+● Expected condition: fact_table.time_id = time_dim.time_id.
+● Found condition: time_dim.time_id = fact_table.time_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+31,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_Table F, Customer_DIM C, Time_DIM T WHERE F.Customer_ID = C.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+32,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table, Time_DIM, Customer_DIM WHERE Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.Customer_ID =Fact_Table.Customer_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+33,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+34,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+35,1,6,"""SELECT  C.Name AS Customer_Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN  Customer_DIM C ON F.Customer_ID = C.Customer_ID  JOIN  Time_DIM T ON F.Time_ID = T.Time_ID WHERE  C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY  C.Name;""",1,1,"""🟢 Correct."""
+36,1,6,"""SELECT      c.Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'     AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+37,1,6,"""SELECT C.name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_dim C ON F.Customer_ID=C.Customer_ID JOIN Time_DIM T ON F.Time_ID=T.Time_ID WHERE C.City='Nijmegen' AND T.Year""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 1.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+38,1,6,"""SELECT c.Name,SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN  Time_DIM t ON f.Time_ID = t.Time_ID WHEREc.City = 'Nijmegen' AND t.Year = 2021 GROUP BY  c.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+39,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+40,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS [Total Revenue]  FROM Fact_Table  JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+41,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Customer_DIM.Customer_ID=Fact_Table.Customer_ID AND Customer_DIM.City='Nijmegen' AND Time_DIM.Year=2021 AND Time_DIM.Time_ID=Fact_Table.Time_ID  GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+44,1,6,"""select Name, Revenue  from Fact_Table join Customer_DIM join Time_DIM on Fact_Table.Customer_ID=Customer_DIM.Customer_ID and Time_DIM.Time_ID = Fact_Table.Time_ID where Customer_DIM.city = """"Nijmegen"""" and Time_DIM.Year = """"2021"""";""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+45,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY  c.Name;""",1,1,"""🟢 Correct."""
+46,1,6,"""SELECT C.Name, SUM(F.Revenue)  FROM Fact_Table F INNER JOIN Customer_DIM C ON (F.Customer_ID = C.Customer_ID) INNER JOIN Time_DIM T ON (F.Time_ID = T.Time_ID) WHERE T.Year = 2021 AND C.City = 'Nijmegen' GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+47,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+48,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_id AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021;""",1,1,"""🟢 Correct."""
+529,1,6,"""SELECT C.Name, SUM(Revenue) FROM Fact F, Customer C WHERE F.Customer_ID=C.Customer_ID AND C.City='Nijmegen' GROUP BY C.Customer_ID;""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'customer.name'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'customer_dim',  'fact_table',  'time_dim'.
+● Extra tables: 'customer',  'fact'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:Nijmegen=customer.city; SIMPLE:customer.customer_id=fact.customer_id; 
+ ● 
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'customer.name' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+49,1,6,"""SELECT c.Name, SUM(f.Revenue) AS TotalRevenue FROM FactTable f  JOIN CustomerDim c ON f.CustomerID = c.CustomerID  JOIN TimeDim t ON f.TimeID = t.TimeID  WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'customerdim.name'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+● Extra functions: 'sum(facttable.revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'customer_dim',  'fact_table',  'time_dim'.
+● Extra tables: 'customerdim',  'facttable',  'timedim'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'customerdim',  'facttable'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: facttable.customerid = customerdim.customerid.
+● Join 2: Mismatch in joined tables for INNER JOIN.
+● Expected tables: '(nested join)',  'time_dim'.
+● Found tables: '(nested join)',  'timedim'.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: f.timeid = timedim.timeid.
+
+3. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:2021=timedim.year; SIMPLE:Nijmegen=customerdim.city; 
+ ● 
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'customerdim.name' from your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(facttable.revenue)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+50,1,6,"""SELECT C.Name, F.Revenue FROM Fact_Table F, Customer_Dim C WHERE C.Customer_id = F.Customer_id AND City = 'Nijmegen' AND EXISTS( SELECT * FROM Time_dim WHERE year = 2021 );""",1,1,"""🟢 Correct."""
+530,1,6,"""SELECT c.Name AS Customer_Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name""",1,1,"""🟢 Correct."""
+53,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+54,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen'   AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+55,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+56,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM Customer_DIM LEFT JOIN Fact_Table ON Customer_DIM.Customer_ID = Fact_Table.Customer_ID INNER JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year =2021 GROUP BY Customer_DIM.Customer_ID, Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+57,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table F NATURAL JOIN Customer_Dim C NATURAL JOIN Time_Dim T WHERE C.City = 'Nijmegen' AND T.Year = 2021  GROUP BY Name;""",1,1,"""🟢 Correct."""
+58,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+60,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Customer_DIM, Fact_Table WHERE City = 'Nijmegen' AND Customer_DIM.Customer_ID = Fact_Table.Customer_ID;""",1,1,"""🟢 Correct."""
+61,1,6,"""SELECT Customer_DIM.Name AS Customer_Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+62,1,6,"""SELECT      c.Name,     SUM(f.Revenue) AS Total_Revenue FROM      FACT_TABLE f ...""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+63,1,6,"""SELECT Name,  SUM(revenue) AS Total_revenue FROM Customer_DIM c, Fact_Table f, Time_DIM t WHERE c.Customer_ID = f.Customer_ID AND t.Time_ID = f.Time_ID AND c.City = 'Nijmegen' AND t.Year = 2021; GROUP BY c.Name;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=time_dim.year; SIMPLE:customer_dim.city=nijmegen; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=fact_table.time_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select name, sum(revenue) as total_revenue from customer_dim c, fact_table f, time_dim t where c.customer_id = f.customer_id and f.time_id = f.time_id and c.city = 'nijmegen' and t.year = 2021 group by name;' make it parseable.
+
+"""
+66,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+67,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE C.Customer_ID = F.Customer_ID AND C.Custumer_ID = T.Customer_ID AND T.Time = '2021' AND C.City = 'Nijmegen' ORDER BY C.Name DESC;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+❌ GROUP BY clause
+❌ ORDER BY clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=time_dim.time; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:customer_dim.custumer_id=time_dim.customer_id; 
+ ● 
+2. GROUP BY clause: GROUP BY clause missing
+3. ORDER BY clause: 
+ ● Order By: Different number of order items.
+● Order By: Other query has additional order items.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+➡️ Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+68,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Rev  FROM Fact_Table, Customer_DIM, Time_DIM  WHERE Customer_DIM.Customer_ID = Fact_Table.Customer_ID  AND Fact_Table.Time_ID = Time_DIM.Time_ID  AND Customer_DIM.City = 'Nijmegen'  AND Time_DIM.Year = 2021  GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+538,1,6,"""WITH joins as( select * from Customer_DIM, Fact_Table, Time_DIM where Customer_DIM.Customer_ID = Fact_Table.Customer_ID and Fact_Table.Time_ID = Time_DIM.Time_ID and Year = 2021 and City = 'Nijmegen') select Name, SUM(revenue) from joins GROUP BY Name;""",1,1,"""🟢 Correct."""
+69,1,6,"""SELECT c.Name, SUM(f.Revenue) FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+70,1,6,"""Select cd.Name, Sum(f.Revenue) as totalRevenue from Fact_Table f join Customer_DIM cd on f.Customer_ID = cd.Customer_ID join Time_DIM td on f.Time_ID = td.Time_ID where cd.City = 'Nijmegen' and td.Year = 2021 group by cd.Name""",1,1,"""🟢 Correct."""
+72,1,6,"""SELECT C.Name F.Revenue FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE C.Customer_ID = F.Customer_ID AND C.City == 'Nijmegen' AND T.Time_ID = F.Time_ID AND T.Year = '2021';""",0.17142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'customer_dim.name'.
+● Extra columns: 'c.name', 'f.revenue'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(fact_table.revenue)'.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=t.year; SIMPLE:c.city=nijmegen; SIMPLE:c.customer_id=f.customer_id; SIMPLE:f.time_id=t.time_id; 
+ ● 
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'customer_dim.name' to your SELECT clause.
+➡️ Remove the extra columns: 'c.name', 'f.revenue' from your SELECT clause.
+➡️ Add the missing functions: 'sum(fact_table.revenue)' to your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select c.name, f.revenue from customer_dim, fact_table, time_dim where c.customer_id = f.customer_id and c.city = 'nijmegen' and t.time_id = f.time_id and t.year = 2021;' make it parseable.
+
+"""
+74,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+75,1,6,"""SELECT      C.Name AS Customer_Name,     SUM(F.Revenue) AS Total_Revenue FROM      Fact_Table F JOIN      Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN      Time_DIM T ON F.Time_ID = T.Time_ID WHERE      C.City = 'Nijmegen'      AND T.Year = 2021 GROUP BY      C.Name;""",1,1,"""🟢 Correct."""
+532,1,6,"""Select c.Name, sum(Revenue)  from Customer_DIM c Fact_Table f join c on f.Customer_ID = c.Customer_ID join Time_DIM on f.Time_ID = Time_DIM.Time_ID where c.City = 'Nijmegen' and Time_DIM.Year = 2021 group by c.name order by total_revenue""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+76,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table NATURAL JOIN Customer_DIM NATURAL JOIN Time_DIM WHERE City = 'Nijmegen' AND Year = 2021 GROUP BY Name""",1,1,"""🟢 Correct."""
+77,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Customer_DIM, Fact_Table,  Time_DIM WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 4, but found 2.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+78,1,6,"""SELECT      Customer_DIM.Name AS Customer_Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM      ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM      ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'      AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+79,1,6,"""SELECT Name, SUM(Revenue) AS total FROM Customer C, Fact F WHERE C.Customer_ID=F.Customer_ID AND C.City='Nijmegen' GROUP BY C.Name;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'customer_dim',  'fact_table',  'time_dim'.
+● Extra tables: 'customer',  'fact'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:Nijmegen=customer.city; SIMPLE:customer.customer_id=fact.customer_id; 
+ ● 
+3. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+80,1,6,"""SELECT C.Name, sum(FT.Revenue) as total_Revenue FROM Fact_Table as FT NATURAL JOIN Customer_DIM as C NATURAL JOIN Time_DIM as T WHERE T.year = 2021 AND C.City='Nijmegen';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+81,1,6,"""SELECT      c.Name AS Customer_Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'      AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+82,1,6,"""SELECT Name, Revenue FROM Customer_DIM, Fact_Table JOIN Customer_DIM ON Customer_DIM.Customer_ID = Fact_Table.Customer_ID WHERE City = 'Nijmegen';""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'time_dim'.
+● Extra tables: 'customer_dim'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+84,1,6,"""SELECT      c.Name,     SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'      AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+85,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+86,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+87,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Fact_Table JOIN Customer_ID ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM.Time_ID = Fact_Table.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+88,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Customer_DIM AS C, Fact_Table AS F, Time_DIM AS T WHERE C.City='Nijmegen' AND T.Year=2021  AND C.Customer_ID = F.Customer_ID AND F.Time_ID = T.Time_ID GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+89,1,6,"""SELECT      customer.Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table fact JOIN      Customer_DIM customer ON fact.Customer_ID = customer.Customer_ID JOIN      Time_DIM t ON fact.Time_ID = t.Time_ID WHERE      customer.City = 'Nijmegen'      AND t.Year = 2021 GROUP BY      customer.Name;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 2: Mismatch in join condition.
+● Expected condition: fa.time_id = time_dim.time_id.
+● Found condition: fact.time_id = time_dim.time_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+90,1,6,"""SELECT C.Name, Sum(F.Revenue)  FROM Fact_Table F, Customer_DIM C, Time_DIM T  WHERE F.Customer_ID = C.Customer_ID  AND F.Time_ID = T.Time_ID  AND C.City = 'Nijmegen'  AND T.Year = 2021  GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+91,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+92,1,6,"""SELECT      c.Name,     SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'      AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+93,1,6,"""SELECT SUM(Fact.Revenue), Cust.Name FROM Customer_DIM Cust, Fact_Table Fact WHERE Cust.Customer_ID = Fact.Customer_ID;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'customer_id'.
+● Extra columns: 'customer_dim.name'.
+
+● Mismatch in selected expressions.
+● Missing expressions: (subquery).
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'customer_dim',  'time_dim'.
+
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'customer_id' to your SELECT clause.
+➡️ Remove the extra columns: 'customer_dim.name' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+94,1,6,"""SELECT Customer_DIM.Name, sum(Fact_Table.Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Customer_DIM.Customer_ID = Fact_Table.Customer_ID AND Time_DIM.Time_ID = Fact_Table.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+96,1,6,"""SELECT Name, SUM(Revenue) AS Tot FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM  ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen'  AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+98,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+100,1,6,"""SELECT      Customer_DIM.Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM      ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM      ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'      AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+101,1,6,"""SELECT Customer DIM Name, Fact_Table.Revenue FROM Customer_DIM, Fact_Table, Time_DIM WHERE Customer_DIM.CITY = 'Nijmegen' AND Time_DIM = 2021;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+102,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_Id = Customer_DIM.Customer_id AND Time_DIM.Time_ID = Fact_TABLE.Time_ID AND Time_DIM.Year = 2021 AND Customer_DIM.City = 'Nijmegen';""",1,1,"""🟢 Correct."""
+103,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen'   AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+104,1,6,"""SELECT C.Name, SUM(S.Revenue) FROM Fact_Table S JOIN Customer_DIM C ON S.Customer_ID = C.Customer_ID JOIN Time_DIM T ON S.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+105,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f INNER JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID INNER JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+106,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE T.Year = 2021 AND C.City = 'Nijmegen' GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+107,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table NATURAL JOIN Customer_DIM NATURAL JOIN Time_DIM WHERE City = 'Nijmegen' AND Year = 2021 GROUP BY Customer_ID;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+108,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue)  FROM Fact_Table, Customer_DIM, Time_DIM WHERE Customer_DIM.City='Nijmegen' AND Time_DIM.Year=2021 AND Fact_Table.Time_ID=Time_DIM.Time_ID AND Fact_Table.Customer_ID=Customer_DIM.Customer_ID GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+110,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE F.Customer_ID = C.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+111,1,6,"""SELECT      Customer_DIM.Name AS Customer_Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'     AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+112,1,6,"""SELECT Name, Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Customer_DIM.City = 'Nijmegen' AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Time_DIM.Year = '2021';""",1,1,"""🟢 Correct."""
+113,1,6,"""SELECT      c.Name,     SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'     AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+114,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+116,1,6,"""SELECT      Customer_DIM.Name AS Customer_Name,     SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM ON      Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM ON      Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'     AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+117,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) as total_revenue FROM Customer_DIM, Fact_Table, Time_DIM WHERE Customer_DIM.Customer_ID = Fact_Table.Customer_ID 	AND Fact_Table.Time_ID = Time_DIM.Time_ID 	AND Customer_DIM.City = 'Nijmegen' 	AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+118,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Customer_DIM C JOIN Fact_Table F ON F.Customer_ID = C.Customer_ID JOIN Time_Dim T ON T.Time_ID = F.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+119,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Customer_DIM c, Fact_Table f, Time_DIM t WHERE c.Customer_ID = f.Customer_ID AND f.Time_ID = t.Time_ID AND c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+121,1,6,"""SELECT Cus.Name, SUM(F.Revenue) FROM Customer_DIM Cus INNER JOIN Fact_Table F ON Cus.Customer_ID = F.Customer_ID INNER JOIN Time_DIM T ON T.Time_ID = F.Time_ID GROUP BY Cus.Name WHERE T.Year = 2021 AND Cus.City = 'Nijmegen';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+122,1,6,"""SELECT      C.Name AS Customer_Name,      SUM(F.Revenue) AS Total_Revenue FROM      Fact_Table F JOIN      Customer_DIM C      ON F.Customer_ID = C.Customer_ID JOIN      Time_DIM T      ON F.Time_ID = T.Time_ID WHERE      C.City = 'Nijmegen'      AND T.Year = 2021 GROUP BY      C.Name;""",1,1,"""🟢 Correct."""
+123,1,6,"""SELECT Customer_DIM.Name, sum(Fact_Table.Revenue) AS TotalRevenue FROM Customer_DIM, Fact_Table JOIN Customer_DIM on Fact_Table.customer_ID = Customer_DIM.customer_ID JOIN Time_DIM ON Fact_Table.ID = Time_DIM.ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name ORDER BY TotalRevenue;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ ORDER BY clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'customer_dim'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact_table.customer_id = customer_dim.customer_id.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact_table.id = time_dim.id.
+
+2. ORDER BY clause: 
+ ● Order By: Different number of order items.
+● Order By: Other query has additional order items.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+124,1,6,"""SELECT c.Customer_ID. c.Name, SUM(f.Revenue) FROM Customer_DIM c, Fact_Table f, Time_DTM t WHERE f.Customer_ID = c.Customer_ID AND f.Time_ID = t.Time_ID AND c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Customer_ID, c.Name;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'customer_dim.name'.
+● Extra columns: ''.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'time_dim'.
+● Extra tables: 'time_dtm'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 4.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'customer_dim.name' to your SELECT clause.
+➡️ Remove the extra columns: '' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+125,1,6,"""SELECT Customer_DIM.name, Fact_Table.Revenue FROM Customer_DIM, Fact_Table, Time_DIM WHERE Time_DIM.Time_ID = Fact_Table.Time_ID AND Customer_DIM.City='Nijmegen' AND Time_DIM.year=2021;""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 4, but found 3.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+126,1,6,"""SELECT c.Name, sum(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.name;""",1,1,"""🟢 Correct."""
+128,1,6,"""SELECT      c.Name,      SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen'   AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+129,1,6,"""SELECT        Customer_DIM.Name,        SUM(Fact_Table.Revenue) AS Total_Revenue   FROM        Fact_Table   JOIN        Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID   JOIN        Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID   WHERE        Customer_DIM.City = 'Nijmegen'        AND Time_DIM.Year = 2021   GROUP BY        Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+131,1,6,"""SELECT C.Name, SUM(Ft.Revenue) AS Total_Revenue FROM Customer_DIM C JOIN Fact_Table Ft ON C.Customer_ID = Ft.Customer_ID JOIN Time_DIM T ON Ft.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+533,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen'  AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+133,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Time_DIM.Year=2021 AND Fact_Table.Customer_ID=Customer_DIM.Customer_ID AND Fact_Table.Time_ID=Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+134,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+135,1,6,"""SELECT Customer_DIM.Name, SUM (Fact_Table.Revenue) FROM Customer_DIM, Fact_Table, Time_DIM,  WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Time_ID = 2021 GROUP BY Customer_DIM.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+136,1,6,"""SELECT Customer_DIM.Name,  SUM(Fact_Table.Revenue) AS TotalRevenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY  Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+137,1,6,"""SELECT Customer_DIM.Name,  SUM(Fact_Table.Revenue) AS Total_Revenue FROM Fact_Table  JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM   ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen'  AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+138,1,6,"""SELECT Customer_DIM.Name,  SUM(Fact_Table.Revenue) AS Total_Revenue FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+139,1,6,"""SELECT S.name, F.revenue FROM Customer_DIM S, Fact_Table F, Time_Dim T WHERE S.Customer_ID = F.Customer_ID AND F.Time_ID = T.Time_ID AND S.City = 'Nijmegen' AND T.Year = 2021;""",1,1,"""🟢 Correct."""
+140,1,6,"""SELECT c.Name, SUM(f.Revenue) AS total_revenue FROM Fact_Table f, Customer_DIM c, Time_DIM t WHERE f.Customer_ID = c.Customer_ID AND Time_DIM t ON f.Time_ID = t.Time_ID AND c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+141,1,6,"""SELECT Name, sum(Revenue) FROM (Customer_DIM NATURAL JOIN Fact_Table NATURAL JOIN Time_DIM) WHERE City = 'Nijmegen' AND Year = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+142,1,6,"""SELECT      C.Name AS Customer_Name,     SUM(F.Revenue) AS Total_Revenue FROM      Fact_Table F JOIN      Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN      Time_DIM T ON F.Time_ID = T.Time_ID WHERE      C.City = 'Nijmegen'      AND T.Year = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+143,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+144,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Customer.DIM, Fact_Table, Table_DIM, WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Time_ID = 2021 GROUP BY Customer_DIM.Name;""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+● Extra functions: 'sum(fact_table.revenue)', 'sum(fact_table.revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'customer_dim',  'time_dim'.
+● Extra tables: 'dim',  'table_dim'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 4.
+
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+● Functions: Mismatch in GROUP BY functions.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(fact_table.revenue)', 'sum(fact_table.revenue)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select customer.dim.sum(fact_table.revenue) ,sum(fact_table.revenue) from customer.dim, fact_table, table_dim where customer.dim.customer_id = customer_dim.customer_id and fact_table.time_id = customer_dim.city and table_dim.time_id = 'nijmegen' and table_dim.year = 2021 group by customer.dim.sum(fact_table.revenue);' make it parseable.
+
+"""
+145,1,6,"""select Name, Sum Revenue from CUSTOMER DIM, FACT TABLE where CUSTOMER_DIM.Customer ID = FACT_TABLE.Customer ID""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+146,1,6,"""SELECT      City.Name,     SUM(F.Revenue) AS Total_Revenue FROM      Fact_Table F JOIN      Customer_DIM City ON F.Customer_ID = City.Customer_ID JOIN      Time_DIM T ON F.Time_ID = T.Time_ID WHERE      City.City = 'Nijmegen'     AND T.Year = 2021 GROUP BY      City.Name;""",1,1,"""🟢 Correct."""
+147,1,6,"""SELECT Customer_DIM.Name, SUM (Fact_Table. Revenue) FROM Customer_DIM, Fact_Table, Time DIM, WHERE Fact_ Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_ Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Time_ID = 2021 GROUP BY Customer_DIM.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+148,1,6,"""SELECT SUM(Revenue) FROM Fact_Table, Customer_Dim,Time_Dim WHERE customer_id.Customer_Dim = customer_id.Fact_Table AND Time_ID.Fact_Table = Time_ID.Time_Dim AND Year = 2021 AND City = 'Nijmegen'""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'customer_dim.name'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(fact_table.revenue)'.
+● Extra functions: 'sum(revenue)'.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; SIMPLE:customer_id.customer_dim=customer_id.fact_table; SIMPLE:time_id.fact_table=time_id.time_dim; 
+ ● 
+3. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'customer_dim.name' to your SELECT clause.
+➡️ Add the missing functions: 'sum(fact_table.revenue)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(revenue)' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+150,1,6,"""SELECT    Product_Name, SUM (Revenue) FROM      Fact_Table, Product_DIM, Customer_DIM, Time_DIM WHERE    Fact_Table.Product_ID = Product_DIM.Product_ID      AND    Fact_Table.Customer_ID = Customer_DIM.Customer_ID      AND    Fact_Table.Time_ID = Time_DIM.Time_ID        AND   Customer_DIM.City = 'Nijmegen'      AND   Time_DIM.Year = 2021;""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'product_name'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)'.
+● Extra tables: 'product_dim'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 5.
+
+4. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'product_name' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+152,1,6,"""SELECT      c.Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'      AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+153,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND City = 'Nijmegen' AND Year = 2021 GROUP BY Name;""",1,1,"""🟢 Correct."""
+154,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM Customer_DIM JOIN Fact_Table ON Customer_DIM.Customer_ID = Fact_Table.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+155,1,6,"""Select SUM(Revenue) ,Name FROM Customer_dim,  Fact_table, Time_dim WHERE Customer_dim.Customer_ID = Fact_dim.Customer_ID AND City = 'Nijmegen' AND Time_dim.Time_ID =  Fact_dim.Time_ID AND Time_dim.Year = 2021 GROUP BY Customer_dim.name;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=city; SIMPLE:customer_dim.customer_id=fact_dim.customer_id; SIMPLE:fact_dim.time_id=time_dim.time_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+157,1,6,"""SELECT c.Name AS Name, SUM(f.Revenue) FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID=c.Customer_ID JOIN Time_DIM t ON f.Time_ID=t.Time_ID WHERE c.city=""""Nijmegen"""" AND t.year=2021 GROUP BY c.name;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+Excellent! Your query matches the reference query.
+
+"""
+158,1,6,"""SELECT c.Name AS Customer_Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen'  AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+160,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+161,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+162,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_Table F, Time_DIM T, Customer_DIM C WHERE F.Time_ID = T.Time_ID AND F.Customer_ID = C.Customer_ID AND T.Year =2021 AND C.City = 'Nijmegen' GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+163,1,6,"""SELECT Customer_DIM.Name, Sum(Fact_Table.Revenue) AS Totalrev FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time.ID WHERE Time_DIM.Year = '2021' AND Customer_DIM.City = 'Nijmegen' GROUP BY Customer_DIM.Name""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact_table.customer_id = customer_dim.customer_id.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact_table.time_id = .
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+164,1,6,"""SELECT Name, SUM(Revenue) AS Total FROM Fact_Table  NATURAL JOIN Time_DIM  NATURAL JOIN Customer_DIM WHERE City = 'Nijmegen' AND Year = 2021 GROUP BY Customer_ID;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'fact_table',  'time_dim'.
+● Join 2: Mismatch in joined tables for INNER JOIN.
+● Expected tables: '(nested join)',  'time_dim'.
+● Found tables: '(nested join)',  'customer_dim'.
+
+2. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+165,1,6,"""SELECT Customer_DIM.Name, SUM(fact_table.Revenue) FROM customer_DIM C, fact_table F, time_DIM T WHERE C.Customer_ID = F.Customer_ID AND T.Time_ID = F.Time_ID AND C.City = 'Nijmegen' AND T.Year = '2021' GROUP BY C.Name;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+Excellent! Your query matches the reference query.
+
+"""
+167,1,6,"""SELECT C.Name, SUM(F.Revenue) AS revenue FROM Fact_Table F, Costumer_DIM C, Time_DIM T WHERE F.Costumer_ID = C.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'costumer_dim.name'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+● Extra functions: 'sum(fact_table.revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'customer_dim'.
+● Extra tables: 'costumer_dim'.
+● Joins: Mismatch in the number of joins.
+
+3. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 2, but found 4.
+
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'costumer_dim.name' from your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(fact_table.revenue)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+168,1,6,"""SELECT c.Name, SUM(f.Revenue) FROM Customer_DIM c, Fact_table f, Time_DIM t WHERE  f.Customer_ID = c.Customer  AND t.Year = 2021 AND c.City = 'Nijmegen' AND f.Time_ID = t.Time_ID GROUP BY c.Name;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+169,1,6,"""SELECT C.Name, SUM (F.Revenue) FROM Fact_Table F, Customer_DIM C, Time_DIM T WHERE C.Customer_ID = F.Customer_ID AND C.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021; GROUP BY C.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+170,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Fact_table F, Customer_DIM C, Time_DIM T WHERE F.Time_ID = T.Time_ID  AND F.Customer_ID = C.Customer_ID AND C.City = 'Nijmegen' AND T.year= '2021' GROUP BY C.Name;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+Excellent! Your query matches the reference query.
+
+"""
+172,1,6,"""Select Customer_DIM.Name, SUM(Fact_table.Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Customer_DIM.Customer_ID = Fact_table.Customer_ID AND Time_DIM.Time_ID = Fact_table.Time_ID AND Time_DIM.Year = '2021' AND Customer_DIM.City = 'Nijmegen'; GROUP BY Customer_DIM.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+174,1,6,"""SELECT Name, SUM(Revenue)  FROM FACT_TABLE  JOIN CUSTOMER_DIM ON FACT_TABLE.Customer_ID = CUSTOMER_DIM.Customer_ID JOIN TIME_DIM t ON FACT_TABLE.Time_ID = TIME_DIM.Time_ID WHERE CUSTOMER_DIM.City = 'Nijmegen' AND TIME_DIM.Year = 2021 GROUP BY CUSTOMER.DIM.Name;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+175,1,6,"""SELECT Customer_DIM.Name AS CustomerName, SUM(Fact_Table.Revenue) AS TotalRevenue FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.name;""",1,1,"""🟢 Correct."""
+176,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID=Customer_DIM.Customer_ID AND Fact_Table.Time_ID=Time_DIM.Time_ID AND Customer_DIM.City='Nijmegen'  AND Time_DIM.Year=2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+179,1,6,"""Select Name, Sum(Revenue) From Fact_Table a join Customer_DIM b on a.Customer_ID = b.Customer_ID  join Time_DIM c on a.Time_ID = c.Time_ID where b.City = 'Nijmegen' AND c.Year = 2021 group by b.Name;""",1,1,"""🟢 Correct."""
+181,1,6,"""SELECT C.Name , SUM(F.Revenue) AS T_Rev  FROM Customer_DIM C,               Time_DIM T,               Fact_Table F  WHERE C.Customer_ID = F.Customer_ID    AND T.Time_ID = F.Time_ID    AND C.City= 'Nijmegen'    AND T.Year= 2021  GROUP BY C.Name ;""",1,1,"""🟢 Correct."""
+183,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+184,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F, Customer_DIM C, Time_DIM T WHERE F.Customer_ID = C.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+185,1,6,"""SELECT C.Name, R.Revenue_total FROM ( SELECT Customer_ID, SUM(Revenue) AS Revenue_total FROM Fact_Table F, Time_DIM T WHERE F.Time_ID = T.Time_ID AND T.Year = 2021 GROUP BY Customer_ID ) R, Customer_DIM C WHERE R.Customer_ID = C.Customer_ID AND C.City = 'Nijmegen';""",1,1,"""🟢 Correct."""
+186,1,6,"""SELECT     c.Name,      SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'      AND t.Year = 2021 GROUP BY      c.Name;""",1,1,"""🟢 Correct."""
+187,1,6,"""SELECT      Customer_DIM.Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'      AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+188,1,6,"""SELECT      Customer_DIM.Name,     SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'     AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+189,1,6,--,0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+"""
+191,1,6,"""SELECT c.name, sum(f.revenue) FROM Customer_dim c INNER JOIN Fact_Table f ON c.customer_id = f.customer_id GROUP BY name WHERE City = 'Nijmegen' AND time_id  IN (select time_id from Time_dim WHERE year = '2021');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+192,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Customer_DIM JOIN Fact_Table ON Customer_DIM.Customer_ID = Fact_Table.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021;""",1,1,"""🟢 Correct."""
+193,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+194,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+195,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+196,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = '2021' GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+197,1,6,"""SELECT      C.Name,      SUM(F.Revenue) AS Total_Revenue FROM      Fact_Table F JOIN      Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN      Time_DIM T ON F.Time_ID = T.Time_ID WHERE      C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY      C.Name;""",1,1,"""🟢 Correct."""
+198,1,6,"""SELECT Name, Revenue FROM CUSTOMER_DIM, FACT_TABLE, TIME_DIM WHERE TIME_DIM.Time_ID=FACT_TABLE.Time_ID AND CUSTOMER_DIM.Customer_ID=FACT_TABLE.Customer_ID AND CUSTOMER_DIM.City='Nijmegen' AND TIME_DIM.Year=2021;""",1,1,"""🟢 Correct."""
+199,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID JOIN Time_DIM T ON F.Time_ID = T.Time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+202,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name""",1,1,"""🟢 Correct."""
+203,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE F.Customer_ID = C.Customer_ID AND F.Time_ID = F.Time_ID AND C.City= 'Nijmegen' AND T.Year = 2021 GROUP BY C.name ;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT C.Name, SUM(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE F.Customer_ID = C.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;'?
+"""
+204,1,6,"""SELECT c.Name AS Customer_Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f INNER JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID INNER JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+206,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+208,1,6,"""SELECT C.Name, SUM(f.Revenue) FROM Fact_Table F JOIN Time_DIM T ON T.Time_ID = F.Time_ID JOIN Customer_DIM C ON C.Customer_ID = F.Customer_ID WHERE C.City = 'Nijmegen'| AND T.Year = 2021 GROUP BY C.Name;""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'c.name'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+● Extra functions: 'sum(f.revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'time_dim'.
+● Extra tables: 'customer_dim'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: t.time_id = customer_dim.customer_id.
+● Join 2: Mismatch in joined tables for INNER JOIN.
+● Expected tables: '(nested join)',  'time_dim'.
+● Found tables: '(nested join)',  'customer_dim'.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: c.customer_id = customer_dim.time_id.
+
+3. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:2021=customer_dim.year; SIMPLE:c.city=nijmegen; 
+ ● 
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'c.name' from your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(f.revenue)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select c.name, sum(f.revenue) from fact_table join customer_dim on t.time_id = customer_dim.customer_id join customer_dim on c.customer_id = customer_dim.time_id where c.city = 'nijmegen' and customer_dim.year = 2021 group by c.name ;' make it parseable.
+
+"""
+209,1,6,"""SELECT      Customer_DIM.Name AS Customer_Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM      ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM      ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'      AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+210,1,6,"""SELECT Name, Revenue FROM Customer_DIM, Fact_Table, Time_DIM WHERE Customer_DIM.Customer_ID = Fact_Table.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND City = 'Nijmegen' AND Year = 2021;""",1,1,"""🟢 Correct."""
+211,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+212,1,6,"""SELECT c.Name, Sum(f.revenue) FROM Fact_Table f JOIN Customer_DIM c on f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name""",1,1,"""🟢 Correct."""
+213,1,6,"""SELECT C.Name, F.Revenue FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE C.City='Nijmegen' AND T.Year=2021;""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Number of conditions in AND clause mismatch. Expected 4, but found 2.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+215,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+216,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+217,1,6,,0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+The reference statement is a SelectStmt but the student statement is a .
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to '' make it parseable.
+
+"""
+218,1,6,"""select Name, SUM(Revenue) AS Total_Revenue FROM Fact_Table JOIN Customer_DIM on Customer_DIM.Customer_ID = Fact_Table.Customer_ID JOIN Time_DIM on Time_DIM.Time_ID = Fact_Table.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+219,1,6,"""SELECT Customer_dim.Name, SUM(Fact_table.Revenue) FROM Fact_table JOIN Customer_dim ON Fact_Table.Customer_ID = Customer_dim.Customer_ID  JOIN Time_dim ON Fact_table.Time_ID = Time_dim.Time_ID WHERE Customer_dim.City = 'Nijmegen'  AND Time_dim.Year = 2021 GROUP BY Customer_dim.Name ;""",1,1,"""🟢 Correct."""
+220,1,6,"""SELECT  c.Name AS Customer_Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+221,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen'  AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+222,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE F.Customer_ID=C.Customer_ID AND F.Time_ID=T.Time_ID AND C.City='Nijmegen' AND T.Year=2021 GROUP BY C.name;""",1,1,"""🟢 Correct."""
+223,1,6,"""SELECT c.Name AS Customer_Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+224,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table, Time_DIM, Customer_DIM  WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID  AND Customer_DIM.City = 'Nijmegen' AND  Fact_Table.Time_ID = Time_DIM.Time_ID AND Time_DIM.Year = '2021' GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+225,1,6,"""SELECT Customer.name, Fact.revenue FROM Fact JOIN Customer ON Customer.customer_id = Fact.customer_id AND JOIN Time ON Time.time_id = Fact.time_id WHERE Customer.city = 'Nijmegen' AND Time.year = 2021;""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'customer.name', 'fact.revenue'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'customer_dim',  'fact_table',  'time_dim'.
+● Extra tables: 'customer',  'fact',  'time'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'customer',  'fact'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact.customer_id = customer.customer_id.
+● Join 2: Mismatch in joined tables for INNER JOIN.
+● Expected tables: '(nested join)',  'time_dim'.
+● Found tables: '(nested join)',  'time'.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: customer.time_id = time.time_id.
+
+3. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:2021=time.year; SIMPLE:fact.city=nijmegen; 
+ ● 
+4. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'customer.name', 'fact.revenue' from your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select customer.name, fact.revenue from fact join customer on fact.customer_id = customer.customer_id join time on customer.time_id = time.time_id where fact.city = 'nijmegen' and time.year = 2021;' make it parseable.
+
+"""
+226,1,6,"""SELECT Customer_DIM.Name, Fact_Table.Revenue FROM Customer_DIM, Fact_Table, Time_DIM WHER Customer_DIM.Customer_ID = Fact_Table.Customer_ID AND Time_DIM.Time_ID = Fact_Table.Time_ID AND Customer_DIM.City = 'Nijmegen'  AND Time_DIM.Year = '2021';""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● Found conditions: SIMPLE:2021=time_dim.year; SIMPLE:customer_dim.city=nijmegen; SIMPLE:customer_dim.customer_id=fact_table.customer_id; SIMPLE:fact_table.time_id=time_dim.time_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select customer_dim.name, fact_table.revenue from customer_dim, fact_table, time_dim where customer_dim.customer_id = fact_table.customer_id and time_dim.time_id = fact_table.time_id and customer_dim.city = """"nijmegen"""" and time_dim.year = 2021;' make it parseable.
+
+"""
+227,1,6,"""SELECT Name, SUM(Revenue) AS Total FROM CUSTOMER_DIM, FACT_TABLE, TIME_DIM WHERE CUSTOMER_DIM.Customer_ID = FACT_TABLE.Customer_ID   AND FACT_TABLE.Time_ID = TIME_DIM.Time_ID   AND CUSTOMER_DIM.City = 'Nijmegen'   AND TIME_DIM.Year = 2021 GROUP BY Name;""",1,1,"""🟢 Correct."""
+229,1,6,"""SELECT     Customer.Name,     Facts.Revenue FROM Fact_Table AS Facts INNER JOIN     Customer_DIM AS Customer     ON Fact_Table.Customer_ID = Customer.Customer_ID INNER JOIN Time_DIM AS Timed ON Facts.Time_ID = Timed.Time_ID WHERE Customer.City = 'Nijmegen' AND Timed.Year = '2021';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: customer_dim.customer_id = fact_table.customer_id.
+● Found condition: fact_table.customer_id = customer_dim.customer_id.
+● Join 2: Mismatch in join condition.
+● Expected condition: fact_table.time_id = time_dim.time_id.
+● Found condition: facts.time_id = time_dim.time_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+230,1,6,"""SELECT      c.Name,     SUM(f.Revenue) AS Total_Revenue FROM      Fact_Table f JOIN      Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN      Time_DIM t ON f.Time_ID = t.Time_ID WHERE      c.City = 'Nijmegen'     AND t.Year = 2021 GROUP BY      c.Name""",1,1,"""🟢 Correct."""
+231,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Fact_Table AS F, Customer as C, Time_DIM as T WHERE F.Customer_ID = C.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = '2021' GROUPBY C.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+233,1,6,"""SELECT Name, SUM(Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID=C.Customer_ID JOIN Time_DIM T ON F.Time_ID=T.Time_ID WHERE Year = 2021 AND City = 'Nijmegen';""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact_table.customer_id = customer_dim.customer_id.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: f.time_id = time_dim.time_id.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+234,1,6,"""SELECT C.Name, sum(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE C.Customer_ID = F.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = """"Nijmegen"""" AND T.Year = 2021 GROUP BY C.Name;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT c.Name, SUM(f.revenue) FROM Customer_DIM c, Fact_Table f, Time_DIM t WHERE c.Customer_ID = f.Customer_ID AND f.Time_ID = t.Time_ID AND c.city = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name'?
+"""
+235,1,6,"""SELECT DISTINCT  	c.name, 	SUM(f.Revenue) FROM 	Fact_Table f, 	Customer_DIM c, 	Time_DIM t WHERE 	t.Year = 2021 AND 	t.Time_ID = f.Time_ID AND  	f.Customer_ID = c.Customer_ID AND 	c.City = 'Nijmegen';""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+236,1,6,"""SELECT C.Name, Sum(F.Revenue) FROM Customer_Dim C, Time_Dim T, Fact_Table F WHERE C.Customer_ID = F.Customer_ID AND T.Time_ID = F.Time_ID AND C.City = 'Nijmegen' AND T.year = 2021 GROUP BY C.Name;""",1,1,"""🟢 Correct."""
+237,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+238,1,6,"""SELECT C.Name, SUM(F.Revenue) FROM Customer_DIM C, Fact_Table F, Time_DIM T WHERE C.Customer_ID = F.Customer_ID  AND C.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT c.Name, SUM(f.revenue) FROM Customer_DIM c, Fact_Table f, Time_DIM t WHERE c.Customer_ID = f.Customer_ID AND f.Time_ID = t.Time_ID AND c.city = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name'?
+"""
+239,1,6,"""SELECT c.Name AS Customer_Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID JOIN Time_DIM t ON f.Time_ID = t.Time_ID WHERE c.City = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+240,1,6,"""SELECT C.Name, SUM(F.Revenue) as total_revenue FROM F Fact_Table JOIN C Customer_DIM ON F.customer_ID = C.customer_ID JOIN T Time_DIM ON F.time_ID = C.time_ID WHERE C.City = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'c.name'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+● Extra functions: 'sum(f.revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'customer_dim',  'fact_table',  'time_dim'.
+● Extra tables: 'c',  'f',  't'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'c',  'f'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: f.customer_id = c.customer_id.
+● Join 2: Mismatch in joined tables for INNER JOIN.
+● Expected tables: '(nested join)',  'time_dim'.
+● Found tables: '(nested join)',  't'.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: f.time_id = c.time_id.
+
+3. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:2021=t.year; SIMPLE:Nijmegen=c.city; 
+ ● 
+4. GROUP BY clause: ● Columns: Mismatch in GROUP BY columns.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'c.name' from your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Remove the extra functions: 'sum(f.revenue)' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+241,1,6,"""SELECT Customer_DIM.Name, SUM(Revenue) FROM Fact_Table  JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+242,1,6,"""SELECT Customer_DIM.name, SUM(Fact_Table.Revenue) FROM Customer_DIM, Fact_Table, Time_DIM WHERE Customer_DIM.Customer_ID = Fact_Table.Customer_ID AND Time_DIM.Time_ID = Fact_Table.Time_ID AND Customer_DIM.City = """"Nijmegen"""" AND Time_DIM.Year = 2021;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+243,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) AS Total_Revenue FROM Fact_Table JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+245,1,6,"""SELECT Name, Revenue FROM CUSTOMER_DIM C, TIME_DIM T, FACT_TABLE F WHERE C.Customer_ID = F.Customer_ID AND T.Time_ID = F.Time_ID AND Year = '2021' AND City = 'Nijmegen';""",1,1,"""🟢 Correct."""
+246,1,6,"""SELECT Customer_DIM.Name AS Name, SUM(Fact_Table.Revenue) AS Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+248,1,6,"""SELECT Customer_DIM.Customer_Name, SUM(Fact_Table.Revenue) FROM (Customer_DIM NATURAL JOIN Fact_Table) NATURAL JOIN Time_DIM WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'customer_dim.name'.
+● Extra columns: 'customer_dim.customer_name'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'customer_dim.name' to your SELECT clause.
+➡️ Remove the extra columns: 'customer_dim.customer_name' from your SELECT clause.
+
+"""
+249,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table NATURAL JOIN Customer_DIM NATURAL JOIN Time_DIM WHERE City = 'Nijmegen' AND Year = 2021 GROUP BY Name;""",1,1,"""🟢 Correct."""
+250,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Fact_Table JOIN Product_DIM ON Fact_Table.Product_ID = Product_DIM.Product_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID JOIN Customer_DIM ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID WHERE Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021 GROUP BY Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+251,1,6,"""SELECT Customer_DIM.Name AS Customer_Name, SUM(Fact_Table.Revenue)      AS Total_Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID     AND Fact_Table.Time_ID = Time_DIM.Time_ID     AND Customer_DIM.City = 'Nijmegen'     AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+252,1,6,"""SELECT Customer_DIM.Name AS Name, Fact_Table.Revenue AS Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND Customer_DIM.City = 'Nijmegen' AND Time_DIM.Year = 2021;""",1,1,"""🟢 Correct."""
+253,1,6,"""SELECT Customer_DIM.Name, SUM(Fact_Table.Revenue) FROM Customer_DIM, Fact_Table JOIN Fact_Table ON Customer_DIM.Customer_ID = Fact_Table.Customer_ID JOIN Time_DIM ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE Time_DIM.Time_ID = '2021' AND WHERE Customer_DIM.City = 'Nijmegen' GROUP BY Customer_DIM.Name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,6,"""SELECT Customer.Name, Fact.Revenue FROM Customer_DIM AS C, Fact_Table AS F, Time_DIM AS T WHERE C.Customer_ID = F.Customer_ID AND F.Time_ID = T.Time_ID AND C.City = 'Nijmegen' AND T.Year = 2021""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'customer_dim.name'.
+● Extra columns: 'customer.name', 'fact.revenue'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(fact_table.revenue)'.
+
+2. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'customer_dim.name' to your SELECT clause.
+➡️ Remove the extra columns: 'customer.name', 'fact.revenue' from your SELECT clause.
+➡️ Add the missing functions: 'sum(fact_table.revenue)' to your SELECT clause.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+256,1,6,"""SELECT Name, Revenue FROM Fact_Table NATURAL JOIN Customer_DIM NATURAL JOIN Time_DIM WHERE Year = 2021 AND City = 'Nijmegen';""",1,1,"""🟢 Correct."""
+257,1,6,"""SELECT c.Name, SUM(f.Revenue) AS Total_Revenue FROM Fact_Table f JOIN Time_DIM t ON f.Time_ID = t.Time_ID JOIN Customer_DIM c ON f.Customer_ID = c.Customer_ID WHERE c.City = 'Nijmegen'   AND t.Year = 2021 GROUP BY c.Name;""",1,1,"""🟢 Correct."""
+258,1,6,"""SELECT c.Name, SUM(f.revenue) FROM Customer_DIM c, Fact_Table f, Time_DIM t WHERE c.Customer_ID = f.Customer_ID AND f.Time_ID = t.Time_ID AND c.city = 'Nijmegen' AND t.Year = 2021 GROUP BY c.Name""",1,1,"""🟢 Correct."""
+259,1,6,"""SELECT Name, SUM(Revenue) FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID = Customer_DIM.Customer_ID AND Fact_Table.Time_ID = Time_DIM.Time_ID AND City = 'Nijmegen' AND Year = 2021 GROUP BY Name;""",1,1,"""🟢 Correct."""
+260,1,6,"""SELECT      Customer_DIM.Name,      SUM(Fact_Table.Revenue) AS Total_Revenue FROM      Fact_Table JOIN      Customer_DIM      ON Fact_Table.Customer_ID = Customer_DIM.Customer_ID JOIN      Time_DIM      ON Fact_Table.Time_ID = Time_DIM.Time_ID WHERE      Customer_DIM.City = 'Nijmegen'      AND Time_DIM.Year = 2021 GROUP BY      Customer_DIM.Name;""",1,1,"""🟢 Correct."""
+261,1,6,"""Select Name, Fact_Table.Revenue FROM Fact_Table, Customer_DIM, Time_DIM WHERE Fact_Table.Customer_ID=Customer_DIM.Customer_ID  AND Fact_Table.Time_ID=Time_DIM.Time_ID AND City='Nijmegen' AND Order_Date BETWEEN '2021-01-01' AND '2021-12-31';""",1,1,"""🟢 Correct."""
+262,1,6,"""SELECT Customer.name, Fact.revenue FROM Fact JOIN Customer ON Customer.customer_id = Fact.customer_id AND JOIN Time ON Time.time_id = Fact.time_id WHERE Customer.city = 'Nijmegen' AND Time.year = 2021;""",0.02857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+❌ GROUP BY clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'name'.
+● Extra columns: 'customer.name', 'fact.revenue'.
+
+● Mismatch in selected functions.
+● Missing functions: 'sum(revenue)'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'customer_dim',  'fact_table',  'time_dim'.
+● Extra tables: 'customer',  'fact',  'time'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'customer_dim',  'fact_table'.
+● Found tables: 'customer',  'fact'.
+● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: fact.customer_id = customer.customer_id.
+● Join 2: Mismatch in joined tables for INNER JOIN.
+● Expected tables: '(nested join)',  'time_dim'.
+● Found tables: '(nested join)',  'time'.
+● Join 2: Mismatch in join condition.
+● Expected condition: .
+● Found condition: customer.time_id = time.time_id.
+
+3. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:2021=time.year; SIMPLE:fact.city=nijmegen; 
+ ● 
+4. GROUP BY clause: GROUP BY clause missing
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'name' to your SELECT clause.
+➡️ Remove the extra columns: 'customer.name', 'fact.revenue' from your SELECT clause.
+➡️ Add the missing functions: 'sum(revenue)' to your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+➡️ Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select customer.name, fact.revenue from fact join customer on fact.customer_id = customer.customer_id join time on customer.time_id = time.time_id where fact.city = 'nijmegen' and time.year = 2021;' make it parseable.
+
+"""
+263,1,6,"""SELECT Name, SUM(Revenue) FROM CUSTOMER_DIM, FACT_TABLE WHERE FACT_TABLE.Customer_ID = CUSTOMER_ATM.Customer_ID AND City = 'Nijmegen' GROUP BY Name;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'time_dim'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=year; SIMPLE:Nijmegen=city; 
+ ● Found conditions: SIMPLE:Nijmegen=city; SIMPLE:customer_atm.customer_id=fact_table.customer_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+264,1,6,"""SELECT C.Name, SUM(F.Revenue) AS Total_Revenue FROM Fact_Table F JOIN Customer_DIM C ON F.Customer_ID = C.Customer_ID WHERE C.city = 'Nijmegen' AND T.Year = 2021 GROUP BY C.Name;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'fact_table', 'customer_dim', '(nested join)' and 'time_dim'
+ ● Select 'name' and 'sum(revenue)'
+ ● Filter data where (city = Nijmegen and year = 2021)
+ ●  Group the results by 'name', 
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ GROUP BY clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: '(nested join)',  'time_dim'.
+● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:2021=time_dim.year; SIMPLE:Nijmegen=customer_dim.city; 
+ ● Found conditions: SIMPLE:2021=t.year; SIMPLE:Nijmegen=customer_dim.city; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""

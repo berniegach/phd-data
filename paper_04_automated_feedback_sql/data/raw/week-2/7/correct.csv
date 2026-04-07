@@ -1,0 +1,1 @@
+﻿"SELECT DISTINCT name FROM Artist, Produces WHERE Artist.artist_id = Produces.artist_id;"

@@ -1,0 +1,1 @@
+﻿"SELECT name, SUM(duration) AS total, AVG(popularity) FROM Artist, Performs, Track WHERE Artist.artist_id = Performs.artist_id AND Performs.track_id = Track.track_id GROUP BY name ORDER BY total DESC LIMIT 5;"

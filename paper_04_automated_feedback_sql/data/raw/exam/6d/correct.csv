@@ -1,0 +1,1 @@
+﻿"WITH RECURSIVE Subordinates(employee_nr) AS ( SELECT 'U000001' UNION SELECT Employee.employee_nr FROM Employee, Subordinates WHERE Employee.manager_nr = Subordinates.employee_nr ) SELECT * FROM Subordinates;"

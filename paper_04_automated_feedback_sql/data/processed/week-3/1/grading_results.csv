@@ -1,0 +1,1273 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,1,"""SELECT        track_title,        duration,        popularity FROM        Track WHERE        popularity >= 10        AND popularity <= 20;""",1,1,"""Correct."""
+2,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND track.popularity <=20;""",1,1,"""Correct."""
+4,1,1,"""SELECT track_title,duration,popularity FROM Track WHERE popularity>=10 AND popularity <=20;""",1,1,"""Correct."""
+5,1,1,"""SELECT track_title, duration and popularity  FROM Track  WHERE  popularity >= 10 AND popularity <=20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"duration"""",""""popularity"""".
+Mismatch in selected expressions.
+Extra expressions: (unknown expression).
+
+
+Next steps:
+- Add the missing columns: """"duration"""",""""popularity"""" to your SELECT clause.
+
+"""
+7,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity<=20 AND popularity>=10;""",1,1,"""Correct."""
+8,1,1,"""SELECT Track.track_title, duration, popularity  FROM Track  WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+9,1,1,"""SELECT track_title, duration, popularity from Track WHERE popularity BETWEEN 10 and 20;""",1,1,"""Correct."""
+10,1,1,"""SELECT      track_title AS Title,      track_duration AS Duration,      popularity AS Popularity FROM      Track WHERE      popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"duration"""".
+Extra columns: """"track_duration"""".
+
+
+Next steps:
+- Add the missing columns: """"duration"""" to your SELECT clause.
+- Remove the extra columns: """"track_duration"""" from your SELECT clause.
+
+"""
+11,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+12,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+13,1,1,"""SELECT album_title, duration, popularity FROM Album JOIN Track ON Album.album_id = Track.album_id WHERE popularity BETWEEN 10 AND 20;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"album_title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"album"""".
+Joins: Mismatch in the number of joins.
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"album_title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+14,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+16,1,1,"""SELECT popularity, track_title, duration FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+17,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+18,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE 10 <= popularity AND popularity <= 20;""",1,1,"""Correct."""
+19,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+20,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+21,1,1,"""SELECT track_title, duration, popularity  FROM Track  WHERE popularity <= 20  AND popularity >= 10;""",1,1,"""Correct."""
+23,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+24,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE Popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+25,1,1,"""SELECT track_title,duration,popularity  FROM Track  WHERE popularity >=10 AND popularity <=20;""",1,1,"""Correct."""
+26,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+27,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND  popularity <= 20;""",1,1,"""Correct."""
+29,1,1,"""FROM Track SELECT track_title, duration, popularity WHERE popularity >= 10 AND popularity <= 20;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+30,1,1,"""select track_title, duration, popularity from Track where popularity > 9 and popularity < 21;""",1,1,"""Correct."""
+31,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+32,1,1,"""SELECT track_title, duration, popularity  FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+33,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+34,1,1,"""SELECT DISTINCT track_title, duration, popularity FROM Track WHERE (popularity >= 10 AND popularity <= 20);""",1,1,"""Correct."""
+35,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+36,1,1,"""SELECT track_title AS title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+37,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <=20;""",1,1,"""Correct."""
+38,1,1,"""SELECT track_title,duration,popularity FROM Track WHERE (popularity  > 009 AND popularity  < 021);""",1,1,"""Correct."""
+39,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+40,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20; --the structure says that title is named title, but in the db it is called track_title.""",1,1,"""Correct."""
+41,1,1,SELECT track_title FROM Track WHERE Popularity >= 10 AND Popularity <= 20;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"duration"""",""""popularity"""".
+
+
+Next steps:
+- Add the missing columns: """"duration"""",""""popularity"""" to your SELECT clause.
+
+"""
+44,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+45,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+46,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+47,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE (popularity >= 10 AND popularity <= 20);""",1,1,"""Correct."""
+48,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+529,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+49,1,1,"""select track_title, duration, popularity  from Track  where popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+50,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+530,1,1,"""select track_title, popularity, duration FROM track where popularity >=10 and popularity <= 20;""",1,1,"""Correct."""
+52,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+53,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+54,1,1,"""SELECT Track.track_title , Track.duration, Track.popularity   FROM Track   WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+55,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+56,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+57,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+58,1,1,"""select track.track_title,track.duration,track.popularity from track where track.popularity >= 10 and track.popularity <= 20;""",1,1,"""Correct."""
+59,1,1,"""SELECT track_title, duration, popularity FROM track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+60,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 and Track.popularity <= 20;""",1,1,"""Correct."""
+531,1,1,"""SELECT """"track_title"""", """"duration"""", """"popularity"""" FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+61,1,1,SELECT * FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""duration"""",""""track"""".""""popularity"""",""""track"""".""""track_title"""".
+Extra columns: .
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""duration"""",""""track"""".""""popularity"""",""""track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns:  from your SELECT clause.
+
+"""
+62,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+63,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+64,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+66,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+67,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+68,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+69,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+70,1,1,"""Select track_title , duration, popularity from main.Track where popularity >= 10 and popularity <=20""",1,1,"""Correct."""
+72,1,1,"""SELECT Track.track_title, duration, popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+73,1,1,"""SELECT Track.track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+74,1,1,"""SELECT track_title,duration, popularity FROM Track WHERE popularity>=10 AND popularity <=20;""",1,1,"""Correct."""
+532,1,1,"""Select track_title, duration, popularity from Track where popularity > 9 and popularity < 21;""",1,1,"""Correct."""
+76,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+77,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity > 9 AND popularity < 21;""",1,1,"""Correct."""
+78,1,1,"""Select track_title, duration, popularity  From Track  Where popularity>10 AND popularity<20;""",0.8857142857142857,1,""""""
+80,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+81,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+82,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+83,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+84,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+85,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+86,1,1,"""SELECT track_title, duration, popularity FROM track WHERE popularity >= 10 AND popularity < 20;""",1,1,"""Correct."""
+87,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity > 9 AND popularity < 21""",1,1,"""Correct."""
+88,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+89,1,1,""".read music2023-11-01.sql SELECT track_title , duration, popularity  FROM Track  WHERE popularity BETWEEN 10 AND 20;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+90,1,1,"""SELECT title, duration, popularity FROM Track WHERE  popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+91,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>=10 AND popularity <=20;""",1,1,"""Correct."""
+92,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+93,1,1,"""SELECT Track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+94,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+96,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+97,1,1,"""SELECT Title, Duration, Popularity FROM Track WHERE Popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+98,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+100,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+101,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>9 AND popularity < 21;""",1,1,"""Correct."""
+102,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+103,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE duration >=10 AND duration <=20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+104,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity > 9 AND popularity < 21;""",1,1,"""Correct."""
+105,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity < 20 AND popularity >= 10;""",1,1,"""Correct."""
+106,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+107,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+108,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity  FROM Track  WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+109,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+110,1,1,"""SELECT track_title, duration, popularity from Track WHERE popularity >= 10 AND popularity < 20;""",1,1,"""Correct."""
+111,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+112,1,1,"""select track_title, duration, popularity from Track where (popularity > 9) AND (popularity < 21);""",1,1,"""Correct."""
+113,1,1,"""Select distinct popularity,duration, track_title from Track where popularity >=10 and popularity <=20;""",1,1,"""Correct."""
+114,1,1,"""SELECT Title, Duration, Popularity FROM Tracks WHERE Popularity BETWEEN 10 AND 20;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""".
+Extra tables: """"tracks"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+115,1,1,"""select track_title, duration, popularity from track where popularity between 10 and 20;""",1,1,"""Correct."""
+116,1,1,"""SELECT title, duration, popularity FROM Track WHERE 10 <= popularity AND popularity <= 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+117,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20 ;""",1,1,"""Correct."""
+118,1,1,"""SELECT track_title, duration, popularity FROM Track GROUP BY track_title, duration, popularity HAVING MIN(popularity) >= 10 AND MAX(popularity) <= 20;""",1,1,"""Correct."""
+119,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+121,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+122,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+123,1,1,"""FROM Track SELECT track_title, duration, popularity WHERE popularity BETWEEN 10 and 20;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+124,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity > 9 AND Track.popularity < 21;""",1,1,"""Correct."""
+125,1,1,"""SELECT track_title, popularity, duration FROM Track WHERE (popularity >= 10 AND popularity <21);""",1,1,"""Correct."""
+126,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+128,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+129,1,1,"""SELECT Track_title, Duration, Popularity   FROM Track   WHERE Popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+130,1,1,"""SELECT title AS track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+533,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+133,1,1,"""SELECT track_title,duration,popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+135,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+136,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+137,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND <= 20;""",0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"popularity"""".
+
+
+Next steps:
+- Add the missing columns: """"popularity"""" to your SELECT clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track_title,duration from track where popularity >= 10 and popularity <= 20;' make it parseable.
+
+"""
+138,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+139,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+140,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+141,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+142,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE (10 <= popularity AND popularity <= 20);""",1,1,"""Correct."""
+143,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 and 20;""",1,1,"""Correct."""
+144,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <=20;""",1,1,"""Correct."""
+145,1,1,"""SELECT track_title, duration, popularity  FROM Track WHERE popularity>=10 AND popularity <=20;""",1,1,"""Correct."""
+146,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+147,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >=10 AND popularity <=20;""",1,1,"""Correct."""
+148,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+149,1,1,Sorry i did not plan this correctly,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+151,1,1,"""SELECT Title, Duration, Popularity FROM Track WHERE Popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+152,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity <= 20 AND popularity >= 10;""",1,1,"""Correct."""
+153,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity > 9 AND popularity < 21;""",1,1,"""Correct."""
+154,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity <= 20 AND popularity >= 10;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+155,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE popu larity>= 10 AND popularity<=20;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+156,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE popularity BETWEEN 10 AND 20""",1,1,"""Correct."""
+157,1,1,"""SELECT title,duration,popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+158,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+159,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+160,1,1,"""SELECT track_title, duration, popularity  FROM Track  Where popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+161,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+162,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+163,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+164,1,1,"""FROM Track SELECT track_title, duration, popularity WHERE popularity >= 10 AND popularity <=20;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,1,"""SELECT DISTINCT Track.track_title, Track.duration, Track.popularity  FROM Track  WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+166,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+167,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >=10 AND popularity<=20;""",1,1,"""Correct."""
+168,1,1,"""SELECT Title, Duration, Popularity  FROM Track  WHERE Populatiry  BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+169,1,1,"""SELECT album_title, duration, popularity FROM Album, Track WHERE Album.album_id = Track.album_id AND popularity >= 10  AND popularity <= 20;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"album_title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"album"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"album_title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+170,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >=10 AND popularity <=20;""",1,1,"""Correct."""
+171,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+172,1,1,"""SELECT Track.track_title, Track.duration, Track. popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+173,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+535,1,1,"""SELECT Title, Duration, Popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+174,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+176,1,1,"""SELECT Track.track_title, duration, popularity   FROM Track   WHERE popularity>9 AND popularity<21;""",1,1,"""Correct."""
+177,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+179,1,1,"""select track_title, duration, popularity from Track where popularity between 10 and 20;""",1,1,"""Correct."""
+181,1,1,"""SELECT Track.track_title , Track.duration, Track.popularity  FROM Track  WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+183,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+184,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <=20;""",1,1,"""Correct."""
+185,1,1,"""SELECT track_title, duration, popularity FROM Track T Where T.popularity >= 10 AND T.popularity <= 20;""",1,1,"""Correct."""
+186,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+187,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+188,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+189,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+190,1,1,"""SELECT * title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select title, duration, popularity from track where popularity >= 10 and popularity <= 20;' make it parseable.
+
+"""
+191,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+192,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity < 21 AND popularity > 9;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+193,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+194,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+195,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+196,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+197,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+198,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+199,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >=10 AND popularity <= 20;""",1,1,"""Correct."""
+200,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+201,1,1,"""SELECT track_title, duration, popularity  FROM Track  WHERE popularity>=10 AND popularity<=20;""",1,1,"""Correct."""
+202,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+203,1,1,"""SELECT Track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20 ;""",1,1,"""Correct."""
+206,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE (track.popularity BETWEEN 10 AND 20);""",1,1,"""Correct."""
+208,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity < 20;""",1,1,"""Correct."""
+209,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity>10 AND polularity<20;""",0.8857142857142857,1,""""""
+536,1,1,"""SELECT track_title,duration,popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+210,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+211,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20""",1,1,"""Correct."""
+212,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+213,1,1,"""SELECT track_title, duration, popularity FROM track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+214,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+215,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+216,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+217,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+218,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+219,1,1,"""SELECT title, duration, popularity FROM Track WHERE Popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+221,1,1,"""SELECT Track.title, Track.duration, Track.popularity FROM Track WHERE Track.popularity>=10 AND Track.popularity <=20""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+222,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+223,1,1,"""SELECT title, direction, popularity FROM Track WHERE popularity => 10 AND popularity <=20;""",0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"duration"""",""""track_title"""".
+Extra columns: """"direction"""",""""title"""".
+
+
+Next steps:
+- Add the missing columns: """"duration"""",""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"direction"""",""""title"""" from your SELECT clause.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select title, direction, popularity from track where popularity >= 10 and popularity <=20;' make it parseable.
+
+"""
+224,1,1,"""SELECT Track.track_title, Track.duration, Track. popularity FROM Track WHERE Track.popularity BETWEEN 10 and 20;""",1,1,"""Correct."""
+225,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+226,1,1,"""SELECT Track.track_title, duration, popularity FROM Track WHERE Track.popularity >= 10 AND Track.popularity <= 20;""",1,1,"""Correct."""
+227,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+228,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+229,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+230,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+233,1,1,"""SELECT Track_title, Duration, Popularity FROM Track WHERE Popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+234,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE 10 <= popularity AND popularity <= 20;""",1,1,"""Correct."""
+235,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+236,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 and 20;""",1,1,"""Correct."""
+237,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+238,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+239,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+240,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+241,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+242,1,1,"""connection.sql("""""""""""" SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20; """""""""""").show()""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+243,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+244,1,1,"""SELECT title, duration, popularity FROM tracks WHERE popularity BETWEEN 10 AND 20;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""".
+Extra tables: """"tracks"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+245,1,1,"""SELECT track_title, duration,popularity  FROM Track  WHERE popularity >= 10  AND popularity <= 20;""",1,1,"""Correct."""
+246,1,1,"""SELECT title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+247,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20""",1,1,"""Correct."""
+248,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+249,1,1,"""SELECT Track.track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+250,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+251,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+252,1,1,SELECT track_title FROM Track WHERE popularity >= 10 AND popularity <= 20;,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"duration"""",""""popularity"""".
+
+
+Next steps:
+- Add the missing columns: """"duration"""",""""popularity"""" to your SELECT clause.
+
+"""
+253,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE popularity <= 20 AND popularity >= 10;""",1,1,"""Correct."""
+254,1,1,"""SELECT title, duration,  popularity FROM  Track WHERE  popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+255,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+256,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+257,1,1,"""SELECT track_title, duration, popularity from Track WHERE popularity BETWEEN 10 and 20;""",1,1,"""Correct."""
+258,1,1,"""SELECT t.track_title, t.duration, t.popularity FROM Track t WHERE t.popularity >= 10 AND t.popularity <=20;""",1,1,"""Correct."""
+259,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+260,1,1,"""SELECT track_title,popularity,explicit FROM Track WHERE popularity BETWEEN 10 AND 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"duration"""".
+Extra columns: """"explicit"""".
+
+
+Next steps:
+- Add the missing columns: """"duration"""" to your SELECT clause.
+- Remove the extra columns: """"explicit"""" from your SELECT clause.
+
+"""
+261,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""
+262,1,1,"""SELECT Track.track_title, Track.duration, Track.popularity FROM Track WHERE Track.popularity >= 10 AND NOT Track.populaity > 20;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 1 table; select 3 columns; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""track"""".""""popularity""""""""<=""""20; SIMPLE:""""track"""".""""popularity"""""""">=""""10; 
+Found conditions: NOT:SIMPLE:""""track"""".""""populaity"""""""">""""20; SIMPLE:""""track"""".""""popularity"""""""">=""""10; 
+
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+263,1,1,"""SELECT track_title, duration, popularity FROM Track WHERE popularity >= 10 AND popularity <= 20;""",1,1,"""Correct."""
+264,1,1,"""SELECT track_title, duration, popularity FROM Track where popularity BETWEEN 10 AND 20;""",1,1,"""Correct."""

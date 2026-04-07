@@ -1,0 +1,1375 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+265,1,1h,SELECT Track.song FROM Track JOIN Album ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+266,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND T.title = 'Nevermind'""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';'?
+"""
+267,1,1h,"""SELECT song  FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+268,1,1h,"""SELECT Track.song FROM Track, Album WHERE Album.title='Nevermind' AND Album.album_id=Track.album_id;""",1,1,"""🟢 Correct."""
+269,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';'?
+"""
+270,1,1h,SELECT T.song FROM Track T JOIN Album A ON A.album_id = T.album_id WHERE A.title = 'Nevermind';,1,1,"""🟢 Correct."""
+271,1,1h,SELECT Track.song  FROM Track  JOIN Album ON Track.album_id = Album.album_id  WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+272,1,1h,SELECT song FROM Album WHERE Album.title = 'Nevermind';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+273,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.title = 'Nevermind' AND A.album_id = T.album_id;""",1,1,"""🟢 Correct."""
+274,1,1h,SELECT T.song FROM Album A JOIN Track T ON T.album_id = A.album_id WHERE A.title = 'Nevermind';,1,1,"""🟢 Correct."""
+275,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';'?
+"""
+276,1,1h,SELECT song FROM Track WHERE album_id EXISTS IN (SELECT album_id FROM Album WHERE title = 'Nevermind';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+277,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+278,1,1h,"""SELECT T.song  FROM Track T, Album A WHERE T.album_id=A.album_id  AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+279,1,1h,"""SELECT Track.song FROM Track, Album WHERE ( Track.album_id = Album.album_id AND Album.title = 'Nevermind');""",1,1,"""🟢 Correct."""
+280,1,1h,"""SELECT song  FROM Track, Album WHERE Album.title = 'Nevermind' AND Album.album_id = Track.album_id;""",1,1,"""🟢 Correct."""
+281,1,1h,SELECT song  FROM Track  WHERE album_id=  ( SELECT album_id  FROM Album  WHERE title='Nevermind'  ) ;,1,1,"""🟢 Correct."""
+282,1,1h,"""SELECT song FROM Title, Album WHERE Title.album_id = Album.album_id AND title = 'Nevermind';""",0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+● Extra tables: 'title'.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:Nevermind=title; SIMPLE:album.album_id=title.album_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+283,1,1h,SELECT Track.song FROM Track WHERE Album.title = 'Nevermind',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+284,1,1h,"""SELECT Track.song FROM Track, Album WHERE Album.title = 'Nevermind' AND Album.album_id = Track.album_id;""",1,1,"""🟢 Correct."""
+285,1,1h,"""SELECT t.song FROM Track t, Album l WHERE l.title = """"Nevermind"""" AND t.ablum_id = l.album_id;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.ablum_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+286,1,1h,SELECT * FROM Track WHERE EXISTS (     SELECT *     FROM Album     WHERE Track.album_id = Album.album_id     AND Album.title = ´Nevermind´ );,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'song'.
+● Extra columns: '*', '*'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'song' to your SELECT clause.
+➡️ Remove the extra columns: '*', '*' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+287,1,1h,"""SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+288,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND song = 'Nevermind';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:Nevermind=song; SIMPLE:album.album_id=track.album_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+289,1,1h,"""SELECT Track.song   FROM Track, Album  WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+290,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';'?
+"""
+291,1,1h,"""SELECT DISTINCT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+292,1,1h,"""SELECT song FROM Track as T, Album as A WHERE T.album_id = A.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+293,1,1h,"""SELECT song FROM Track t, Album a Where t.album_id = a.album_id AND title = 'Nevermind'""",1,1,"""🟢 Correct."""
+294,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+295,1,1h,"""SELECT T.song  FROM Album A,Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+296,1,1h,"""SELECT Track.song FROM Track, Album WHERE ALbum.album_id = Track.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+297,1,1h,SELECT t.song from Track t JOIN Album a ON t.album_id = a.album_id WHERE a.title = 'Nevermind' ;,1,1,"""🟢 Correct."""
+298,1,1h,"""SELECT Track.song FROM Album, Track WHERE Track.album_id=Album.album_id AND Album.title='Nevermind';""",1,1,"""🟢 Correct."""
+299,1,1h,SELECT song FROM Album NATURAL JOIN Track WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+300,1,1h,"""SELECT song FROM Track , Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind' ;""",1,1,"""🟢 Correct."""
+301,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+302,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+303,1,1h,SELECT song FROM Track JOIN Album  ON Track.album_id = Album.album_id WHERE title = 'Nevermind',1,1,"""🟢 Correct."""
+304,1,1h,SELECT song from Track T JOIN Album a on a.album_id = T.album_id WHERE a.title = ´Nevermind´;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+305,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+306,1,1h,"""SELECT song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = ´Nevermind´""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song  FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';'?
+"""
+307,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';'?
+"""
+308,1,1h,SELECT T.song FROM Track T JOIN Album A ON T.album_id=A.album_id WHERE A.title='Nevermind';,1,1,"""🟢 Correct."""
+309,1,1h,"""SELECT Track.song FROM Track, Album WHERE Album.album_id=Track.album_id  AND Album.title='Nevermind'""",1,1,"""🟢 Correct."""
+310,1,1h,"""select song from Track, Album where Track.album_id = Album.album_id and title = 'Nevermind';""",1,1,"""🟢 Correct."""
+311,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+312,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+313,1,1h,"""SELECT song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+314,1,1h,SELECT Track.song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind',1,1,"""🟢 Correct."""
+315,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';'?
+"""
+316,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+317,1,1h,"""SELECT song FROM Track, Album WHERE Album.album_id = Track.Album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+318,1,1h,"""SELECT T.song  FROM Album A, Track T  WHERE A.album_id = T.album_id  AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+319,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+320,1,1h,"""SELECT Track.song FROM Track, Album WHERE album.title = `Nevermind`;""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select track.song from track, album where album.title = 'nevermind';' make it parseable.
+
+"""
+321,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+322,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+323,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.title='Nevermind' AND A.album_id=T.album_id; -- Songs as in the attribute song or as in tracks? It is unclear""",1,1,"""🟢 Correct."""
+324,1,1h,SELECT song FROM Track AND title FROM Album WHERE title IS 'Nevermind',0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+325,1,1h,"""SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+326,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+327,1,1h,"""SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+328,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+329,1,1h,SELECT song FROM Track T JOIN Album A ON T.album_id=A.album_id WHERE A.title='Nevermind';,1,1,"""🟢 Correct."""
+330,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+331,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'select song from Track, Album where Track.album_id = Album.album_id and title = 'Nevermind';'?
+"""
+332,1,1h,SELECT song FROM Track WHERE Album.title = 'Nevermind',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+333,1,1h,"""SELECT song FROM Album,Track WHERE Album.album_id = Track.album_id AND title ='Nevermind';""",1,1,"""🟢 Correct."""
+334,1,1h,"""SELECT song FROM Album A, Track T WHERE A.album_id = T.album_id AND title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;'?
+"""
+335,1,1h,"""SELECT DISTINCT song  FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+336,1,1h,"""SELECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id And Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+337,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+338,1,1h,"""SELECT Track.song FROM Track,Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+339,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+340,1,1h,"""SELECT T.song  FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;""",1,1,"""🟢 Correct."""
+341,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+342,1,1h,"""SELECT Track.song  FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = ´Nevermind´""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE ALbum.album_id = Track.album_id AND Album.title = 'Nevermind';'?
+"""
+343,1,1h,SELECT song FROM Track JOIN Album ON Track.track_id = Album.track_id WHERE title = 'Nevermind';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: track.track_id = album.track_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+344,1,1h,"""SELECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+345,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+346,1,1h,SELECT Track.song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+347,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+348,1,1h,"""SELECT t.song FROM Track t, Album a WHERE a.title='Nevermind' AND a.album_id=t.album_id;""",1,1,"""🟢 Correct."""
+349,1,1h,"""SELECT DISTINCT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+350,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title= 'Nevermind';""",1,1,"""🟢 Correct."""
+351,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+352,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+353,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+354,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = album.album_id AND Album.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+355,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+356,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+357,1,1h,SELECT song FROM Track t JOIN Album a ON t.album_id = a.album_id WHERE a.title = 'Nevermind';,1,1,"""🟢 Correct."""
+358,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.title = 'Nevermind' AND T.album_id = A.album_id;""",1,1,"""🟢 Correct."""
+359,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+360,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+361,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind' ;""",1,1,"""🟢 Correct."""
+362,1,1h,"""SElECT Track.song FROM Track, Album WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+363,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title=´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;'?
+"""
+364,1,1h,"""SELECT DISTINCT Track.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+
+"""
+365,1,1h,SELECT song FROM ALbum NATURAL JOIN Track WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+366,1,1h,SELECT T.song FROM Album A JOIN Track T ON T.track_id = A.track_id WHERE A.title = 'Nevermind';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: album.album_id = track.album_id.
+● Found condition: track.track_id = album.track_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+367,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+368,1,1h,"""SELECT song  FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+369,1,1h,SELECT song FROM Track INNER JOIN Album ON Track.album_id = Album.album_id WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+370,1,1h,SELECT song FROM Track  JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ´Nevermind´;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'title = Nevermind'.
+● Expected operands: 'title' and 'Nevermind'.
+● Found operands: 'album.title' and '´nevermind´'.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+371,1,1h,"""Select t.song  from Track t, Album a where a.title = nevermind On a.album_id = t.album_id;""",0.9714285714285714,1,"""Semantics minor error. Maybe you meant ''?
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select t.song from track t, album a where a.title = 'nevermind' and a.album_id = t.album_id;' make it parseable.
+
+"""
+372,1,1h,"""SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+373,1,1h,SELECT t.song FROM Track t INNER JOIN Album al ON al.album_id = t.album_id WHERE al.title = 'Nevermind';,1,1,"""🟢 Correct."""
+374,1,1h,SELECT T.song FROM Track T INNER JOIN Album A ON T.album_id=A.album_id WHERE A.title=´Nevermind´;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'album.title = Nevermind'.
+● Expected operands: 'album.title' and 'Nevermind'.
+● Found operands: 'album.title' and '´nevermind´'.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+375,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+376,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id;""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+377,1,1h,"""SELECT Track.song FROM Album, Track WHERE Album.album_id = Track.album_id AND Album.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+378,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title=´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;'?
+"""
+379,1,1h,"""SELECT Track.songs FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';'?
+"""
+380,1,1h,"""SELECT song FROM Track T, Album A WHERE album_id.T = album_id.A AND title = 'Nevermind';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:Nevermind=title; SIMPLE:album_id.a=album_id.t; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+381,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+382,1,1h,"""SELECT T.SONG FROM TRACK T, ALBUM A WHERE T.ALBUM_ID = A.ALBUM_ID AND A.TITLE = ´Nevermind´;""",1,1,"""🟢 Correct."""
+383,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+384,1,1h,SELECT Track.song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+385,1,1h,SELECT Track.song FROM Track WHERE Track.album_id IN (     SELECT Album.album_id     FROM Album     WHERE Album.title = 'Nevermind' );,1,1,"""🟢 Correct."""
+386,1,1h,SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+387,1,1h,SELECT song FROM Track WHERE album_id='Nevermind';,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+388,1,1h,SELECT song FROM Album NATURAL JOIN Track WHERE title = ´Nevermind´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song FROM Album NATURAL JOIN Track WHERE title = 'Nevermind';'?
+"""
+389,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;'?
+"""
+390,1,1h,SELECT t.song FROM Track t JOIN Album a ON a.album_id = t.album_id WHERE a.title = ´Nevermind´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Track T JOIN Album A ON A.album_id = T.album_id WHERE A.title = 'Nevermind';'?
+"""
+391,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title ='Nevermind';""",1,1,"""🟢 Correct."""
+392,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+393,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+394,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.title='Nevermind' AND T.album_id = A.album_id;""",1,1,"""🟢 Correct."""
+395,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title=""""Nevermind"""";""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title=´Nevermind´;'?
+"""
+396,1,1h,SELECT song FROM Track WHERE Album.title = 'Nevermind' JOIN Album ON Track.album_id = Album.album_id;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+397,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+398,1,1h,"""SELECT song FROM Album, Track WHERE Album.album_id=Track.album_id AND Album.title='Nevermind';""",1,1,"""🟢 Correct."""
+399,1,1h,Select T.song from Track T Join Album A on T.album_id = A.album_id where A.title = 'Nevermind',1,1,"""🟢 Correct."""
+400,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+401,1,1h,"""SELECT T.song FROM Album A , Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+402,1,1h,"""SELECT song FROM Track, Album WHERE Album.album_id = Track.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+403,1,1h,SELECT Track.song FROM track WHERE track.album.id IN (SELECT album.album_id FROM album WHERE album.title = 'Nevermind');,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track WHERE Track.album_id IN (     SELECT Album.album_id     FROM Album     WHERE Album.title = 'Nevermind' );'?
+"""
+404,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+405,1,1h,SELECT Track.song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+406,1,1h,SELECT song FROM Track WHERE album_id = 'Nevermind';,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+407,1,1h,SELECT Track.song  FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind',1,1,"""🟢 Correct."""
+408,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+409,1,1h,"""SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'; --shunting rule""",1,1,"""🟢 Correct."""
+410,1,1h,"""SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;'?
+"""
+411,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;""",1,1,"""🟢 Correct."""
+412,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+413,1,1h,"""SELECT T.song FROM Track AS T, Album AS A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+414,1,1h,"""SELECT Track.song   FROM Album, Track  WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind' ;""",1,1,"""🟢 Correct."""
+415,1,1h,"""SELECT song FROM Album, Track WHERE Album.album_id = Track.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+416,1,1h,SELECT T.song FROM Track T WHERE T.album_id IN (SELECT A.album_id FROM Album A WHERE A.title = 'Nevermind';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+417,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+418,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+419,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id=Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+420,1,1h,"""SELECT Track.song  FROM Track JOIN Album ON Track.album_id = Album.album_id  WHERE Album.title = """"Nevermind"""";""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song  FROM Track  JOIN Album ON Track.album_id = Album.album_id  WHERE Album.title = 'Nevermind';'?
+"""
+421,1,1h,"""SELECT song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+422,1,1h,SELECT song FROM Album WHERE Album.title = ¨Nevermind¨;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+423,1,1h,SELECT DISTINCT Track.song FROM Track JOIN Album ON Track.album_id = c WHERE Album.title = Nevermind;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+424,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+425,1,1h,"""SELECT DISTINCT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+426,1,1h,"""SELECT t.song FROM Track t, Album al WHERE t.album_id = al.album_id AND al.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+427,1,1h,"""SELECT song FROM Track GROUP BY album_id, song WHERE album_id = Nevermind;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+428,1,1h,"""SELECT T.name FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';'?
+"""
+429,1,1h,SELECT T.song FROM Track T WHERE EXISTS (     SELECT *     FROM Album A     WHERE A.album_id = T.album_id     AND A.album_name = 'Nevermind' );,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'song'.
+● Extra columns: '*', 'track.song'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'song' to your SELECT clause.
+➡️ Remove the extra columns: '*', 'track.song' from your SELECT clause.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+430,1,1h,"""JOIN Album, Track SELECT song FROM Album WHERE title = Nevermind""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+431,1,1h,SELECT Track.song FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+432,1,1h,"""select T.song from Track T, Album A where A.album_id = T.album_id and A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+433,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+434,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.title = 'Nevermind' AND T.album_id = A.album_id;""",1,1,"""🟢 Correct."""
+435,1,1h,"""SELECT Track.song AS songs FROM Album, Track  WHERE Album.album_id = Track.album_id  AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+436,1,1h,"""SELECT T.song FROM Album A, Track T  WHERE A.album_id = T.album_id  AND A.title = ´Nevermind´""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;'?
+"""
+437,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+438,1,1h,"""SELECT song  FROM Track, Album  WHERE Track.album_id = Album.album_id  AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+439,1,1h,SELECT T.song FROM Track T JOIN Album A ON T.album_id = A.album_id WHERE A.title = 'Nevermind';,1,1,"""🟢 Correct."""
+440,1,1h,SELECT * FROM Track T WHERE T.album_id = (SELECT A.album_id FROM Album A WHERE title = 'Nevermind');,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'track.song'.
+● Extra columns: '*'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'track.song' to your SELECT clause.
+➡️ Remove the extra columns: '*' from your SELECT clause.
+
+"""
+441,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+442,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+443,1,1h,SELECT Track.song FROM Album JOIN Track ON Album.album_id = Track.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+444,1,1h,"""SELECT song FROM Album, Track WHERE Album.album_id = Track.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+445,1,1h,"""SELECT song  FROM Track, Album WHERE title = ´Nevermind´;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+446,1,1h,SELECT Track.song AS songs  FROM Track  WHERE Track.album_id=Album.album_id  AND Album.title=´Nevermind´;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+447,1,1h,SELECT Track.song FROM Track JOIN Album on Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';,1,1,"""🟢 Correct."""
+448,1,1h,SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+449,1,1h,SELECT song FROM Track WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+450,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+451,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+452,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;'?
+"""
+453,1,1h,"""SELECT Track.song FROM Track, Album WHERE Album.title='Nevermind';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+454,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´ ;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = ´Nevermind´;'?
+"""
+455,1,1h,"""SELECT Track.song FROM Track, Album  WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+456,1,1h,SELECT song FROM Track Where album_id = 'Nevermind',0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+2. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+457,1,1h,"""SELECT DISTINCT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+458,1,1h,"""SELECT T.song  FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+459,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';'?
+"""
+460,1,1h,"""SELECT * FROM Track T, Album A, WHERE T.album_id = A.album_id  AND A.title = ´Nevermind´""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'track.song'.
+● Extra columns: '*'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'track.song' to your SELECT clause.
+➡️ Remove the extra columns: '*' from your SELECT clause.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select * from track t, album a where t.album_id = a.album_id and a.title = ´nevermind´;' make it parseable.
+
+"""
+461,1,1h,SELECT * FROM Album WHERE Album.title = 'Nevermind';,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'track.song'.
+● Extra columns: '*'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'track'.
+● Joins: Mismatch in the number of joins.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'track.song' to your SELECT clause.
+➡️ Remove the extra columns: '*' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+462,1,1h,"""SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+463,1,1h,SELECT song FROM Track T JOIN Album A ON T.album_id = A.album_id WHERE A.title = 'Nevermind';,1,1,"""🟢 Correct."""
+464,1,1h,"""SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+465,1,1h,"""Select T.song  FROM Album A,Track T WHERE A.album_id=T.album_id AND A.title=´Nevermind´;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+466,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id=A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+467,1,1h,SELECT track_id FROM Track WHERE album_id = 'Nevermind';,0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+●  None.
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'song'.
+● Extra columns: 'track_id'.
+
+2. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+3. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'song' to your SELECT clause.
+➡️ Remove the extra columns: 'track_id' from your SELECT clause.
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+468,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title='Nevermind';""",1,1,"""🟢 Correct."""
+469,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+470,1,1h,"""SELECT DISTINCT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+471,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+472,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+473,1,1h,SELECT DISTINCT Track.song  FROM Track JOIN Album ON Track.album_id = Album.album_id WHERE Album.title = ´Nevermind´;,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. SELECT clause: ● Unexpected DISTINCT keyword.
+
+2. WHERE clause: ● Operands mismatch in condition 'album.title = Nevermind'.
+● Expected operands: 'album.title' and 'Nevermind'.
+● Found operands: 'album.title' and '´nevermind´'.
+
+
+4️⃣ Next steps:
+➡️ Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+474,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.title = 'Nevermind' AND T.album_id = A.album_id;""",1,1,"""🟢 Correct."""
+475,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+476,1,1h,"""SELECT song  FROM Track, Album  WHERE Track.album_id=Album.album_id AND title='Nevermind';""",1,1,"""🟢 Correct."""
+477,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+478,1,1h,"""SELECT T.song From Track T, Album A WHERE T.album_id = A.album_id AND A.title='Nevermind';""",1,1,"""🟢 Correct."""
+479,1,1h,"""SELECT song FROM Track T, Album A WHERE A.title = 'Nevermind' AND A.album_id = T.album_id;""",1,1,"""🟢 Correct."""
+480,1,1h,"""SELECT song FROM Track, Album WHERE Album.title = 'Nevermind';""",0.4857142857142857,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Results Analysis: Correct results are contained within the query results.
+
+"""
+481,1,1h,SELECT song FROM Track WHERE Album.album_id = Track.album_id AND Album.title = ´Nevermind´;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+482,1,1h,"""SELECT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+483,1,1h,"""SELECT T.song FROM Track T, Album Al WHERE T.album_id = Al.album_id AND Al.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+484,1,1h,SELECT song FROM Track WHERE album_id = (     SELECT album_id     FROM Album     WHERE title = 'Nevermind' );,1,1,"""🟢 Correct."""
+485,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+486,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+487,1,1h,"""SELECT song FROM Track T, Album A WHERE A.album_id = T.album_id AND title = ´Nevermind´""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song FROM Track T, Album A WHERE T.album_id = A.album_id AND title = ´Nevermind´;'?
+"""
+488,1,1h,SELECT T.song FROM Track T NATURAL JOIN Album A WHERE A.title = 'Nevermind';,1,1,"""🟢 Correct."""
+489,1,1h,"""SELECT * Track.song FROM Track, Album  WHERE Track.album_id = Album.album_id  AND album_id = 'Nevermind'""",0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=track.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:album.album_id=track.album_id; SIMPLE:album_id=nevermind; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select track.song from track, album where track.album_id = album.album_id and album_id = 'nevermind';' make it parseable.
+
+"""
+490,1,1h,SELECT song FROM (Album NATURAL JOIN Track) WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+491,1,1h,SELECT song FROM Track WHERE album_id = album_id AND title = ´Nevermind´,0.2,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+❌ WHERE clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Missing tables: 'album'.
+
+2. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:album_id=album_id; SIMPLE:title=´nevermind´; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+492,1,1h,"""SELECT t.song FROM Album a, Track t WHERE a.album_id = t.album_id AND a.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+493,1,1h,"""SELECT t FROM Track t, Album a WHERE a.album_id = t.album_id AND a.title = 'Nevermind'""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ FROM clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ SELECT clause
+
+❗ Problem Details:
+1. SELECT clause: 
+● Mismatch in selected columns.
+● Missing columns: 'song'.
+● Extra columns: 't'.
+
+
+4️⃣ Next steps:
+➡️ Add the missing columns: 'song' to your SELECT clause.
+➡️ Remove the extra columns: 't' from your SELECT clause.
+
+"""
+494,1,1h,SELECT Track.song FROM Track WHERE Track.album_id = ( SELECT Album.album_id FROM Album WHERE Album.title = 'Nevermind');,1,1,"""🟢 Correct."""
+495,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.name = 'Nevermind'""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:Nevermind=album.name; SIMPLE:album.album_id=track.album_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+496,1,1h,SELECT song FROM Track T JOIN Album A ON T.album_id=A.album_id WHERE A.title=´Nevermind´;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song FROM Track T JOIN Album A ON T.album_id=A.album_id WHERE A.title='Nevermind';'?
+"""
+497,1,1h,"""SELECT DISTINCT T.song  FROM track T,Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind'""",1,1,"""🟢 Correct."""
+498,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´""",1,1,"""🟢 Correct."""
+499,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+500,1,1h,"""SELECT Track.song FROM Track, Album JOIN ALBUM ON Track.album_id = Album.album_id WHERE Album.title = 'Nevermind';""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: 
+ ● Mismatch in FROM clause tables.
+● Extra tables: 'album'.
+● Join 1: Mismatch in joined tables for INNER JOIN.
+● Expected tables: 'album',  'track'.
+● Found tables: 'album'.
+● Join 1: Mismatch in join condition.
+● Expected condition: album.album_id = track.album_id.
+● Found condition: track.album_id = album.album_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+501,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+502,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+503,1,1h,SELECT song FROM Track JOIN Album WHERE title = 'Nevermind',0.4,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: 
+ ● Condition type mismatch: Expected AND, but found SIMPLE.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'select song from track, album where title = ´nevermind´;' make it parseable.
+
+"""
+504,1,1h,"""SELECT T.song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+505,1,1h,SELECT song FROM Track t WHERE t.album_id=(     SELECT a.album_id FROM Album a WHERE title='Nevermind' LIMIT 1 -- Limit to 1 to be safe. );,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+506,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+507,1,1h,SELECT song FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+508,1,1h,"""SELECT T.song FROM Track T, Album A WHERE A.album_id=T.album_id AND Album.title=´Nevermind´;""",0.6571428571428571,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+✅ WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+509,1,1h,SELECT T.song FROM Track T NATURAL JOIN ALBUM A WHERE A.title = 'Nevermind';,1,1,"""🟢 Correct."""
+510,1,1h,"""select T.song from Album A, Track T where A.album_id = T.album_id and A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+511,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´'?
+"""
+512,1,1h,"""SELECT song FROM Track T, Album A WHERE T.album_id=A.album_id ANd A.title='Nevermind'""",1,1,"""🟢 Correct."""
+513,1,1h,"""SELECT song FROM Album A, Track T WHERE A.album_id = T.album_id AND A.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+514,1,1h,SELECT song FROM Album NATURAL JOIN Track WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+515,1,1h,"""SELECT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = ´Nevermind´;""",1,1,"""🟢 Correct."""
+516,1,1h,"""SELECT DISTINCT t.song FROM Track t, Album a WHERE t.album_id = a.album_id AND a.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT DISTINCT T.song FROM Track T, Album A WHERE T.album_id = A.album_id AND A.title = 'Nevermind';'?
+"""
+517,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´;""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = ´Nevermind´'?
+"""
+518,1,1h,SELECT song FROM Track JOIN Album on Track.album_id = Track.album_id WHERE title = ´Nevermind´,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ WHERE clause
+
+3️⃣ Issues found in the following clauses:
+❌ FROM clause
+
+❗ Problem Details:
+1. FROM clause: ● Join 1: Mismatch in join condition.
+● Expected condition: .
+● Found condition: track.album_id = track.album_id.
+
+
+4️⃣ Next steps:
+➡️ Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+519,1,1h,SELECT song  FROM Track NATURAL JOIN Album WHERE title = 'Nevermind';,1,1,"""🟢 Correct."""
+520,1,1h,SELECT Track.song FROM Track INNER JOIN Album on Album.album_id = Track.album_id WHERE Album.title  ´´;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+521,1,1h,"""SELECT Track.song FROM Track, Album WHERE      Track.track_id = Album.album_id     AND     Album.title = 'Nevermind' ;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Mismatch in conditions within AND clause.
+● Expected conditions: SIMPLE:Nevermind=track.title; SIMPLE:album.album_id=track.album_id; 
+ ● Found conditions: SIMPLE:Nevermind=album.title; SIMPLE:album.album_id=track.track_id; 
+ ● 
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""
+522,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.name = 'Nevermind';""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';'?
+"""
+523,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+524,1,1h,"""SELECT song FROM Track, Album WHERE Track.album_id = Album.album_id AND title = 'Nevermind';""",1,1,"""🟢 Correct."""
+525,1,1h,"""SELECT Track.song FROM Track, Album WHERE Track.album_id = Album.album_id AND Album.title = 'Nevermind';""",1,1,"""🟢 Correct."""
+526,1,1h,"""SELECT song, title FROM Track AND Album wHERE title = ´Nevermind´""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+527,1,1h,SELECT song FROM Track JOIN Album ON Track.album_id=Album.album_id WHERE title=´Nevermind´;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to: 
+ ● Retrieve data from 'album' and 'track'
+ ● Select 'song', 
+ ● Filter data where (album.album_id = track.album_id and album.title = Nevermind)
+
+2️⃣ Correct Clauses:
+✅ SELECT clause
+✅ FROM clause
+
+3️⃣ Issues found in the following clauses:
+❌ WHERE clause
+
+❗ Problem Details:
+1. WHERE clause: ● Operands mismatch in condition 'title = Nevermind'.
+● Expected operands: 'title' and 'Nevermind'.
+● Found operands: 'title' and '´nevermind´'.
+
+
+4️⃣ Next steps:
+➡️ Review your WHERE clause conditions to match the specified requirements.
+
+"""

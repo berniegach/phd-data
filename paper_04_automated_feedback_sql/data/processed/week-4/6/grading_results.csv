@@ -1,0 +1,2310 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,6,"""SELECT     Scientist.name,      COUNT(Teaches.student) AS student_count FROM      Scientist, Teaches WHERE      Scientist.id = Teaches.advisor GROUP BY      Scientist.id, Scientist.name ORDER BY      student_count DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+2,1,6,"""SELECT Scientist.name, COUNT(*) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor  GROUP BY Scientist.name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+4,1,6,"""SELECT Scientist.name, COUNT (Scientist.name) FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Scientist.name) DESC;""",1,1,"""Correct."""
+5,1,6,"""SELECT name, COUNT(student) AS student_count FROM Scientist JOIN Teaches ON id advisor GROUP BY name ORDER BY student_count DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+7,1,6,"""SELECT s.name, COUNT(t.student) AS number_of_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY number_of_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+8,1,6,"""SELECT S.name, COUNT(*) FROM Scientist S, Teaches T WHERE S.id=T.advisor GROUP BY S.name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+9,1,6,"""SELECT S.name AS scientist_name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+10,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+11,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS num_students FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+12,1,6,"""SELECT name, COUNT (*) AS total FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY total DESC;""",1,1,"""Correct."""
+13,1,6,"""SELECT S.name, COUNT(T.student) FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY COUNT(T.student) DESC;""",1,1,"""Correct."""
+14,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+15,1,6,"""SELECT      s.name AS scientist_name,     COUNT(t.student) AS num_students FROM      Scientist s LEFT JOIN      Teaches t ON s.id = t.advisor GROUP BY      s.id, s.name ORDER BY      num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+16,1,6,"""SELECT name, COUNT(student) AS student_count FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY name ORDER BY student_count DESC;""",1,1,"""Correct."""
+17,1,6,"""SELECT S.name AS scientist_name, COUNT(T.student) AS student_count  FROM Scientist S  LEFT JOIN Teaches T ON S.id = T.advisor  GROUP BY S.id, S.name  ORDER BY student_count DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+18,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name HAVING COUNT(Teaches.student) ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+19,1,6,"""SELECT name, COUNT(student) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+20,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+21,1,6,"""SELECT name, COUNT(student)  FROM Scientist, Teaches  WHERE id = advisor  GROUP BY name  ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+24,1,6,"""SELECT id, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",0.8857142857142857,1,""""""
+25,1,6,"""SELECT name,count(student) FROM Scientist S,teaches T  WHERE S.id=T.advisor  GROUP BY name  ORDER BY count(student);""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+26,1,6,"""SELECT S.name AS scientist_name, COUNT(T.student) AS number_of_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+27,1,6,"""SELECT name, COUNT(student) FROM Teaches, Scientist WHERE Scientist.id=Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+28,1,6,"""SELECT s.name, COUNT(t.student) AS student_count FROM Scientist s JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+29,1,6,"""SELECT COUNT(DISTINCT student) AS total, name FROM Scientist JOIN Teaches ON Teaches.advisor = Scientist.id GROUP BY  Scientist.id, name ORDER BY total DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+30,1,6,"""select name, count(student) from Scientist, Teaches where Scientist.id = Teaches.advisor group by name order by count(student) desc;""",1,1,"""Correct."""
+31,1,6,"""SELECT name, COUNT(Teaches.student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+32,1,6,"""SELECT name, count(teaches.student) AS Students   FROM Teaches, Scientist   Where teaches.advisor = scientist.id   GROUP BY name   ORDER BY Students DESC;""",1,1,"""Correct."""
+33,1,6,"""SELECT name, COUNT(*) FROM Scientist, Teaches WHERE id = advisor GROUP BY name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+34,1,6,"""SELECT COUNT(student), name FROM Scientist JOIN Teaches ON id=advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+35,1,6,"""SELECT name, COUNT(student) AS teach FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY name ORDER BY teach DESC;""",1,1,"""Correct."""
+36,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",1,1,"""Correct."""
+37,1,6,"""SELECT S.""""name"""", COUNT(T.student) FROM Scientist S JOIN Teaches T ON S.id==T.advisor GROUP BY S.""""name"""" ORDER BY COUNT(T.student) DESC;""",1,1,"""Correct."""
+38,1,6,"""SELECT scientist.name, teaches.student FROM scientist JOIN teaches ON scientist.id = teaches.advisor GROUP BY scientist.name, teaches.student ORDER BY teaches.student ASC;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"teaches"""".""""student"""".
+Mismatch in selected functions.
+Missing functions: """"count""""(""""teaches"""".""""student"""").
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Remove the extra columns: """"teaches"""".""""student"""" from your SELECT clause.
+- Add the missing functions: """"count""""(""""teaches"""".""""student"""") to your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+39,1,6,"""SELECT      s.name AS scientist_name,      COUNT(t.student) AS number_of_students FROM      Scientist s LEFT JOIN      Teaches t ON      s.id = t.advisor GROUP BY      s.name ORDER BY      number_of_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+40,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS number_of_students FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+41,1,6,"""SELECT Scientist.name, COUNT(*) FROM Teaches, Scientist WHERE Scientist.id=Teaches.advisor GROUP BY advisor, name ORDER BY COUNT(*) DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+45,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+46,1,6,"""SELECT Scientist.name, COUNT(*) AS nr_of_students FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY nr_of_students DESC;""",1,1,"""Correct."""
+47,1,6,"""SELECT Scientist.name, COUNT(Teaches.student)  FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+48,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name -- HAVING student_count > 0 could add this line if you don't want scientists with 0 students ORDER BY student_count DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+529,1,6,"""SELECT Scientist.name, COUNT(*) FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY COUNT(*) DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+49,1,6,"""SELECT name, COUNT(student) AS no_of_students FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY name ORDER BY -no_of_students;""",1,1,"""Correct."""
+50,1,6,"""Select S.name, S.id, COUNT (*) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.id, S.name ORDER BY COUNT (*) DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"scientist"""".""""id"""".
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Remove the extra columns: """"scientist"""".""""id"""" from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+52,1,6,"""SELECT s.name, COUNT(t.student) AS student_count FROM Scientist s JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+53,1,6,"""SELECT name, COUNT(*) AS advised FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY advised DESC;""",1,1,"""Correct."""
+54,1,6,"""SELECT Scientist.name, COUNT (Teaches.student) AS count_student   FROM Scientist, Teaches   WHERE Scientist.id=Teaches.advisor   GROUP BY Scientist.name   ORDER BY count_student DESC;""",1,1,"""Correct."""
+55,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+57,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(Teaches.student) DESC ;""",1,1,"""Correct."""
+58,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN      Teaches T      ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+60,1,6,"""SELECT name, COUNT(*) FROM Scientist, Teaches WHERE advisor = id GROUP BY name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+61,1,6,"""SELECT name, COUNT(*) FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+63,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS student_count FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+65,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+66,1,6,"""SELECT Scientist.name, COUNT(Teaches.advisor) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name, Scientist.id ORDER BY COUNT(Teaches.advisor) DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+67,1,6,"""SELECT S.name, COUNT(T.student) as total FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY total DESC;""",1,1,"""Correct."""
+68,1,6,"""SELECT Scientist.name, COUNT(Teaches.Student) AS Student_Nr FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY Student_Nr DESC;""",1,1,"""Correct."""
+69,1,6,"""SELECT name, COUNT(student) FROM Scientist JOIN Teaches ON id=advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+70,1,6,"""select name, COUNT(*) as count from Scientist s join Teaches t on s.id = t.advisor group by name order by COUNT(*) desc""",1,1,"""Correct."""
+72,1,6,"""SELECT Scientist.name, Count(Teaches.student) FROM Scientist JOIN Teaches ON Scientist.id == Teaches.advisor  GROUP BY Scientist.name ORDER BY COUNT(Teaches.student)*-1;""",1,1,"""Correct."""
+73,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+74,1,6,"""SELECT name, COUNT(student) FROM Teaches JOIN Scientist ON Scientist.id=Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+75,1,6,"""SELECT S.name AS ScientistName, Count(T.student) AS StudentCount FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY StudentCount DESC;""",1,1,"""Correct."""
+532,1,6,"""select S.name, count(T.student) from Scientist S, Teaches T where S.id = T.advisor group by S.name order by count(T.student) desc;""",1,1,"""Correct."""
+76,1,6,"""SELECT S.name, COUNT(*) AS students FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY students DESC""",1,1,"""Correct."""
+77,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) desc;""",1,1,"""Correct."""
+78,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS num_students FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+80,1,6,"""SELECT name, COUNT(name) FROM Scientist, Teaches WHERE advisor=id GROUP BY name ORDER BY COUNT(name) DESC;""",1,1,"""Correct."""
+81,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+82,1,6,"""SELECT name, count(student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY name ORDER BY count(student) DESC;""",1,1,"""Correct."""
+84,1,6,"""SELECT S.name, COUNT(T.Student) AS num_s FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_s DESC;""",1,1,"""Correct."""
+85,1,6,"""SELECT S.name, COUNT(T.student) AS number_of_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+86,1,6,"""SELECT S.name AS scientist_name,         COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+87,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY name ORDER BY COUNT(student) DESC""",1,1,"""Correct."""
+88,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+89,1,6,"""D SELECT s.name, COUNT(t.student) AS num_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.id, s.name ORDER BY num_students DESC;""",0.2857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select s.name, count(t.student) as num_students from scientist s left join teaches t on s.id = t.advisor group by s.id, s.name order by num_students desc;' make it parseable.
+
+"""
+90,1,6,"""SELECT S.name, COUNT(T.student) FROM Scientist S, Teaches T WHERE S.id=T.advisor GROUP BY S.name ORDER BY COUNT(T.student) DESC;""",1,1,"""Correct."""
+91,1,6,"""SELECT s.name, COUNT(t.student) AS number_of_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.id, s.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+92,1,6,"""SELECT s.name, COUNT(t.student) AS num_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.id, s.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+93,1,6,"""SELECT S.id, S.name, S.university, S.year FROM Scientist S, Teaches T WHERE  S.university LIKE '%Nijmegen%' GROUP BY S.id, S.name, S.university, S.year;""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"scientist"""".""""id"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+
+WHERE clause: Operator mismatch: Expected '""""=""""', but found 'LIKE'.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Remove the extra columns: """"scientist"""".""""id"""",""""scientist"""".""""university"""",""""scientist"""".""""year"""" from your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+94,1,6,"""SELECT scientist.name, count(student) FROM Scientist, Teaches WHERE scientist.id = teaches.advisor GROUP BY scientist.name ORDER BY count(student) DESC;""",1,1,"""Correct."""
+96,1,6,"""SELECT name, COUNT(Teaches.advisor) FROM Scientist, Teaches  WHERE Scientist.id = Teaches.advisor GROUP BY name  ORDER BY COUNT(Teaches.advisor) DESC;""",1,1,"""Correct."""
+98,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+100,1,6,"""SELECT S.name, COUNT(T.student) AS number_of_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+101,1,6,"""SELECT name, count(student)  FROM Scientist, Teaches  WHERE id = advisor  GROUP BY name  ORDER BY count(student) DESC;""",1,1,"""Correct."""
+102,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor GROUP BY name ORDER BY COUNT(st udent) desc;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+103,1,6,"""SELECT Scientist.name, COUNT(Teaches.advisor) AS scientist_supervised FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY scientist_supervised DESC;""",1,1,"""Correct."""
+104,1,6,"""SELECT """"name"""", COUNT(*) AS student_count FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.""""name"""" ORDER BY student_count DESC;""",1,1,"""Correct."""
+105,1,6,"""SELECT name, COUNT(student) FROM SCIENTIST JOIN Teaches ON id = advisor GROUP BY id, name ORDER BY COUNT(student) DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+106,1,6,"""SELECT S.name, COUNT(T.student) AS amount FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY amount DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+107,1,6,"""SELECT name, COUNT(student) FROM Scientist s, Teaches t WHERE id = advisor GROUP BY id, name ORDER BY COUNT(student) DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+108,1,6,"""SELECT Scientist.name, COUNT(Teaches.student)  FROM Scientist, Teaches  WHERE Scientist.id=Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+109,1,6,"""SELECT DISTINCT Scientist.name, COUNT(student) AS num_students FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"name"""".
+Extra columns: """"scientist"""".""""name"""".
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"name"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""" from your SELECT clause.
+
+"""
+110,1,6,"""SELECT S.name, COUNT(*) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+111,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS num_students FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+112,1,6,"""select name, count(Teaches.student) from Scientist, Teaches where Teaches.advisor = Scientist.id group by name order by count(Teaches.student) desc;""",1,1,"""Correct."""
+113,1,6,"""select s.name, count(t.advisor) from Scientist s join Teaches t on s.id = t.advisor group by s.id, s.name  order by count(t.advisor) desc;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+114,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY student_count DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+115,1,6,"""SELECT S.name AS scientist_name, (SELECT COUNT(*) FROM Teaches T WHERE T.advisor = S.id) AS student_count FROM Scientist S ORDER BY student_count DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"name"""".
+Extra columns: """"scientist"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"count""""(""""teaches"""".""""student"""").
+Mismatch in selected expressions.
+Extra expressions: (subquery).
+
+GROUP BY clause: GROUP BY clause missing
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing columns: """"name"""" to your SELECT clause.
+- Remove the extra columns: """"scientist"""".""""name"""" from your SELECT clause.
+- Add the missing functions: """"count""""(""""teaches"""".""""student"""") to your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+116,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+117,1,6,"""SELECT Scientist.name, COUNT(*) stds FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id 	GROUP BY Scientist.name 	ORDER BY stds DESC;""",1,1,"""Correct."""
+118,1,6,"""SELECT s.name, COUNT(t.student) AS nr_students FROM Scientist s JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY nr_students DESC;""",1,1,"""Correct."""
+119,1,6,"""SELECT S.name AS scientist_name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+121,1,6,"""SELECT COUNT(Teaches.student), Scientist.name FROM Scientist INNER JOIN Teaches ON Teaches.advisor = Scientist.id GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) desc;""",1,1,"""Correct."""
+122,1,6,"""SELECT S.name, COUNT(T.student) FROM Scientist AS S JOIN Teaches AS T ON S.id = T.advisor GROUP BY S.name ORDER BY COUNT(T.student) DESC;""",1,1,"""Correct."""
+123,1,6,"""SELECT Scientist.name, Count(Teaches.student) AS total FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY total DESC;""",1,1,"""Correct."""
+124,1,6,"""SELECT Scientist.name, COUNT(student) FROM Teaches JOIN Scientist ON Teaches.advisor=Scientist.id  GROUP BY Scientist.name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+125,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Teaches, Scientist WHERE Scientist.id=Teaches.advisor GROUP BY Teaches.advisor, Scientist.name ORDER BY COUNT(Teaches.student);""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+126,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+128,1,6,"""SELECT s.name, COUNT(t.student) AS num_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.id, s.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+129,1,6,"""SELECT Scientist.name, COUNT(T.student) AS num_students         FROM Scientist          LEFT JOIN Teaches T ON Scientist.id = T.advisor         GROUP BY Scientist.name         ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+130,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY student_count DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+131,1,6,"""SELECT S.name,COUNT(student) AS Number FROM Scientist S,Teaches T WHERE S.id=T.advisor GROUP BY S.name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+533,1,6,"""SELECT Scientist.name, COUNT (Teaches.advisor) FROM Scientist, Teaches GROUP BY Scientist.name, Teaches.advisor ORDER BY Teaches.advisor DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+133,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist,Teaches WHERE Scientist.id=Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+134,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+135,1,6,"""SELECT S.name, COUNT(*) AS students FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY students DESC;""",1,1,"""Correct."""
+136,1,6,"""SELECT name, COUNT(student) AS Student_Amount FROM Scientist, Teaches WHERE id = advisor GROUP BY name ORDER BY Student_Amount DESC;""",1,1,"""Correct."""
+137,1,6,"""SELECT Scientist.name, COUNT(T.student)  FROM Scientist  LEFT JOIN Teaches T ON Scientist.id = T.advisor GROUP BY Scientist.id, Scientist.name ORDER BY COUNT(T.student) DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+138,1,6,"""SELECT s.name, COUNT(t.student) AS number_of_students FROM Scientist s JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY number_of_students DESC;""",1,1,"""Correct."""
+139,1,6,"""SELECT S.name, COUNT(T.advisor) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY COUNT(T.advisor) DESC;""",1,1,"""Correct."""
+140,1,6,"""SELECT S.name, COUNT(T.student) AS count FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY count DESC;""",1,1,"""Correct."""
+141,1,6,"""SELECT name, COUNT(student) AS student_number FROM Scientist LEFT JOIN Teaches ON id = advisor GROUP BY id, name ORDER BY student_number DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+142,1,6,"""SELECT Scientist.name, count(Teaches.student) as num_students from Scientist LEFT JOIN Teaches ON Scientist.id == Teaches.advisor GROUP BY Scientist.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+143,1,6,"""SELECT s.name AS scientist_name, COUNT(t.student) AS num_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+144,1,6,"""SELECT S.name, COUNT(T.student) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_of_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+145,1,6,"""select name, COUNT(student)  from Scientist, Teaches  WHERE Scientist.id = Teaches.advisor  GROUP BY Scientist.name  ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+146,1,6,"""SELECT S.name, COUNT(T.student) AS number_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+147,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+148,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+150,1,6,"""SELECT name, COUNT (student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT (student) DESC;""",1,1,"""Correct."""
+151,1,6,"""SELECT s.name, COUNT(st.id) AS student_count FROM Scientists s LEFT JOIN Students st ON s.id = st.supervisor_id GROUP BY s.name ORDER BY student_count DESC;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""name"""".
+Extra columns: """"scientists"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""students"""".""""id"""").
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""", """"teaches"""".
+Extra tables: """"scientists"""", """"students"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"scientists"""".""""name"""" from your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""students"""".""""id"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+152,1,6,"""SELECT name, COUNT(*) AS number_of_students FROM Teaches, Scientist WHERE id = advisor GROUP BY name ORDER BY number_of_students DESC;""",1,1,"""Correct."""
+153,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE id=advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+154,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor  GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+155,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id =Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student);""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+There are issues with the following clauses:
+- ORDER BY clause
+
+Details of the problems:
+ORDER BY clause: Order Item 1: Mismatch in sorting direction.
+
+
+Next steps:
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+156,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+157,1,6,"""SELECT S.name, COUNT(T.student) as count FROM Scientist S LEFT JOIN Teaches T ON S.id=T.advisor GROUP BY S.name ORDER BY count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+158,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+160,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE id=advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+161,1,6,"""SELECT      S.name AS scientist_name,     COUNT(T.student) AS student_count FROM      Scientist S,     Teaches T WHERE      S.id = T.advisor GROUP BY      S.id, S.name ORDER BY      student_count DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+162,1,6,"""SELECT name, count(*) FROM Scientist, Teaches WHERE id = advisor GROUP BY name ORDER BY count(*) DESC;""",1,1,"""Correct."""
+163,1,6,"""SELECT S.name, COUNT(T.student) AS supervised_students FROM Scientist S JOIN Teaches TON S.id = T.advisor  GROUP BY name ORDER BY supervised_students DESC;""",0.02857142857142857,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""name"""".
+Extra columns: """"s"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+Extra functions: """"count""""(""""t"""".""""student"""").
+
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"s"""".""""name"""" from your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Remove the extra functions: """"count""""(""""t"""".""""student"""") from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select s.name, count(t.student) as supervised_students from scientist join teaches on s.id = t.advisor group by s.name order by supervised_students desc;' make it parseable.
+
+"""
+164,1,6,"""FROM Scientist, Teaches SELECT name, COUNT(STUDENT) as Count WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY Count DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,6,"""SELECT Scientist.name , COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) desc;""",1,1,"""Correct."""
+166,1,6,"""SELECT S.name, COUNT(T.student) AS number FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY number DESC;""",1,1,"""Correct."""
+167,1,6,"""SELECT S.name, COUNT(T.student) AS count FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY count DESC;""",1,1,"""Correct."""
+168,1,6,"""SELECT name AS scientist_name, COUNT(student) AS num_students  FROM Scientist  JOIN Teaches ON Scientist.id = Teaches.advisor  GROUP BY Scientist.name  ORDER BY num_students DESC;""",1,1,"""Correct."""
+169,1,6,"""SELECT Scientist.name, COUNT (Teaches.student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT (Teaches.student) DESC;""",1,1,"""Correct."""
+170,1,6,"""SELECT Scientist.name , COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id=Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) desc;""",1,1,"""Correct."""
+171,1,6,"""SELECT S.name, COUNT(T.student) AS TS FROM Scientist S, Teaches T WHERE T.advisor = S.id GROUP BY S.name ORDER BY TS DESC;""",1,1,"""Correct."""
+172,1,6,"""SELECT Scientist.name, Count(Teaches.student)  FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY Scientist.name ORDER BY Count(Teaches.student) DESC;""",1,1,"""Correct."""
+173,1,6,"""SELECT S1.name, COUNT(T1.student) FROM Scientist S1, Teaches T1 WHERE T1.advisor = S1.id GROUP BY S1.name ORDER BY COUNT(T1.student) DESC;""",1,1,"""Correct."""
+535,1,6,"""SELECT s.name, COUNT(t.student) AS student_count FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.name ORDER BY student_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+174,1,6,"""SELECT name, COUNT(*) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+175,1,6,"""SELECT S.name AS ScientistName, COUNT(T.student) AS StudentCount FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY StudentCount DESC;""",1,1,"""Correct."""
+176,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS student_count FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY student_count DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+177,1,6,"""D SELECT S.name, COUNT(T.student) AS student_count ┬╖ FROM Scientist S ┬╖ LEFT JOIN Teaches T ON S.id = T.advisor ┬╖ GROUP BY S.name ┬╖ ORDER BY student_count DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+179,1,6,"""Select name, count(student) as student_count from Teaches,Scientist where Scientist.id = Teaches.Advisor group by name Order by student_count desc;""",1,1,"""Correct."""
+181,1,6,"""SELECT Scientist.name, COUNT (Teaches.student) AS count_student  FROM Scientist, Teaches  WHERE Scientist.id= Teaches.advisor  GROUP BY Scientist.name  ORDER BY count_student DESC;""",1,1,"""Correct."""
+183,1,6,"""SELECT S.name, COUNT(T.student) as student_count FROM Teaches T, Scientist S WHERE S.id = T.advisor GROUP BY S.id, S.name ORDER BY student_count DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+184,1,6,"""SELECT name, COUNT(*) as num_students FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY num_students DESC;""",1,1,"""Correct."""
+185,1,6,"""SELECT S.name, COUNT(*) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.id, S.name ORDER BY COUNT(*) DESC;""",0.5428571428571428,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+186,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+187,1,6,"""SELECT S.name AS scientist_name, COUNT(T.student) AS num_students FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",1,1,"""Correct."""
+188,1,6,"""SELECT      S.name AS ScientistName,      COUNT(T.student) AS NumberOfStudents FROM      Scientist S LEFT JOIN      Teaches T ON      S.id = T.advisor GROUP BY      S.name ORDER BY      NumberOfStudents DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+189,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+190,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+191,1,6,"""SELECt name, Count(teaches.advisor) as count from Scientist INNER JOIN Teaches on teaches.advisor = scientist.id GROUP BY name ORDER BY count DESC;""",1,1,"""Correct."""
+192,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+193,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS count FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY count DESC;""",1,1,"""Correct."""
+194,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS student_count FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+195,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",1,1,"""Correct."""
+196,1,6,"""SELECT name, COUNT(*) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+197,1,6,"""SELECT S.name, COUNT(T.student) AS number_of_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+198,1,6,"""SELECT name, COUNT(*) AS students FROM Scientist,Teaches WHERE Teaches.advisor=Scientist.id GROUP BY name ORDER BY students DESC;""",1,1,"""Correct."""
+199,1,6,"""SELECT Scientist.name, COUNT(T.student) as number_students  FROM Scientist  LEFT JOIN Teaches T ON Scientist.id = T.advisor  GROUP BY Scientist.name  ORDER BY number_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+200,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+201,1,6,"""SELECT name, COUNT(*) AS students FROM Scientist, Teaches WHERE advisor=id Group by name Order by students DESC;""",1,1,"""Correct."""
+202,1,6,"""SELECT Scientist.name, COUNT(Teaches.student)  FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY student_count DESC""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+ORDER BY clause: Order Item 1: Mismatch in expressions.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+203,1,6,"""SELECT scientist.name, COUNT(teaches.student) FROM scientist JOIN teaches ON teaches. advisor = scientist.id GROUP BY scientist.name ORDER BY COUNT (teaches.student) DESC;""",1,1,"""Correct."""
+204,1,6,"""--SELECT name, COUNT(student)  --FROM Teaches NATURAL JOIN Scientist AS Scientist(advisor)  --GROUP BY advisor, name  --ORDER BY COUNT(student) DESC;   SELECT S.name AS scientist_name, COUNT(T.student) AS number_of_students FROM Scientist S  LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY number_of_students DESC;""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- ORDER BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""name"""".
+Mismatch in selected functions.
+Missing functions: """"count""""().
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"scientist"""", """"teaches"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+ORDER BY clause: Order By: Different number of order items.
+Order By: Reference has additional order items.
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""name"""" to your SELECT clause.
+- Add the missing functions: """"count""""() to your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Adjust the ORDER BY clause to sort the results as specified.
+
+"""
+206,1,6,"""SELECT Scientist.name, COUNT(*) AS number FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY number DESC;""",1,1,"""Correct."""
+208,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+209,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS num_students FROM Scientist  LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY num_students DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+536,1,6,"""select name,count(student) from Scientist, Teaches where Scientist.id = Teaches.advisor group by name order by count(student) desc;""",1,1,"""Correct."""
+210,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id = advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+211,1,6,"""SELECT name, COUNT(student) FROM Teaches JOIN Scientist ON Teaches.advisor = Scientist.id GROUP BY name ORDER BY COUNT(student) DESC""",1,1,"""Correct."""
+212,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS number_of_students FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+213,1,6,"""SELECT S.name, count(T.student) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY count(T.student) DESC;""",1,1,"""Correct."""
+214,1,6,"""SELECT name, COUNT(*) FROM Scientist, Teaches WHERE id = advisor GROUP BY name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+215,1,6,"""SELECT Scientist.name, COUNT(Teaches.advisor) AS number_of_students FROM Scientist LEFT JOIN Teaches ON Teaches.advisor = Scientist.id GROUP BY Scientist.id, Scientist.name ORDER BY number_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+216,1,6,"""SELECT s.name, COUNT(t.student) FROM Scientist s INNER JOIN Teaches t ON s.id=t.advisor GROUP BY s.name ORDER BY COUNT(t.student) DESC;""",1,1,"""Correct."""
+217,1,6,"""SELECT name, COUNT(student) FROM Scientist LEFT JOIN Teaches ON id = advisor GROUP BY name ORDER BY COUNT(student) DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+218,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+220,1,6,"""SELECT S.name, COUNT(DISTINCT T.student) AS num_students_supervised AS num_students_supervised FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY num_students_supervised DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+221,1,6,SELECT Scientist.name  COUNT(Teaches.student) AS Amount_students FROM Scientist WHERE Scientist.id = Teaches.advisor ORDER BY Amount_students DESC;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+222,1,6,"""SELECT S.name, COUNT(*) FROM Scientist S, Teaches T WHERE S.id=T.advisor GROUP BY S.name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+223,1,6,"""SELECT s.name, COUNT(t.student) as supervised_students FROM Scientist s LEFT JOIN Teaches t ON s.id = t.advisor GROUP BY s.id, s.name ORDER BY supervised_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+224,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+225,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS nr_of_students FROM Scientist LEFT JOIN Teaches ON Teaches.advisor = Scientist.id GROUP BY Scientist.id, Scientist.name ORDER BY nr_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+226,1,6,"""SELECT COUNT(student),  FROM Scientist JOIN Teaches ON Scientist.id == Teaches.student GROUP BY Scientist.name;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+227,1,6,"""SELECT name, COUNT (advisor) FROM scientist, teaches WHERE scientist.id=teaches.advisor GROUP BY scientist.name ORDER BY COUNT(advisor) DESC;""",1,1,"""Correct."""
+228,1,6,"""SELECT name, COUNT(student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+229,1,6,SELECT name FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY Count(Teaches.student) DESC;,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"scientist"""".""""name"""".
+Extra columns: """"name"""".
+Mismatch in selected functions.
+Missing functions: """"count""""(""""teaches"""".""""student"""").
+
+
+Next steps:
+- Add the missing columns: """"scientist"""".""""name"""" to your SELECT clause.
+- Remove the extra columns: """"name"""" from your SELECT clause.
+- Add the missing functions: """"count""""(""""teaches"""".""""student"""") to your SELECT clause.
+
+"""
+231,1,6,"""SELECT A.name, count(student)   FROM Scientist A, Teaches   WHERE A.id = advisor   GROUP BY A.name   ORDER BY count(student) DESC;""",1,1,"""Correct."""
+233,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+234,1,6,"""SELECT name, count(*) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY name ORDER BY count(*) desc;""",1,1,"""Correct."""
+235,1,6,"""SELECT s.name, COUNT(t.student) FROM Scientist s, main.Teaches t WHERE s.id = t.advisor GROUP BY s.name ORDER BY COUNT(t.student) DESC;""",1,1,"""Correct."""
+236,1,6,"""SELECT S.name, COUNT(*) as num_students FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY S.name ORDER BY num_students DESC;""",1,1,"""Correct."""
+238,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS students_supervised FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name  ORDER BY students_supervised DESC;""",1,1,"""Correct."""
+239,1,6,"""SELECT S.name, COUNT(T.student) AS student_count FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY student_count DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+240,1,6,"""SELECT  S.name, COUNT(*) as Supervised_Students FROM Scientist S JOIN Teaches T ON S.id = T.advisor GROUP BY S.name ORDER BY Supervised_Students DESC""",1,1,"""Correct."""
+241,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+242,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",1,1,"""Correct."""
+243,1,6,"""SELECT name, COUNT(student) FROM Scientist JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+245,1,6,"""SELECT name, COUNT(student) FROM Scientist, Teaches WHERE id = advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+246,1,6,"""SELECT Scientist.name, COUNT(student) AS num_students FROM Scientist, Teaches WHERE Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY num_students DESC;""",1,1,"""Correct."""
+247,1,6,"""SELECT s.name AS scientist_name, COUNT(t.student) AS student_count FROM Scientist s JOIN Teaches t ON s.id = t.advisor GROUP BY s.id, s.name ORDER BY student_count DESC""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- GROUP BY clause
+
+Details of the problems:
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+249,1,6,"""SELECT St.name,COUNT(*) FROM Scientist AS St, Teaches AS T WHERE T.advisor = St.id GROUP BY St.name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+250,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- GROUP BY clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+
+"""
+251,1,6,"""SELECT name, COUNT(student) FROM Scientist S, Teaches T WHERE S.id = T.advisor GROUP BY name ORDER BY COUNT(student) DESC;""",1,1,"""Correct."""
+252,1,6,"""SELECT Scientist.name, COUNT(*) AS supervised FROM Scientist, Teaches WHERE Teaches.advisor = Scientist.id GROUP BY Scientist.name ORDER BY supervised DESC;""",1,1,"""Correct."""
+253,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY COUNT(Teaches.student) DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+254,1,6,"""SELECT name, count (*) FROM Scientist, Teaches WHERE id = advisor GROUP BY name ORDER BY count (*) desc;""",1,1,"""Correct."""
+255,1,6,"""FROM Scientist AS s, Teaches AS t SELECT s.""""name"""", COUNT(t.student) WHERE s.id = t.advisor GROUP BY s.id, s.name ORDER BY COUNT(t.student) DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+256,1,6,"""SELECT name, COUNT(student) FROM Scientist, (SELECT student FROM Teaches WHERE id = advisor) GROUP BY NAME ORDER BY COUNT(student) DESC;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+257,1,6,"""SELECT S.name AS scientist_name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+258,1,6,"""SELECT s.name, COUNT(s.name) FROM Scientist s, Teaches t WHERE s.id = t.advisor GROUP BY s.name ORDER BY COUNT(s.name) DESC;""",1,1,"""Correct."""
+259,1,6,"""SELECT name, COUNT(*) FROM Teaches, Scientist WHERE advisor = id GROUP BY name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+260,1,6,"""SELECT name,count(student)   FROM Scientist    JOIN Teaches ON Scientist.id=Teaches.advisor   GROUP BY name   ORDER BY count(student) DESC;""",1,1,"""Correct."""
+261,1,6,"""SELECT name, COUNT(*) FROM Scientist INNER JOIN Teaches ON Teaches.advisor=Scientist.id GROUP BY name ORDER BY COUNT(*) DESC;""",1,1,"""Correct."""
+262,1,6,"""SELECT Scientist.name, COUNT(Teaches.student) AS nr_of_students FROM Scientist LEFT JOIN Teaches ON Scientist.id = Teaches.advisor GROUP BY Scientist.id, Scientist.name ORDER BY nr_of_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+263,1,6,"""SELECT name, count(student) FROM Scientist s, Teaches t WHERE s.id = t.advisor GROUP BY name ORDER BY count(student) DESC;""",1,1,"""Correct."""
+264,1,6,"""SELECT S.name, COUNT(T.student) AS num_students FROM Scientist S LEFT JOIN Teaches T ON S.id = T.advisor GROUP BY S.id, S.name ORDER BY num_students DESC;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 2 columns; filter data based on certain conditions; group the results by 1 element; sort the output data by 1 column; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- ORDER BY clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: Columns: Mismatch in GROUP BY columns.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Add a WHERE clause to filter the data as specified.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""

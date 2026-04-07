@@ -1,0 +1,1 @@
+﻿ SELECT DISTINCT artist_id FROM Performs WHERE role = 'guitarist';

@@ -1,0 +1,1787 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,4,SELECT        Track_title   FROM        Track   WHERE        Track.track_id IN (           SELECT                track_id           FROM                Writes           WHERE                role = 'lyricist'       );,1,1,"""Correct."""
+2,1,4,"""SELECT Track.track_title FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+GROUP BY clause: GROUP BY clause missing
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+4,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+5,1,4,SELECT DISTINCT Track.track_title FROM Track NATURAL JOIN Writes  WHERE role =  'lyricist';,1,1,"""Correct."""
+7,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+8,1,4,"""SELECT DISTINCT Track.track_title, Artist.name  FROM Artist, Track, Writes  WHERE Writes.artist_id=Artist.artist_id AND Writes.role='lyricist' AND Track.track_id=Writes.track_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"artist"""".""""name"""",""""track"""".""""track_title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"artist"""".""""name"""",""""track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+9,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id=Writes.track_id WHERE Writes.role='lyricist';,1,1,"""Correct."""
+10,1,4,SELECT DISTINCT      Track.track_title AS Title FROM      Track JOIN        TrackArtist ON Track.track_id = TrackArtist.track_id JOIN        Artist ON TrackArtist.artist_id = Artist.artist_id WHERE      TrackArtist.role = 'lyricist';,0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"artist"""", """"trackartist"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Operands mismatch in condition '""""role"""" """"="""" '""""lyricist""""''.
+Expected: '""""role""""' and ''""""lyricist""""''.
+Found: '""""trackartist"""".""""role""""' and ''""""lyricist""""''.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+11,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+12,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist'""",1,1,"""Correct."""
+13,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+14,1,4,SELECT DISTINCT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.8857142857142857,1,""""""
+16,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+17,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist',1,1,"""Correct."""
+18,1,4,SELECT Track.track_title FROM Track WHERE Track.track_id IN (SELECT Writes.track_id FROM Writes WHERE role='lyricist');,1,1,"""Correct."""
+19,1,4,"""SELECT DISTINCT track_title FROM Track, Writes, Artist WHERE Track.track_id =Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+20,1,4,"""SELECT track_title FROM Track WHERE EXISTS(SELECT track_id, role FROM Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track_title from track where exists(select track_id, role from writes where track.track_id = writes.track_id and writes.role = 'lyricist');' make it parseable.
+
+"""
+21,1,4,"""SELECT DISTINCT track_title  FROM Track, Writes  WHERE Writes.track_id = Track.track_id  AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+23,1,4,SELECT t.title FROM Track t JOIN Artists a ON t.track_id = a.track_id WHERE a.role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"artists"""".
+Join 1: Mismatch in joined tables for INNER JOIN.
+Expected tables: """"track"""", """"writes"""".
+Found tables: """"artists"""", """"track"""".
+Join 1: Mismatch in join condition.
+Expected condition: """"writes"""".""""track_id"""" """"="""" """"track"""".""""track_id"""".
+Found condition: """"track"""".""""track_id"""" """"="""" """"artists"""".""""track_id"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+24,1,4,"""SELECT DISTINCT Track_title  FROM Track, Writes  WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+25,1,4,"""SELECT DISTINCT track_title  FROM Artist,Writes,Track  WHERE writes.role='lyricist'      AND writes.artist_id=Artist.artist_id      AND Writes.track_id=Track.track_id;""",1,1,"""Correct."""
+26,1,4,SELECT t.title FROM Track t JOIN Writes w ON t.track_id = w.track_id WHERE w.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+27,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+29,1,4,"""FROM Writes, Track  SELECT DISTINCT track_title WHERE Writes.track_id = Track.track_id AND role = 'lyricist';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+30,1,4,"""select distinct track_title from Track, Writes where Track.track_id = Writes.track_id and Writes.role = 'lyricist';""",1,1,"""Correct."""
+31,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+32,1,4,"""SELECT DISTINCT track_title  FROM Writes, Track  WHERE Writes.track_id = Track.track_id AND Writes.role = 'lyricist' ;""",1,1,"""Correct."""
+33,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+34,1,4,SELECT DISTINCT track_title FROM (TRACK JOIN WRITES ON Track.track_id = Writes.track_id) WHERE role  = 'lyricist';,1,1,"""Correct."""
+35,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+36,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+37,1,4,"""SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id=Writes.track_id JOIN Artist ON Artist.artist_id=Writes.artist_id WHERE Writes.""""role""""='lyricist';""",1,1,"""Correct."""
+38,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id=Writes.track_id WHERE Writes.role ='lyricist';,1,1,"""Correct."""
+39,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+40,1,4,SELECT track_title FROM Track WHERE track_id IN (SELECT track_id FROM Writes WHERE role = 'lyricist');,1,1,"""Correct."""
+41,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+44,1,4,"""SELECT DISTINCT track_title FROM track JOIN writes ON track.track_id=writes.track_id WHERE writes.role = """"lyricist"""";""",0.8857142857142857,1,""""""
+45,1,4,SELECT track_title FROM Track WHERE track_id IN (SELECT track_id FROM Writes WHERE role = 'lyricist');,1,1,"""Correct."""
+46,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+47,1,4,SELECT DISTINCT track_title FROM Track WHERE track_id IN (SELECT track_id FROM Writes WHERE role = 'lyricist');,1,1,"""Correct."""
+48,1,4,SELECT track_title FROM Track WHERE track_id  IN (     SELECT track_id     FROM Writes     WHERE artist_id IN (         SELECT artist_id         FROM Artist         WHERE role = 'lyricist'     ) );,1,1,"""Correct."""
+529,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role='lyricist';,1,1,"""Correct."""
+49,1,4,select distinct track_title from Track  full join Writes on Track.track_id = Writes.track_id  where role = 'lyricist';,1,1,"""Correct."""
+50,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role = 'lyricist';,1,1,"""Correct."""
+530,1,4,select distinct track_title from track natural join writes natural join artist where role = 'lyricist',1,1,"""Correct."""
+52,1,4,SELECT DISTINCT T.title FROM Track T JOIN Writes W ON T.track_id = W.track_id WHERE W.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+53,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE Writes.role = 'lyricist' ;,1,1,"""Correct."""
+54,1,4,"""SELECT DISTINCT Track.track_title   FROM Track, Writes   WHERE Writes.role= 'lyricist'   AND Writes.track_id=Track.track_id;""",1,1,"""Correct."""
+55,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role ='lyricist';,1,1,"""Correct."""
+56,1,4,SELECT DISTINCT track_title FROM Track RIGHT JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+57,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Writes.role = 'lyricist' and Writes.track_id = Track.track_id;""",1,1,"""Correct."""
+58,1,4,select track.title from track join writes on track.track_id = writes.track_id where writes.role = 'lyricsist',0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+WHERE clause: Operands mismatch in condition '""""writes"""".""""role"""" """"="""" '""""lyricist""""''.
+Expected: '""""writes"""".""""role""""' and ''""""lyricist""""''.
+Found: '""""writes"""".""""role""""' and ''""""lyricsist""""''.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+
+"""
+59,1,4,SELECT DISTINCT T.track_title FROM Track T JOIN Writes W ON T.track_id = W.track_id Where W.role = 'lyricist';,1,1,"""Correct."""
+60,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes NATURAL JOIN Artist WHERE role = 'lyricist';,1,1,"""Correct."""
+531,1,4,"""SELECT """"track_title"""" FROM Track, Artist, Writes WHERE Writes.artist_id=Artist.artist_id AND Writes.track_id=Track.track_id AND Writes.role='lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+
+There are issues with the following clauses:
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+WHERE clause: Mismatch in conditions within AND clause.
+Expected conditions: SIMPLE:""""artist"""".""""artist_id""""""""=""""""""writes"""".""""artist_id""""; SIMPLE:""""track"""".""""track_id""""""""=""""""""writes"""".""""track_id""""; SIMPLE:""""writes"""".""""role""""""""=""""'""""lyricist""""'; 
+Found conditions: SIMPLE:""""writes"""".""""artist_id""""""""=""""""""artist"""".""""artist_id""""; SIMPLE:""""writes"""".""""role""""""""=""""'""""lyricist""""'; SIMPLE:""""writes"""".""""track_id""""""""=""""""""track"""".""""track_id""""; 
+
+GROUP BY clause: GROUP BY clause missing
+
+Next steps:
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+61,1,4,"""SELECT DISTINCT Track.Track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role='lyricist';""",1,1,"""Correct."""
+62,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+63,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.Track_id == Writes.Track_id AND Writes.role == 'lyricist';""",1,1,"""Correct."""
+64,1,4,SELECT track_title FROM Track WHERE EXISTS( SELECT * FROM Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist');,1,1,"""Correct."""
+66,1,4,"""SELECT DISTINCT title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+67,1,4,"""SELECT track_title FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist' GROUP BY track_title;""",1,1,"""Correct."""
+68,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+69,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id AND Writes.role = 'lyricist';,1,1,"""Correct."""
+70,1,4,Select distinct track_title from main.Track t join main.Writes w on t.track_id = w.track_id  where w.role = 'lyricist',1,1,"""Correct."""
+72,1,4,"""SELECT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+73,1,4,SELECT Track.track_title  FROM Track  WHERE Track.track_id IN ( SELECT Writes.track_id  FROM Writes Where role = 'lyricist');,1,1,"""Correct."""
+74,1,4,SELECT DISTINCT track_title FROM Writes NATURAL JOIN Track WHERE role = 'lyricist';,1,1,"""Correct."""
+532,1,4,"""select distinct track_title from Track, Writes where Track.track_id = Writes.track_id and role = 'lyricist';""",1,1,"""Correct."""
+76,1,4,"""SELECT  track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+77,1,4,SELECT track_title FROM Track WHERE track_id IN (SELECT track_id FROM Writes WHERE role = 'lyricist');,1,1,"""Correct."""
+78,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role = 'lyricist';,1,1,"""Correct."""
+80,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+81,1,4,"""SELECT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+82,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id Where Writes.role=='lyricist';,1,1,"""Correct."""
+83,1,4,"""SELECT Track.track_title, Artist.name AS lyricist FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Extra columns: """"artist"""".""""name"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Remove the extra columns: """"artist"""".""""name"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+84,1,4,"""SELECT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+85,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+86,1,4,"""SELECT DISTINCT Track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+87,1,4,"""SELECT DISTINCT Track.track_title FROM Writes, Track WHERE Track.track_id = Writes.track_id AND role = 'lyricist'""",1,1,"""Correct."""
+88,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Writes.artist_id = Artist.artist_id AND Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+89,1,4,"""SELECT DISTINCT track_title  FROM Track T, Writes W  WHERE T.track_id = W.track_id  AND W.role = 'lyricist';""",1,1,"""Correct."""
+90,1,4,"""SELECT DISTINCT T.title FROM Track T, Writes W WHERE T.track_id = W.track_id AND W.role = 'lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+91,1,4,SELECT track_title FROM Track WHERE track_id IN (SELECT track_id FROM Writes WHERE role = 'lyricist');,1,1,"""Correct."""
+92,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+93,1,4,"""FROM Writes, Track SELECT Track.track_title WHERE Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+94,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+96,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist' AND Track.track_id=Writes.track_id;""",1,1,"""Correct."""
+97,1,4,SELECT title  FROM track WHERE Writes.artist_id = Tracks.artist_id AND Writes.track_id = Tracks.track_id AND Writes.role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+98,1,4,SELECT t.title FROM Track t JOIN Writes w ON t.track_id = w.track_id WHERE w.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+100,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Writes W WHERE W.role = 'lyricist' AND T.track_id = W.track_id;""",1,1,"""Correct."""
+101,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, writes WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+102,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricis t';""",0.8857142857142857,1,""""""
+103,1,4,"""SELECT DISTINCT Track.track_title FROM Writes, Track WHERE Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+104,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+105,1,4,"""SELECT DISTINCT track_title FROM Track t, Writes w WHERE w.role = 'lyricist' AND t.track_id = w.track_id""",1,1,"""Correct."""
+106,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role = 'lyricist';,1,1,"""Correct."""
+107,1,4,"""SELECT DISTINCT track_title, name FROM Writes NATURAL JOIN Track NATURAL JOIN Artist WHERE role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"name"""".
+
+
+Next steps:
+- Remove the extra columns: """"name"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+108,1,4,"""SELECT DISTINCT Track.track_title  FROM Track, Artist, Writes  WHERE Artist.artist_id = Writes.artist_id  AND Writes.role = 'lyricist'  AND Track.track_id=Writes.track_id;""",1,1,"""Correct."""
+109,1,4,"""SELECT DISTINCT Track.track_title, FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct track.track_title from track join writes on track.track_id = writes.track_id join artist on writes.artist_id = artist.artist_id where writes.role = 'lyricist';' make it parseable.
+
+"""
+110,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Writes W WHERE T.track_id = W.track_id AND W.role = 'lyricist';""",1,1,"""Correct."""
+111,1,4,SELECT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+112,1,4,"""select distinct Track.track_title from Track, Artist, Writes where Artist.artist_id = Writes.artist_id and Writes.role = 'lyricist' and Track.track_id = Writes.track_id;""",1,1,"""Correct."""
+113,1,4,select distinct track_title from Track t join Writes w on t.track_id = w.track_id where w.role = 'lyricist';,1,1,"""Correct."""
+114,1,4,SELECT DISTINCT T.Title FROM Tracks T JOIN Artists_Roles AR ON T.ArtistID = AR.ArtistID WHERE AR.Role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"tracks"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""", """"writes"""".
+Extra tables: """"artists_roles"""", """"tracks"""".
+Join 1: Mismatch in joined tables for INNER JOIN.
+Expected tables: """"track"""", """"writes"""".
+Found tables: """"artists_roles"""", """"tracks"""".
+Join 1: Mismatch in join condition.
+Expected condition: """"writes"""".""""track_id"""" """"="""" """"track"""".""""track_id"""".
+Found condition: """"tracks"""".""""artistid"""" """"="""" """"artists_roles"""".""""artistid"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"tracks"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+115,1,4,"""select distinct T.track_title from Writes W, Artist A, Track T where W.artist_id = A.artist_id and W.track_id = T.track_id and W.role = 'lyricist';""",1,1,"""Correct."""
+116,1,4,"""SELECT title FROM Artist, Track, Writes WHERE Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id AND role = 'lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+117,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id 	AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+118,1,4,"""SELECT t.track_title FROM Track t JOIN Writes w ON w.track_id = t.track_id GROUP BY t.track_title, w.role HAVING w.role = 'lyricist';""",1,1,"""Correct."""
+119,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+121,1,4,SELECT Track.track_title FROM Track INNER JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+122,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+123,1,4,"""SELECT DISTINCT Track.track_title, Writes.role FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"writes"""".""""role"""".
+
+
+Next steps:
+- Remove the extra columns: """"writes"""".""""role"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+124,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id=Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+125,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+126,1,4,SELECT DISTINCT track_title FROM Track WHERE track_id IN (         SELECT track_id         FROM Writes         WHERE role = 'lyricist' );,1,1,"""Correct."""
+128,1,4,SELECT DISTINCT Track.track_title FROM Writes JOIN Track ON Writes.track_id = Track.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+129,1,4,SELECT DISTINCT Track.track_title AS Title   FROM Track   JOIN Writes ON Track.track_id = Writes.track_id   WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+130,1,4,SELECT DISTINCT T.title AS track_title FROM Track T JOIN Writes W ON T.track_id = W.track_id WHERE W.role = 'lyricist';,0.42857142857142855,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+
+Excellent! Your query matches the reference query.
+
+"""
+533,1,4,"""SELECT DISTINCT  track_title FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Writes.artist_id = Artist.artist_id AND role = 'lyricist';""",1,1,"""Correct."""
+133,1,4,"""SELECT DISTINCT track_title FROM Track,Writes WHERE Track.track_id=Writes.track_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+135,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+136,1,4,"""SELECT Track.track_title FROM Track, Writes WHERE Writes.role = 'lyricist' AND Writes.track_id = Track.track_id;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+137,1,4,"""SELECT track_title FROM Track WHERE EXISTS(SELECT track_id, role FROM Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track_title from track where exists(select track_id, role from writes where track.track_id = writes.track_id and writes.role = 'lyricist');' make it parseable.
+
+"""
+138,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+139,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Album A, Writes W WHERE T.album_id = A.album_id AND W.track_id = T.track_i d AND W.role = 'lyricist';""",0.17142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"album"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Condition type mismatch: Expected SIMPLE, but found AND.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Review your WHERE clause conditions to match the specified requirements.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct t.track_title from track t, album a, writes w where t.album_id = a.album_id and a.album_id = w.album_id and w.role = 'lyricist';' make it parseable.
+
+"""
+140,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+141,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+142,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id == Writes.artist_id AND Track.track_id == Writes.track_id AND role == 'lyricist';""",1,1,"""Correct."""
+143,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+144,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+145,1,4,"""SELECT DISTINCT track_title  FROM Track, Writes  WHERE Writes.track_id = Track.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+146,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+147,1,4,"""SELECT DISTINCT track_title FROM Market, Writes WHERE Track.track_id= Writes.track_id AND Writes.role= 'lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+- WHERE clause
+
+There are issues with the following clauses:
+- FROM clause
+
+Details of the problems:
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""".
+Extra tables: """"market"""".
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+
+"""
+148,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+149,1,4,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+150,1,4,SELECT title FROM Track WHERE track_id IN (SELECT track_id                                   FROM Writes                                   WHERE role = 'lyricist');,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+151,1,4,SELECT Track.Title FROM Track JOIN TrackArtist ON Track.TrackID = TrackArtist.TrackID JOIN Artist ON Artist.ArtistID = TrackArtist.ArtistID WHERE TrackArtist.Role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"artist"""", """"trackartist"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+152,1,4,"""SELECT DISTINCT track_title  FROM Track, Artist, Writes WHERE Track.track_id=Writes.track_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+153,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+154,1,4,"""SELECT Track.track_title  FROM Track, Writes   WHERE Track.track_id=Writes.track_id  AND Writes.role='lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+155,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist' AND Writes.track_id = Track.track_id;""",1,1,"""Correct."""
+156,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Track.track_id = Writes.track_id AND Artist.artist.id = Writes. artist_id AND Writes.role = 'lyricist'""",0.8857142857142857,1,""""""
+157,1,4,SELECT track_title FROM Track WHERE track_id IN ( SELECT track_id FROM Writes WHERE  role = 'lyricist');,1,1,"""Correct."""
+158,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+159,1,4,SELECT T.title FROM Track T JOIN Writes W ON T.track_id = W.track_id JOIN ArtistRole AR ON W.artist_id = AR.artist_id WHERE AR.role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Extra tables: """"artistrole"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+160,1,4,SELECT DISTINCT track_title  FROM Track  NATURAL JOIN Writes  NATURAL JOIN Artist  WHERE role='lyricist';,1,1,"""Correct."""
+161,1,4,"""SELECT Track.track_title FROM Track, Writes WHERE Writes.track_id = Track.track_id; AND Writes.role = 'lyricist';""",0.22857142857142856,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track.track_title from track, writes where track.track_id = track.track_id and writes.role = 'lyricist';' make it parseable.
+
+Results Analysis: Correct results are contained within the query results.
+
+"""
+162,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role = 'lyricist';,1,1,"""Correct."""
+163,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+164,1,4,FROM Track NATURAL JOIN Writes SELECT DISTINCT track_title Where role = 'lyricist';,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+165,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+166,1,4,"""SELECT DISTINCT Track.title FROM Track, Writes WHERE Writes.role = 'lyricist' AND Writes.track_id =Track.track_id;""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+167,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+168,1,4,SELECT Track.title  FROM Track JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artist ON Writes.artist_id = Artist.artist_id  WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+169,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+170,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes Where Track.track_id=Writes.track_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+171,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+172,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes,  WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select distinct track.track_title from track, artist, writes where track.track_id = writes.track_id and artist.artist_id = writes.artist_id and writes.role = 'lyricist';' make it parseable.
+
+"""
+173,1,4,"""SELECT DISTINCT title FROM Writes, Track, Artist WHERE role = 'lyricist';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+
+There are issues with the following clauses:
+- SELECT clause
+- WHERE clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+WHERE clause: Condition type mismatch: Expected AND, but found SIMPLE.
+
+GROUP BY clause: GROUP BY clause missing
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+- Review your WHERE clause conditions to match the specified requirements.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+"""
+535,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+174,1,4,"""SELECT track_title FROM Track WHERE EXISTS(SELECT track_id, role FROM Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.9714285714285714,1,"""Correct semantics.
+### Additional Information:
+Syntax Analysis: Syntax minor error. The query was changed to 'select track_title from track where exists(select track_id, role from writes where track.track_id = writes.track_id and writes.role = 'lyricist');' make it parseable.
+
+"""
+176,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Track.track_id=Writes.track_id AND Writes.role='lyricist' AND Artist.artist_id=Writes.artist_id;""",1,1,"""Correct."""
+177,1,4,SELECT DISTINCT T.track_title  FROM Track T  JOIN Writes W ON T.track_id = W.track_id  WHERE W.role = 'lyricist';,1,1,"""Correct."""
+179,1,4,"""select distinct Track.title from Track, Writes where Track.track_id = Writes.track_id and Writes.role = 'lyricist';""",0.8857142857142857,1,""""""
+181,1,4,"""SELECT DISTINCT Track.track_title  FROM Writes, Track  WHERE Writes.role= 'lyricist'  AND Writes.track_id = Track.track_id;""",1,1,"""Correct."""
+183,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Artist A, Writes W WHERE W.role = 'lyricist' AND T.track_id = W.track_id AND A.artist_id = W.artist_id;""",1,1,"""Correct."""
+184,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Writes W WHERE T.track_id = W.track_id AND W.role = 'lyricist';""",1,1,"""Correct."""
+185,1,4,"""SELECT DISTINCT track_title FROM Writes W, Track T WHERE W.track_id == T.track_id AND W.role == 'lyricist';""",1,1,"""Correct."""
+186,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+187,1,4,SELECT DISTINCT track_title FROM Track WHERE track_id IN (     SELECT track_id     FROM Writes     WHERE role = 'lyricist');,1,1,"""Correct."""
+188,1,4,SELECT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+189,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+190,1,4,"""SELECT DISTINCT Track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+191,1,4,SELECT DISTINCT Track.track_title FROM Track INNER JOIN Writes ON Track.track_id = Writes.track_id WHERE role = 'lyricist';,1,1,"""Correct."""
+192,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+193,1,4,"""SELECT DISTINCT Track.title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.8857142857142857,1,""""""
+194,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+195,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes WHERE Track.track_id=Writes.track_id AND Artist.artist_id=Writes.artist_id AND Writes.role ='lyricist';""",1,1,"""Correct."""
+196,1,4,"""SELECT track_title FROM Track WHERE EXISTS(SELECT track_id, role FROM Writes  WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist');""",1,1,"""Correct."""
+197,1,4,SELECT Track.title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+198,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Track.track_id=Writes.track_id AND Writes.artist_id=Artist.artist_id AND Writes.role='lyricist';""",1,1,"""Correct."""
+199,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+200,1,4,SELECT t.Title FROM Tracks t JOIN Roles r ON t.TrackID = r.TrackID WHERE r.Role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"tracks"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""", """"writes"""".
+Extra tables: """"roles"""", """"tracks"""".
+Join 1: Mismatch in joined tables for INNER JOIN.
+Expected tables: """"track"""", """"writes"""".
+Found tables: """"roles"""", """"tracks"""".
+Join 1: Mismatch in join condition.
+Expected condition: """"writes"""".""""track_id"""" """"="""" """"track"""".""""track_id"""".
+Found condition: """"tracks"""".""""trackid"""" """"="""" """"roles"""".""""trackid"""".
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"tracks"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+201,1,4,"""SELECT DISTINCT T.track_title  FROM Track T, Artist A, Writes W  WHERE W.artist_id = A.artist_id AND  role='lyricist' AND  W.track_id=T.track_id;""",1,1,"""Correct."""
+202,1,4,SELECT title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE role = 'lyricist',0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+203,1,4,"""SELECT DISTINCT Track_title, Artist.name FROM Track, Artist, Writes WHERE Writes.role = 'lyricist' AND Writes.artist_id =Artist.Artist_id AND Writes.track_id =Track.Track_id ;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"artist"""".""""name"""".
+
+
+Next steps:
+- Remove the extra columns: """"artist"""".""""name"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+206,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Writes.role = 'lyricist' AND Writes.track_id = Track.track_id;""",1,1,"""Correct."""
+208,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+209,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role = 'lyricist';,1,1,"""Correct."""
+536,1,4,"""SELECT DISTINCT track_title FROM Track,Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+210,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE  Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+211,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE role = 'lyricist' AND Track.track_id = Writes.track_id""",1,1,"""Correct."""
+212,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+213,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE Writes.role = 'lyricist' AND Track.track_id = Writes.track_id;""",1,1,"""Correct."""
+214,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND  role = 'lyricist';""",1,1,"""Correct."""
+215,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Writes.track_id = Track.track_id JOIN Artist ON Artist.artist_id = Writes.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+216,1,4,SELECT t.title FROM Track t JOIN Writes w ON t.track_id = w.track_id WHERE w.role = 'lyricist';,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+217,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Artist.artist_id = Writes.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+218,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Writes WHERE role = 'lyricist' AND Track.track_id = Writes.track_id;""",1,1,"""Correct."""
+219,1,4,"""SELECT DISTINCT title  FROM Track, Writes WHERE Track.track_id=Writes.track_id AND role='lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"title"""".
+
+
+Next steps:
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"title"""" from your SELECT clause.
+
+"""
+221,1,4,SELECT Track.title FROM Track WHERE Track.track_id IN (         SELECT Writes.track_id         FROM Writes         WHERE Writes.role = 'lyricist'     );,0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track_id"""",""""track_title"""".
+Extra columns: """"track"""".""""title"""",""""writes"""".""""track_id"""".
+
+
+Next steps:
+- Add the missing columns: """"track_id"""",""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""",""""writes"""".""""track_id"""" from your SELECT clause.
+
+"""
+222,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Artist A, Writes W WHERE T.track_id=W.track_id AND A.artist_id=W.artist_id AND W.role = 'lyricist';""",1,1,"""Correct."""
+223,1,4,SELECT Track.title FROM Track JOIN TrackArtist ta ON t.track_id = ta.track_id JOIN Artist a ON ta.artist_id = a.artist_id JOIN ArtistRole ar ON a.artist_id = ar.artist_id WHERE ar.role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"writes"""".
+Extra tables: """"artist"""", """"artistrole"""", """"trackartist"""", (nested join), (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+224,1,4,"""SELECT DISTINCT Track.track_title FROM Track, Artist, Writes  WHERE Writes.role = 'lyricist'  AND Writes.artist_id = Artist.artist_id AND Writes.track_id = Track.track_id;""",1,1,"""Correct."""
+225,1,4,"""SELECT Track.track_title, STRING_AGG(Artist.name, ', ') FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist' GROUP BY Track.track_id, Track.track_title;""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+- GROUP BY clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected functions.
+Extra functions: """"string_agg""""(""""artist"""".""""name"""", '"""", """"').
+
+GROUP BY clause: GROUP BY clause unexpected
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Remove the extra functions: """"string_agg""""(""""artist"""".""""name"""", '"""", """"') from your SELECT clause.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+226,1,4,"""SELECT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+227,1,4,SELECT Track.track_title FROM Track WHERE Track.track_id IN (SELECT Writes.track_id FROM Writes WHERE Writes.role='lyricist');,1,1,"""Correct."""
+228,1,4,"""SELECT Track.track_title AS Title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyrisist';""",0.2,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- SELECT clause
+
+There are issues with the following clauses:
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+FROM clause: Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+229,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Writes.track_id=Track.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+230,1,4,SELECT DISTINCT  t.track_title FROM Track t JOIN Writes w ON t.track_id = w.track_id WHERE w.role = 'lyricist';,1,1,"""Correct."""
+233,1,4,"""SELECT DISTINCT Track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+234,1,4,"""SELECT country from Album A, Market M where A.album_id = M.album_id AND album_title = 'American Pie';""",0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"country"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""", """"writes"""".
+Extra tables: """"album"""", """"market"""".
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"country"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+235,1,4,"""SELECT DISTINCT t.track_title FROM Track t, Artist a, Writes w WHERE t.track_id = w.track_id AND a.artist_id = w.artist_id AND w.""""role"""" = 'lyricist';""",1,1,"""Correct."""
+236,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Artist A, Writes W WHERE T.track_id = W.track_id AND A.artist_id = W.artist_id AND W.role = 'lyricist';""",1,1,"""Correct."""
+237,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+238,1,4,"""SELECT DISTINCT T.track_title FROM Track T, Writes W WHERE T.track_id = W.track_id AND W.role = 'lyricist';""",1,1,"""Correct."""
+239,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+240,1,4,SELECT DISTINCT track_title FROM Track T JOIN Writes W ON T.track_id = W.track_id WHERE role = 'lyricist';,1,1,"""Correct."""
+241,1,4,"""SELECT DISTINCT track_title FROM Track, Artist, Writes WHERE Artist.artist_id = Writes.artist_id AND Writes.track_id = Track.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+242,1,4,"""SELECT Track.track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.37142857142857144,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""track_title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""track_title"""" from your SELECT clause.
+
+### Additional Information:
+Results Analysis: Correct results are contained within the query results.
+
+"""
+243,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id  JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+244,1,4,SELECT DISTINCT t.title FROM Tracks t  JOIN Track_writers tw ON t.track_id = tw.track_id JOIN Artists a ON t.artist_id = a.artist_id WHERE tw.role = 'lyricist';,0.05714285714285714,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- None.
+
+There are issues with the following clauses:
+- SELECT clause
+- FROM clause
+- WHERE clause
+- GROUP BY clause
+- HAVING clause
+
+Details of the problems:
+SELECT clause: Unexpected DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track"""".""""track_title"""".
+Extra columns: """"tracks"""".""""title"""".
+
+FROM clause: Mismatch in FROM clause tables.
+Missing tables: """"track"""", """"writes"""".
+Extra tables: """"artists"""", """"track_writers"""", """"tracks"""", (nested join).
+Joins: Mismatch in the number of joins.
+
+WHERE clause: Mismatch in WHERE clause presence.
+
+GROUP BY clause: GROUP BY clause missing
+HAVING clause: Mismatch in HAVING clause presence.
+
+
+Next steps:
+- Remove the DISTINCT keyword from your SELECT clause if duplicates are acceptable.
+- Add the missing columns: """"track"""".""""track_title"""" to your SELECT clause.
+- Remove the extra columns: """"tracks"""".""""title"""" from your SELECT clause.
+- Check the FROM clause to ensure you are using the correct tables and joins as required.
+- Remove the WHERE clause if it's not required.
+- Review the GROUP BY clause to ensure you are grouping by the correct columns or expressions.
+- Check the HAVING clause to make sure the conditions applied to the grouped data are correct.
+
+"""
+245,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+246,1,4,"""SELECT Track.title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND Writes.role = 'lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Missing DISTINCT keyword.
+Mismatch in selected columns.
+Missing columns: """"track_title"""".
+Extra columns: """"track"""".""""title"""".
+
+
+Next steps:
+- Add the DISTINCT keyword to eliminate duplicate rows in your SELECT clause.
+- Add the missing columns: """"track_title"""" to your SELECT clause.
+- Remove the extra columns: """"track"""".""""title"""" from your SELECT clause.
+
+"""
+247,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id WHERE role = 'lyricist',1,1,"""Correct."""
+248,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE role = 'lyricist';,1,1,"""Correct."""
+249,1,4,SELECT Track.track_title FROM Track WHERE Track.track_id  IN (SELECT Writes.track_id                                 FROM Writes                                 WHERE role = 'lyricist');,1,1,"""Correct."""
+250,1,4,"""SELECT DISTINCT track_title, artist FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",0.3142857142857143,1,"""### Goal:
+The goal is to retrieve data from 2 tables; select 1 column; filter data based on certain conditions; 
+
+### Detailed Feedback:
+You have correctly constructed the following clauses:
+- FROM clause
+- WHERE clause
+
+There are issues with the following clauses:
+- SELECT clause
+
+Details of the problems:
+SELECT clause: Mismatch in selected columns.
+Extra columns: """"artist"""".
+
+
+Next steps:
+- Remove the extra columns: """"artist"""" from your SELECT clause.
+
+"""
+251,1,4,"""SELECT DISTINCT track_title FROM Track, Writes, Artist WHERE Track.track_id =Writes.track_id AND Artist.artist_id = Writes.artist_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+252,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Writes.track_id = Track.track_id AND Writes.role = 'lyricist';""",1,1,"""Correct."""
+253,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
+254,1,4,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+255,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id=Writes.track_id AND role='lyricist';""",1,1,"""Correct."""
+256,1,4,SELECT DISTINCT track_title FROM Writes NATURAL JOIN Artist NATURAL JOIN Track WHERE role = 'lyricist';,1,1,"""Correct."""
+257,1,4,select distinct track_title from Track join Writes on Track.track_id=Writes.track_id where Writes.role='lyricist';,1,1,"""Correct."""
+258,1,4,"""SELECT DISTINCT t.track_title FROM Track t, Writes w, Artist a WHERE t.track_id = w.track_id AND a.artist_id = w.artist_id AND w.role = 'lyricist';""",1,1,"""Correct."""
+259,1,4,"""SELECT DISTINCT track_title FROM Track, Writes WHERE Track.track_id = Writes.track_id AND role = 'lyricist';""",1,1,"""Correct."""
+260,1,4,SELECT DISTINCT track_title FROM Track JOIN Writes ON Track.track_id=Writes.track_id WHERE role= 'lyricist';,1,1,"""Correct."""
+261,1,4,SELECT DISTINCT track_title FROM Track NATURAL JOIN Writes WHERE Writes.role='lyricist';,1,1,"""Correct."""
+262,1,4,"""SELECT Track.track_title, STRING_AGG(Artist.name, ', ')Artist.name FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricists' GROUP BY Track.track_id, Track.track_title;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+263,1,4,"""SELECT DISTINCT track_title FROM Track, Writes, Artist WHERE Track.track_id = Writes.track_id AND Artist.artist_id = Writes.artist_id AND role = 'lyricist';""",1,1,"""Correct."""
+264,1,4,SELECT DISTINCT Track.track_title FROM Track JOIN Writes ON Track.track_id = Writes.track_id JOIN Artist ON Writes.artist_id = Artist.artist_id WHERE Writes.role = 'lyricist';,1,1,"""Correct."""
