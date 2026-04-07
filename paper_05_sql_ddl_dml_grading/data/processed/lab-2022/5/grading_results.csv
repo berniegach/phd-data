@@ -1,0 +1,1829 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+107,1,5,DELETE FROM Book WHERE isbn = '9781292025823';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+108,1,5,DELETE FROM Book WHERE isbn = '9781292025828';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+109,1,5,DELETE FROM Book WHERE isbn='9781292025888'; SELECT * FROM Copy WHERE isbn='9781292025888';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '9781292025888'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+109,2,5,DELETE FROM Book WHERE isbn='9781292025888'; SELECT * FROM Copy WHERE isbn='9781292025888'; --shows that copies are deleted,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '9781292025888'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+110,1,5,ON DELETE CASCADE,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+111,1,5,DELETE Copy SET isbn;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+112,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+113,1,5,DELETE FROM Book WHERE isbn = '1457247893';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1457247893'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+114,1,5,DELETE FROM Book WHERE isbn = 123456789; -- SELECT * FROM Copy;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '123456789'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+114,2,5,DELETE FROM Book WHERE isbn = '123456789';   SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '123456789'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+115,1,5,"""CREATE TRIGGER correct_4 AFTER DELETE ON Book BEGIN    DELETE FROM Copy(isbn, serial_number, weight, bookcase)       VALUES (isbn.book, serial_number, weight, bookcase); END;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+116,1,5,DELETE FROM Book WHERE isbn= 12345;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '12345'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+117,1,5,"""DELETE FROM Book WHERE isbn = """"9781292025827"""";""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+118,1,5,DELETE FROM Book WHERE isbn = 1627008721;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1627008721'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+119,1,5,DELETE FROM Book WHERE isbn = '99999999999';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '99999999999'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+120,1,5,DELETE FROM Book;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+121,1,5,DELETE FROM Book WHERE isbn = 978129202580;   SELECT * FROM Copy WHERE isbn = 978129202580   Comment: The query should return 0 rows as the copies and book have been deleted.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+122,1,5,DELETE FROM Book WHERE title = 'Manufacturing Consent';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'title' and 'Manufacturing Consent'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+123,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+124,1,5,DELETE FROM Book WHERE title = 'A first course in Database Systems' AND author = 'Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+125,1,5,DELETE FROM BOOK WHERE isbn= '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+126,1,5,"""DELETE FROM Book, WHERE isbn = """"5555"""";""",0.4,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '5555'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'delete from book where isbn = """"5555"""";' make it parseable.
+
+"""
+127,1,5,"""INSERT INTO Book values('9781292025827', 'test_title', 'Jennifer Widom'); INSERT INTO Copy values('9781292025827', 1, 200, 81); INSERT INTO Copy values('9781292025827', 2, 200, 81); DELETE FROM Book WHERE isbn = '9781292025827'; SELECT * FROM Copy WHERE isbn = '9781292025827';""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra InsertStmt statement.
+Extra InsertStmt statement.
+Extra InsertStmt statement.
+Extra SelectStmt statement.
+"""
+128,1,5,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+129,1,5,DELETE FROM Book WHERE isbn = 999999999999; SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '999999999999'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+130,1,5,DELETE FROM Book WHERE isbn = '108031';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '108031'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+131,1,5,"""CREATE TABLE A( FOREIGN KEY (col) REFERENCE B (col2) ON DELETE Book(isbn, title, author) ON DELETE Copy(isbn, serial_number, weight, bookcase)""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+132,1,5,DELETE FROM Book;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+133,1,5,SELECT * FROM Copy C; DELETE FROM Book; SELECT * FROM Copy C;,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+Extra SelectStmt statement.
+Extra SelectStmt statement.
+"""
+134,1,5,DELETE FROM Book WHERE isbn='99999999999';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '99999999999'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+135,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+136,1,5,DELETE FROM Book WHERE author = 'Jennifer Widom',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+137,1,5,DELETE FROM Book WHERE isbn = '978129202582';  SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '978129202582'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+138,1,5,SELECT * FROM Copy WHERE isbn='2881292025830'; --This should give rows   DELETE FROM Book  WHERE isbn='2881292025830';   SELECT * FROM Copy WHERE isbn='2881292025830'; --This will now have no data,0.05714285714285714,1,"""Missing DeleteStmt statement.
+Extra SelectStmt statement.
+"""
+139,1,5,DELETE FROM book WHERE isbn = 9780136006374;   --to check: SELECT * FROM book; SELECT * FROM copy;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '9780136006374'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+140,1,5,"""INSERT INTO Book(isbn, title, author) VALUES('1957', 'The Shining', 'Stephen King'); INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES('1957', '3', '300', '20');    DELETE  FROM Book  WHERE isbn = '1957';   SELECT *  FROM Copy WHERE isbn = '1957';""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1957'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra InsertStmt statement.
+Extra InsertStmt statement.
+Extra SelectStmt statement.
+"""
+141,1,5,DELETE FROM Books WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+142,1,5,"""INSERT INTO Book VALUES ('1234', 'First book', 'Dennis Gabeler'); INSERT INTO Copy VALUES ('1234', '8888', 200, 5);   DELETE FROM Copy WHERE isbn = '1234';   DELETE FROM Book WHERE isbn = '1234';""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+● None.
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ WHERE clause
+
+❗ Problem Details:
+● The DELETE statement should target table 'book', but your query targets 'copy'.
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1234'.
+
+4️⃣ Next steps:
+💡 Please change the target table to 'book'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra InsertStmt statement.
+Extra InsertStmt statement.
+Extra DeleteStmt statement.
+"""
+143,1,5,DELETE FROM Book WHERE isbn='9783161484100';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '9783161484100'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+144,1,5,"""DELETE FROM Book;    -- Now the Book entries will be deleted, and so will be the isbn values of their copies.""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+145,1,5,DELETE FROM book WHERE title = 'A first course in Database Systems';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+146,1,5,DELETE FROM Book WHERE isbn=9876543210987;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '9876543210987'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+147,1,5,DELETE FROM Book WHERE isbn = '1234567891011';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1234567891011'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+148,1,5,DELETE FROM Book WHERE isbn = 9781292025827;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025823';'?
+"""
+149,1,5,DELETE FROM book WHERE isbn = '1';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+150,1,5,DELETE FROM Book where isbn = 9789027439669;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '9789027439669'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+150,2,5,DELETE FROM Book WHERE isbn = 9781292025444     4. The removal of a book must result in all its copies being deleted.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+151,1,5,"""PRAGMA foreign_keys = ON; CREATE TABLE Book(           isbn CHAR(13),           title STRING NOT NULL,           author STRING NOT NULL,           primary key(isbn) );   CREATE TABLE Copy(           isbn CHAR(13),           serial_number INT,           weight INT NOT NULL,           bookcase INT NOT NULL,           PRIMARY KEY (serial_number, isbn),           FOREIGN KEY(isbn)                       REFERENCES Book(isbn)           ON  DELETE  CASCADE            ON UPDATE  CASCADE           NOT DEFERRABLE );   INSERT INTO Book VALUES('9781292025827', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Copy VALUES('9781292025827', 1, 200, 81);   INSERT INTO Copy VALUES('9781292025827', 2, 200, 81);   DELETE FROM book where title = 'A first course in Database Systems';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,5,DELETE FROM Book; SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+Extra SelectStmt statement.
+"""
+153,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+154,1,5,DELETE FROM Book B WHERE B.isbn = 9781292025826;   SELECT * FROM Copy C WHERE C.isbn =9781292025826; -- No result,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'b.isbn' and '9781292025826'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+155,1,5,DELETE FROM book WHERE isbn='1234';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1234'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+156,1,5,DELETE FROM Book where isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+157,1,5,DELETE FROM Book WHERE isbn = 987654321;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '987654321'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+158,1,5,DELETE FROM Book WHERE author = 'Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+159,1,5,DELETE FROM Book WHERE author = 'Jennifer Widom' AND title = 'A first course in Database Systems';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+160,1,5,DELETE FROM book WHERE isbn = 0;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and ''.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+161,1,5,DELETE FROM Book WHERE isbn = '5';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '5'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+162,1,5,"""DELETE FROM Book -- if we assume I can still use the book with isbn 3 I created previous ex. WHERE isbn = 123; SELECT * FROM Copy; -- then this returns nothing, which shows constraint 4 is handled""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+163,1,5,DELETE FROM Book WHERE isbn='9781292025827';   SELECT * FROM Copy WHERE isbn='9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+"""
+164,1,5,DELETE FROM Book WHERE author = 'Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+165,1,5,DELETE FROM Book WHERE isbn = 9781292025828; SELECT * FROM Book; SELECT * FROM Copy; -- We delete the Book and see that corresponding Copies are also removed,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025828.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+Extra SelectStmt statement.
+"""
+166,1,5,DELETE FROM book WHERE isbn = '1234567891';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1234567891'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+167,1,5,DELETE FROM book where isbn = 9781292025827;   SELECT * FROM Copy WHERE isbn  = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+"""
+168,1,5,-- assuming that the update statement fomr q 4 was performed SELECT COUNT(*) FROM Copy; DELETE FROM Book WHERE isbn = 5; SELECT COUNT(*) FROM Copy;,0.05714285714285714,1,"""Missing DeleteStmt statement.
+"""
+169,1,5,DELETE from Book;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+170,1,5,DELETE FROM Book WHERE isbn = '9781292025828';   SELECT * FROM Copy WHERE isbn = '9781292025828'';,0.4,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025828.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'delete from book where isbn = '9781292025828'; select * from copy where isbn = '9781292025828';' make it parseable.
+
+"""
+171,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+172,1,5,DELETE FROM Book WHERE isbn = '9781292025827';   -- This query should now not give any results SELECT * FROM Copy WHERE isbn = '9781292025827';,1,1,"""🟢 Correct."""
+173,1,5,"""-- should be the same as: no isbn in copy is not in book -- so this should print 0 to confirm the constraint 4 DELETE FROM book WHERE book.isbn = '9781292025827'; SELECT EXISTS (SELECT copy.isbn FROM copy, book WHERE copy.isbn ='9781292025827');""",0.05714285714285714,1,"""Missing DeleteStmt statement.
+"""
+174,1,5,DELETE FROM Book WHERE isbn = 300;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '300'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+175,1,5,DELETE from book where isbn = '8781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+176,1,5,DELETE FROM Book WHERE isbn = '978129202582' ;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025823';'?
+"""
+177,1,5,DELETE FROM Book; -- Copy should now be empty as well,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+178,1,5,DELETE FROM Book;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+"""
+179,1,5,DELETE FROM Book WHERE isbn = 9781292025827;    SELECT * FROM Copy;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+"""
+180,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+181,1,5,DELETE FROM BOOK WHERE isbn='999',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '999'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+182,1,5,DELETE FROM book WHERE isbn = '1291012919364';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1291012919364'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+183,1,5,DELETE FROM Book WHERE isbn = '978129202582';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '978129202582' ;'?
+"""
+184,1,5,DELETE FROM Book WHERE isbn =  1234567890 ;   SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1234567890'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+185,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+186,1,5,"""DELETE FROM Book WHERE isbn = """"978129202582"""";""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = """"9781292025827"""";'?
+"""
+187,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+188,1,5,DELETE FROM Book WHERE isbn = 978129202582;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = 9781292025827;'?
+"""
+189,1,5,DELETE FROM book WHERE isbn = 240;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '240'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+190,1,5,"""--   4. The removal of a book must result in all its copies being deleted.   INSERT INTO Book (isbn, title, author) VALUES (1, 'The Stranger', 'Albert Camus');   INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('1', '1', '10', '4');   DELETE FROM Book WHERE isbn = '1';   CREATE ASSERTION copys_deletion CHECK( NOT EXISTS( SELECT * FROM COPY WHERE isbn = '1' ));""",0.05714285714285714,1,"""Missing DeleteStmt statement.
+"""
+191,1,5,DELETE FROM Book WHERE isbn='9781292025828';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025828';'?
+"""
+192,1,5,DELETE FROM Book WHERE isbn='12345678';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '12345678'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+193,1,5,DELETE FROM Book WHERE isbn = '550';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '550'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+194,1,5,DELETE FROM Book WHERE isbn=9781292025827;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = 9781292025827;'?
+"""
+195,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+196,1,5,DELETE FROM Book WHERE isbn = '1984';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1984'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+197,1,5,DELETE FROM Book WHERE isbn = '978129202582';   SELECT * FROM Copy WHERE isbn = '978129202582';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 978129202582.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+"""
+198,1,5,sqlite> DELETE FROM Book WHERE isbn =  978129202582; sqlite> SELECT * FROM Copy;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+199,1,5,DELETE FROM Book WHERE isbn = '345678765134';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '345678765134'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+200,1,5,DELETE FROM Book WHERE isbn = 9781292025827;   DELETE FROM Copy WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra DeleteStmt statement.
+"""
+201,1,5,DELETE FROM Book WHERE isbn = '1292025824';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+201,2,5,DELETE FROM Book WHERE isbn = '1292025824',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+202,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+203,1,5,DELETE FROM Book WHERE isbn = '9781292025827',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+204,1,5,"""DELETE FROM Book WHERE author = """"Jennifer Widom"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+205,1,5,"""DELETE Book(12345,Book,Blue); DELETE Copy(123456,Book,Red);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+206,1,5,DELETE FROM Book WHERE isbn=123456; SELECT * FROM Copy WHERE isbn=123456;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '123456'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+207,1,5,DELETE FROM Book WHERE isbn = 12;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '12'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+208,1,5,DELETE FROM Book WHERE isbn=1;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+209,1,5,"""CREATE TABLE Copy (isbn TEXT, serial_number INT, weight NUMERIC, bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE);""",0.05714285714285714,1,"""Missing DeleteStmt statement.
+Extra CreateStmt statement.
+"""
+210,1,5,DELETE FROM Book WHERE isbn = '1293026830';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+211,1,5,DELETE FROM Book WHERE isbn = '1292025824';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+212,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+213,1,5,delete from Book where isbn = '37';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '37'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+213,2,5,delete from Book where isbn = 2; --given that the statements before have been ran aswell,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '2'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+214,1,5,DELETE FROM Book WHERE author = 'Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+215,1,5,DELETE FROM book WHERE book.author = 'Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'book.author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+216,1,5,DELETE FROM Book WHERE isbn = '9781292025828';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025828';'?
+"""
+217,1,5,"""DELETE From Book Where isbn = """"9781292025827"""";""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = """"9781292025827"""";'?
+"""
+218,1,5,DELETE FROM Books WHERE isbn=978129202582;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = 978129202582;'?
+"""
+219,1,5,DELETE FROM book WHERE isbn = '1000';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1000'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+220,1,5,DELETE FROM Book WHERE title = 'A first course in Database Systems';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+221,1,5,delete from book where isbn =,0.4,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Add a WHERE clause to filter the data as specified.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'delete from book where isbn;' make it parseable.
+
+"""
+222,1,5,delete from book where isbn = 44; select * from copy where isbn = 44; -- none,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '44'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+222,2,5,delete from book where isbn = 44; -- deletes the corresponding Copy,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '44'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+223,1,5,DELETE  FROM Book WHERE isbn = '123';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '123'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+224,1,5,DELETE FROM Book WHERE Book.isbn = '9781292025828';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'book.isbn' and '9781292025828'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+225,1,5,DELETE FROM Book WHERE isbn = 9781292025827;   SELECT * FROM Copy WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+"""
+226,1,5,DELETE FROM book WHERE isbn = 9781292025827; SELECT * FROM copy WHERE isbn = 9781292025827; -- now see if there is no result.,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+Excellent! Your DELETE statement matches the reference.
+Extra SelectStmt statement.
+"""
+227,1,5,DELETE FROM Books WHERE isbn = '9781292025485';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Books WHERE isbn = '9781292025827';'?
+"""
+228,1,5,"""DELETE FROM Book WHERE isbn = 1; SELECT * FROM Copy WHERE isbn = 1 -- this shows 0 books, so that shows that all copies are succesfully deleted;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+229,1,5,DELETE FROM Book WHERE isbn = '695842056982';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '695842056982'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+230,1,5,DELETE FROM Book WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025827';'?
+"""
+231,1,5,"""DELETE FROM Book WHERE author = """"Jennifer Widom"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+232,1,5,delete from Book where isbn = '2';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '2'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+233,1,5,DELETE FROM Book WHERE isbn = 1;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+234,1,5,DELETE FROM Book WHERE isbn = '9781292025828';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025828';'?
+"""
+235,1,5,DELETE FROM Book WHERE isbn = '9781292025828' ;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '9781292025828';'?
+"""
+236,1,5,DELETE FROM Book b WHERE b.title = 'A first course in Database Systems';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'b.title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+237,1,5,--Assume Book and Copy contain exactly and only the rows resulting from the previous questions (and my answers to them). DELETE FROM Book WHERE isbn = 42069; SELECT * FROM Copy; --See that Copy is indeed now empty.,0.05714285714285714,1,"""Missing DeleteStmt statement.
+"""
+238,1,5,DELETE FROM Book WHERE isbn = '1';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+239,1,5,"""DELETE FROM Book WHERE isbn = """"4"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '4'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+240,1,5,DELETE FROM Book WHERE isbn = 9781292025828;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = 9781292025827;'?
+"""
+241,1,5,DELETE FROM book WHERE isbn = '5'; SELECT * FROM copy WHERE isbn = '5';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '5'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+242,1,5,CREATE ASSERTION isbn_deleted CHECK ( NOT EXISTS (  SELECT * FROM Copy,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+243,1,5,DELETE FROM Book where isbn = 12345;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '12345'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+244,1,5,DELETE FROM Book WHERE isbn = '1234-5678';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '1234-5678'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+245,1,5,delete from Book where isbn = '111111';   select * from Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '111111'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+246,1,5,DELETE FROM Book WHERE isbn = '1292025824';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = '1292025824';'?
+"""
+247,1,5,SELECT * FROM Copy; -- to see that there are are copies present of book 12345678   DELETE FROM Book WHERE isbn = 12345678   SELECT * FROM Copy; -- to see that there are no more copies present,0.05714285714285714,1,"""Missing DeleteStmt statement.
+Extra SelectStmt statement.
+"""
+248,1,5,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+249,1,5,DELETE  FROM Book WHERE isbn = 43; SELECT isbn --it should give no results FROM Copy WHERE isbn = 43;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '43'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+250,1,5,SELECT * FROM Copy WHERE isbn = (SELECT isbn FROM Book WHERE author = 'Jennifer Widom');    DELETE FROM Book WHERE author = 'Jennifer Widom';   SELECT * FROM Copy;   You should now see that the books from the first query are not in the second query.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+251,1,5,SELECT * FROM Copy; DELETE FROM Book WHERE isbn='123456789'; SELECT * FROM Copy;,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '123456789'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+Extra SelectStmt statement.
+"""
+252,1,5,"""INSERT INTO Book VALUES('12345', 'Hello World', 'John'); INSERT INTO Copy VALUES('12345', 1, 200, 60);    DELETE FROM Book WHERE isbn='12345'; SELECT * FROM Copy WHERE isbn='12345';""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '12345'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra InsertStmt statement.
+Extra InsertStmt statement.
+Extra SelectStmt statement.
+"""
+253,1,5,DELETE FROM Book WHERE isbn = '73842957334' -- SELECT *  FROM Copy should give null,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '73842957334'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+254,1,5,DELETE FROM Book WHERE isbn = 978129202582 ;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = 978129202582;'?
+"""
+254,2,5,DELETE FROM Book WHERE isbn = 978129202582 ;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'DELETE FROM Book WHERE isbn = 978129202582;'?
+"""
+255,1,5,"""DELETE FROM Book, Copy WHERE isbn = '123456789'""",0.4,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '123456789'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'delete from book where isbn = '123456789';' make it parseable.
+
+"""
+256,1,5,DELETE FROM Book WHERE isbn = '3';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '3'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+257,1,5,Delete FROM Books Where isbn = 2;   Select Count(*) From Copy Where isbn = 2,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'books' where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'isbn' and '2'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+258,1,5,DELETE FROM Book WHERE isbn =  '978129202537'; SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Delete rows from 'book' where isbn = 1292025824.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 1292025824'.
+● Expected operands: 'isbn' and '1292025824'.
+● Found operands: 'isbn' and '978129202537'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""

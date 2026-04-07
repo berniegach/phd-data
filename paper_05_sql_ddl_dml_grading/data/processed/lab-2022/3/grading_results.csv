@@ -1,0 +1,1052 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+107,1,3,"""INSERT INTO Book  VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom'); INSERT INTO Copy VALUES ('9782123456803', 1, 2, 1);""",1,1,"""🟢 Correct."""
+108,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('978129202583', 1, 250, 5);""",1,1,"""🟢 Correct."""
+109,1,3,"""INSERT INTO Copy(isbn,serial_number,weight,bookcase) VALUES ('11111111111',1,200,81);""",1,1,"""🟢 Correct."""
+109,2,3,"""INSERT INTO Copy(isbn,serial_number,weight,bookcase) VALUES ('11111111111',1,200,81);""",1,1,"""🟢 Correct."""
+110,1,3,"""INSERT INTO Copy (isbn, serial number, weight, bookcase) VALUES ('978129202586', '1', '200', '20')""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+111,1,3,"""INSERT INTO Copy(isbn,serial number,weight, bookcase) VALUES ('978125102582',1,200,81)""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+112,1,3,"""INSERT INTO Copy VALUES('69420',123456,300,22);""",1,1,"""🟢 Correct."""
+113,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('654123987', 5, 150, 3);""",1,1,"""🟢 Correct."""
+114,1,3,"""INSERT INTO Copy VALUES (123456789, 123, 1, 2);   --Error: FOREIGN KEY constraint failed""",1,1,"""🟢 Correct."""
+114,2,3,"""-- INSERT INTO Book -- VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Copy VALUES ('1234567', 1234, 100, 2);   -- Error: FOREIGN KEY constraint failed""",0.05714285714285714,1,"""Missing InsertStmt statement.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+115,1,3,"""CREATE TRIGGER vio_2 AFTER INSERT ON Book BEGIN    INSERT INTO Copy(isbn, serial_number, weight, bookcase)       VALUES (618122702582, serial_number, weight, bookcase); END;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+116,1,3,"""INSERT INTO copy (isbn, serial_number, weight, bookcase) VALUES ('111112025827', 'A first course in Database Systems', 'Jennifer Widom');""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 4, found 3.
+● Missing value(s): '23' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+117,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (""""5913356270266"""", 40, 300, 3);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '5913356270266'.
+● Mismatch in values at row 1, serial_number: expected '1', found '40'.
+● Mismatch in values at row 1, weight: expected '200', found '300'.
+● Mismatch in values at row 1, bookcase: expected '23', found '3'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+118,1,3,"""Copy (isbn, serial_number, weight, bookcase) VALUES ('1627008721', 123456, 200, 1);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+119,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) Values ('123123123123', 2, 300, 1);""",1,1,"""🟢 Correct."""
+120,1,3,"""INSERT INTO Copy(isbn, serial_number) VALUES('123', 1);""",1,1,"""🟢 Correct."""
+121,1,3,"""INSERT INTO Copy (isbn, serial_number, weight_grams, bookcase) VALUES (978129202589, 040147, 1000, 1)   Comment: Changed the last number in isbn from 2 to 9.""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+122,1,3,"""INSERT INTO Copy (isbn, serial_number) VALUES (2, 5);""",1,1,"""🟢 Correct."""
+123,1,3,"""INSERT INTO Copy (isbn, serial_number, weight) VALUES ('1234567890123', 73923, 3, 2);""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight'. Insert values: (9789045102252, 1, 1318)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 4.
+● Extra value(s): '2' .
+
+4️⃣ Next steps:
+💡 Remove the extra value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+124,1,3,"""INSERT INTO Copy VALUES(1, 9781345678, 'How to grow plants', 'Quinten Cabo');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found '1'.
+● Mismatch in values at row 1, column 2: expected '123456', found '9781345678'.
+● Mismatch in values at row 1, column 3: expected '300', found 'How to grow plants'.
+● Mismatch in values at row 1, column 4: expected '22', found 'Quinten Cabo'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+125,1,3,"""INSERT INTO Book(isbn, title, author)     VALUES('978129202582', 'A first course in Database Systems', 'Jennifer Widom');""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: column 1
+
+❗ Problem Details:
+● Extra columns: 'author',  'isbn',  'title'.
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '978129202582'.
+
+4️⃣ Next steps:
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: column 1.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 978129202582 A first course in Database Systems Jennifer Widom .
+"""
+126,1,3,"""INSERT INTO Copy values ('303', 45, 90, 3);""",1,1,"""🟢 Correct."""
+127,1,3,"""INSERT INTO Copy Values('2', 42, 420, 3);""",1,1,"""🟢 Correct."""
+128,1,3,"""INSERT INTO copy(isbn,serialnumber,bookcase,weight) VALUES ('12345',4,4,66);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Missing columns: 'serial_number'.
+● Extra columns: 'serialnumber'.
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '12345'.
+● Mismatch in values at row 1, serial_number: expected '1', found '4'.
+● Mismatch in values at row 1, weight: expected '200', found '4'.
+● Mismatch in values at row 1, bookcase: expected '23', found '66'.
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+129,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (123456789000, 77, 100, 17);""",1,1,"""🟢 Correct."""
+130,1,3,"""INSERT INTO Copy VALUES ( 	'37', 2, -110, 9 );""",1,1,"""🟢 Correct."""
+131,1,3,"""INSERT INTO COPY(isbn, serial number, weight, bookcase) VALUES('8787',3','1','2')""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+132,1,3,"""INSERT INTO Copy VALUES ('12345', 1, 28, 3);""",1,1,"""🟢 Correct."""
+133,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (""""1234"""", 1, 200, 3);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (123123123123, 2, 300, 1)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '123123123123', found '1234'.
+● Mismatch in values at row 1, serial_number: expected '2', found '1'.
+● Mismatch in values at row 1, weight: expected '300', found '200'.
+● Mismatch in values at row 1, bookcase: expected '1', found '3'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+134,1,3,"""INSERT INTO Copy(isbn, serial number, weight, bookcase) VALUES ('123123123123' 2. 300,1);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+135,1,3,"""INSERT INTO copy VALUES ('1234567890', 3, 1000, 5);""",1,1,"""🟢 Correct."""
+136,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('999999', 3, 99, 15)""",1,1,"""🟢 Correct."""
+137,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('1234', 12345, 30, 2);""",1,1,"""🟢 Correct."""
+138,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('123456789101', 23, 300, 2);""",1,1,"""🟢 Correct."""
+139,1,3,"""INSERT INTO Copy (isbn, serial_number, weight) VALUES (9789045102252, 1, 1318);""",1,1,"""🟢 Correct."""
+140,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES('2', '3', '300', '20');""",1,1,"""🟢 Correct."""
+141,1,3,"""INSERT INTO Copy(isbn, title, author) VALUES ('01234567', 1000, 1000, 1000);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Missing columns: 'bookcase',  'serial_number',  'weight'.
+● Extra columns: 'author',  'title'.
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '01234567'.
+● Mismatch in values at row 1, serial_number: expected '1', found '1000'.
+● Mismatch in values at row 1, weight: expected '200', found '1000'.
+● Mismatch in values at row 1, bookcase: expected '23', found '1000'.
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+142,1,3,"""INSERT INTO Copy VALUES ('1234', '9999', 200, 5);""",1,1,"""🟢 Correct."""
+143,1,3,"""INSERT INTO Copy VALUES('0000000000000',1,200,81);""",1,1,"""🟢 Correct."""
+144,1,3,"""INSERT INTO Copy VALUES (555, 35555, 433.25, 5678976);     --Now we get Error: FOREIGN KEY constraint failed, and the row is not inserted into the Copy --table""",1,1,"""🟢 Correct."""
+145,1,3,"""INSERT INTO book VALUES ('1234567890123', 'Radboud Universiteit', 'Lisa'); INSERT INTO book VALUES ('1234567890123', 'Universiteit Utrecht', 'Widad');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '1234567890123'.
+● Mismatch in values at row 1, column 2: expected 'A first course in Database Systems', found 'Radboud Universiteit'.
+● Mismatch in values at row 1, column 3: expected 'Jennifer Widom', found 'Lisa'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (9782123456803, 1, 2, 1)
+
+2️⃣ Correct Clauses:
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Row 1 values
+
+❗ Problem Details:
+● Target table mismatch: expected 'copy', but found 'book'.
+● Row 1 has different number of values: expected 4, found 3.
+● Missing value(s): '1' .
+
+4️⃣ Next steps:
+💡 Ensure the INSERT targets the correct table.
+💡 Add the missing value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+⚠️ Your query unexpectedly triggered a unique constraint.
+"""
+146,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (0123456789123, 71713434, 600, 42);""",1,1,"""🟢 Correct."""
+147,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES(978129202580, 1234, 600, 17);""",1,1,"""🟢 Correct."""
+148,1,3,"""INSERT INTO Copy VALUES (1, 10, 1000, 9);""",1,1,"""🟢 Correct."""
+149,1,3,"""INSERT INTO copy VALUES ('1',1,1,1);""",1,1,"""🟢 Correct."""
+150,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('978-90-274-3964-5', '123244', 2, 4);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '978-90-274-3964-5'.
+● Mismatch in values at row 1, serial_number: expected '1', found '123244'.
+● Mismatch in values at row 1, weight: expected '200', found '2'.
+● Mismatch in values at row 1, bookcase: expected '23', found '4'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+150,2,3,"""INSERT INTO Book (isbn, title, author) VALUES (8000002025827, 'A first course in Database Systems', 'Jennifer Widom')""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: column 1
+
+❗ Problem Details:
+● Extra columns: 'author',  'isbn',  'title'.
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '8000002025827'.
+
+4️⃣ Next steps:
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: column 1.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 8000002025827 A first course in Database Systems Jennifer Widom .
+"""
+151,1,3,"""PRAGMA foreign_keys = ON; CREATE TABLE Book(           isbn CHAR(13),           title STRING NOT NULL,           author STRING NOT NULL,           primary key(isbn) );   CREATE TABLE Copy(           isbn CHAR(13),           serial_number,           weight INT NOT NULL,           bookcase INT NOT NULL,           PRIMARY KEY (serial_number),           FOREIGN KEY(isbn)                       REFERENCES Book(isbn) );   INSERT INTO Book VALUES('978129202582', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Copy VALUES ('9789022561423', 1, 2, 69);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,3,"""INSERT INTO Copy VALUES(11, 11, 11, 11);""",1,1,"""🟢 Correct."""
+153,1,3,"""INSERT INTO Copy (isbn, serial_number) VALUES ('12345', '123');""",1,1,"""🟢 Correct."""
+154,1,3,"""INSERT INTO Book  VALUES (978129202581,""""kapa"""",""""noon"""");""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '978129202581'.
+● Mismatch in values at row 1, column 2: expected 'A first course in Database Systems', found 'kapa'.
+● Mismatch in values at row 1, column 3: expected 'Jennifer Widom', found 'noon'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+155,1,3,"""INSERT INTO copy(isbn,serialnumber,bookcase,weight) VALUES ('12345',4,4,66);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Missing columns: 'serial_number'.
+● Extra columns: 'serialnumber'.
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '12345'.
+● Mismatch in values at row 1, serial_number: expected '1', found '4'.
+● Mismatch in values at row 1, weight: expected '200', found '4'.
+● Mismatch in values at row 1, bookcase: expected '23', found '66'.
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+156,1,3,"""INSERT INTO Copy VALUES ( '254678786547', 2, 23, 42);""",1,1,"""🟢 Correct."""
+157,1,3,"""INSERT INTO Copy (isbn,  serial_number, weight, bookcase) VALUES (12345678, 69420,250000, 674);""",1,1,"""🟢 Correct."""
+158,1,3,"""INSERT INTO Copy(isbn,serial_number,weight,bookcase) VALUES ('262', 5, 200, 5);""",1,1,"""🟢 Correct."""
+159,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('0132662256', 135, 120, 8);""",1,1,"""🟢 Correct."""
+160,1,3,"""INSERT INTO copy VALUES (0, 1, 50, 1);""",1,1,"""🟢 Correct."""
+161,1,3,"""INSERT INTO Copy VALUES('2', 1, 1, 1);""",1,1,"""🟢 Correct."""
+162,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (123, 1, 10, 1);""",1,1,"""🟢 Correct."""
+163,1,3,"""INSERT INTO Copy (isbn, serial number, weight, bookcase) VALUES ('3434223735342' ,6 ,400, 4);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+164,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (9873912839032, 3, 320, 341);""",1,1,"""🟢 Correct."""
+165,1,3,"""INSERT INTO Copy VALUES (9781292025828, 123456789012345, 1000, 1);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found '9781292025828'.
+● Mismatch in values at row 1, column 2: expected '123456', found '123456789012345'.
+● Mismatch in values at row 1, column 3: expected '300', found '1000'.
+● Mismatch in values at row 1, column 4: expected '22', found '1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+166,1,3,"""INSERT INTO copy (isbn, serial_number, weight, bookcase) VALUES ('12345678910', '2', '50', 'A23');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '12345678910'.
+● Mismatch in values at row 1, serial_number: expected '1', found '2'.
+● Mismatch in values at row 1, weight: expected '200', found '50'.
+● Mismatch in values at row 1, bookcase: expected '23', found 'A23'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+167,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (122, 1, 420, 1);""",1,1,"""🟢 Correct."""
+168,1,3,"""INSERT INTO Copy(isbn,serial_number,weight,bookcase) VALUES ('5' ,'15' , '0.6', '1');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '5'.
+● Mismatch in values at row 1, serial_number: expected '1', found '15'.
+● Mismatch in values at row 1, weight: expected '200', found '0.6'.
+● Mismatch in values at row 1, bookcase: expected '23', found '1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+169,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('978129202581', 1337, 100, 1);""",1,1,"""🟢 Correct."""
+170,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781234569870', '600', '1');""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 4, found 3.
+● Missing value(s): '23' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+171,1,3,"""INSERT INTO Copy VALUES ('3.1415926536', '0', 200, 3);""",1,1,"""🟢 Correct."""
+172,1,3,"""INSERT INTO Copy(isbn, serialnumber, weight, bookcase) VALUES ('878129202582', 12, 200, 3);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (978129202583, 1, 250, 5)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Missing columns: 'serial_number'.
+● Extra columns: 'serialnumber'.
+● Mismatch in values at row 1, isbn: expected '978129202583', found '878129202582'.
+● Mismatch in values at row 1, serial_number: expected '1', found '12'.
+● Mismatch in values at row 1, weight: expected '250', found '200'.
+● Mismatch in values at row 1, bookcase: expected '5', found '3'.
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+173,1,3,"""INSERT INTO Copy VALUES('54354356', 120, 1, 47669);""",1,1,"""🟢 Correct."""
+174,1,3,"""INSERT INTO Copy VALUES (NULL, 111, 10, 3);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found ''.
+● Mismatch in values at row 1, column 2: expected '123456', found '111'.
+● Mismatch in values at row 1, column 3: expected '300', found '10'.
+● Mismatch in values at row 1, column 4: expected '22', found '3'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+⚠️ Your query unexpectedly triggered a other constraint.
+"""
+175,1,3,"""INSERT INTO copy VALUES ('978129202582','65456', 6, 3);""",1,1,"""🟢 Correct."""
+176,1,3,"""INSERT INTO Copy VALUES ('9567', '123', 'A first course in Database System', 'Jennifer Widom');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found '9567'.
+● Mismatch in values at row 1, column 2: expected '123456', found '123'.
+● Mismatch in values at row 1, column 3: expected '300', found 'A first course in Database System'.
+● Mismatch in values at row 1, column 4: expected '22', found 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+177,1,3,"""INSERT INTO Copy VALUES (1, 1, 100.0, 1); -- my version of isbn is using integers so no apostrophe""",1,1,"""🟢 Correct."""
+178,1,3,"""INSERT INTO Copy VALUES (""""Book"""",1,1,1);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found 'Book'.
+● Mismatch in values at row 1, column 2: expected '123456', found '1'.
+● Mismatch in values at row 1, column 3: expected '300', found '1'.
+● Mismatch in values at row 1, column 4: expected '22', found '1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+179,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (123123123123 , 1, 150, 32 );""",1,1,"""🟢 Correct."""
+180,1,3,"""the table Copy having the following row and no other rows: INSERT TO Copy (isbn, serial_number, weight, bookcase) VALUES ('978129000000', 100, 100, 12);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+181,1,3,"""INSERT INTO Copy VALUES ('500', 99, 100,  5);""",1,1,"""🟢 Correct."""
+182,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES('1928340172937', 123, 400, 3);""",1,1,"""🟢 Correct."""
+183,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('9780439362139', '2', '100', '3');""",1,1,"""🟢 Correct."""
+184,1,3,"""INSERT INTO Copy VALUES('1111111111', '5555555555', 'A', 'B');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found '1111111111'.
+● Mismatch in values at row 1, column 2: expected '123456', found '5555555555'.
+● Mismatch in values at row 1, column 3: expected '300', found 'A'.
+● Mismatch in values at row 1, column 4: expected '22', found 'B'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+185,1,3,"""INSERT INTO Copy VALUES ('9784272035824', 24, 150, 25);""",1,1,"""🟢 Correct."""
+186,1,3,"""INSERT INTO Copy VALUES (""""00000000"""",""""1"""",""""111"""",""""3"""");""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found '00000000'.
+● Mismatch in values at row 1, column 2: expected '123456', found '1'.
+● Mismatch in values at row 1, column 3: expected '300', found '111'.
+● Mismatch in values at row 1, column 4: expected '22', found '3'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+187,1,3,"""INSERT INTO     Copy(isbn, serial_number, weight, bookcase) VALUES ('1234567890123', 23, 600, 3);""",1,1,"""🟢 Correct."""
+188,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (1234, 1111, 10, 5);""",1,1,"""🟢 Correct."""
+189,1,3,"""INSERT INTO copy VALUES (1535, 1, 50, 5);   -- This violates constraint 2 because an ISBN not present in 'book' is trying to be inserted into copy""",1,1,"""🟢 Correct."""
+190,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('1', '1', '10', '4');   -- A copy cannot be added to the database if a book with the copy's isbn does not exists in the table Book""",1,1,"""🟢 Correct."""
+191,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES ('1234', 1, 300, 2);""",1,1,"""🟢 Correct."""
+192,1,3,"""INSERT INTO Copy VALUES ('12345678', 12356789, 42, 3);""",1,1,"""🟢 Correct."""
+193,1,3,"""INSERT INTO Copy(isbn, serialNumber, weight, bookcase) VALUES ('256520', 1, 150, 25);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Extra columns: 'bookcase',  'isbn',  'serialnumber',  'weight'.
+● Mismatch in values at row 1, column 1: expected '69420', found '256520'.
+● Mismatch in values at row 1, column 2: expected '123456', found '1'.
+● Mismatch in values at row 1, column 3: expected '300', found '150'.
+● Mismatch in values at row 1, column 4: expected '22', found '25'.
+
+4️⃣ Next steps:
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+194,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES(2, 2, 12, 'hardcover');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '2'.
+● Mismatch in values at row 1, serial_number: expected '1', found '2'.
+● Mismatch in values at row 1, weight: expected '200', found '12'.
+● Mismatch in values at row 1, bookcase: expected '23', found 'hardcover'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+195,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES('0', '1', '500', '3');""",1,1,"""🟢 Correct."""
+196,1,3,"""INSERT INTO Copy VALUES ('123456', 990, 13, 2);""",1,1,"""🟢 Correct."""
+197,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES('978129202581', '5', '6', '1');""",1,1,"""🟢 Correct."""
+198,1,3,"""INSERT INTO Copy Values('2', 5, 500, 5);""",1,1,"""🟢 Correct."""
+199,1,3,"""INSERT INTO Copy VALUES ('1', 1, 50, 1);""",1,1,"""🟢 Correct."""
+200,1,3,"""INSERT INTO Copy VALUES(77777777777, 200, 1, 90);""",1,1,"""🟢 Correct."""
+201,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781523853960 ', 1, 200, 23);""",1,1,"""🟢 Correct."""
+201,2,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781523853960 ', 1, 200, 23)""",1,1,"""🟢 Correct."""
+202,1,3,"""INSERT INTO Copy VALUES ('12345',1,500,1);""",1,1,"""🟢 Correct."""
+203,1,3,"""INSERT INTO Copy (serial_number, isbn, weight, bookcase) VALUES (1, '123', 200, 3)""",1,1,"""🟢 Correct."""
+204,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (9879022843314, 2, 400, 123);""",1,1,"""🟢 Correct."""
+205,1,3,"""INSERT INTO Copy(isbn,serial number,weight,bookcase) VALUES ('978129202583', 1, 200);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+206,1,3,"""INSERT INTO Copy VALUES(123456,123456, 'test', 2);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (303, 45, 90, 3)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '303', found '123456'.
+● Mismatch in values at row 1, column 2: expected '45', found '123456'.
+● Mismatch in values at row 1, column 3: expected '90', found 'test'.
+● Mismatch in values at row 1, column 4: expected '3', found '2'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+207,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (12395, 2, 34, 5);""",1,1,"""🟢 Correct."""
+208,1,3,"""INSERT INTO Copy VALUES (1,1,1,1);""",1,1,"""🟢 Correct."""
+209,1,3,"""INSERT INTO Copy VALUES ('4202020020219', 1, 200, 81);""",1,1,"""🟢 Correct."""
+210,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781523853960', 1, 200, 23);""",1,1,"""🟢 Correct."""
+211,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781523853960', 1, 200, 23);""",1,1,"""🟢 Correct."""
+212,1,3,"""INSERT INTO COPY(isbn, serial_number ) VALUES ('1', '2'):""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+213,1,3,"""insert into Copy values('38', 1, 500, 1);""",1,1,"""🟢 Correct."""
+213,2,3,"""insert into Copy values(1,1,1,1);""",1,1,"""🟢 Correct."""
+214,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (9789022843307, 2, 100, 10);""",1,1,"""🟢 Correct."""
+215,1,3,"""INSERT INTO copy (isbn, serialnumber, weight, bookcase) VALUES ('999242102512', 1, 200, 3);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Extra columns: 'bookcase',  'isbn',  'serialnumber',  'weight'.
+● Mismatch in values at row 1, column 1: expected '69420', found '999242102512'.
+● Mismatch in values at row 1, column 2: expected '123456', found '1'.
+● Mismatch in values at row 1, column 3: expected '300', found '200'.
+● Mismatch in values at row 1, column 4: expected '22', found '3'.
+
+4️⃣ Next steps:
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+216,1,3,"""INSERT INTO Copy (isbn,serial_number,weight,bookcase) VALUES ('973124202582',50,200,80);""",1,1,"""🟢 Correct."""
+217,1,3,"""INSERT INTO Copy(isbn_copy, serial_number, weight, bookcase) VALUES ('9781292025825',12,12,12);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight', 'bookcase'. Insert values: (9781523853960, 1, 200, 23)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+❌ Row 1: bookcase
+
+❗ Problem Details:
+● Missing columns: 'isbn'.
+● Extra columns: 'isbn_copy'.
+● Mismatch in values at row 1, isbn: expected '9781523853960', found '9781292025825'.
+● Mismatch in values at row 1, serial_number: expected '1', found '12'.
+● Mismatch in values at row 1, weight: expected '200', found '12'.
+● Mismatch in values at row 1, bookcase: expected '23', found '12'.
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+💡 Fix the value at row 1: bookcase.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+218,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (978129202581, 1, 150, 2);""",1,1,"""🟢 Correct."""
+219,1,3,"""INSERT INTO copy VALUES  ('978129202582', 2582, 750, 2);""",1,1,"""🟢 Correct."""
+220,1,3,"""INSERT INTO Copy VALUES (1010101010102, 2, 500.0, 2);""",1,1,"""🟢 Correct."""
+221,1,3,"""insert into book values ('9781292025827', 'book1', 'author1')""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 2: expected 'A first course in Database Systems', found 'book1'.
+● Mismatch in values at row 1, column 3: expected 'Jennifer Widom', found 'author1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 9781292025827 book1 author1 .
+"""
+222,1,3,"""insert into copy values ('42', '42', 1, 1);""",1,1,"""🟢 Correct."""
+222,2,3,"""insert into copy values ('42', '42', 1, 1);""",1,1,"""🟢 Correct."""
+223,1,3,"""INSERT INTO Copy VALUES ('78129202582', 123, 123, 123);""",1,1,"""🟢 Correct."""
+224,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781292025828', 1, 1, 1);""",1,1,"""🟢 Correct."""
+225,1,3,"""INSERT INTO Copy VALUES (1, 1, 500, 2);""",1,1,"""🟢 Correct."""
+226,1,3,"""INSERT INTO Copy(123, 'To kill a mockingbird', 'Harper Lee');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+227,1,3,"""INSERT INTO Copy VALUES ('9783161484100', 5, 199, 3);""",1,1,"""🟢 Correct."""
+228,1,3,"""INSERT INTO Copy VALUES (1, 1, 1, 1);""",1,1,"""🟢 Correct."""
+229,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (123, 321, 100, 12);""",1,1,"""🟢 Correct."""
+230,1,3,"""INSERT INTO Copy(isbn, serial number, weight, bookcase) VALUES ('1234567898765', 3, 500, 12);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+231,1,3,"""INSERT INTO Copy (isbn, serial_number, weight, bookcase) VALUES (978129202582, 12345, 666, 7);""",1,1,"""🟢 Correct."""
+232,1,3,"""insert into Copy values ('2', 1, 5, 5);""",1,1,"""🟢 Correct."""
+233,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (1, 123, 1500, 5);""",1,1,"""🟢 Correct."""
+234,1,3,"""INSERT INTO copy(isbn, serial_number, weight, bookcase) VALUES ('123', 123456, 2.4, 54);""",1,1,"""🟢 Correct."""
+235,1,3,"""INSERT INTO COPY(isbn, serial_number, weight, bookcase) VALUES ('912', 002, 1, 1) ;""",1,1,"""🟢 Correct."""
+236,1,3,"""INSERT INTO Copy VALUES ('non-existent', 123123, 0.9, 1);""",1,1,"""🟢 Correct."""
+237,1,3,"""INSERT INTO Copy VALUES (12345, 23456, 999, 4);""",1,1,"""🟢 Correct."""
+238,1,3,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+239,1,3,"""INSERT INTO Copy VALUES (""""1"""", 1, 1, 1)""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'INSERT INTO Copy VALUES (1, 1, 1, 1);'?
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+240,1,3,"""INSERT INTO Copy VALUES (9789025440374, 12345, 300, 11);""",1,1,"""🟢 Correct."""
+241,1,3,"""INSERT INTO COPY(isbn, serial_number, weight, bookcase) VALUES ('4', 70,  70, 5);""",1,1,"""🟢 Correct."""
+242,1,3,"""INSERT INTO Copy (isbn, title, author) VALUES ('978129202583', 'hello', 'author C');""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Target columns: 'isbn', 'serial_number', 'weight'. Insert values: (9789045102252, 1, 1318)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: isbn
+❌ Row 1: serial_number
+❌ Row 1: weight
+
+❗ Problem Details:
+● Missing columns: 'serial_number',  'weight'.
+● Extra columns: 'author',  'title'.
+● Mismatch in values at row 1, isbn: expected '9789045102252', found '978129202583'.
+● Mismatch in values at row 1, serial_number: expected '1', found 'hello'.
+● Mismatch in values at row 1, weight: expected '1318', found 'author C'.
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: serial_number.
+💡 Fix the value at row 1: weight.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+243,1,3,"""INSERT INTO Copy VALUES(420, 1337, 584.54, 9);""",1,1,"""🟢 Correct."""
+244,1,3,"""INSERT INTO Copy VALUES ('1234-5678',42,37,5);""",1,1,"""🟢 Correct."""
+245,1,3,"""insert into Copy values ('111111', '222222', 300, 74);""",1,1,"""🟢 Correct."""
+246,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('9781523853960', 1, 200, 23);""",1,1,"""🟢 Correct."""
+247,1,3,"""INSERT INTO Copy VALUES (1, 2, 'Kaas is baas', 'Het zuivelinstituut')""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '69420', found '1'.
+● Mismatch in values at row 1, column 2: expected '123456', found '2'.
+● Mismatch in values at row 1, column 3: expected '300', found 'Kaas is baas'.
+● Mismatch in values at row 1, column 4: expected '22', found 'Het zuivelinstituut'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+248,1,3,"""INSERT INTO copy(isbn, serial number, weight, bookcase VALUES ('978129202583', '2', '300', '12');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+249,1,3,"""INSERT INTO copy(isbn, serial_number, weight, bookcase)       VALUES (42, 42, 42, 42);""",1,1,"""🟢 Correct."""
+250,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (1, 1, 1, 1);""",1,1,"""🟢 Correct."""
+251,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES ('5678', 1, 100, 4);""",1,1,"""🟢 Correct."""
+252,1,3,"""INSERT INTO Copy VALUES('11111', 1, 200, 60);""",1,1,"""🟢 Correct."""
+253,1,3,"""INSERT INTO Copy(isbn, serial_numer, weight, bookcase) VALUES('73842957334', 1, 350, 3)""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'copy'. Insert values: (69420, 123456, 300, 22)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 1: column 4
+
+❗ Problem Details:
+● Extra columns: 'bookcase',  'isbn',  'serial_numer',  'weight'.
+● Mismatch in values at row 1, column 1: expected '69420', found '73842957334'.
+● Mismatch in values at row 1, column 2: expected '123456', found '1'.
+● Mismatch in values at row 1, column 3: expected '300', found '350'.
+● Mismatch in values at row 1, column 4: expected '22', found '3'.
+
+4️⃣ Next steps:
+💡 Remove the extra columns from the INSERT statement.
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 1: column 4.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a foreign key constraint, but it did not.
+"""
+254,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES (9789025722166, 123456789, 1000, 1) ;""",1,1,"""🟢 Correct."""
+254,2,3,"""INSERT INTO Copy(isbn, serial_number, weight) VALUES (123, 123, 123) ;""",1,1,"""🟢 Correct."""
+255,1,3,"""INSERT INTO Copy(isbn, serial_number, weight, bookcase) VALUES('111129202582', 1, 320, 3);""",1,1,"""🟢 Correct."""
+256,1,3,"""INSERT INTO Copy VALUES('1', 5, 200, 7);""",1,1,"""🟢 Correct."""
+257,1,3,"""INSERT INTO Copy(isbn,serial_number,weight,bookcase) Values  (1,2,3,4) ;""",1,1,"""🟢 Correct."""
+258,1,3,"""INSERT INTO Copy VALUES('900000000000', 1, 1600, 4);""",1,1,"""🟢 Correct."""

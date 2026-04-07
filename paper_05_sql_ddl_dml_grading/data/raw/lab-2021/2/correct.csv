@@ -1,0 +1,1 @@
+﻿"INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom'); INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A second course in Database Systems', 'Jeffrey D. Ullman');"

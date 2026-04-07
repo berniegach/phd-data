@@ -1,0 +1,2261 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+107,1,4,"""INSERT INTO Copy VALUES ('9781292025827', 1, 200, 81); INSERT INTO Copy VALUES ('9781292025827', 2, 200, 81);   UPDATE Book SET isbn = '9781292025823' WHERE isbn = '9781292025827';   SELECT isbn FROM Copy WHERE isbn = '9781292025823';""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025823'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra InsertStmt statement.
+Extra InsertStmt statement.
+Extra SelectStmt statement.
+"""
+108,1,4,UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+109,1,4,UPDATE Book SET isbn='9781292025888' WHERE isbn='9781292025827'; SELECT * FROM Copy WHERE isbn='9781292025888';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025888'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+109,2,4,UPDATE Book SET isbn='9781292025888' WHERE isbn='9781292025827'; SELECT * FROM Copy WHERE isbn='9781292025888'; --shows new isbn of copies,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025888'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+110,1,4,ON UPDATE CASCADE,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+111,1,4,UPDATE Copy SET serial number WHERE serial number=1;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+112,1,4,UPDATE Book SET isbn = '10' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '10'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+113,1,4,UPDATE Book SET isbn = '1457247893' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1457247893'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+114,1,4,"""--INSERT INTO Book --VALUES --(9781292025827, 'A first course in Database Systems', 'Jennifer Widom');   --INSERT INTO Copy --VALUES --(9781292025827, 1, 200, 81);   --INSERT INTO Copy --VALUES --(9781292025827, 2, 200, 81);    UPDATE Book SET isbn = 123456789 WHERE isbn = 9781292025827; --SELECT * FROM Copy;""",0.05714285714285714,1,"""Missing UpdateStmt statement.
+"""
+114,2,4,"""-- INSERT INTO Copy -- VALUES ('9781292025827', 1, 200, 81);   -- INSERT INTO Copy -- VALUES ('9781292025827', 2, 200, 81);   UPDATE Book SET isbn = '123456789'  WHERE isbn = '9781292025827';   SELECT * FROM Copy;""",0.05714285714285714,1,"""Missing UpdateStmt statement.
+"""
+115,1,4,"""CREATE TRIGGER correct_3 AFTER UPDATE ON Book BEGIN    UPDATE Copy(isbn, serial_number, weight, bookcase)       VALUES (isbn.book, serial_number, weight, bookcase); END;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+116,1,4,UPDATE Book SET isbn = 12345 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+117,1,4,"""UPDATE Book SET isbn = """"850752084723"""" WHERE isbn = """"9781292025827"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '850752084723'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+118,1,4,UPDATE Book SET isbn = 1627008721 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1627008721'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+119,1,4,UPDATE Book SET isbn = '99999999999' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '99999999999'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+120,1,4,UPDATE Book SET isbn = '123' WHERE title = 'A first course in Database Systems';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+121,1,4,UPDATE Book SET isbn = 978129202580 WHERE isbn = 9781292025827;   SELECT * FROM Copy WHERE isbn = 978129202580   Comment: The query should shows that Copies with serial number 1 & 2 have their isbns updated to  978129202580.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+122,1,4,UPDATE Book SET isbn = 22 WHERE title = 'A first course in Database Systems';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '22'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+123,1,4,UPDATE Book SET isbn = '1234567890123' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234567890123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+124,1,4,UPDATE Book SET isbn = '9785555555555' WHERE title = 'A first course in Database Systems' AND author = 'Jennifer Widom';   -- Now you could do SELECT * FROM COPY; to see that the books changed.,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9785555555555'.
+
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+125,1,4,UPDATE Book SET isbn = '1' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+126,1,4,"""UPDATE Book SET isbn = """"5555"""" WHERE isbn = """"9781292025827""""""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '5555'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+127,1,4,UPDATE Book SET isbn = '1337' WHERE isbn = '9781292025827'; SELECT * FROM Copy WHERE isbn = '1337';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1337'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+128,1,4,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+129,1,4,"""UPDATE BOOK    ...> SET isbn = 999999999999    ...> WHERE title = """"A first course in Database Systems""""; SELECT * FROM Copy;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+130,1,4,UPDATE Book  SET isbn = '108031' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '108031'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+131,1,4,"""CREATE TABLE A( FOREIGN KEY (col) REFERENCE B (col2) ON UPDATE[ ('11', 'This', 'Me') ON UPDATE [ ('11', 1, 200, 81),       ('11', 2, 200, 81) ]""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+132,1,4,UPDATE Book SET isbn = '12345' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+133,1,4,SELECT * FROM Copy c; UPDATE Book SET isbn = '123'; SELECT * FROM Copy c;,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123'.
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Add a WHERE clause to filter the data as specified.
+Extra SelectStmt statement.
+Extra SelectStmt statement.
+"""
+134,1,4,UPDATE Book SET isbn = '99999999999' WHERE isbn = '9781292025827',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '99999999999'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+135,1,4,UPDATE Copy SET serialnumber = 1 WHERE isbn = '9781292025827';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Set clause column (isbn)
+
+❗ Problem Details:
+● The UPDATE should target table 'book', but your query uses 'copy'.
+● Missing SET clause for column 'isbn'.
+
+4️⃣ Next steps:
+💡 Update the target table to 'book'.
+💡 Add the SET clause for column 'isbn'.
+"""
+136,1,4,UPDATE Book SET isbn = '88888' WHERE isbn = '9781292025827',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '88888'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+137,1,4,UPDATE Book  SET isbn = '123424' WHERE isbn = '978129202582';  SELECT * FROM Copy;,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123424'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'isbn' and '978129202582'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+138,1,4,SELECT * FROM Copy WHERE isbn='9781292025827'; --This should give 2 rows.   UPDATE Book SET isbn='2881292025830' WHERE isbn='9781292025827';   SELECT * FROM Copy WHERE isbn='9781292025827'; --This will no have data.   SELECT * FROM Copy WHERE isbn='2881292025830'; --This will have 2 rows.,0.05714285714285714,1,"""Missing UpdateStmt statement.
+Extra SelectStmt statement.
+"""
+139,1,4,UPDATE book SET isbn =  9780136006374;   --to check if it was handled correctly: SELECT * FROM book; SELECT * FROM copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9780136006374'.
+Mismatch in WHERE clause presence.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Add a WHERE clause to filter the data as specified.
+"""
+140,1,4,UPDATE Book SET isbn = '1957' WHERE titel = 'A first course in Database Systems' AND author = 'Jennifer Widom';   SELECT * FROM Copy WHERE isbn = '1957';,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1957'.
+
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra SelectStmt statement.
+"""
+141,1,4,UPDATE Books SET isbn = '01234567' WHERE isbn = '9781292025827';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● The UPDATE should target table 'book', but your query uses 'books'.
+● For column 'isbn', the value should be '1292025824', but you provided '01234567'.
+
+4️⃣ Next steps:
+💡 Update the target table to 'book'.
+💡 Fix the value assignment for column 'isbn'.
+"""
+142,1,4,UPDATE Book SET isbn = '1234' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+143,1,4,UPDATE Book SET isbn = '9783161484100' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9783161484100'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+144,1,4,UPDATE Book SET isbn = 42 WHERE isbn = 9781292025827;   --Now all two copies of the book have their isbn also changed to 42.,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '42'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+145,1,4,"""UPDATE book SET isbn = '9781292025827' WHERE author = 'Jennifer Widom'; INSERT INTO copy VALUES ('9781292025827', 1, 200, 1);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025827'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+Extra InsertStmt statement.
+"""
+146,1,4,UPDATE Book SET isbn=9876543210987 WHERE isbn= 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9876543210987'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+147,1,4,UPDATE Book SET isbn = '1234567891011' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234567891011'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+148,1,4,UPDATE Book SET isbn = 1 WHERE title = 'A first course in Database Systems' AND author = 'Jennifer Widom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+149,1,4,UPDATE book SET isbn = '1' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+150,1,4,UPDATE Book SET isbn = 9789027439669 WHERE author = 'Jennifer Widom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9789027439669'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+150,2,4,UPDATE Book SET isbn = 9781292025444 WHERE author = 'Jennifer WIdom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025444'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer WIdom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+151,1,4,"""PRAGMA foreign_keys = ON; CREATE TABLE Book(           isbn CHAR(13),           title STRING NOT NULL,           author STRING NOT NULL,           primary key(isbn) );   CREATE TABLE Copy(           isbn CHAR(13),           serial_number INT,           weight INT NOT NULL,           bookcase INT NOT NULL,           PRIMARY KEY (serial_number, isbn),           FOREIGN KEY(isbn)                       REFERENCES Book(isbn)           ON  DELETE  CASCADE            ON UPDATE  CASCADE           NOT DEFERRABLE );   INSERT INTO Book VALUES('9781292025827', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Copy VALUES('9781292025827', 1, 200, 81);   INSERT INTO Copy VALUES('9781292025827', 2, 200, 81);   UPDATE book SET isbn = '9781292025826' WHERE isbn = '9781292025827';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+152,1,4,UPDATE Book SET isbn = '2000' WHERE isbn='9781292025827'; SELECT * FROM Copy;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '2000'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+153,1,4,UPDATE Book SET isbn = '12345' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+154,1,4,UPDATE TABLE Book B SET B.isbn = 9781292025826  WHERE B.isbn = 9781292025827;   SELECT * FROM Copy C WHERE C.isbn =9781292025826;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+155,1,4,UPDATE book SET isbn=1234 WHERE isbn='9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+156,1,4,UPDATE Book SET isbn = '9781292025000' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+157,1,4,UPDATE Book SET isbn = 987654321 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '987654321'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+158,1,4,UPDATE Book SET isbn = '20' WHERE author = 'Jennifer Widom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '20'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+159,1,4,UPDATE Book SET isbn = '8395618274' WHERE author = 'Jennifer Widom' AND title = 'A first course in Database Systems';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '8395618274'.
+
+ ● Condition type mismatch: Expected SIMPLE, but found AND.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+160,1,4,UPDATE book SET isbn = 0 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided ''.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+161,1,4,UPDATE Book SET isbn = '5' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '5'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+162,1,4,UPDATE Book SET isbn = 123 WHERE isbn = 9781292025827; SELECT * FROM Copy;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+163,1,4,UPDATE Copy SET isbn='2122342324324' WHERE isbn= '9781292025827';   SELECT * FROM Copy WHERE isbn= '9781292025827';,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● The UPDATE should target table 'book', but your query uses 'copy'.
+● For column 'isbn', the value should be '1292025824', but you provided '2122342324324'.
+
+4️⃣ Next steps:
+💡 Update the target table to 'book'.
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+164,1,4,UPDATE Book SET isbn = 987129202589 WHERE author = 'Jennifer Widom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '987129202589'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+165,1,4,"""UPDATE Book SET isbn = 9781292025828 WHERE isbn = 9781292025827; SELECT * FROM Book; SELECT * FROM Copy; -- We change the ISBN of a book, and see that the ISBN's of the copies are also updated""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025828,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+✅ WHERE clause
+
+Excellent! Your UPDATE statement matches the reference.
+Extra SelectStmt statement.
+Extra SelectStmt statement.
+"""
+166,1,4,UPDATE book SET isbn = '42042042069' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '42042042069'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+167,1,4,UPDATE Book SET isbn = 9781292025828 WHERE isbn = 9781292025827;   SELECT * FROM Copy WHERE isbn  = 9781292025828;,0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025828,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+✅ WHERE clause
+
+Excellent! Your UPDATE statement matches the reference.
+Extra SelectStmt statement.
+"""
+168,1,4,UPDATE Book SET isbn = '5' WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '5'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+169,1,4,UPDATE Book SET isbn='9781292025826' WHERE isbn='9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025826'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+170,1,4,UPDATE Book SET isbn = '9781292025828' WHERE isbn = '97812920257';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+171,1,4,UPDATE Book SET isbn = '7285202921879' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '7285202921879'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+172,1,4,UPDATE Book SET isbn = '41724712212' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '41724712212'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+173,1,4,UPDATE book SET isbn = '9781292025813' WHERE isbn = '9781292025827';   SELECT copy.isbn  FROM copy WHERE copy.isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9781292025813'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+174,1,4,UPDATE Book SET isbn = 300 WHERE isbn = 123;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '300'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'isbn' and '123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+175,1,4,UPDATE book set isbn = '8781292025827' where isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+176,1,4,UPDATE Book  SET isbn = '10'  WHERE isbn = '978129202582' ;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '10'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'isbn' and '978129202582'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+177,1,4,UPDATE Book SET isbn=1 WHERE isbn = 9781292025827; -- again no apostrophe,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+178,1,4,"""UPDATE Book SET isbn = """"12345"""" WHERE isbn = """"9781292025827"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+179,1,4,UPDATE Book SET isbn = 123123123123 WHERE isbn = 9781292025827;     SELECT * FROM Copy;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123123123123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+180,1,4,UPDATE Book SET isbn = '978129202582' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+181,1,4,Update BOOK SET isbn = '999' WHERE isbn = '9781292025827',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '999'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+182,1,4,UPDATE book SET isbn = '1291012919364' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1291012919364'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+183,1,4,UPDATE Book SET isbn = '9781292025827' WHERE isbn = '978129202582';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+184,1,4,UPDATE Book SET   isbn = 1234567890 WHERE isbn =  9781292025827 ;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234567890'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+185,1,4,UPDATE Book SET isbn = '9783496728823' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9783496728823'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+186,1,4,"""UPDATE Book SET isbn = """"000000000000"""" WHERE isbn = """"9781292025827"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '000000000000'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+187,1,4,UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+188,1,4,UPDATE Book SET isbn = 123456789 WHERE isbn = 978129202582;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025827,  where isbn = 978129202582.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '9781292025827', but you provided '123456789'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+189,1,4,UPDATE book  SET isbn = 240  WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '240'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+190,1,4,"""--    3. If the isbn of a book in the database changes, then the isbn of copies of that book should also change (so those copies continue to belong to the same book).   UPDATE Book SET isbn = '1' WHERE isbn = '9781292025827';   CREATE ASSERTION copys_isbn_updated CHECK( NOT EXISTS( SELECT * FROM COPY WHERE isbn = '9781292025827' ));""",0.05714285714285714,1,"""Missing UpdateStmt statement.
+"""
+191,1,4,UPDATE Book SET isbn = '9781292025828' WHERE author='Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025828,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+192,1,4,UPDATE Book SET isbn='12345678' WHERE isbn='9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345678'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+193,1,4,UPDATE Book SET isbn = '550' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '550'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+194,1,4,UPDATE Book SET isbn=1 WHERE isbn=9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+195,1,4,UPDATE Book  SET isbn = isbn + 1 WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '(isbn + 1)'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+196,1,4,UPDATE Book SET isbn = '1984' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1984'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+197,1,4,UPDATE Book SET isbn = '9' WHERE isbn = '9781292025827';   SELECT isbn FROM Copy WHERE Bookcase = '81';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+198,1,4,"""sqlite> INSERT INTO Copy Values('9781292025827', 1, 200, 81); sqlite> INSERT INTO Copy Values('9781292025827', 2, 200, 81); sqlite> UPDATE Book SET isbn = '3' WHERE isbn = '9781292025827'; sqlite> SELECT * FROM Copy; INSERT INTO Copy Values('9781292025827', 2, 200, 81);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+199,1,4,UPDATE Book SET isbn = '9781292025827' WHERE isbn = '345678765134';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025827,  where isbn = 978129202582.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 978129202582'.
+● Expected operands: 'isbn' and '978129202582'.
+● Found operands: 'isbn' and '345678765134'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+200,1,4,UPDATE Book SET isbn = 9999999999 WHERE isbn = 9781292025827;   UPDATE Copy  SET isbn = 9999999999 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9999999999'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra UpdateStmt statement.
+"""
+201,1,4,UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+201,2,4,UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+202,1,4,UPDATE Book SET isbn = '12345' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+203,1,4,UPDATE Book SET isbn = '123' WHERE isbn = '9781292025827',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+204,1,4,"""UPDATE Book SET isbn = 978129202585 WHERE author = """"Jennifer Widom"""";""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '978129202585'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+205,1,4,"""UPDATE ('11',Magic,Me) UPDATE [ ('9781292025827', 1, 200, 81),('9781292025827', 2, 200, 81) ]""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+206,1,4,UPDATE Book SET isbn=123459876 WHERE isbn= 123456;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123459876'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'isbn' and '123456'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+207,1,4,UPDATE Book  SET isbn = 12 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+208,1,4,UPDATE Book SET isbn=1 WHERE isbn=9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+209,1,4,"""CREATE TABLE Copy (isbn TEXT, serial_number INT, weight NUMERIC, bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE);""",0.05714285714285714,1,"""Missing UpdateStmt statement.
+Extra CreateStmt statement.
+"""
+210,1,4,UPDATE Book SET isbn = '1293026830' WHERE isbn = '9781292025827',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827''?
+"""
+211,1,4,UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+212,1,4,UPDATE Book  SET isbn = '100' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '100'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+213,1,4,update Book set isbn ='37' where isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '37'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+213,2,4,update Book set isbn = 2 where author = 'Jennifer Widom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '2'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+214,1,4,UPDATE Book SET isbn = 9781292025828 WHERE author = 'Jennifer Widom';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025828,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+215,1,4,UPDATE book  SET isbn = '9210558123470'  WHERE author = 'Jennifer Widom';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9210558123470'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+216,1,4,UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+217,1,4,"""UPDATE Book SET isbn = """"1234567789923"""" WHERE isbn = """"9781292025827"""";""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234567789923'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+218,1,4,UPDATE Books SET isbn=978129202582 WHERE isbn=9781292025827;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● The UPDATE should target table 'book', but your query uses 'books'.
+● For column 'isbn', the value should be '1292025824', but you provided '978129202582'.
+
+4️⃣ Next steps:
+💡 Update the target table to 'book'.
+💡 Fix the value assignment for column 'isbn'.
+"""
+219,1,4,UPDATE book SET isbn = '1000' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1000'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+220,1,4,UPDATE Book SET isbn = 1010101010102 WHERE title = 'A first course in Database Systems';,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1010101010102'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+221,1,4,update book set isbn = '9681222325811' where isbn = '9781292025827',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '9681222325811'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+222,1,4,update book set isbn = 44 where isbn = 9781292025827; select * from copy where isbn = 44 -- copies have been moved to isbn 44,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '44'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+222,2,4,update book set isbn = 44 where isbn = 9781292025827; -- updates the corresponding Copy,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '44'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+223,1,4,UPDATE Book Set isbn = '123'  WHERE isbn = '978129202582';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025827,  where isbn = 978129202582.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '9781292025827', but you provided '123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+224,1,4,UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+225,1,4,UPDATE Book SET isbn = 2 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '2'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+226,1,4,UPDATE Book SET isbn = 123 WHERE isbn = 9781292025827;   SELECT * FROM copy WHERE copy.isbn =123;   -- and now see if it indeed shows the 2 same columns but now having isbn 123.,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+227,1,4,UPDATE Book SET isbn = '9781292025485' WHERE isbn='9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '978129202582' WHERE isbn = '9781292025827';'?
+"""
+228,1,4,UPDATE Book SET isbn = 9781292025828 WHERE isbn = 9781292025827;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+229,1,4,UPDATE Book SET isbn = '695842056982' WHERE isbn = '978129202582';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025827,  where isbn = 978129202582.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '9781292025827', but you provided '695842056982'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+230,1,4,UPDATE Book SET isbn = '1234567898765' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234567898765'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+231,1,4,UPDATE Book SET isbn  = 1 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+232,1,4,update Book set isbn = '1' where isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+233,1,4,UPDATE Book SET isbn = 1 WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+234,1,4,UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""
+235,1,4,"""UPDATE Book SET isbn = '9781292025828' WHERE author = """"Jennifer Widom"""" ;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025828,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+236,1,4,UPDATE Book SET isbn='0123456789' WHERE isbn='9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '0123456789'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+237,1,4,"""UPDATE Book SET isbn = 42069 WHERE isbn = 9781292025827; SELECT * FROM Copy WHERE isbn = 42069; --See that the values for serial number, weight and bookcase match the values of the given rows.""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '42069'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+238,1,4,UPDATE Book SET isbn = '1' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+239,1,4,UPDATE Book SET isbn = '4' WHERE isbn = '9781292025827',0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '4'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+240,1,4,UPDATE Book SET isbn = 9781292025828 WHERE title = 'A first course in Database Systems';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 9781292025828,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Set clauses
+
+3️⃣ Issues found in the following sections:
+❌ WHERE clause
+
+❗ Problem Details:
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+241,1,4,UPDATE book SET isbn = '5' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '5'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+242,1,4,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+243,1,4,"""UPDATE Book SET isbn='12345' WHERE author='Jennifer Widom';   -- as the isbn differs in question 4 and question 3, I assume that a book exists with the same isbn as this copy""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'author' and 'Jennifer Widom'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+244,1,4,UPDATE Book SET isbn='1234-5678' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1234-5678'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+245,1,4,"""These isbns do not match the one from question 3, I have changed that one to match these   update Book set isbn = '111111' where isbn = '9781292025827';   select * from Copy;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+246,1,4,UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827',0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '1292025824' WHERE isbn = '9781292025827';'?
+"""
+247,1,4,SELECT * FROM Copy; -- to see that the isbn is 9781292025827   UPDATE Book SET isbn = 12345678 WHERE isbn = 9781292025827;   SELECT * FROM Copy; -- to see that the isbn changed to 12345678,0.05714285714285714,1,"""Missing UpdateStmt statement.
+Extra SelectStmt statement.
+"""
+248,1,4,"""UPDATE book SET isbn = '9781292025827', serial number = 1, weight = 200, bookcase = 81 WHERE Copy.isbn = book.isbn AND author = 'Jennifer Widom';""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+249,1,4,UPDATE book SET isbn = 43 WHERE isbn = 9781292025827; SELECT isbn --it should give no results FROM Copy WHERE isbn = 9781292025827;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '43'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+250,1,4,UPDATE Book SET isbn = 1000 WHERE isbn = 9781292025827;   SELECT * FROM Copy WHERE isbn = 1000;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1000'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+251,1,4,SELECT * FROM Copy; UPDATE Book SET isbn='123456789' WHERE isbn='9781292025827'; SELECT * FROM Copy;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123456789'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+Extra SelectStmt statement.
+"""
+252,1,4,UPDATE Book SET isbn='12345' WHERE isbn='9781292025827'; SELECT * FROM Copy WHERE isbn='12345';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '12345'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+Extra SelectStmt statement.
+"""
+253,1,4,UPDATE Book SET isbn = '73842957334' WHERE title='A first course in Database Systems',0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+❌ WHERE clause
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '73842957334'.
+● Operands mismatch in condition 'isbn = 9781292025827'.
+● Expected operands: 'isbn' and '9781292025827'.
+● Found operands: 'title' and 'A first course in Database Systems'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+💡 Review your WHERE clause conditions to match the specified requirements.
+"""
+254,1,4,UPDATE Book SET isbn = '1' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+254,2,4,UPDATE Book SET isbn = '1' WHERE isbn = '9781292025827' ;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '1'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+255,1,4,"""UPDATE Book, Copy SET isbn = '123456789' WHERE isbn = '9781292025827'""",0.4,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '123456789'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'update book set isbn = '123456789' where isbn = '9781292025827';' make it parseable.
+
+"""
+256,1,4,UPDATE Book SET isbn = '3' WHERE isbn = '9781292025827';,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● For column 'isbn', the value should be '1292025824', but you provided '3'.
+
+4️⃣ Next steps:
+💡 Fix the value assignment for column 'isbn'.
+"""
+257,1,4,UPDATE Books Set isbn = 2 Where isbn = 9781292025827;,0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Update table 'book' by setting isbn = 1292025824,  where isbn = 9781292025827.
+
+2️⃣ Correct Clauses:
+✅ WHERE clause
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Value for 'isbn'
+
+❗ Problem Details:
+● The UPDATE should target table 'book', but your query uses 'books'.
+● For column 'isbn', the value should be '1292025824', but you provided '2'.
+
+4️⃣ Next steps:
+💡 Update the target table to 'book'.
+💡 Fix the value assignment for column 'isbn'.
+"""
+258,1,4,UPDATE Book SET isbn = '978129202537' WHERE isbn = '9781292025827';,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'UPDATE Book SET isbn = '9781292025828' WHERE isbn = '9781292025827';'?
+"""

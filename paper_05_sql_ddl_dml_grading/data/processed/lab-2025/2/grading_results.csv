@@ -1,0 +1,1426 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+666,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('1234567890', 'Book Title 1', 'Author 1');   INSERT INTO Book (isbn, title, author)  VALUES ('1234567890', 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+667,1,2,"""INSERT INTO Book VALUES (9789023411789, 'Harry Potter', 'Jk.Rowling'), (9789023411789, 'Fantastic Beasts', 'Jk.Rowling');""",1,1,"""🟢 Correct."""
+668,1,2,"""INSERT INTO Book VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom'); INSERT INTO Book VALUES ('9781292025827', 'foo', 'bar');""",1,1,"""🟢 Correct."""
+669,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1234567891012', 'title', 'author'); INSERT INTO Book(isbn, title, author) VALUES ('1234567891012', 'title2', 'author2');""",1,1,"""🟢 Correct."""
+670,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('123', 'abc', 'A B');   INSERT INTO Book (isbn, title, author)  VALUES ('123', 'def', 'Ab C');""",1,1,"""🟢 Correct."""
+671,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1122334455', 'Book1', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1122334455', 'Book2', 'Author B');""",1,1,"""🟢 Correct."""
+672,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('a', 'a', 'a'); INSERT INTO Book (isbn, title, author) VALUES ('a', 'b', 'b');""",1,1,"""🟢 Correct."""
+673,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (12345, 'Book X', 'Author X'); INSERT INTO Book (isbn, title, author) VALUES (12345, 'Book Y', 'Author Y');""",1,1,"""🟢 Correct."""
+674,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9780007203543', 'The Fellowship of the Ring', 'J. R. R. Tolkien');   INSERT INTO Book (isbn, title, author) VALUES ('9780007203543', 'The Two Towers', 'J. R. R. Tolkien');""",1,1,"""🟢 Correct."""
+675,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('1234567890123', 'First Book', 'Author A');   INSERT INTO Book (isbn, title, author)  VALUES ('1234567890123', 'Second Book', 'Author B');""",1,1,"""🟢 Correct."""
+676,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('101', 'BookName1', 'AuthorName1');   INSERT INTO Book (isbn, title, author) VALUES ('101', 'BookName2', 'AuthorName2');""",1,1,"""🟢 Correct."""
+485,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123', 'Book X', 'Author X');   INSERT INTO Book (isbn, title, author) VALUES ('123', 'Book Y', 'Author Y');""",1,1,"""🟢 Correct."""
+677,1,2,"""//i didnt have time to do the quiz, but i took screenshots of all the questions pls give me a pdf with the answers so i can check them myself after doing it on the weekend""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+678,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (9781292025827, A first course in Database Systems, Jennifer Widom);   INSERT INTO Book(isbn, title, author) VALUES (9781292025827, A Street Cat Named Bob, James Bowen);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+679,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 1', 'Author 1'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+680,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781292025827', 'Title A', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('9781292025827', 'Title B', 'Author B');""",1,1,"""🟢 Correct."""
+681,1,2,"""Insert into Book( isbn, title, author) values (9781292025827, The two towers, J.R.R. Tolkien), (9781292025827, The fellowship of the rings, J.R.R. Tolkien);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+682,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'First Book Title', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Second Book Title', 'Author B');""",1,1,"""🟢 Correct."""
+683,1,2,"""INSERT INTO Book VALUES (123,'book1','jim'); INSERT INTO Book VALUES (123,'book2','mibe');""",1,1,"""🟢 Correct."""
+684,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+684,2,2,"""-- First insert: A valid book entry with a unique isbn INSERT INTO Book (isbn, title, author) VALUES (12345, 'The Great Gatsby', 'F. Scott Fitzgerald');   -- Second insert: Another book entry with the same isbn INSERT INTO Book (isbn, title, author) VALUES (12345, 'To Kill a Mockingbird', 'Harper Lee');""",0.05714285714285714,1,"""Missing InsertStmt statement.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+685,1,2,"""INSERT INTO Book BY NAME (SELECT '0-123-45678-9' AS isbn, 'abc' AS title, 'john' AS author); INSERT INTO Book BY NAME (SELECT '0-123-45678-9' AS isbn, 'def' AS title, 'john' AS author);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+686,1,2,"""-- First insert: Add a book with isbn '9781234567890' INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'First Book Title', 'Author One');   -- Second insert: Attempt to add another book with the same isbn '9781234567890' INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Second Book Title', 'Author Two');""",0.05714285714285714,1,"""Missing InsertStmt statement.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+687,1,2,"""insert into Book values (1234567890123, 'Book Title 1', 'Author 1');   insert into Book values (1234567890123, 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+688,1,2,"""INSERT INTO Book VALUES ('123', 'hoi1', 'h'); INSERT INTO Book VALUES ('123', 'hoi2', 'h');""",1,1,"""🟢 Correct."""
+689,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (3, 'Title1', NULL); INSERT INTO Book(isbn, title, author) VALUES (3, 'Title2', NULL);""",1,1,"""🟢 Correct."""
+690,1,2,"""INSERT INTO Book(1234567890abc, """"John Smith"""", """"I love cheese""""); INSERT INTO Book(1234567890abc, """"Jane Smith"""", """"I hate cheese"""");""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+504,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+691,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'One', 'Smith'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Two', 'Amy');""",1,1,"""🟢 Correct."""
+692,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+693,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'Book 1', 'Louaye'); INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'Book 2', 'Chemlali');""",1,1,"""🟢 Correct."""
+694,1,2,"""INSERT INTO Book (isbn, title, author) VALUES(totalyunique, sometitle, somedude); INSERT INTO Book (isbn, title, author) VALUES(totalyunique, sometitle, somedude);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found 'totalyunique'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'sometitle'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'somedude'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found 'totalyunique'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'sometitle'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'somedude'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+695,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('0000000000000', 'Harry Potter', 'J. K. Rowling'); INSERT INTO Book(isbn, title, author) VALUES ('0000000000000', 'Percy Jackson', 'Rick Riordan');""",1,1,"""🟢 Correct."""
+696,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('23456789', 'Daisy', 'J.K. Rowling');   INSERT INTO Book (isbn, title, author) VALUES ('23456789', 'Lily', 'V.E. Schwab');""",1,1,"""🟢 Correct."""
+697,1,2,"""insert into book (isbn, title) value (010101, """"the beauty and the beast""""); insert into book (isbn, title, author) value (010101, """"harry potter and the philosopher's stone"""", """"J.K.Rowling"""");""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+698,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (12345, 'Book One'); INSERT INTO Book (isbn, title, author) VALUES (12345, 'Book Two');""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 2.
+● Missing value(s): 'Jennifer Widom' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 2.
+● Missing value(s): 'Jeffrey D. Ullman' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+699,1,2,"""INSERT INTO Book (isbn, title, author) VALUES('978-0-7432-7356-5', 'Angels and Demons', 'Dan Brown'); INSERT INTO Book (isbn, title, author) VALUES('978-0-7432-7356-5', 'To Kill a Mockingbird', 'Harper Lee');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-0-7432-7356-5'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Angels and Demons'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Dan Brown'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-0-7432-7356-5'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'To Kill a Mockingbird'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Harper Lee'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+700,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 1', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 2', 'Author B');""",1,1,"""🟢 Correct."""
+701,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9780375826689', 'Eragon', 'Paolini'); INSERT INTO Book (isbn, title, author) VALUES ('9780375826689', 'Mistborn', 'Sanderson');""",1,1,"""🟢 Correct."""
+702,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9789044618068','De donkere kamer van Damokles','W.F. Hermans');   INSERT INTO Book(isbn, title, author) VALUES ('9789044618068','Het gouden ei','Tim Krabbé');""",1,1,"""🟢 Correct."""
+703,1,2,"""insert into Book values ('123', 'Hello', 'world'); insert into Book values ('123', 'World', 'hello');""",1,1,"""🟢 Correct."""
+704,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781447256236', 'book 1', 'author 1');   INSERT INTO Book(isbn, title, author) VALUES ('9781447256236', 'book 2', 'author 2')""",1,1,"""🟢 Correct."""
+705,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('1234567890', 'First Book', 'Author A');   INSERT INTO Book (isbn, title, author)  VALUES ('1234567890', 'Second Book', 'Author B');""",1,1,"""🟢 Correct."""
+706,1,2,"""INSERT INTO Book(isbn, title) VALUES('123456789', 'SQL for dummies'); INSERT INTO Book(isbn, title) VALUES('123456789', 'How to succeed without a uni degree');""",1,1,"""🟢 Correct."""
+707,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234', 'Entry one', 'Sample Author');   INSERT INTO Book (isbn, title, author) VALUES ('1234', 'Entry two', 'Different Author');""",1,1,"""🟢 Correct."""
+708,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('12345', 'Book 1', 'Author 1'); INSERT INTO Book(isbn, title, author) VALUES ('12345', 'Book 2', 'Author 2');""",1,1,"""🟢 Correct."""
+709,1,2,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+710,1,2,"""INSERT INTO Book VALUES ('12345', 'Het gouden ei', 'Tim Krabbé') ; INSERT INTO Book VALUES ('12345', 'De donkere kamer van Damokles', 'Willem Frederik Hermans') ;""",1,1,"""🟢 Correct."""
+711,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (1234567890, 'book1', 'author1');   INSERT INTO Book(isbn, title, author) VALUES (1234567890, 'book2', 'author2');""",1,1,"""🟢 Correct."""
+712,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Harry Potter', 'jk Rowling'); INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Second Book', 'Author B');""",1,1,"""🟢 Correct."""
+713,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'Book Title A', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'Book Title B', 'Author B');""",1,1,"""🟢 Correct."""
+714,1,2,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+715,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9783161484100', 'Yurb', 'Yib mcYarb');   INSERT INTO Book (isbn, title, author) VALUES ('9783161484100', 'Hell', 'Randel Student');""",1,1,"""🟢 Correct."""
+716,1,2,"""INSERT INTO Books (isbn, title, author) VALUES (9783161484100, 'The Great Gatsby', 'F Scott Fitzgerald'); INSERT INTO Books (9783161484100, 'To Sir, With Love', 'ER Braithwaite');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+717,1,2,"""INSERT INTO Book VALUES( 17485, 'Data Bases', 'Hiemstra');   INSERT INTO Book VALUES( 17485, 'Information Modeling', 'van Bommel');""",1,1,"""🟢 Correct."""
+718,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Journey through space', 'Hank');   INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Billiebobs cookbook', 'Tom');""",1,1,"""🟢 Correct."""
+719,1,2,"""INSERT INTO Book VALUES (123, 'violate', 'test'), (123, 'violate', 'test')""",1,1,"""🟢 Correct."""
+720,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('141', 'Good_book', 'Decent_author'); INSERT INTO Book(isbn, title, author) VALUES ('141', 'Bad_book', 'Decent_author');""",1,1,"""🟢 Correct."""
+721,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'First Book', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'First Book', 'Author A');""",1,1,"""🟢 Correct."""
+722,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('123', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+723,1,2,"""insert into Book (isbn,title) values ('0123456789101', 'book1'); insert into Book (isbn,title) values ('0123456789101', 'book2');""",1,1,"""🟢 Correct."""
+724,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom'); INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A second course in Database Systems', 'Jeffrey D. Ullman');""",1,1,"""🟢 Correct."""
+725,1,2,"""INSERT INTO Book VALUES (1234567891234, book, author) , (1234567891234, book1, author1);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9789023411789, Harry Potter, Jk.Rowling); (9789023411789, Fantastic Beasts, Jk.Rowling)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+❌ Row 2: column 1
+❌ Row 2: column 2
+❌ Row 2: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9789023411789', found '1234567891234'.
+● Mismatch in values at row 1, column 2: expected 'Harry Potter', found 'book'.
+● Mismatch in values at row 1, column 3: expected 'Jk.Rowling', found 'author'.
+● Mismatch in values at row 2, column 1: expected '9789023411789', found '1234567891234'.
+● Mismatch in values at row 2, column 2: expected 'Fantastic Beasts', found 'book1'.
+● Mismatch in values at row 2, column 3: expected 'Jk.Rowling', found 'author1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+💡 Fix the value at row 2: column 1.
+💡 Fix the value at row 2: column 2.
+💡 Fix the value at row 2: column 3.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+725,2,2,"""Insert INTO Book(isbn, title, author) VALUES('123456', 'book', 'author');   Insert into Book(isbn, title, author) Values('123456', 'book2', 'author2');""",1,1,"""🟢 Correct."""
+726,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('1234567890123', 'Book Title 1', 'Author 1');   INSERT INTO Book (isbn, title, author)  VALUES ('1234567890123', 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+727,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (12342423, 'Dieren', 'Freek Vonk');   INSERT INTO Book(isbn,title,author) VALUES (12342423, 'Planten', 'Bear Grills');""",1,1,"""🟢 Correct."""
+728,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('123456789', 'Book Title 1', 'Author 1'); INSERT INTO Book (isbn, title, author)  VALUES ('123456789', 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+729,1,2,"""INSERT INTO Book (isbn, title) VALUES (123, 'Book A'); INSERT INTO Book (isbn, title) VALUES (123, 'Book B');""",1,1,"""🟢 Correct."""
+730,1,2,"""INSERT INTO Book (isbn, title) VALUES (123, 'Book A'); INSERT INTO Book (isbn, title) VALUES (123, 'Book B');""",1,1,"""🟢 Correct."""
+731,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+732,1,2,"""INSERT INTO Book (isbn, title, Author) VALUES ('1234567890', 'Book One', 'Author A');   INSERT INTO Book (isbn, title, Author) VALUES ('1234567890', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+549,1,2,"""INSERT INTO Book (isbn, title, author) Values (1, """"It's a hard life."""", """"Bach""""); INSERT INTO Book (isbn, title, author) Values (1, """"This is not a book."""", """"No one"""");""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'It's a hard life.'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Bach'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'This is not a book.'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'No one'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+733,1,2,"""INSERT INTO Book VALUES ('11111111111', 'Hard life of a CS student', 'Zeynep Hos'); INSERT INTO Book VALUES ('11111111111', 'Why you can't learn Databases', 'Marlies Jonkers');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+734,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('9781234567890', 'First Book Title', 'Author A'); INSERT INTO Book (isbn, title, author)  VALUES ('9781234567890', 'Second Book Title', 'Author B');""",1,1,"""🟢 Correct."""
+735,1,2,"""INSERT INTO Book VALUES ('10034', 'Cascade not in DuckDB', 'Me'); INSERT INTO Book VALUES ('10034', 'Stop crying', 'You');""",1,1,"""🟢 Correct."""
+736,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9991233444555', 'Moonlight', Silke'); INSERT INTO Book (isbn, title, author) VALUES ('9991233444555', 'Train', 'Evi');""",0.9714285714285714,1,"""Correct semantics.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'insert into book (isbn, title, author) values ('9991233444555', 'moonlight', 'moonlight'); insert into book (isbn, title, author) values ('9991233444555', 'train', 'train');' make it parseable.
+
+"""
+737,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 1', 'Author 1');   constraint INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 2', 'Author 2');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+738,1,2,"""INSERT INTO Book (isbn) VALUES ('1234'), ('1234'); INSERT INTO Book (name) VALUES ('All Tomorrows'), ('Hitchhikers Guide to the Galaxy');""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9780060598242, The Chronicles Of Narnia, C.S. Lewis); (9780060598242, The Shining, Stephen King)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1 values
+❌ Row 2 values
+
+❗ Problem Details:
+● Missing columns: 'author',  'title'.
+● Row 1 has different number of values: expected 3, found 1.
+● Missing value(s): 'The Chronicles Of Narnia' 'C.S. Lewis' .
+● Row 2 has different number of values: expected 3, found 1.
+● Missing value(s): 'The Shining' 'Stephen King' .
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Add the missing value(s) at row 1.
+💡 Add the missing value(s) at row 2.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9780060598266, Dune, Frank Herbert); (9780060598266, The Shining, Stephen King)
+
+2️⃣ Correct Clauses:
+✅ Target table
+
+3️⃣ Issues found in the following sections:
+❌ Target columns
+❌ Row 1 values
+❌ Row 2 values
+
+❗ Problem Details:
+● Missing columns: 'author',  'isbn',  'title'.
+● Extra columns: 'name'.
+● Row 1 has different number of values: expected 3, found 1.
+● Missing value(s): 'Dune' 'Frank Herbert' .
+● Row 2 has different number of values: expected 3, found 1.
+● Missing value(s): 'The Shining' 'Stephen King' .
+
+4️⃣ Next steps:
+💡 Add the missing columns to the INSERT statement.
+💡 Remove the extra columns from the INSERT statement.
+💡 Add the missing value(s) at row 1.
+💡 Add the missing value(s) at row 2.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+⚠️ Your query unexpectedly triggered a other constraint.
+"""
+739,1,2,"""INSERT INTO Book VALUES (12345678, 'title_1', 'author_1'); INSERT INTO Book VALUES (12345678, 'title_2', 'author_2');""",1,1,"""🟢 Correct."""
+740,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1', 'book', 'bob'); INSERT INTO Book(isbn, title,author) VALUES('1', 'book2', 'bob2');""",1,1,"""🟢 Correct."""
+741,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (12345, title, author); INSERT INTO Book (isbn, title, author) VALUES (12345, title2, author2);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '12345'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'title'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'author'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '12345'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'title2'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'author2'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+742,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('978-0136067018', 'Introduction to Algorithms', 'Cormen');   INSERT INTO Book (isbn, title, author) VALUES ('978-0136067018', 'Artificial Intelligence', 'Russell');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-0136067018'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Introduction to Algorithms'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Cormen'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-0136067018'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'Artificial Intelligence'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Russell'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+743,1,2,"""INSERT INTO BOOK VALUES ('123', 'Test 1', 'Ahmet Kaya'); INSERT INTO BOOK VALUES ('123', 'Test 2', 'Necmettin Erbakan');""",1,1,"""🟢 Correct."""
+744,1,2,"""INSERT INTO Book VALUES (1212121212121, winds of winter, george rr martin) , (1212121212121, fire and blood, george rr martin);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+745,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('0123456789876', 'title1', 'author'); INSERT INTO Book(isbn, title, author) VALUES ('0123456789876', 'title2', 'author');""",1,1,"""🟢 Correct."""
+558,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book Title One', 'Author A'), ('1234567890123', 'Book Title Two', 'Author B');""",1,1,"""🟢 Correct."""
+746,1,2,"""INSERT INTO Book VALUES('1', 'book1', 'author1'); INSERT INTO Book VALUES('1', 'book2', 'author2');""",1,1,"""🟢 Correct."""
+747,1,2,"""INSERT INTO Book(isbn, title, author) VALUES(1, a, b); INSERT INTO Book(isbn, title, author) VALUES(1, c, d);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'a'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'b'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'c'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'd'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+748,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'book1', 'author1'); INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'book2', 'author2');""",1,1,"""🟢 Correct."""
+749,1,2,"""INSERT INTO Book VALUES (     55328123,     'Something',     'Someone' ); INSERT INTO Book VALUES (     55328123,     'Something else',     'Someone else' );""",1,1,"""🟢 Correct."""
+750,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1', 'one', 'Mr one'); INSERT INTO Book(isbn, title, author) VALUES ('1', 'two', 'Mr two');""",1,1,"""🟢 Correct."""
+751,1,2,"""INSERT INTO Book(isbn, author, title) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom'); INSERT INTO Book(isbn, author, title) VALUES ('9781292025827', 'A first course in Database Systems', 'Joni Kohrman');""",1,1,"""🟢 Correct."""
+752,1,2,"""INSERT INTO Book VALUES ('9781292025824', 'The Hobbit', 'J.R.R. Tolkien'); INSERT INTO Book VALUES ('9781292025824', 'The Lord of the Rings', 'J.R.R. Tolkien');""",1,1,"""🟢 Correct."""
+752,2,2,"""INSERT INTO Book VALUES (1, 'Tijmen', 'Korsten'); INSERT INTO Book VALUES (1, 'Esther', 'Smit');""",1,1,"""🟢 Correct."""
+752,3,2,"""INSERT INTO Book VALUES (1, 'Tijmen', 'Korsten'); INSERT INTO Book VALUES (1, 'Charlot', 'Korsten');""",1,1,"""🟢 Correct."""
+753,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'First Book', 'Author A');    INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Second Book', 'Author B');""",1,1,"""🟢 Correct."""
+754,1,2,"""INSERT INTO Book(isbn, title, author) VALUES('12324456', 'I who have never known men', 'Jacqueline Harpman'); INSERT INTO Book(isbn, title, author) VALUES('12324456', 'The house in the cerulean sea', 'TJ Klune');""",1,1,"""🟢 Correct."""
+755,1,2,"""insert into Book (isbn,title, author) values (1, 'title', 'author' );   insert into Book (isbn,title, author) values (1, 'title2', 'author2' );""",1,1,"""🟢 Correct."""
+756,1,2,"""INSERT INTO Book (isbn, Title, Author) VALUES ('1234567890', 'First Book', 'Author One'); INSERT INTO Book (isbn, Title, Author) VALUES ('1234567890', 'Second Book', 'Author Two');""",1,1,"""🟢 Correct."""
+757,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'First Book Title', 'First Author'); INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Second Book Title', 'Second Author');""",1,1,"""🟢 Correct."""
+758,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('397', 'Nikola', 'Bog');   INSERT INTO Book (isbn, title, author)  VALUES ('397', 'Sveti', 'Marija');""",1,1,"""🟢 Correct."""
+759,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'title1', 'me1'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'title2', 'me2');""",1,1,"""🟢 Correct."""
+760,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (1234567890, 'Chamber of Secrets', 'Just Kidding Rowling'); INSERT INTO Book (isbn, title, author) VALUES (1234567890, 'Chamber of Secrets', 'Just Kidding Rowling');""",1,1,"""🟢 Correct."""
+761,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1112223330', 'Book', 'Author'); INSERT INTO Book (isbn, title, author) VALUES ('1112223330', 'Book Too', 'Author Too');""",1,1,"""🟢 Correct."""
+762,1,2,"""INSERT INTO Book  VALUES (314, """"De Grijze Jager"""", """"John Flanagan"""");   INSERT INTO Book VALUES (314, """"Inferno"""", """"Dan Brown"""");""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '314'.
+● Mismatch in values at row 1, column 2: expected 'A first course in Database Systems', found 'De Grijze Jager'.
+● Mismatch in values at row 1, column 3: expected 'Jennifer Widom', found 'John Flanagan'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, foo, bar)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '314'.
+● Mismatch in values at row 1, column 2: expected 'foo', found 'Inferno'.
+● Mismatch in values at row 1, column 3: expected 'bar', found 'Dan Brown'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+763,1,2,"""INSERT INTO Book VALUES (111, 'a', 'b'); INSERT INTO Book VALUES (111, 'c', 'b');""",1,1,"""🟢 Correct."""
+764,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1', 'Harry Potter', 'J.K. Rowling'); INSERT INTO Book (isbn, title, author) VALUES ('1', 'The Alchemist', 'Paulo Coelho');""",1,1,"""🟢 Correct."""
+765,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'BookTitle1', 'Author1'); INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'BookTitle2', 'Author2');""",1,1,"""🟢 Correct."""
+766,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123', 'book one', 'A'); INSERT INTO Book (isbn, title, author) VALUES ('123', 'book two', 'B');""",1,1,"""🟢 Correct."""
+767,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (104321, 'Basics of SQL', 'Jane Doe'); INSERT INTO Book (isbn, title, author) VALUES (104321, 'Advanced SQL', 'Janison Doe');""",1,1,"""🟢 Correct."""
+768,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('978-3-16-148410-0',  'A Tale of Two Cities', 'Charles Dickens');   INSERT INTO Book (isbn, title, author) VALUES ('978-3-16-148410-0',  'A Tale of Two Cities', 'Charles Dickens');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'A Tale of Two Cities'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Charles Dickens'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'A Tale of Two Cities'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Charles Dickens'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+769,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567897', 'First Book Title', 'Author One');   -- another book with the same isbn INSERT INTO Book (isbn, title, author) VALUES ('9781234567897', 'Second Book Title', 'Author Two');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '9781234567897'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'First Book Title'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Author One'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 9781234567897 First Book Title Author One .
+"""
+770,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567898985', ' Book A', 'Author A'); INSERT INTO Book (isbn,title, author) VALUES ('1234567898985', 'Book B',' Author B');""",1,1,"""🟢 Correct."""
+771,1,2,"""insert into Book values(123,'hei','lmao'); insert into Book values(123,'caca','pipi');""",1,1,"""🟢 Correct."""
+772,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('222333444555666', 'The start', 'Pieter Jacobsen');    INSERT INTO Book (isbn, title, author)  VALUES ('222333444555666', 'The end', 'Jacob Pietersen');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '222333444555666'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'The start'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Pieter Jacobsen'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '222333444555666'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'The end'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Jacob Pietersen'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+773,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1', 'Book1', 'A'); INSERT INTO Book (isbn, title, author) VALUES ('1', 'Book2', 'B');""",1,1,"""🟢 Correct."""
+774,1,2,"""Insert Into Book(isbn, title, author),  Values ('1111111111111', 'Connor\'s diary', 'Connor Meuleman');   Insert Into Book(isbn, title, author), Values ('1111111111111', 'jan\'s diary', 'Jan');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+580,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A second course in Database Systems', 'Jeffrey D. Ullman');""",1,1,"""🟢 Correct."""
+775,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1234567891011', 'Yusuf', 'Is Muscular');   INSERT INTO Book(isbn, title, author) VALUES ('1210987654321', 'Yusuf', 'Is TA');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1234567891011'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Yusuf'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Is Muscular'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1210987654321'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'Yusuf'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Is TA'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 1234567891011 Yusuf Is Muscular .
+⚠️ You inserted an extra row into 'book': 1210987654321 Yusuf Is TA .
+"""
+776,1,2,"""INSERT INTO BOOK VALUES ('111', 'Test 1', 'Rick Riordan'); INSERT INTO BOOK VALUES ('111', 'Test 2', 'J.R.R. Tolkien');""",1,1,"""🟢 Correct."""
+777,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1', 'Harry Potter', 'JKR');   INSERT INTO Book (isbn, title, author) VALUES ('1', 'LOTR', 'JRT');""",1,1,"""🟢 Correct."""
+778,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1', 'Title1', 'Author1'); INSERT INTO Book(isbn, title, author) VALUES ('1', 'Title52', 'Author7');""",1,1,"""🟢 Correct."""
+779,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (12345, 'Title 1', 'Author 1'); INSERT INTO Book (isbn, title, author) VALUES (12345, 'Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+780,1,2,"""INSERT INTO Book (isbn, title) VALUES ('1223', 'Book 1'); INSERT INTO Book (isbn, title) VALUES ('1223', 'Book 2');""",1,1,"""🟢 Correct."""
+781,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('abc123', 'xxxxx', 'xxxx'); INSERT INTO Book (isbn, title, author) VALUES ('abc123', 'yyyyy', 'yyyy');""",1,1,"""🟢 Correct."""
+782,1,2,"""INSERT INTO books (isbn, title, author, publication_year) VALUES ('1234567890', 'Title 1', 'Author A', 2020);   INSERT INTO books (isbn, title, author, publication_year) VALUES ('1234567890', 'Title 2', 'Author B', '2021');""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+● None.
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Target columns
+❌ Row 1 values
+
+❗ Problem Details:
+● Target table mismatch: expected 'book', but found 'books'.
+● Extra columns: 'publication_year'.
+● Row 1 has different number of values: expected 3, found 4.
+● Extra value(s): '2020' .
+
+4️⃣ Next steps:
+💡 Ensure the INSERT targets the correct table.
+💡 Remove the extra columns from the INSERT statement.
+💡 Remove the extra value(s) at row 1.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+● None.
+
+3️⃣ Issues found in the following sections:
+❌ Target table
+❌ Target columns
+❌ Row 1 values
+
+❗ Problem Details:
+● Target table mismatch: expected 'book', but found 'books'.
+● Extra columns: 'publication_year'.
+● Row 1 has different number of values: expected 3, found 4.
+● Extra value(s): '2021' .
+
+4️⃣ Next steps:
+💡 Ensure the INSERT targets the correct table.
+💡 Remove the extra columns from the INSERT statement.
+💡 Remove the extra value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+783,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9780142414934', 'Paper Towns', 'John Green'); INSERT INTO Book(isbn, title, author) VALUES ('9780142414934', Looking for Alaska', 'John Green');""",0.9714285714285714,1,"""Correct semantics.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'insert into book(isbn, title, author) values ('9780142414934', 'paper towns', 'john green'); insert into book(isbn, title, author) values ('9780142414934', 'paper for alaska', 'john green');' make it parseable.
+
+"""
+784,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (500, 'Legend of melk', 'Campina');   INSERT INTO Book (isbn, title, author) VALUES (500, 'Citroen', 'Dubro');""",1,1,"""🟢 Correct."""
+785,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'First Book', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Second Book', 'Author B');""",1,1,"""🟢 Correct."""
+786,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781292025827, 'Database Systems-course for beginners ', 'Ioana Ofrim'); INSERT INTO Book(isbn, title, author) VALUES (9781292025827', 'Database Systems advanced ', 'Isabela Negoita');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+786,2,2,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+787,1,2,"""INSERT INTO Book(isbn, title, author) VALUES('isbn1001', 'name', 'person'); INSERT INTO Book(isbn, title, author) VALUES('isbn1001', 'name', 'person');""",1,1,"""🟢 Correct."""
+788,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('0123456789', 'interesting book', 'VIP'); INSERT INTO Book (isbn, title, author) VALUES ('0123456789', 'another book', 'someone else');""",1,1,"""🟢 Correct."""
+789,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Book Title 1', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Book Title 2', 'Author B');""",1,1,"""🟢 Correct."""
+790,1,2,"""INSERT INTO Book VALUES('1', 'title', 'author'); INSERT INTO Book VALUES('1', 'title1', 'author1');""",1,1,"""🟢 Correct."""
+597,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781387207770', 'Hunger games', 'Suzzane Collins'); INSERT INTO Book(isbn, title, author) VALUES ('9781387207770', 'miracle', 'Diana');""",1,1,"""🟢 Correct."""
+791,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1234', 'Harry Potter',  'Jk rowling');   INSERT INTO Book(isbn, title, author) VALUES ('1234', 'Hunger Games',  'not JK rowling');""",1,1,"""🟢 Correct."""
+600,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (1234567, 'Hello kitty', 'Matthew Hijuko'); INSERT INTO Book (isbn, title, author) VALUES (2468101, 'Dora the Explorer', 'Mathias Square');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1234567'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Hello kitty'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Matthew Hijuko'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '2468101'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'Dora the Explorer'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Mathias Square'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 1234567 Hello kitty Matthew Hijuko .
+⚠️ You inserted an extra row into 'book': 2468101 Dora the Explorer Mathias Square .
+"""
+792,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('0000000000000', 'Book1', 'Author1'); INSERT INTO Book(isbn, title, author) VALUES ('0000000000000', 'Book2', 'Author2');""",1,1,"""🟢 Correct."""
+793,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123456', 'BookOne', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('123456', 'BookTwo', 'Author B');""",1,1,"""🟢 Correct."""
+794,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9780060598242', 'The Chronicles Of Narnia', 'C.S. Lewis'), ('9780060598242', 'The Shining', 'Stephen King');   INSERT INTO Book (isbn, title, author) VALUES ('9780060598266', 'Dune', 'Frank Herbert'), ('9780060598266', 'The Shining', 'Stephen King');""",1,1,"""🟢 Correct."""
+795,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Hope_thisisright', 'John Mall');   INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Blablablae', 'Johny Mall');""",1,1,"""🟢 Correct."""
+796,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1', 'Test1', 'Rickie'); INSERT INTO Book (isbn, title, author) VALUES ('1', 'Hello', 'Jaapie');""",1,1,"""🟢 Correct."""
+797,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('93011452', 'Divide and Conquer', 'Robert Robert'); INSERT INTO Book (isbn, title, author) VALUES ('93011452', 'The dangers of plagiarism', 'Bjorn Bjørn');""",1,1,"""🟢 Correct."""
+798,1,2,"""INSERT INTO Book VALUES (1, 'Dikkie Dik', 'Arthur van Norden'); INSERT INTO Book VALUES (1, 'Dikkie Dun', 'Arthur van Zuiden');""",1,1,"""🟢 Correct."""
+799,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('1234567891011', 'hi');   INSERT INTO Book (isbn, title, author) VALUES ('1234567891011', 'hello');""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 2.
+● Missing value(s): 'Jennifer Widom' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 2.
+● Missing value(s): 'Jeffrey D. Ullman' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+800,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', '1', 'a'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', '2', 'b');""",1,1,"""🟢 Correct."""
+801,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234', 'T1', 'A1'); INSERT INTO Book (isbn, title, author) VALUES ('1234', 'T2', 'A2');""",1,1,"""🟢 Correct."""
+801,2,2,"""INSERT INTO Book VALUES (...), (..);   different isbns""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+802,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Title one', 'Author One');   INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Title Two', 'author');""",1,1,"""🟢 Correct."""
+803,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9789027439642', 'Structured Computer Organization', 'Andrew S. Tanenbaum'); INSERT INTO Book (isbn, title, author) VALUES ('9789027439642', 'Discrete Mathematics and Its Applications', 'Kenneth Rosen');""",1,1,"""🟢 Correct."""
+804,1,2,"""INSERT INTO Book(isbn, title, author) VALUES('1111111111111', 'hello') ;   INSERT INTO Book(isbn, title, author) VALUES('1111111111111', 'other');""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 2.
+● Missing value(s): 'Jennifer Widom' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1 values
+
+❗ Problem Details:
+● Row 1 has different number of values: expected 3, found 2.
+● Missing value(s): 'Jeffrey D. Ullman' .
+
+4️⃣ Next steps:
+💡 Add the missing value(s) at row 1.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+805,1,2,"""--Same primary key inserted twice.  INSERT INTO Book(isbn, title, author)  VALUES ('102', 'title', 'author'), ('102', 'title', 'author');""",0.05714285714285714,1,"""Missing InsertStmt statement.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+806,1,2,"""INSERT INTO Book (isbn, title author) VALUES (""""2382389329823"""", """"What if?"""", """"Randall Munroe"""");   INSERT INTO Book (isbn, title author) VALUES (""""2382389329823"""", """"Atomic Habits"""", """"James Clear"""");""",0.2857142857142857,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '2382389329823'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'what if?'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'randall if?'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '2382389329823'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'what habits'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'randall habits'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'insert into book (isbn, title, author) values (""""2382389329823"""", """"what if?"""", """"randall if?""""); insert into book (isbn, title, author) values (""""2382389329823"""", """"what habits"""", """"randall habits"""");' make it parseable.
+
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+807,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1999999999', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1999999999', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+808,1,2,"""INSERT INTO BOOK VALUES ('444', 'Test 1', 'Ray Bradbury'); INSERT INTO BOOK VALUES ('999', 'Test 2', 'Aldous Huxley');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '444'.
+● Mismatch in values at row 1, column 2: expected 'A first course in Database Systems', found 'Test 1'.
+● Mismatch in values at row 1, column 3: expected 'Jennifer Widom', found 'Ray Bradbury'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Insert values: (9781292025827, foo, bar)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: column 1
+❌ Row 1: column 2
+❌ Row 1: column 3
+
+❗ Problem Details:
+● Mismatch in values at row 1, column 1: expected '9781292025827', found '999'.
+● Mismatch in values at row 1, column 2: expected 'foo', found 'Test 2'.
+● Mismatch in values at row 1, column 3: expected 'bar', found 'Aldous Huxley'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: column 1.
+💡 Fix the value at row 1: column 2.
+💡 Fix the value at row 1: column 3.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+⚠️ You inserted an extra row into 'book': 444 Test 1 Ray Bradbury .
+⚠️ You inserted an extra row into 'book': 999 Test 2 Aldous Huxley .
+"""
+809,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('12345', 'Title 1', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('12345', 'Title 2', 'Author B');""",1,1,"""🟢 Correct."""
+616,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('111111111', 'Book1', 'Author1'); INSERT INTO Book (isbn, title, author) VALUES ('111111111', 'Book2', 'Author2');""",1,1,"""🟢 Correct."""
+810,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('39592332', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('39592332', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+810,2,2,"""INSERT INTO Book(isbn, title, author) VALUES('1234', 'Book1', 'me');   INSERT INTO Book(isbn, title, author) VALUES('1234', 'Book2', 'you');""",1,1,"""🟢 Correct."""
+811,1,2,"""insert into Book (isbn, title, author) VALUES (1, 'y', 'F.'); insert into Book (isbn, title, author) VALUES (1, 'k', 'n.');""",1,1,"""🟢 Correct."""
+812,1,2,"""INSERT INTO Book (isbn, title, author ) VALUES ('321', 'ok', 'Dave');   INSERT INTO Book (isbn, title, author ) VALUES ('321', 'notok', 'evaD');""",1,1,"""🟢 Correct."""
+813,1,2,"""INSERT INTO Book VALUES ('9781402894626', 'Pride and Prejudice'); INSERT INTO Book VALUES ('9781402894626', 'Sense and Sensibility');""",1,1,"""🟢 Correct."""
+814,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('978-3-16-148410-0', 'Introduction to Databases', 'Evie Allison');   INSERT INTO Book (isbn, title, author)  VALUES ('978-3-16-148410-0', 'Advanced SQL Techniques', 'Leopold Ogden');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Introduction to Databases'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Evie Allison'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'Advanced SQL Techniques'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Leopold Ogden'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+815,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('123456789', 'The Colour of Magic', 'Terry Pratchett');   INSERT INTO Book (isbn, title, author)  VALUES ('123456789', 'The Light Fantastic', 'Terry Pratchett');""",1,1,"""🟢 Correct."""
+816,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Sample Book 1', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Sample Book 2', 'Author B');""",1,1,"""🟢 Correct."""
+817,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('56789', 'Book Title 1', 'Author Name 1'); INSERT INTO Book (isbn, title, author)  VALUES ('56789', 'Book Title 2', 'Author Name 2');""",1,1,"""🟢 Correct."""
+818,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book Title 1', 'Author 1');   INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+819,1,2,"""INSERT INTO Book (isbn, title, author) values (1, 'Harry Potter 1', 'JK Rowling');   INSERT INTO Book (isbn, title, author) values (1, 'Harry Potter 2', 'JK Rowling');""",1,1,"""🟢 Correct."""
+820,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (123, 'Cool book', 'Cool author');   INSERT INTO Book (isbn, title, author) VALUES (123, 'Nice book', 'Nice author');""",1,1,"""🟢 Correct."""
+821,1,2,"""INSERT INTO Book VALUES ('2334-2968', 'Cascade does not work with foreign key HELP', 'Admin'); INSERT INTO Book VALUES ('2334-2968', 'Cascade is in DuckDB', 'Aliens');""",1,1,"""🟢 Correct."""
+623,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (12345, 'The Hobbit', 'J.R.R. Tolkien'); INSERT INTO Book(isbn, title, author) VALUES (12345, 'The Hunger Games', 'Suzanne Collins');""",1,1,"""🟢 Correct."""
+822,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123456', 'Book One', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('123456', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+823,1,2,"""INSERT INTO BOOK VALUES ('321', 'Test_1', 'Neset Ertas'); INSERT INTO BOOK VALUES ('321', 'Test_2', 'Hacı Tasan');""",1,1,"""🟢 Correct."""
+823,2,2,"""-- First insert with a unique ISBN INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 1', 'Author A');   -- Second insert with the same ISBN, which violates the unique constraint INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book Title 2', 'Author B');""",0.05714285714285714,1,"""Missing InsertStmt statement.
+Missing InsertStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+824,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+825,1,2,"""INSERT INTO Book(isbn, title, author) VALUES('9781292025827', 'The secret history', 'Donna Tartt'); INSERT INTO Book(isbn, title, author) VALUES('9781292025827', 'The Goldfinch', 'Donna Tartt');""",1,1,"""🟢 Correct."""
+826,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('9780123456789', 'Book 1', 'Author 1');   INSERT INTO Book (isbn, title, author)  VALUES ('9780123456789', 'Book 2', 'Author 2');""",1,1,"""🟢 Correct."""
+827,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom'); INSERT INTO Book (isbn, title, author) VALUES ('9781292025827', 'Another Database Book', 'Some Other Author');""",1,1,"""🟢 Correct."""
+828,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1', 'Kip', 'Henk'); INSERT INTO Book (isbn, title, author) VALUES ('1', 'Sate', 'Klaas');""",1,1,"""🟢 Correct."""
+829,1,2,"""INSERT INTO Book (isbn, title, author) SELECT isbn, title, author FROM Book b1 WHERE isbn = 'b1' ; INSERT INTO Book (isbn, title, author) SELECT isbn, title, author FROM Book b2 WHERE b1.isbn = b2.isbn AND b1.title != b2.title ;""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Inserted values
+
+❗ Problem Details:
+● Could not find values.
+
+4️⃣ Next steps:
+💡 Ensure the values are specified.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Inserted values
+
+❗ Problem Details:
+● Could not find values.
+
+4️⃣ Next steps:
+💡 Ensure the values are specified.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+830,1,2,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+831,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('69420', 'One of us is lying', 'Karen M. McManus'); INSERT INTO Book (isbn, title, author) VALUES ('69420', 'Dolfje Weerwolfje', 'Paul van Loon');""",1,1,"""🟢 Correct."""
+832,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (123456, 'Once upon a time...', 'Mark'); INSERT INTO Book (isbn, title, author) VALUES (123456, 'Another upon a time...', 'Bob');""",1,1,"""🟢 Correct."""
+833,1,2,"""INSERT INTO Book(isbn, title, author) VALUES(1234, Title1, Author1);   INSERT INTO Book(isbn, title, author) VALUES(1234, Title2, Author1);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1234'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'title1'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'author1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1234'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'title2'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'author1'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+834,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123-456-789', 'Book A', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('123-456-789', 'Book B', 'Author B');""",1,1,"""🟢 Correct."""
+835,1,2,"""INSERT INTO Book VALUES ('0', 'placeholder', 'placeholder'); INSERT INTO Book VALUES ('0', 'placeholder', 'placeholder');""",1,1,"""🟢 Correct."""
+836,1,2,"""INSERT INTO Book (isbn, title, author) VALUES('12345', 'title_1', 'author_1'); INSERT INTO Book (isbn, title, author) VALUES('12345', 'title_2', 'author_2');""",1,1,"""🟢 Correct."""
+837,1,2,"""INSERT INTO Book VALUES (123, 'Harry Potter', 'J.K. Rowling');   INSERT INTO Book VALUES (123, 'To Kill a Mockingbird', 'Harper Lee');""",1,1,"""🟢 Correct."""
+838,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (12345, 'Treasure Island', 'Robert Louis Stevenson'); INSERT INTO Book(isbn, title, author) VALUES (12345, 'Dracula',  'Bram Stoker');""",1,1,"""🟢 Correct."""
+839,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123', 'Book 1', 'Author 1'); INSERT INTO Book (isbn, title, author) VALUES ('123', 'Book 2, 'Author 2');""",0.9714285714285714,1,"""Correct semantics.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'insert into book (isbn, title, author) values ('123', 'book 1', 'author 1'); insert into book (isbn, title, author) values ('123', 'book 2', 'author 2');' make it parseable.
+
+"""
+840,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book1', 'Author1');   INSERT INTO Book (isbn, title, author) VALUES ('1234567890', 'Book2', 'Author2');""",1,1,"""🟢 Correct."""
+841,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9789025470722', 'Wormmaan', 'Mariken Heitman'); INSERT INTO Book (isbn, title, author) VALUES ('9789025470722', 'Wormmaan', 'Mariken Heitman');""",1,1,"""🟢 Correct."""
+842,1,2,"""INSERT INTO Book VALUES('1', 'Learn Microsoft Azure', 'Mohamed Wali'); INSERT INTO Book VALUES('1', 'Git Version Control Cookbook', 'Aske Olsson');""",1,1,"""🟢 Correct."""
+843,1,2,"""INSERT INTO BOOK(isbn, title, author)  VALUES ('9781493927111', 'Understanding Analysis, 'Stephen Abbot');   INSERT INTO BOOK(isbn, title, author)  VALUES ('9781493927111', 'Calculus', 'Christopher Essex');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+844,1,2,"""INSERT INTO Book (isbn, title, author) VALUES (123456, 'a', 'a'); INSERT INTO Book (isbn, title, author) VALUES (123456, 'b', 'b');""",1,1,"""🟢 Correct."""
+845,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1000000001000', 'Book One', 'Author A'); INSERT INTO Book (isbn, title, author) VALUES ('1000000001000', 'Book Two', 'Author B');""",1,1,"""🟢 Correct."""
+846,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('131', 'Beautiful book', 'John Smith');  INSERT INTO Book(isbn, title, author) VALUES ('131', 'Ugly book', 'John Henderson');""",1,1,"""🟢 Correct."""
+639,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('978-3-16-148410-0', 'The Great Library', 'John Doe');   INSERT INTO Book (isbn, title, author) VALUES ('978-3-16-148410-0', 'The Great House', 'Johnny Moose');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'The Great Library'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'John Doe'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'The Great House'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Johnny Moose'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+847,1,2,"""INSERT INTO Book(isbn, title, author) VALUES('1234', 'Avengers', 'Stan lee');   INSERT INTO Book(isbn, title, author) VALUES('1234', 'Hobbit', 'J.R.R. Tolkien');""",1,1,"""🟢 Correct."""
+848,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('123456', 'origninal book', 'first author'); INSERT INTO Book(isbn, title, author) VALUES ('123456', 'second book', 'second author');""",1,1,"""🟢 Correct."""
+849,1,2,"""INSERT INTO Book(isbn, title, author)  VALUES ('141', 'Good_book', 'Decent_author'); INSERT INTO Book(isbn, title, author)  VALUES ('141', 'Bad_book', 'Decent_author');""",1,1,"""🟢 Correct."""
+850,1,2,"""INSERT INTO Book (isbn, title, author) values ('1122', 'the children', 'van Keulen'),  ('1122', 'grandfathers', 'Helgen');""",1,1,"""🟢 Correct."""
+851,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567891234', 'Book One', 'Author One'); INSERT INTO Book (isbn, title, author) VALUES ('1234567891234', 'Book Two', 'Author Two');""",1,1,"""🟢 Correct."""
+852,1,2,"""INSERT INTO Book (Isbn, Title, Author) VALUES (1, 'Test', 'James'); INSERT INTO Book (Isbn, Title, Author) VALUES (1, 'Test 2', 'James 2');""",1,1,"""🟢 Correct."""
+853,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('111111111', 'Title B', 'Author A')   INSERT INTO Book (isbn, title, author) VALUES ('111111111', 'Title A', 'Author B')""",0.9714285714285714,1,"""Correct semantics.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'insert into book (isbn, title, author) values ('111111111', 'title a', 'author a'); insert into book (isbn, title, author) values ('111111111', 'title a', 'author a');' make it parseable.
+
+"""
+854,1,2,"""insert into book values ('11', 'name', 'author'); insert into book values ('11', 'name2', 'author');""",1,1,"""🟢 Correct."""
+855,1,2,"""INSERT INTO Book(isbn, author, title) VALUES('9788426232427', 'Zogarth', 'Primal Hunter 1'); INSERT INTO Book(isbn, author, title) VALUES('9788426232427', 'Zogarth', 'Primal Hunter 2');""",1,1,"""🟢 Correct."""
+856,1,2,"""INSERT INTO Book VALUES (1, 'Mistborn: The Final Empire', 'Brandon Sanderson'); INSERT INTO Book VALUES (1, 'Mistborn: The Well of Ascension', 'Brandon Sanderson');""",1,1,"""🟢 Correct."""
+857,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'Book Title A', 'Author A');   INSERT INTO Book (isbn, title, author) VALUES ('123456789', 'Book Title B', 'Author B');""",1,1,"""🟢 Correct."""
+858,1,2,"""INSERT INTO Book (isbn, title) VALUES ('123456789', 'First Book Title'), ('123456789', 'Second Book Title');""",1,1,"""🟢 Correct."""
+858,2,2,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+859,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book Title 1', 'Author 1');   INSERT INTO Book (isbn, title, author) VALUES ('1234567890123', 'Book Title 2', 'Author 2');""",1,1,"""🟢 Correct."""
+860,1,2,"""INSERT INTO Book(isbn, title, author) VALUES(""""1234"""", """"Pet Semetary"""", """"Stephen King"""");   INSERT INTO Book(isbn, title, author) VALUES(""""1234"""", """"The Shining"""", """"Stephen King"""");""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1234'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Pet Semetary'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Stephen King'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '1234'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'The Shining'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Stephen King'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""
+861,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'The Handmaids Tale', 'Margaret Artwood');   INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'The Testaments', 'Margaret Artwood');""",1,1,"""🟢 Correct."""
+862,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781122334455', 'Title1', 'Author1'); INSERT INTO Book (isbn, title, author) VALUES ('9781122334455', 'Title2', 'Author2');""",1,1,"""🟢 Correct."""
+863,1,2,"""INSERT INTO Book      VALUES ('1', 'Cool', 'Dan'); INSERT INTO Book     VALUES ('1', 'Warm', 'Dam');""",1,1,"""🟢 Correct."""
+864,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567612', 'The Great Adventure', 'Janice Giles');   INSERT INTO Book (isbn, title, author) VALUES ('9781234567612', 'Red Rising', 'Pierce Brown');""",1,1,"""🟢 Correct."""
+865,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (9780374528379, 'The Brothers Karamazov', 'Fyodor Dostoevsky');   INSERT INTO Book(isbn, title, author) VALUES (9780374528379, 'Brothers Karamazov', 'F. Dostoevsky');""",1,1,"""🟢 Correct."""
+465,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A second course in Database Systems', 'Jeffrey D. Ullman');""",1,1,"""🟢 Correct."""
+465,2,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A first course in Database Systems', 'Jennifer Widom');   INSERT INTO Book(isbn, title, author) VALUES ('9781292025827', 'A second course in Database Systems', 'Jeffrey D. Ullman');""",1,1,"""🟢 Correct."""
+866,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('1234567890ABC', 'example book 1', 'Marijn'); INSERT INTO Book(isbn, title, author) VALUES ('1234567890ABC', 'example book 2', 'Marijn');""",1,1,"""🟢 Correct."""
+867,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (8493726154083,Nexus, Yuval Noah Harari);   INSERT INTO Book(isbn, title, author) VALUES (8493726154083, The Alchemist, Paulo Coelho);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+868,1,2,"""INSERT INTO Book VALUES ('abc-1234-5678', 'Some book', 'Some author'); INSERT INTO Book VALUES ('abc-1234-5678', 'Some other book', 'Some other author');""",1,1,"""🟢 Correct."""
+869,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'To Kill A Mockingbird', 'Harper Lee'); INSERT INTO Book (isbn, title, author) VALUES ('9781234567890', 'Communist Manifesto', 'Karl Marx');""",1,1,"""🟢 Correct."""
+870,1,2,"""INSERT INTO BOOK(isbn, title, author) VALUES (12345678, 'It Ends With Us', 'Colleen Hoover'); INSERT INTO BOOK(isbn, title, author) VALUES (12345678, 'To Kill a Mockingbird', 'Harper Lee');""",1,1,"""🟢 Correct."""
+871,1,2,"""INSERT INTO Book(isbn, title, author) values('12', 'title', '')   INSERT INTO Book(isbn, title, author) values('12', 'title 2', 'harry')   -- Since there is now 2 books with the same isbn but different books (title and author)""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+872,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('abcd', 'Title1', 'author1');   INSERT INTO Book (isbn, title, author) VALUES ('abcd', 'Title2', 'author2');""",1,1,"""🟢 Correct."""
+873,1,2,"""INSERT INTO Book VALUES(0, 0, 0); INSERT INTO Book VALUES(0, 0, 0);""",1,1,"""🟢 Correct."""
+874,1,2,"""INSERT INTO Book (isbn, title, author) VALUES ('1', 'Book 1', 'John Cena');   INSERT INTO Book (isbn, title, author) VALUES ('1', 'Book 2', 'John Cena');""",1,1,"""🟢 Correct."""
+875,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('9789023448785', 'Siegfried', 'Harry Mulisch'); INSERT INTO Book(isbn, title, author) VALUES ('9789023448785', 'Intermezzo', 'Sally Rooney');""",1,1,"""🟢 Correct."""
+876,1,2,"""INSERT INTO Book(isbn, title, author) VALUES ('111111', 'abc', 'def'); INSERT INTO Book(isbn, title, author) VALUES ('111111', 'cba', 'fed');""",1,1,"""🟢 Correct."""
+877,1,2,"""INSERT INTO Book (isbn, title, author)  VALUES ('1234567890', 'Book Title A', 'Author A'); INSERT INTO Book (isbn, title, author)  VALUES ('1234567890', 'Book Title B', 'Author B');""",1,1,"""🟢 Correct."""
+878,1,2,"""INSERT INTO Book(isbn, title, author) VALUES (1, 'The Lord of the Rings', 'J. R. R. Tolkien'); INSERT INTO Book(isbn, title, author) VALUES (1, 'Pride and Prejudice', 'Jane Austen');""",1,1,"""🟢 Correct."""
+879,1,2,"""INSERT INTO Book('123ab', 'The first book', 'Djoerd Hiemstra'); INSERT INTO Book('456cd', 'The first book', 'Johan Zomer');""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+880,1,2,"""INSERT INTO Book VALUES('11', 'baba', 'alala'); INSERT INTO Book VALUES('11', 'kakasd', 'nanah');""",1,1,"""🟢 Correct."""
+881,1,2,"""INSERT INTO Book (isbn,title,author) VALUES ('978-3-16-148410-0', 'Oliver Twist', 'Charles Dickens'); INSERT INTO Book (isbn,title,author) VALUES ('978-3-16-148410-0', 'War and Peace', 'Leo Tolstoy');""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A first course in Database Systems, Jennifer Widom)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A first course in Database Systems', found 'Oliver Twist'.
+● Mismatch in values at row 1, author: expected 'Jennifer Widom', found 'Charles Dickens'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+1️⃣ Goal:
+The query is supposed to:
+ ● Insert into table 'book'. Target columns: 'isbn', 'title', 'author'. Insert values: (9781292025827, A second course in Database Systems, Jeffrey D. Ullman)
+
+2️⃣ Correct Clauses:
+✅ Target table
+✅ Target columns
+
+3️⃣ Issues found in the following sections:
+❌ Row 1: isbn
+❌ Row 1: title
+❌ Row 1: author
+
+❗ Problem Details:
+● Mismatch in values at row 1, isbn: expected '9781292025827', found '978-3-16-148410-0'.
+● Mismatch in values at row 1, title: expected 'A second course in Database Systems', found 'War and Peace'.
+● Mismatch in values at row 1, author: expected 'Jeffrey D. Ullman', found 'Leo Tolstoy'.
+
+4️⃣ Next steps:
+💡 Fix the value at row 1: isbn.
+💡 Fix the value at row 1: title.
+💡 Fix the value at row 1: author.
+5️⃣ Additional Information:
+● Results Analysis: ❌ Your query should have violated a unique constraint, but it did not.
+"""

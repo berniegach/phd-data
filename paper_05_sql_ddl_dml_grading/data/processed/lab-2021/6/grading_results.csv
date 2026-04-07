@@ -1,0 +1,1032 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+1,1,6,ALTER TABLE Copy ADD CHECK (10 <= weight AND weight <= 1000);,1,1,"""🟢 Correct."""
+2,1,6,"""CREATE TABLE copy ( isbn TEXT, serial_number TEXT, weight INTEGER, bookcase INTEGER, PRIMARY KEY(serial_number), FOREIGN KEY (isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CHECK (weight>=10 AND weight<=1000) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Type of 'serial_number'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● The type for column 'serial_number' should be 'int4', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+3,1,6,ALTER TABLE Copy ADD CONSTRAINT minmax CHECK(weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+4,1,6,CREATE ASSERTION less CHECK (  NOT EXISTS (    SELECT weight     FROM Copy    WHERE weight<10 OR  weight>1000)),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+5,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+6,1,6,"""ALTER TABLE Copy ADD CONSTRAINT weight CHECK(weight >= 10 AND weight <= 1000);  --Doesn't work in sqlite3, does work in PostgreSQL""",1,1,"""🟢 Correct."""
+7,1,6,ALTER TABLE Copy ADD CONSTRAINT book_weight CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+8,1,6,ALTER TABLE Copy ADD CONSTRAINT books_weigh CHECK (weight >= 10 AND weight <= 1000) ;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT book_weight CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+9,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_limits CHECK (weight > 10 AND weight < 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_limits'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight > 10 and weight < 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+10,1,6,ALTER table ADD CONSTRAINT weight CHECK(weight>=10 AND weight <= 1000);,0.4,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight <= )'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'alter table copy add constraint weight check(weight   and weight <= 00);' make it parseable.
+
+"""
+11,1,6,ALTER TABLE Copy ADD CONSTRAINT valid_weight CHECK (weight IS NULL OR (weight >= 10 AND weight <= 1000));,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'valid_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '((unknown expression) IS NULL  or (weight >= 10 and weight <= 1000))'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+12,1,6,"""CREATE TABLE Copy( isbn INT,  serial_number INT,  weight INT,  bookcase VARCHAR,  PRIMARY KEY(serial_number), FOREIGN KEY (isbn) 	REFERENCES Book(isbn) 	ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT acceptable_weight CHECK(weight >= 10 AND weight <= 1000) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+13,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_okay CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_okay'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+14,1,6,CREATE ASSERTION weight_check CHECK( NOT EXISTS(     SELECT * FROM Copy C WHERE C.weight<10 OR C.weight>1000) ),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+15,1,6,ALTER TABLE Copy ADD CONSTRAINT real_weight     CHECK(weight IS NOT NULL     AND (weight >= 10 AND weight <= 1000));,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'real_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '((unknown expression) IS NOT NULL  and (weight >= 10 and weight <= 1000))'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+16,1,6,ALTER TABLE Copy ADD CONSTRAINT valid_weight CHECK ( weight > 10 AND weight < 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'valid_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight > 10 and weight < 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+17,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+18,1,6,alter table copy add constraint validweight check(weight between 10 and 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'validweight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+19,1,6,"""ALTER TABLE copy ADD CONSTRAINT tremendous_weight CHECK (weight BETWEEN 10 AND 1000); -- I have SQLite, this didn't work for me.""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'tremendous_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+20,1,6,ALTER TABLE Copy ADD CONSTRAINT Weight CHECK (Weight >= 10 && Weight <= 1000);,0.9714285714285714,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+✅ Operation 1
+
+Excellent! Your ALTER statement matches the reference.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'alter table copy add constraint weight check (weight >= 10 and weight <= 1000);' make it parseable.
+
+"""
+21,1,6,"""CREATE TABLE Copy(      isbn INTEGER NOT NULL,      serial_number INTEGER PRIMARY KEY,      weight INTEGER NOT NULL CHECK (10 < weight < 1000),       bookcase INTEGER,      FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE  CASCADE )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+22,1,6,ALTER TABLE Copy ADD CONSTRAINT CHK_weight CHECK (weight>10 AND weight <1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'chk_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight > 10 and weight < 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+23,1,6,-,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+24,1,6,CREATE ASSERTION check_weight CHECK  (EXISTS  (SELECT weight FROM Copy WHERE weight<10 OR weight>1000)  );,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+25,1,6,CREATE ASSERTION all_copies_weigh_between_10_and_1000_grams CHECK (     NOT EXISTS (         SELECT *         FROM Copy         WHERE weight < 10         OR weight > 1000     ) );,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+26,1,6,ALTER TABLE Copy ALTER COLUMN weight INT NOT NULL CHECK (weight >= 10 AND weight <= 1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+27,1,6,"""CREATE TABLE Copy( isbn TEXT,  serial_number INT PRIMARY KEY,  weight INT, bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT admittable_weight CHECK (weight >= 10 AND weight <= 1000 ) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+28,1,6,"""CREATE TABLE NewCopy( isbn NUMERIC(13,0) NOT NULL,  serialnumber INTEGER NOT NULL,  weight INTEGER NOT NULL CHECK (weight<=1000 AND weight>=10),  bookcase INTEGER,  FOREIGN KEY(isbn)  REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE,  UNIQUE(serialnumber)); INSERT INTO NewCopy SELECT * FROM Copy;  DROP TABLE Copy;  ALTER TABLE NewCopy RENAME TO Copy;""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Foreign keys
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Table name
+❌ Column names
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'weight'
+❌ Primary key
+❌ Unique constraints
+
+❗ Problem Details:
+● The table name should be 'copy', but your query uses 'newcopy'.
+● Your CREATE statement is missing these column(s): 'serial_number'.
+● Your CREATE statement includes extra column(s): 'serialnumber'.
+● The type for column 'isbn' should be 'varchar', but you have 'numeric'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+
+4️⃣ Next steps:
+💡 Change the table name to 'copy'.
+💡 Add the missing column(s): 'serial_number'.
+💡 Remove the extra column(s): 'serialnumber'.
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+Extra InsertStmt statement.
+Extra DropStmt statement.
+Extra RenameStmt statement.
+"""
+29,1,6,ALTER TABLE copy ADD CONSTRAINT weight_constraint CHECK (weight_in_grams >= 10 AND weight_in_grams <= 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_constraint'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight_in_grams >= 10 and weight_in_grams <= 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+30,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_constraint CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+31,1,6,ALTER TABLE Copy ADD CONSTRAINT weightConstraint CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weightconstraint'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+32,1,6,"""CREATE TABLE Copy(   isbn TEXT,    serial_number TEXT NOT NULL,    weight INT CHECK (weight > 10 AND weight < 1000),    bookcase INT,    UNIQUE (isbn, serial_number),    FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE         CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Type of 'serial_number'
+❌ NOT NULL constraint for 'serial_number'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● The type for column 'serial_number' should be 'int4', but you have 'text'.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+33,1,6,ALTER TABLE Copy ADD CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found ''.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+34,1,6,ALTER TABLE Copy ADD CONSTRAINT min_max_weight CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+35,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_limit CHECK (weight >= 10 AND weight <= 1000),1,1,"""🟢 Correct."""
+36,1,6,CONSTRAINT book_weight CHECK (weight >= 10 AND weight<=1000),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+37,1,6,"""CREATE TABLE Copy(     isbn TEXT NOT NULL,     serial_number INT,     weight NUMERIC(8,2),     bookcase INT NOT NULL,     UNIQUE(serial_number, isbn),     FOREIGN KEY (isbn)         REFERENCES Book(isbn)              ON DELETE CASCADE             ON UPDATE CASCADE,     CONSTRAINT book_weight CHECK ( weight >= 10 AND weight <= 1000) );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Type of 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Unique constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● The type for column 'weight' should be 'int4', but you have 'numeric'.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Change the type of column 'weight' to 'int4'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+"""
+38,1,6,CHECK (weight BETWEEN 10 AND 1000),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+39,1,6,"""-- SQLite doesn't allow to use ALTER TABLE, so why it is included in the hint if recommended DB is SQLite? This question made me sad. In SQLite it would require dropping the table and creating a new one ALTER TABLE Copy ADD CONSTRAINT CHK_Weight CHECK (weight>=10 AND weight<=1000);""",0.05714285714285714,1,"""Missing CreateStmt statement.
+"""
+40,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+41,1,6,CONSTRAINT realistic_weight CHECK( weight > 10 AND weight < 1000 ),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+42,1,6,ALTER TABLE Copy ADD CONSTRAINT valid_weight CHECK (weight > 10 AND weight < 1000),0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'valid_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight > 10 and weight < 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+43,1,6,ALTER TABLE Copy ADD CONSTRAINT checkweight1 CHECK (weight > 9); ADD CONSTRAINT checkweight2 CHECK (weight < 1001);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+44,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+45,1,6,weight INTEGER CHECK( weight BETWEEN 10 AND 1000),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+46,1,6,"""PRAGMA foreign_keys=off;   BEGIN TRANSACTION;   ALTER TABLE Copy RENAME TO old_Copy;   CREATE table Copy ( isbn INT not null, serial_number INT not null, weight INT not null CHECK (weight >= 10 AND weight <= 1000), bookcase INT, primary key (isbn,serial_number), unique (serial_number), FOREIGN KEY (isbn) 	REFERENCES Book (isbn) 	ON UPDATE CASCADE ON DELETE CASCADE );   INSERT INTO Copy SELECT * FROM old_Copy;   COMMIT;   PRAGMA foreign_keys=on;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+47,1,6,ALTER TABLE Copy ADD weight>9 AND weight<1001;,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+48,1,6,ALTER TABLE Copy ADD CONSTRAINT proper_weight CHECK weight >= 10 AND weight <= 1000,0.9714285714285714,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+✅ Operation 1
+
+Excellent! Your ALTER statement matches the reference.
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'alter table copy add constraint proper_weight check (weight >= 10 and weight <= 1000);' make it parseable.
+
+"""
+49,1,6,"""CREATE TABLE copy (     isbn text,     serial_number integer,     weight integer CHECK (weight BETWEEN 10 AND 1000),     bookcase integer,     PRIMARY KEY (isbn, serial_number),     FOREIGN KEY (isbn) REFERENCES book (isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡Adjust the CHECK constraint definition 1.
+"""
+49,2,6,ALTER TABLE copy ADD CHECK ( weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found ''.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+50,1,6,"""CREATE TABLE Copy( isbn INT, serial_number INT, weight INT CHECK(10 <= weight <= 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+51,1,6,ALTER TABLE Copy ADD CONSTRAINT correct_weight CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+52,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+53,1,6,"""CREATE TABLE """"Copy"""" ( 	""""isbn""""	INTEGER NOT NULL, 	""""serial_number""""	INTEGER NOT NULL, 	""""weight""""	INTEGER CHECK (1000 > """"weight"""" < 10), 	""""bookcase"""" TEXT, 	PRIMARY KEY(""""isbn"""", """"serial_number"""") 	FOREIGN KEY(""""isbn"""") 		REFERENCES Book(""""isbn"""")ON DELETE CASCADE ON UPDATE CASCADE			 );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+54,1,6,ALTER table Copy ADD CONSTRAINT check_weight CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT book_weight CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+55,1,6,ALTER TABLE Copy ADD CONSTRAINT Weightcheck CHECK (weight >=10 && weight <=1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+56,1,6,ALTER TABLE COPY ADD CHECK(weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+57,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+58,1,6,"""CREATE TABLE Copy_new ( isbn TEXT,  serial_number INT,  weight INT,  bookcase INT,  FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE,  PRIMARY KEY (serial_number) CHECK (weight >= 10 AND weight <= 1000) );    INSERT INTO Copy_new SELECT * FROM Copy; DROP TABLE Copy; ALTER TABLE Copy_new RENAME TO Copy;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+59,1,6,ALTER TABLE Copy ADD CONSTRAINT valid_weight CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+60,1,6,CREATE ASSERTION max_weight CHECK (NOT_EXISTS (     SELECT weight FROM     Copy      WHERE weight > 1000     AND weight < 10     ),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+61,1,6,"""CREATE TABLE Copy(isbn INT, serial_number INT, weight INT, bookcase INT, PRIMARY KEY(isbn,serial_number), CONSTRAINT book_delete FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE, CONSTRAINT book_update FOREIGN KEY(isbn) REFERENCES Book(isbn) ON UPDATE CASCADE,CONSTRAINT check_weight CHECK(weight >10 AND weight <1000));""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Foreign keys
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Expected 1 foreign key constraint(s), but found 2.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡Review your FOREIGN KEY definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+62,1,6,ALTER TABLE Copy ADD CONSTRAINT book_weight CHECK( weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT book_weight CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+63,1,6,"""CREATE TEMPORARY TABLE Copy2( isbn INT,  serial_number INT,  weight INT,  bookcase INT );   INSERT INTO Copy2 VALUES (SELECT * FROM Copy); DROP TABLE Copy; CREATE TABLE Copy( isbn INT,  serial_number INT,  weight INT NOT NULL CHECK (weight >= 10 AND weight <= 1000),  bookcase INTEGER NOT NULL,  FOREIGN KEY(isbn)  REFERENCES Book(isbn)  ON DELETE CASCADE  ON UPDATE CASCADE UNIQUE (isbn, serial_number) ); INSERT INTO Copy VALUES ( SELECT * FROM Copy2); DROP TABLE Copy2;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+64,1,6,ALTER TABLE Copy ADD CHECK (weight>=10 AND weight<=1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+65,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_check CHECK (weight BETWEEN 10 and 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_check'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+66,1,6,"""CREATE TABLE Copy_Copy ( isbn INT, serial_number INT NOT NULL, weight INT CHECK (weight>10 AND weight<1000), bookcase INT NOT NULL, UNIQUE (serial_number), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON INSERT NO ACTION ON UPDATE CASCADE ON DELETE CASCADE ); INSERT INTO Copy_Copy SELECT * FROM Copy; DROP TABLE Copy; ALTER TABLE Copy_Copy RENAME TO Copy;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+67,1,6,"""CREATE TABLE Copy_new ( isbn INT, serial_number INT, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT, UNIQUE (serial_number), FOREIGN KEY (isbn) REFERENCES Book (isbn) ON INSERT NO ACTION ON UPDATE CASCADE ON DELETE CASCADE ); INSERT INTO Copy_new SELECT * FROM Copy; DROP TABLE copy; ALTER TABLE Copy_new RENAME TO Copy;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+68,1,6,"""CREATE TABLE Book( 	isbn TEXT NOT NULL PRIMARY KEY, 	title	TEXT NOT NULL, 	author TEXT, 	UNIQUE (isbn) );   CREATE TABLE Copy( 	isbn	TEXT, 	serial_number INT PRIMARY KEY, 	weight INT, 	bookcase INT, 	UNIQUE (serial_number), 	CONSTRAINT valid_weight CHECK (weight >= 10 AND weight <= 1000), 	FOREIGN KEY (isbn)  		REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.05714285714285714,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+● None.
+
+3️⃣ Issues found in the following sections:
+❌ Table name
+❌ Column names
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Primary key
+❌ Foreign keys
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The table name should be 'copy', but your query uses 'book'.
+● Your CREATE statement is missing these column(s): 'bookcase',  'serial_number',  'weight'.
+● Your CREATE statement includes extra column(s): 'author',  'title'.
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'isbn', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● Expected 1 foreign key constraint(s), but found 0.
+● Unexpected UNIQUE constraint(s) found.
+● Expected 1 CHECK constraint(s), but found 0.
+
+4️⃣ Next steps:
+💡 Change the table name to 'copy'.
+💡 Add the missing column(s): 'bookcase',  'serial_number',  'weight'.
+💡 Remove the extra column(s): 'author',  'title'.
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Review your FOREIGN KEY definitions.
+💡Remove the UNIQUE constraint definitions.
+💡Review your CHECK constraint definitions.
+Extra CreateStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ⚠️ You created an extra table 'book' that wasn’t needed.
+⚠️ You created an extra table 'copy' that wasn’t needed.
+"""
+69,1,6,Constraint weight_books CHECK (Copy.Weight > 10  AND Copy.Weight < 1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+70,1,6,ALTER TABLE copy ADD  CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+70,2,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+71,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_limit CHECK(weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT weight_limit CHECK (weight >= 10 AND weight <= 1000)'?
+"""
+72,1,6,"""CREATE TABLE Copy ( 	isbn INT, 	serial_number INT, 	weight INT, 	bookcase INT, 	UNIQUE (isbn, serial_number), 	FOREIGN KEY (isbn) REFERENCES Book(isbn) 	ON DELETE CASCADE ON UPDATE CASCADE, 	CONSTRAINT check_weight CHECK (weight > 10 AND weight <= 1000) );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight <= 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+73,1,6,"""ALTER TABLE Copy ADD CONSTRAINT weight_admittable CHECK (weight BETWEEN 10 AND 1000);   --I tried it as two seperate contraints but both seem to fail, probably because of SQLite""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_admittable'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+74,1,6,"""CREATE TABLE Copy( isbn INT,  """"serial number"""" INT,  weight INT, bookcase INT,  PRIMARY KEY(isbn, """"serial number""""), UNIQUE(""""serial number""""), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE, CONSTRAINT book_weight CHECK(weight IS NULL or (weight >= 10 AND weight <= 1000) ) );""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Column names
+❌ Type of 'isbn'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● Your CREATE statement is missing these column(s): 'serial_number'.
+● Your CREATE statement includes extra column(s): 'serial number'.
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Missing primary key column(s): 'serial_number'.
+● Extra primary key column(s): 'serial number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: ((unknown expression) IS NULL  or (weight >= 10 and weight <= 1000)).
+
+4️⃣ Next steps:
+💡 Add the missing column(s): 'serial_number'.
+💡 Remove the extra column(s): 'serial number'.
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'serial_number'.
+💡 Remove the extra primary key column(s): 'serial number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+75,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_valid CHECK(weight>=10 AND weight<=1000);,1,1,"""🟢 Correct."""
+76,1,6,CREATE ASSERTION book_weight_min10_max1000 CHECK ( NOT EXISTS ( SELECT * FROM Copy WHERE weight < 10 OR weight > 1000 ) );,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+77,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_limit CHECK (weight BETWEEN 10 AND 1000) ;,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_limit'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+78,1,6,"""CREATE TABLE Copy ( isbn TEXT NOT NULL, serial_number INT NOT NULL, weight INT NOT NULL, bookcase INT, UNIQUE(serial_number), CONSTRAINT weight CHECK( NOT weight<10 and NOT weight > 1000), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (not (weight < 10) and not (weight > 1000)).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+79,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_check CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_check'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+80,1,6,ALTER TABLE Copy  ADD CONSTRAINT weight_bounds CHECK (weight >= 10 AND weight <= 1000) ;,1,1,"""🟢 Correct."""
+81,1,6,ALTER TABLE Copy ALTER COLUMN weight INT CHECK ( weight BETWEEN 10 AND 1000),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+82,1,6,ALTER TABLE Copy ADD CONSTRAINT CK_weight CHECK weight >= 10 AND weight <= 1000;,0.8571428571428571,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT book_weight CHECK (weight >= 10 AND weight <= 1000);'?
+5️⃣ Additional Information:
+● Syntax Analysis: Syntax minor error. The query was changed to 'alter table copy add constraint ck_weight check (weight >= 10 and weight <= 1000);' make it parseable.
+
+"""
+83,1,6,"""CREATE ASSERTION weigh_of_book CHECK (NOT EXISTS( SELECT * FROM Copy C, Book B WHERE C.isbn = B.isbn AND weight < 10 AND weight > 1000) )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+84,1,6,ALTER TABLE Copy ADD CONSTRAINT weight CHECK( weight >= 10 AND weight <= 1000) ;,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'alter table copy add constraint weight check (weight >= 10 and weight <= 1000);'?
+"""
+85,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+86,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_constraint CHECK(weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_constraint'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+87,1,6,ALTER TABLE Copy ADD  CONSTRAINT  book_weight CHECK ( NOT EXISTS ( SELECT * FROM Copy WHERE weight < 10 AND weight > 1000));,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'book_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found 'not (EXISTS  (subquery))'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+88,1,6,CREATE ASSERTION book_weight_min10_max1000 CHECK ( NOT EXISTS ( SELECT * FROM Copy C WHERE C.weight < 10 AND C.weight > 1000 ),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+89,1,6,ALTER TABLE Copy ADD CONSTRAINT realistic_weight CHECK ( weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+90,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_range CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+91,1,6,"""CREATE TABLE CopyB ( 	isbn TEXT REFERENCES book(isbn) ON UPDATE CASCADE ON DELETE CASCADE,  	serial_number INTEGER,  	weight INTEGER CHECK (weight>=10 AND weight<=1000), 	bookcase INTEGER );   INSERT INTO CopyB SELECT * FROM Copy ; DROP TABLE Copy ; ALTER TABLE CopyB RENAME TO Copy ;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Column names
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Table name
+❌ Type of 'isbn'
+❌ Primary key
+❌ Foreign keys
+
+❗ Problem Details:
+● The table name should be 'copy', but your query uses 'copyb'.
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Expected 1 foreign key constraint(s), but found 0.
+
+4️⃣ Next steps:
+💡 Change the table name to 'copy'.
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Review your FOREIGN KEY definitions.
+Extra InsertStmt statement.
+Extra DropStmt statement.
+Extra RenameStmt statement.
+"""
+92,1,6,ALTER TABLE Copy ADD CONSTRAINT CONSTRAINT weightcheck CHECK (weight >= 10 AND weight <=1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+93,1,6,"""PRAGMA foreign_keys = ON;   CREATE TABLE Book ( isbn INTEGER PRIMARY KEY, title TEXT, author TEXT, UNIQUE(isbn) );   CREATE TABLE Copy ( isbn INTEGER, serial_number INTEGER PRIMARY KEY, weight INTEGER, bookcase INTEGER, CONSTRAINT weight CHECK (weight > 10 AND weight < 1000), FOREIGN KEY(isbn) REFERENCES Book(isbn)  ON DELETE CASCADE ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+94,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_values CHECK (weight>=10 AND weight<=1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT weight_valid CHECK(weight>=10 AND weight<=1000);'?
+"""
+95,1,6,CONSTRAINT weight CHECK(weight > 10 AND weight < 1000),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+96,1,6,"""CREATE TABLE Copy( isbn  CHAR(13), serial_number INTEGER, weight INT NOT NULL CHECK ((weight >= 10) and (weight <= 1000)), bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE PRIMARY KEY (isbn, serial_number) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+97,1,6,ALTER TABLE copy add CONSTRAINT weight_chk CHECK (weight > 10 AND weight < 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'weight_chk'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight > 10 and weight < 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+98,1,6,ALTER table Copy ADD CONSTRAINT valid_weight CHECK ( weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT valid_weight CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+99,1,6,"""ALTER TABLE Copy RENAME TO Copy_OLD;   CREATE TABLE Copy( 	isbn INT, 	serial_number INT, 	weight INT, 	bookcase INT, 	PRIMARY KEY (isbn, serial_number), 	UNIQUE (serial_number), 	FOREIGN KEY (isbn) REFERENCES Book (isbn) ON UPDATE CASCADE, 	FOREIGN KEY (isbn) REFERENCES Book (isbn) ON DELETE CASCADE, 	FOREIGN KEY (isbn) REFERENCES Book (isbn), 	CONSTRAINT weight CHECK (weight >= 10 AND weight <= 1000) );   INSERT INTO Copy SELECT * FROM Copy_OLD; DROP TABLE Copy_OLD;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Foreign keys
+❌ Unique constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Expected 1 foreign key constraint(s), but found 3.
+● Unexpected UNIQUE constraint(s) found.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡Review your FOREIGN KEY definitions.
+💡Remove the UNIQUE constraint definitions.
+Extra RenameStmt statement.
+Extra InsertStmt statement.
+Extra DropStmt statement.
+"""
+100,1,6,"""DROP TABLE Copy; --Explanation at the bottom   CREATE TABLE Copy( isbn INT NOT NULL,  serial_number INT NOT NULL,  weight INT NOT NULL CHECK( weight BETWEEN 10 and 1000 ), bookcase INT, PRIMARY KEY (isbn, serial number) FOREIGN KEY isbn REFERENCES Book isbn ON UPDATE CASCADE ON DELETE CASCADE )   --The Install your own DBMS page of this course informed me that we had to use SQLite  --instead of PostgreSQL.  --According to this source: """"https://www.tutorialspoint.com/sqlite/sqlite_constraints.htm"""" --it is not possible to add constraints to an already existing table in SQLite. --Thus I had to remake the whole table. If we are allowed to use ALTER TABLE, however, --We could simply:   ALTER TABLE Copy   ADD CONSTRAINT acceptable_mass CHECK (weight BETWEEN 10 and 1000)   ;""",0.05714285714285714,1,"""Missing CreateStmt statement.
+Extra DropStmt statement.
+"""
+101,1,6,"""CREATE TABLE Copy( isbn INT NOT NULL, serial_number INT, weight INT CHECK(weight >= 10 AND weight <= 1000), bookcase INT,   FOREIGN KEY (isbn)    REFERENCES Book(isbn)    ON DELETE CASCADE    ON UPDATE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+"""
+102,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+103,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+104,1,6,"""PRAGMA foreign_keys=off;   BEGIN TRANSACTION;   CREATE TABLE IF NOT EXISTS Copy2 ( isbn INT NOT NULL, serial_number INT NOT NULL CHECK(serial_number >= 0), weight INT NOT NULL CHECK(weight >= 10 AND weight <= 1000), bookcase INT CHECK(bookcase >= 0), PRIMARY KEY (isbn, serial_number), 	FOREIGN KEY (isbn) REFERENCES Book(isbn)  	ON DELETE CASCADE 	ON UPDATE CASCADE );   INSERT INTO Copy2 SELECT * FROM Copy;   DROP TABLE Copy;   ALTER TABLE Copy2 RENAME TO Copy;   COMMIT;   PRAGMA foreign_keys=on;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+105,1,6,ALTER TABLE Copy ADD CONSTRAINT check_weight CHECK (10 <= weight AND weight <= 1000);,1,1,"""🟢 Correct."""
+106,1,6,ALTER TABLE copy ADD CONSTRAINT check_weight CHECK(weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT minmax (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'minmax' but found 'check_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'minmax'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""

@@ -1,0 +1,2619 @@
+Org Defined ID,Attempt #,Q #,Query,Grade,Out Of,Feedback
+478,1,6,"""CREATE TABLE Copy (isbn INTEGER, serial_number INTEGER PRIMARY KEY, weight INTEGER, bookcase INTEGER, FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT correct_weight CHECK (weight > 10 AND weight < 1000);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+479,1,6,"""create table copy( isbn int, serial_number int, weight decimal(5,2), bookcase int, primary key (isbn, serial_number), foreign key (isbn) references book(isbn) on update cascade  on delete cascade constraint chk_weight check (weight between 10 and 1000) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+480,1,6,ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+481,1,6,"""CREATE TABLE Copy(     isbn INTEGER REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE,     serial_number INTEGER,     weight INTEGER CONSTRAINT reasonable_book_weight         CHECK ( 10 <= weight AND weight <= 1000 ),     bookcase INTEGER,     PRIMARY KEY (isbn, serial_number) );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Foreign keys
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Expected 1 foreign key constraint(s), but found 0.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡Review your FOREIGN KEY definitions.
+"""
+482,1,6,ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+483,1,6,"""CREATE TABLE Copy( isbn INT, serial_number INT, weight INT, bookcase INT, CHECK(weight > 10 AND weight < 1000), PRIMARY KEY (isbn, serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE ) ;""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡Adjust the CHECK constraint definition 1.
+"""
+484,1,6,"""CREATE TABLE Copy ( isbn TEXT NOT NULL, serial_number INT NOT NULL, weight INT NOT NULL CHECK (weight >= 10 AND weight <=1000), bookcase INT NOT NULL, PRIMARY KEY (isbn, serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE);""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+"""
+485,1,6,"""DROP TABLE IF EXISTS Copy;   CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+Extra DropStmt statement.
+"""
+486,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT,     weight INT,     bookcase INT NOT NULL,       PRIMARY KEY(serial_number),     FOREIGN KEY(isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE,       CONSTRAINT check_weight CHECK(weight IS NULL OR (weight >= 10 AND weight <= 1000) ) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: ((unknown expression) IS NULL  or (weight >= 10 and weight <= 1000)).
+
+4️⃣ Next steps:
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+487,1,6,"""CREATE TABLE COPY(isbn INT NOT NULL, serial_number INT, weight INT CHECK (weight > 10 AND weight <1000), bookcase INT NOT NULL, PRIMARY KEY(serial_number, isbn), FOREIGN KEY (isbn) REFERENCES Book(isbn));""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'bookcase'
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡Adjust the CHECK constraint definition 1.
+"""
+488,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT PRIMARY_KEY, weight INT NOT NULL CHECK (weight BETWEEN 10 AND 1000), bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+489,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+490,1,6,"""CREATE TABLE Copy( isbn TEXT, serial number INT, weight INT, bookcase INT, CHECK (weight >= 10 AND weight <= 1000), PRIMARY KEY (isbn, serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+491,1,6,CONSTRAINT copy_weight CHECK (weight >= 10 AND weight <= 10000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+492,1,6,"""CREATE TABLE  Copy (     isbn,     serial_number,     weight,     bookcase,     CHECK (weight>10 AND weight<= 1000)  );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+493,1,6,ALTER table Copy ADD CONSTRAINT weight_limit CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+494,1,6,ALTER TABLE Copy ADD CONSTRAINT checkWeight CHECK (weight>10 AND weight<1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'checkweight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(weight > 10 and weight < 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+495,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT,     FOREIGN KEY (isbn)     REFERENCES Book(isbn)         ON UPDATE CASCADE         ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+496,1,6,"""CREATE TABLE Copy( serial_number INT PRIMARY KEY, isbn INT NOT NULL, weight INT NOT NULL, bookcase TEXT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT check_weight CHECK (weight >= 10 AND weight <= 1000));""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+497,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT, PRIMARY KEY (isbn, serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+"""
+498,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+499,1,6,"""CREATE TABLE Copy( isbn TEXT, serial_number INT, weight INT, bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY (serial_number) CONSTRAINT allowed_weight CHECK (weight >= 10 AND weight <= 1000) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+500,1,6,ALTER TABLE Copy ADD CHECK ( weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found ''.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+501,1,6,ALTER TABLE Copy ADD CONSTRAINT check_weight CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+502,1,6,"""CREATE TABLE Copy ( isbn string, serial_number INT, weight INT CHECK (weight BETWEEN 10 AND 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book (isbn) ON UPDATE CASCADE ON DELETE CASCADE,  UNIQUE (isbn, serial_number) );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'string'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+503,1,6,"""CREATE TABLE Copy (isbn int NOT NULL, serial_number int NOT NULL UNIQUE, weight INT NOT NULL, bookcase int NOT NULL, PRIMARY KEY (isbn, serial_number) FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE CHECK weight > 9 AND weight <1001);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+504,1,6,ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (Weight >= 10 AND Weight <= 1000);,1,1,"""🟢 Correct."""
+505,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT, weight INT, bookcase INT NOT NULL, PRIMARY KEY(serial_number), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CHECK(weight BETWEEN 10 AND 1000)  );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+506,1,6,"""CREATE TABLE Copy( isbn TEXT NOT NULL, serial_number INT NOT NULL, weight INT NOT NULL, bookcase INT, PRIMARY KEY(isbn, serial_number), FOREIGN KEY(isbn)   REFERENCES Book(isbn)   ON DELETE CASCADE   ON UPDATE CASCADE, CONSTRAINT book_weight CHECK ((weight>=10) AND (weight<=1000)) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+"""
+507,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+508,1,6,ALTER TABLE Copy ADD CONSTRAINT Weight_Range CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+509,1,6,CHECK (weight BETWEEN 10 AND 1000),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+510,1,6,"""CREATE TABLE Copy (isbn VARCHAR, serial_number INT PRIMARY KEY, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CHECK (isbn IN (SELECT isbn FROM Book)));""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● Expected 1 CHECK constraint(s), but found 2.
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Review your CHECK constraint definitions.
+5️⃣ Additional Information:
+● Results Analysis: ⚠️ Your query unexpectedly triggered a check constraint.
+"""
+511,1,6,"""-- Drop the existing Copy table if it exists DROP TABLE IF EXISTS Copy;   -- Create the Copy table with the added CHECK constraint CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000), -- Added CHECK constraint     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.05714285714285714,1,"""Missing CreateStmt statement.
+"""
+512,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT NOT NULL, weight INT NOT NULL, bookcase INT, PRIMARY KEY (serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE, CONSTRAINT correct_weight CHECK (weight => 10 AND weight <= 1000); );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+513,1,6,"""CREATE TABLE Copy( isbn INT, serial_number INT, weight INT, bookcase INT, PRIMARY KEY(isbn, serial_number), FOREIGN KEY(isbn) REFERENCES BOOK(isbn) ON UPDATE CASCADE ON DELETE CASCADE, CONSTRAINT correct_weight CHECK (weight >= 10 AND weight <= 1000) );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+"""
+514,1,6,"""CREATE TABLE Copy( isbn VARCHAR(13) serial_number INT weight INT check (weight > 9 AND weight 1001) bookcase INT primary key (isbn, serial_number) foreign key (isbn) references Book(isbn) on delete cascade on update cascade );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+515,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000), -- CHECK constraint for weight     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+516,1,6,"""CREATE TABLE Copy( isbn INT, serial_number INT, PRIMARY KEY(serial_number), weight INT CHECK (weight > 10 AND weight < 1000) bookcase INT, FOREIGN KEY (isbn)  REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+517,1,6,CREATE TABLE copy( PRIMARY KEY (isbn) serial number VARCHAR bookcase VARCHAR weight INT CHECK weight (NOT EXISTS(weight <= 10 AND weight >= 1000))),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+518,1,6,"""CREATE TABLE Copy ( isbn CHAR(13), serial_number INT PRIMARY KEY, weight INT CHECK (weight BETWEEN 10 AND 1000) NOT NULL, bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book(isbn)    ON DELETE CASCADE    ON UPDATE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'bpchar'.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+519,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+520,1,6,"""CREATE TABLE Copy ( isbn INTEGER, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE, serial_number INTEGER PRIMARY KEY, weight INTEGER CHECK (weight > 10 AND weight < 1000), bookcase INTEGER );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+521,1,6,"""weight INTEGER CHECK (weight >= 10 AND weight <= 1000), instead of  weight INTEGER,""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+522,1,6,"""CREATE TABLE Copy ( isbn VARCHAR (13),  serial_number INT PRIMARY KEY, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT,  FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+523,1,6,"""DROP TABLE Copy;   CREATE TABLE Copy(        isbn INT NOT NULL,        serial_number INT NOT NULL,        weight INT NOT NULL CHECK (weight >= 10 AND weight <= 1000),        bookcase INT NOT NULL,        PRIMARY KEY(serial_number),        FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+Extra DropStmt statement.
+"""
+524,1,6,ALTER table Copy ADD CONSTRAINT weight_check CHECK (weight >= 10 AND weight <= 1000 );,1,1,"""🟢 Correct."""
+525,1,6,"""CREATE TABLE Book( isbn INT, title TEXT NOT NULL, author TEXT NOT NULL, PRIMARY KEY (isbn)); CREATE TABLE Copy( isbn INT, serial_number INT, weight INT NOT NULL CHECK (weight BETWEEN 10 AND 1000), bookcase INT NOT NULL, PRIMARY KEY(isbn, serial_number), UNIQUE(serial_number, weight), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE);""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Table name
+❌ Column names
+❌ Type of 'isbn'
+❌ Primary key
+❌ Foreign keys
+❌ Check constraints
+
+❗ Problem Details:
+● The table name should be 'copy', but your query uses 'book'.
+● Your CREATE statement is missing these column(s): 'bookcase',  'serial_number',  'weight'.
+● Your CREATE statement includes extra column(s): 'author',  'title'.
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Your statement defines a primary key only on 'isbn', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● Expected 1 foreign key constraint(s), but found 0.
+● Expected 1 CHECK constraint(s), but found 0.
+
+4️⃣ Next steps:
+💡 Change the table name to 'copy'.
+💡 Add the missing column(s): 'bookcase',  'serial_number',  'weight'.
+💡 Remove the extra column(s): 'author',  'title'.
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Review your FOREIGN KEY definitions.
+💡Review your CHECK constraint definitions.
+Extra CreateStmt statement.
+5️⃣ Additional Information:
+● Results Analysis: ⚠️ You created an extra table 'book' that wasn’t needed.
+⚠️ You created an extra table 'copy' that wasn’t needed.
+"""
+526,1,6,ALTER TABLE Copy ADD CHECK (weight > 10 AND weight< 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+527,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_nr INTEGER,  weight INTEGER,  bookcase INTEGER NOT NULL,  PRIMARY (serial_nr), FOREIGN KEY (isbn) REFERENCES Book (isbn),  ON UPDATE CASCADE, ON DELETE CASCADE,  CONSTRAINT book_weight CHECK (weight > 9 AND weight < 1001) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+528,1,6,"""CREATE TABLE Copy( isbn TEXT, serial_number INT, weight INT, bookcase INT, PRIMARY KEY(serial_number), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT weight_req CHECK (weight >= 10 AND weight <= 1000) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+529,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial number INT, weight NUMERIC(6,2) CHECK( weight >=10 AND weight <= 1000), bookcase INT, PRIMARY KEY(isbn), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE UNIQUE(serial number) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+530,1,6,"""CREATE TABLE Copy ( isbn TEXT,  serial_number INT PRIMARY KEY,  weight INT NOT NULL CHECK (weight BETWEEN 10 and 1000),  bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+531,1,6,CHECK  ( weight BETWEEN 10 AND 1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+532,1,6,"""CREATE TABLE Copy( isbn INTEGER, serial_number INTEGER, weight INTEGER CHECK (weight >= 10 AND weight <= 1000), bookcase INTEGER, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+"""
+533,1,6,"""CREATE TABLE Copy ( isbn, serial_number PRIMARY KEY, weight, bookcase, weight CHECK (weight >= 10 AND weight <= 1000), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+534,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+535,1,6,"""CREATE TABLE better_copy(isbn VARCHAR(100), serial_number INT,  weight INT, bookcase INT, PRIMARY KEY(serial_number), FOREIGN KEY(isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE CASCADE), CONSTRAINT good_weight CHECK(weight > 10 AND weight < 1000));""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+536,1,6,"""CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, bookcase INT, CONSTRAINT weight_limit CHECK (weight >= 10 AND weight <= 1000 ), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Missing primary key column(s): 'isbn',  'serial_number'.
+
+4️⃣ Next steps:
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+"""
+537,1,6,"""CREATE TABLE Copy(  isbn INT NOT NULL,  FOREIGN KEY (isbn)  REFERENCES Book(isbn)  ON UPDATE CASCADE, ON DELETE CASCADE,  serial_number INT NOT NULL,  weight INT,  bookcase INT,  PRIMARY KEY (serial_number)  CONSTRAINT check_weight CHECK(weight >= 10 AND weight <= 1000) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+538,1,6,"""CREATE TABLE Copy ( isbn BIGINT NOT NULL, serial_number INTEGER NOT NULL, weight INTEGER NOT NULL CHECK (weight > 10 AND weight < 1000), bookcase INTEGER NOT NULL, FOREIGN KEY (isbn) REFERENCES Book (isbn) );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int8'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Adjust the CHECK constraint definition 1.
+"""
+539,1,6,ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (Weight >= 10 AND Weight <= 1000);'?
+"""
+540,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+541,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(255),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000), -- Check constraint for weight range     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+542,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK(weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+543,1,6,ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (Weight >= 10 AND Weight <= 1000);'?
+"""
+544,1,6,ALTER TABLE Copy ADD CONSTRAINT proper_weight  CHECK ( NOT EXISTS (     SELECT *     FROM Copy     WHERE weight < 10     OR weight > 1000 ) );,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'proper_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found 'not (EXISTS  (subquery))'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+545,1,6,"""CREATE TABLE Copy( isbn VARCHAR(17), serial_number INT, weight INT, bookcase INT, PRIMARY KEY(isbn, serial_number), CHECK(weight >= 10 AND weight <= 1000), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON delete cascade ON update cascade );""",1,1,"""🟢 Correct."""
+546,1,6,"""DROP TABLE Copy; CREATE TABLE Copy (     isbn TEXT,     serial_number INT PRIMARY KEY,     weight INT CHECK (weight BETWEEN 10 AND 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+Extra DropStmt statement.
+"""
+547,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+548,1,6,"""CREATE TABLE Copy( isbn VARCHAR(20), serial_number INT PRIMARY KEY, weight INT NOT NULL, bookcase INT NOT NULL, FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT check_if_weigh_valid CHECK (weight >10 AND (weight < 1000)); );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+549,1,6,CREATE ASSERTION heavy CHECK ( NOT EXISTS ( SELECT * FROM Copy WHERE weight > 9 AND weight < 1001,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+550,1,6,ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT check_book_weight CHECK (Weight >= 10 AND Weight <= 1000);'?
+"""
+551,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight BETWEEN 10 AND 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+552,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_check CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER table Copy ADD CONSTRAINT weight_check CHECK (weight >= 10 AND weight <= 1000 );'?
+"""
+553,1,6,ALTER TABLE Copy ADD CONSTRAINT WeightCheck CHECK (Copy.weight >= 10 AND Copy.weight <= 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'weightcheck'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(copy.weight >= 10 and copy.weight <= 1000)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+554,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight BETWEEN 10 AND 1000), -- Added constraint for weight     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+555,1,6,SELECT * FROM Book,0.05714285714285714,1,"""Missing CreateStmt statement.
+Extra SelectStmt statement.
+"""
+556,1,6,"""CREATE TABLE Copy (isbn TEXT, serial_number INTEGER PRIMARY KEY, weight INTEGER CHECK(weight >= 10 and weight <= 1000), bookcase INTEGER, FOREIGN KEY(isbn) REFERENCES Book(isbn));""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+557,1,6,"""CREATE TABLE Copy( isbn TEXT, serial_number INTEGER PRIMARY KEY, weight INTEGER CHECK (weight >= 10 AND weight <= 1000), bookcase INTEGER, FOREIGN KEY(isbn) REFERENCES Book(isbn) 	ON UPDATE CASCADE 	ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+336,1,6,CREATE ASSERTION books_between_10_1000 CHECK ( NOT EXISTS ( SELECT * FROM Copy WHERE weight > 1000 OR weight < 10 ) ),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+558,1,6,"""CREATE TABLE Copy (isbn VARCHAR(13), serial_number INT PRIMARY KEY, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn));""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+559,1,6,"""CREATE TABLE Copy (     isbn INT,     serial_number INT,     weight INT,     bookcase INT,     CONSTRAINT weight_bound CHECK (weight >=10 AND weight <=1000)     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON DELETE CASCADE         ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+560,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT, );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+561,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INTEGER PRIMARY KEY, weight INTEGER CHECK (weight >= 10 AND weight <=1000), bookcase INTEGER, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+562,1,6,"""CREATE TABLE Copy (   isbn TEXT,   title TEXT,   serian_number INT,   weight INT CHECK (weight < 1001 AND weight > 9),   bookcase INT,   FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Column names
+❌ Type of 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● Your CREATE statement is missing these column(s): 'serial_number'.
+● Your CREATE statement includes extra column(s): 'serian_number',  'title'.
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight < 1001 and weight > 9).
+
+4️⃣ Next steps:
+💡 Add the missing column(s): 'serial_number'.
+💡 Remove the extra column(s): 'serian_number',  'title'.
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Adjust the CHECK constraint definition 1.
+"""
+563,1,6,Due to personal reason I was not able to watch this weeks lecture. I am sorry. I will try to catch up next week.,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+564,1,6,"""CREATE TABLE Copies ( isbn CHAR(13), serial_number INTEGER PRIMARY KEY, weight INTEGER CHECK (weight >= 10 AND weight <= 1000), bookcase INTEGER, FOREIGN KEY (isbn) REFERENCES Books (isbn) ON DELETE CASCADE CONSTRAINT isbn_book_exists CHECK ( EXISTS ( SELECT * FROM Books B, Copies C WHERE C.isbn = B.isbn )) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+565,1,6,"""CREATE TABLE Copy (isbn VARCHAR(20),serial_number VARCHAR(50) PRIMARY KEY,weight INTEGER,bookcase VARCHAR(50),FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE NO ACTION ON UPDATE NO ACTION,CHECK (weight BETWEEN 10 AND 1000));""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'serial_number'
+❌ Type of 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'serial_number' should be 'int4', but you have 'varchar'.
+● The type for column 'bookcase' should be 'int4', but you have 'varchar'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Change the type of column 'bookcase' to 'int4'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+566,1,6,"""CREATE TABLE Copy(     isbn VARCHAR(20),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+567,1,6,"""CREATE TABLE Copy( isbn VARCHAR, serial_number INT, weight INT CHECK (weight >=10 AND weight <=1000), bookcase INT, PRIMARY KEY(isbn, serial_number), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE  );""",1,1,"""🟢 Correct."""
+568,1,6,"""CREATE TABLE Copy (isbn TEXT, serial_number INT, weight INT NOT NULL CHECK (weight >= 10 AND weight <= 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE, ON DELETE CASCADE, UNIQUE (isbn, serial_number));""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+569,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+570,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+571,1,6,"""CREATE TABLE Copy ( isbn VARCHAR, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, serial_number INTEGER, weight INTEGER CHECK (weight >= 10 AND weight <= 1000), bookcase INTEGER, );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+572,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+573,1,6,"""CREATE TABLE Copy ( 	isbn VARCHAR NOT NULL, 	serial_number INTEGER, 	weight INTEGER, 	bookcase INTEGER, 	PRIMARY KEY (isbn, serial_number), 	FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, 	CONSTRAINT MinMaxWeight CHECK (weight >= 100 AND weight <= 1000) );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ NOT NULL constraint for 'isbn'
+❌ Check constraints
+
+❗ Problem Details:
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight >= 100 and weight <= 1000).
+
+4️⃣ Next steps:
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡Adjust the CHECK constraint definition 1.
+"""
+574,1,6,"""DROP TABLE Copy;   CREATE TABLE Copy(   isbn CHAR NOT NULL,   serial_number INT,   weight DOUBLE NOT NULL CHECK (weight >= 10) CHECK (weight <= 1000),   bookcase INT NOT NULL,   PRIMARY KEY (serial_number),   FOREIGN KEY (isbn) REFERENCES Book(isbn)     ON DELETE CASCADE     ON UPDATE CASCADE,   );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+575,1,6,"""CREATE TABLE Copy ( isbn INT, serial_number INT, weight INT CHECK (weight <. 1000 AND weight > 10), bookcase INT, PRIMARY KEY(serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, UNIQUE (isbn, serial_number) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+576,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight BETWEEN 10 AND 1000),      bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON UPDATE CASCADE         ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+577,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER,     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE     CHECK (weight BETWEEN """"10"""" AND """"1000""""));""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+577,2,6,"""CREATE TABLE Copy (     isbn VARCHAR,     serial_number INT,     weight INT,     bookcase INT,     PRIMARY KEY (isbn, serial_number),     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE     CHECK (weight BETWEEN """"10"""" AND """"1000"""")); -- constraint added );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+578,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INT     weight INT CHECK ( weight > 9 AND weight < 1001 ) ,     bookcase INT,     PRIMARY KEY (serial_number),     FOREIGN KEY (isbn) REFERENCES Books (isbn) ON DELETE CASCADE ON UPDATE   CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+579,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight BETWEEN 10 AND 1000), -- CHECK constraint added     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+580,1,6,"""CREATE TABLE Copy(       isbn VARCHAR(13), serial_number INT, weight INT,        CHECK (weight >= 10 AND weight <= 1000),       bookcase INT,       PRIMARY KEY(isbn, serial_number),       FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE );""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, CHECK (weight >= 10 AND weight <= 1000),  bookcase INT,  PRIMARY KEY(isbn, serial_number),  FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE );'?
+"""
+581,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_range_check CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'weight_range_check'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+582,1,6,"""CREATE TABLE Copy ( isbn INT, serial_number INT PRIMARY KEY, weight INT CHECK (weight >=10 AND weight<=1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+583,1,6,ALTER TABLE Copy ADD CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found ''.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+584,1,6,"""CREATE TABLE Copy(  isbn TEXT, serial_number INT PRIMARY KEY, weight INT CHECK(weight BETWEEN 10 AND 1000), bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+585,1,6,ALTER TABLE Copy ADD COLUMN new_weight INT CHECK (new_weight >= 10 AND new_weight <= 1000);   UPDATE Copy SET new_weight = weight;   ALTER TABLE Copy DROP COLUMN weight;   ALTER TABLE Copy RENAME COLUMN new_weight TO weight;,0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+
+3️⃣ Issues found in the following sections:
+❌ Operation types
+❌ Operation 1
+
+❗ Problem Details:
+● Expected operation sequence: ADD CONSTRAINT but found: ADD COLUMN.
+● Operation 1 should be 'ADD CONSTRAINT' but is 'ADD COLUMN'.
+
+4️⃣ Next steps:
+💡 Use the correct sequence of ALTER operations.
+Use 'ADD CONSTRAINT' for operation 1.
+Extra UpdateStmt statement.
+Extra AlterTableStmt statement.
+Extra RenameStmt statement.
+"""
+586,1,6,"""CREATE TABLE Copy( isbn INT,  serial_number INT,  weight INT      CHECK (weight >= 10 AND weight <= 1000),  bookcase INT,  FOREIGN KEY (isbn)  REFERENCES Book(isbn)      ON UPDATE CASCADE     ON DELETE CASCADE);""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+"""
+587,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+588,1,6,"""CREATE TABLE Copy  (isbn TEXT NOT NULL, serial_number INTEGER PRIMARY KEY, weight INTEGER NOT NULL CHECK (weight BETWEEN 10 and 1000), bookcase INTEGER NOT NULL, FOREIGN KEY (isbn) REFERENCES Book (isbn) ON DELETE CASCADE ON UPDATE CASCADE);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+589,1,6,"""CREATE TABLE Copy (isbn TEXT, serial_number INTEGER PRIMARY KEY, weight INTEGER NOT NULL CHECK (weight BETWEEN 10 and 1000), bookcase INTEGER NOT NULL, FOREIGN KEY(isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE CASCADE);""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+590,1,6,"""CREATE TABLE Copy( isbn VARCHAR(10), serial_number INT, weight INT CHECK (weight > 9 AND weight < 1001), bookcase INT. PRIMARY KEY (isbn, serial_number) FOREIGN KEY (isbn),    REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+591,1,6,"""CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, bookcase INT, PRIMARY KEY (serial_number), FOREIGN KEY (isbn), REFERENCES Book (isbn), CONSTRAINT weight_check CHECK (weight < 1000 AND weight > 10), ON UPDATE CASCADE ON DELETE CASCADE NOT DEFERRABLE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+592,1,6,"""DROP TABLE IF EXISTS Copy;    CREATE TABLE Copy (     isbn VARCHAR(20),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000), -- Added CHECK constraint     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE,     CHECK (isbn IN (SELECT isbn FROM Book)) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+593,1,6,"""CREATE TABLE Copy ( isbn TEXT NOT NULL, serial_number INT NOT NULL, weight INT NOT NULL CHECK (weight >= 9 AND weight <= 1000), bookcase INT, PRIMARY KEY (isbn, serial_number),   FOREIGN KEY (isbn) REFERENCES Book(isbn)  ON UPDATE CASCADE ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight >= 9 and weight <= 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡Adjust the CHECK constraint definition 1.
+"""
+594,1,6,ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+595,1,6,"""CREATE TABLE Copy ( serial_number CHAR(15), isbn CHAR(15), weight INT CHECK (weight > 10 AND weight < 1000), bookcase TEXT, PRIMARY KEY (serial_number),FOREIGN KEY (isbn) REFERENCES Book(isbn));""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Type of 'serial_number'
+❌ Type of 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'bpchar'.
+● The type for column 'serial_number' should be 'int4', but you have 'bpchar'.
+● The type for column 'bookcase' should be 'int4', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Change the type of column 'bookcase' to 'int4'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+596,1,6,ALTER TABLE Copy  ADD CONSTRAINT check_weight  CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'check_weight'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+597,1,6,"""CREATE TABLE Copy(   isbn TEXT,   serial_number INT,   weight INT ,    bookcase INT NOT NULL,   CHECK (weight > 10 AND weight < 1000  ),   PRIMARY KEY (serial_number),    FOREIGN KEY (isbn)                REFERENCES Book(isbn) ON DELETE CASCADE                ON UPDATE CASCADE    )""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+598,1,6,"""CREATE TABLE Copy( isbn INT serial_number INT weight INT CHECK (weight BETWEEN 10 AND 1000) bookcase INT UNIQUE (isbn, serial number)  FOREIGN KEY(isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+599,1,6,"""CREATE TABLE Copy ( isbn INT REFERENCES Book(isbn), serial_number INT NOT NULL PRIMARY KEY, weight INT NOT NULL CHECK (weight >= 10 AND weight <= 1000 ), bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+600,1,6,CONSTRAINT check_weight    CHECK(     weight in (SELECT weight      FROM Copy      WHERE weight > 10     AND weight < 1000) );,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+601,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_condition CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+602,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT NOT NULL PRIMARY KEY, weight INT NOT NULL CHECK (weight >10 AND weight < 1000) , bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES book (isbn) ON DELETE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+603,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+604,1,6,"""CREATE TABLE Copy ( isbn INTEGER, serial_number INTEGER, weight FLOAT, bookcase INTEGER, PRIMARY KEY(isbn), PRIMARY KEY(serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT weight CHECK (weight >= 10 AND weight <= 1000) );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Type of 'weight'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● The type for column 'weight' should be 'int4', but you have 'float8'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Change the type of column 'weight' to 'int4'.
+"""
+605,1,6,"""CREATE TABLE Copy (     isbn_copy text,     serial_number integer,     weight integer NOT NULL CHECK (weight >= 10 AND weight <= 1000),     bookcase integer NOT NULL,     PRIMARY KEY(serial_number),     FOREIGN KEY(isbn_copy) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Column names
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Foreign keys
+
+❗ Problem Details:
+● Your CREATE statement is missing these column(s): 'isbn'.
+● Your CREATE statement includes extra column(s): 'isbn_copy'.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For FOREIGN KEY constraint 1, expected local column(s): ('isbn') but found: ('isbn_copy').
+
+4️⃣ Next steps:
+💡 Add the missing column(s): 'isbn'.
+💡 Remove the extra column(s): 'isbn_copy'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the local columns in your FOREIGN KEY definition 1.
+"""
+606,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT, weight INT, bookcase INT, PRIMARY KEY (serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT weight CHECK (weight > 10 AND weight < 1000) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight > 10 and weight < 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+607,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON UPDATE CASCADE         ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+608,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13) NOT NULL,     serial_number INT NOT NULL,     weight INT CHECK (weight >= 10 AND weight <= 1000),      bookcase INT,     PRIMARY KEY (serial_number),     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE      CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ Primary key
+
+❗ Problem Details:
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+609,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn)     ON UPDATE CASCADE      ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+610,1,6,"""CREATE table Copy( isbn VARCHAR(13),  serial_number INT PRIMARY KEY,  weight INT CHECK (weight>=10 AND weight<=1000),  bookcase INT,  FOREIGN KEY(isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+611,1,6,"""CREATE TABLE Copy (          isbn TEXT,          serial_number INTEGER PRIMARY KEY,          weight INTEGER CHECK (weight >= 10 AND weight <=1000),          bookcase INTEGER,          FOREIGN KEY (isbn) REFERENCES Book (isbn) ON DELETE CASCADE    );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+611,2,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+612,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial number INT NOT NULL, weight INT NOT NULL bookcase INT NOT NULL, FOREIGN KEY (isbn) REFERENCES Book (isbn) ON DELETE CASCADE AND ON UPDATE CASCADE, CONSTRAINT weight  CHECK (weight  IS NULL -- row constraint OR (weight  > 10 AND weight < 1000) ) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+613,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000) NOT NULL,     bookcase INT NOT NULL,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+614,1,6,"""CREATE TABLE Book ( isbn VARCHAR (13), title VARCHAR NOT NULL, author VARCHAR, PRIMARY KEY (isbn) ); CREATE TABLE Copy( isbn VARCHAR (13), serial_number INT, weight INT CHECK (weight<10) AND (weight>100), bookcase INT, PRIMARY KEY (serial_number ), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERABLE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+615,1,6,"""CREATE TABLE Copy( isbn VARCHAR (13), serial_number INT, weight INT CHECK (weight >10) AND (weight <1000), bookcase INT, PRIMARY KEY (serial_number ), FOREIGN KEY (isbn) REFERENCES Book(isbn)  ON DELETE CASCADE  ON UPDATE CASCADE  NOT DEFERABLE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+616,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+617,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INT,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT,     PRIMARY KEY (isbn, serial_number),     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+"""
+618,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight >= 10 AND weight <= 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+619,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+620,1,6,ALTER TABLE Copy ADD CONSTRAINT weightconstraint CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'weightconstraint'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+621,1,6,"""CREATE Copy ( isbn VARCHAR(13, serial_number int, UNIQUE (serial number), weight int, bookcase int, PRIMERY KEY (serial_number) constrain real_weight check ( weight is null or (weight>=10 and weight<=1000) FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE NOT DEFERRABLE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+622,1,6,"""CREATE TABLE Copy ( isbn VARCHAR(13), serial_number INT PRIMARY KEY, weight INT CHECK (weight >= 10 AND weight <= 1000),  bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+623,1,6,ALTER TABLE Copy ADD CONSTRAINT weight_range CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found 'weight_range'.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+624,1,6,CREATE TABLE Copy( PRIMARY KEY (isbn) serial number VARCHAR bookcase VARCHAR weight INT CHECK weight  ( NOT EXISTS (  weight <= 10 AND weight >= 1000))),0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+625,1,6,"""CREATE TABLE copy ( isbn TEXT NOT NULL, serial_number INT NOT NULL, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, UNIQUE (isbn, serial_number)  ) ;""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ Primary key
+❌ Unique constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+"""
+626,1,6,ALTER TABLE Copy ADD CHECK (weight BETWEEN 10 AND 1000),0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found ''.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
+627,1,6,"""CREATE TABLE Copy ( isbn VARCHAR(100), serial_number INT, weight INT, bookcase INT, PRIMARY KEY (serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT realistic_weight CHECK ((weight >= 10) AND (weight <= 1000)) );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+628,1,6,"""CREATE TABLE Copy(isbn TEXT , serial_number INT , weight INT NOT NULL CHECK (weight>=10 AND weight<=1000), bookcase INT, FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY(isbn, serial_number));""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'weight'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+"""
+629,1,6,ALTER TABLE Copy ADD CONSTRAINT CHECK (weight >= 10 AND weight <= 1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+630,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INT NOT NULL,     weight INT,     bookcase INT NOT NULL,     FOREIGN KEY (isbn)         REFERENCES Book(isbn)             ON UPDATE CASCADE,     UNIQUE (isbn, serial_number),     CONSTRAINT weight_check CHECK (weigth >= 10 AND weight <= 1000) )""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weigth >= 10 and weight <= 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+5️⃣ Additional Information:
+● Results Analysis: ⚠️ Your query unexpectedly triggered a check constraint.
+"""
+436,1,6,"""CREATE TABLE Copy (     isbn TEXT NOT NULL,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight BETWEEN 10 AND 1000),      bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+631,1,6,"""ALTER TABLE Copy ALTER COLUMN weight SET CHECK(weight >= 10, weight <=1000);""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+632,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight BETWEEN 10 AND 1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON UPDATE CASCADE         ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+"""
+633,1,6,ALTER TABLE Copy ADD CONSTRAINT grams CHECK(weight >10) AND (weight < 1000);,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+634,1,6,"""CREATE TABLE Copy( isbn INT NOT NULL, serial_number INT, weight INT NOT NULL, bookcase INT NOT NULL, PRIMARY KEY (serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT real_weight CHECK(weight >= 10) AND (weight <=1000) )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+635,1,6,"""DROP TABLE IF EXISTS Copy;   CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON UPDATE CASCADE         ON DELETE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+Extra DropStmt statement.
+"""
+636,1,6,"""CREATE TABLE Copy( 	isbn NUMERIC(13,0) NOT NULL, 	serial_number INT NOT NULL, 	weight INT NOT NULL CHECK (weight >= 10 AND weight =< 1000), 	bookcase INT NOT NULL, 	UNIQUE(isbn,serial_number), 	FOREIGN KEY(isbn) 		REFERENCES Book(isbn) 		ON DELETE CASCADE 		ON UPDATE CASCADE );""",0.2,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Unique constraints
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'numeric'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● Unexpected UNIQUE constraint(s) found.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (weight >= 10 and weight =< 1000).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Remove the UNIQUE constraint definitions.
+💡Adjust the CHECK constraint definition 1.
+"""
+637,1,6,"""CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, CHECK (weight >= 10 AND weight <= 1000), bookcase INT, PRIMARY KEY(isbn, serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) );""",1,1,"""🟢 Correct."""
+638,1,6,ALTER TABLE Copy ADD CONSTRAINT weight CHECK (weight >= 10 AND weight <= 1000);,1,1,"""🟢 Correct."""
+639,1,6,"""CREATE TABLE Copy (     isbn VARCHAR(13),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight BETWEEN 10 AND 1000), -- Added constraint     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+640,1,6,"""CREATE TABLE Copy( isbn VARCHAR, serial_number INTEGER, weight INTEGER, bookcase INTEGER, PRIMARY KEY(isbn), PRIMARY KEY(serial_number) FOREIGN KEY(isbn) REFERENCES Book(isbn), ON UPDATE CASCADE, ON DELETE CASCADE, CONSTRAINT weight CHECK weight >= 10 AND weight<=1000 );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+641,1,6,"""CREATE TABLE Copy( isbn INT, serial_number INT, weight INT, bookcase INT, PRIMARY KEY (serial_number), FOREIGN KEY(isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE,  UNIQUE(isbn, serial_number), CHECK (weight >= 10 AND weight <= 1000));""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Unique constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● Unexpected UNIQUE constraint(s) found.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Remove the UNIQUE constraint definitions.
+"""
+642,1,6,"""CREATE TABLE Copy (isbn INTEGER NOT NULL , serial_number INTEGER PRIMARY KEY, weight INTEGER, bookcase INTEGER, CONSTRAINT CheckGrams CHECK ( weight <= 1000 AND weight >= 10));""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Primary key
+❌ Foreign keys
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● Expected 1 foreign key constraint(s), but found 0.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Review your FOREIGN KEY definitions.
+5️⃣ Additional Information:
+● Results Analysis: ⚠️ You created an extra table 'copy' that wasn’t needed.
+"""
+643,1,6,"""CREATE TABLE Copy( isbn INT, serial number INT, weight INT, CONSTRAINT weight_limtis CHECK ( weight >= 10 AND weight <= 1000) bookcase INT, PRIMARY KEY (isbn), PRIMARY KEY (serial number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON delete cascade ON update cascade );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+644,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+645,1,6,"""DROP TABLE IF EXISTS Copy;    CREATE TABLE Copy (     isbn VARCHAR(20),     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000), -- Constraint for weight     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON DELETE CASCADE         ON UPDATE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+646,1,6,"""CREATE TABLE Copy ( isbn VARCHAR(13), serial_number INT, weight INT, bookcase INT, PRIMARY KEY(serial_number), FOREIGN KEY(isbn) REFERENCES Book(isbn)  ON DELETE CASCADE  ON UPDATE CASCADE NOT DEFERRABLE, CONSTRAINT real_weight CHECK ( weight > 10 AND weight < 1000 );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+647,1,6,"""CREATE TABLE Copy(isbn INT,  serial_number INT,  weight INT,  bookcase INT,  FOREIGN KEY(isbn) REFERENCES Book(isbn),  PRIMARY KEY(serial_number), CHECK (weight>=10), CHECK(weight<=1000) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'int4'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● Expected 1 CHECK constraint(s), but found 2.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Review your CHECK constraint definitions.
+"""
+648,1,6,"""DROP TABLE Copy;   CREATE TABLE Copy(     isbn TEXT NOT NULL,     serial_number TEXT,     weight FLOAT,      bookcase INT NOT NULL,     PRIMARY KEY (serial_number),     FOREIGN KEY (isbn) REFERENCES Book(isbn)              ON DELETE CASCADE ON UPDATE CASCADE,     CONSTRAINT sensible_weight CHECK (weight IS NULL OR (weight>10 AND weight<1000)) );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Type of 'serial_number'
+❌ Type of 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● The type for column 'serial_number' should be 'int4', but you have 'text'.
+● The type for column 'weight' should be 'int4', but you have 'float8'.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: ((unknown expression) IS NULL  or (weight > 10 and weight < 1000)).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Change the type of column 'weight' to 'int4'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+💡Adjust the CHECK constraint definition 1.
+Extra DropStmt statement.
+"""
+649,1,6,"""DROP TABLE Copy; CREATE TABLE Copy(     isbn VARCHAR(255),     serial_number INT NOT NULL,     weight INT CHECK (10 < weight AND weight < 1000),     bookcase INT,     PRIMARY KEY(isbn, serial_number),     FOREIGN KEY(isbn) REFERENCES Book(isbn)          ON DELETE CASCADE          ON UPDATE CASCADE  );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ NOT NULL constraint for 'serial_number'
+❌ Check constraints
+
+❗ Problem Details:
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (10 < weight and weight < 1000).
+
+4️⃣ Next steps:
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡Adjust the CHECK constraint definition 1.
+Extra DropStmt statement.
+"""
+650,1,6,"""CREATE TABLE Copy (     isbn VARCHAR NOT NULL,     serial_number INT NOT NULL,     weight INT NOT NULL CHECK (10 <= weight) CHECK (weight <= 1000),      bookcase INT NOT NULL,       FOREIGN KEY (isbn) REFERENCES Book(isbn),      PRIMARY KEY (isbn, serial_number) );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+❌ Check constraints
+
+❗ Problem Details:
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Expected 1 CHECK constraint(s), but found 2.
+
+4️⃣ Next steps:
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡Review your CHECK constraint definitions.
+"""
+651,1,6,"""CREATE TABLE Copy(isbn TEXT,  serial_number TEXT,  weight INT CHECK(weight BETWEEN 10 AND 1000), bookcase INT,  FOREIGN KEY (isbn) REFERENCES Book(isbn) ON UPDATE CASCADE ON DELETE CASCADE);""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Type of 'serial_number'
+❌ Primary key
+❌ Check constraints
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● The type for column 'serial_number' should be 'int4', but you have 'text'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+● For CHECK constraint 1, expected: (weight >= 10 and weight <= 1000) but found: (unknown expression) BETWEEN (null) AND (null).
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+💡Adjust the CHECK constraint definition 1.
+"""
+652,1,6,"""CREATE TABLE Copy (     isbn TEXT,     serial_number INTEGER PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000), -- Added CHECK constraint     bookcase INTEGER,     FOREIGN KEY (isbn) REFERENCES Book(isbn) );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+653,1,6,"""CREATE TABLE Copy( isbn VARCHAR, serial_number INT PRIMARY KEY, weight INT CHECK (weight >= 10 AND weight <= 1000) , bookcase INT, FOREIGN KEY (isbn) REFERENCES Book (isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Primary key
+
+❗ Problem Details:
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+654,1,6,"""CREATE TABLE Copy (      isbn TEXT NOT NULL,     serial_number TEXT NOT NULL PRIMARY KEY,     weight INTEGER CHECK (weight >= 10 AND weight <= 1000),    bookcase INTEGER NOT NULL,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.3142857142857143,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Type of 'serial_number'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'bookcase'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● The type for column 'serial_number' should be 'int4', but you have 'text'.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Change the type of column 'serial_number' to 'int4'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+655,1,6,"""CREATE TABLE Copy (        isbn TEXT,        serial_number INT,        weight INT,        bookcase INT,        CHECK weight >= 10 AND weight <= 1000        FOREIGN KEY (isbn)              REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE )""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+656,1,6,"""DROP TABLE IF EXISTS Copy;   CREATE TABLE Copy (     isbn VARCHAR(50),     serial_number INT PRIMARY KEY,     weight INT CHECK (weight BETWEEN 10 AND 1000), -- Added CHECK constraint for weight     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE );""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+465,1,6,"""CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, CHECK (weight >= 10 AND weight <= 1000), bookcase INT, PRIMARY KEY(isbn, serial_number), FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE );""",0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'CREATE TABLE Copy( isbn VARCHAR(13), serial_number INT, weight INT, CHECK (weight >= 10 AND weight <= 1000),  bookcase INT,  PRIMARY KEY(isbn, serial_number),  FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE NOT DEFERRABLE );'?
+"""
+657,1,6,ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+658,1,6,"""CREATE TABLE Copy ( isbn TEXT, serial_number INT PRIMARY KEY, weight INT CHECK (weight >= 10 AND weight <= 1000), bookcase INT, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE );""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+659,1,6,"""CREATE TABLE Copy (isbn TEXT, serial_number INTEGER PRIMARY KEY, weight INTEGER CHECK (weight >= 10 AND weight <= 1000), bookcase INTEGER, FOREIGN KEY (isbn) REFERENCES Book(isbn) ON DELETE CASCADE ON UPDATE CASCADE);""",0.5428571428571428,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Your statement defines a primary key only on 'serial_number', but the requirement is a composite primary key on ('isbn',  'serial_number').
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Define a composite primary key on ('isbn',  'serial_number').
+"""
+660,1,6,"""CREATE TABLE Copy(   isbn char(13) NOT NULL,   serial_number INT NOT NULL,   weight INT NOT NULL     CHECK (weight >= 10 AND weight <= 1000),   bookcase INT NOT NULL,   PRIMARY KEY (isbn, serial_number),   FOREIGN KEY (isbn)     REFERENCES Book(isbn)     ON DELETE CASCADE     ON UPDATE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Primary key
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ NOT NULL constraint for 'serial_number'
+❌ NOT NULL constraint for 'weight'
+❌ NOT NULL constraint for 'bookcase'
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'bpchar'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● Column 'serial_number' should not have a NOT NULL constraint, but your statement has it.
+● Column 'weight' should not have a NOT NULL constraint, but your statement has it.
+● Column 'bookcase' should not have a NOT NULL constraint, but your statement has it.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Adjust the NOT NULL constraint for column 'serial_number'.
+💡 Adjust the NOT NULL constraint for column 'weight'.
+💡 Adjust the NOT NULL constraint for column 'bookcase'.
+"""
+661,1,6,"""CREATE TABLE Copy(     isbn TEXT NOT NULL,     serial_number INT,     weight NUMERIC CHECK (weight>=10 AND weight<=1000),     bookcase INT,     FOREIGN KEY (isbn) REFERENCES Book(isbn)         ON DELETE CASCADE         ON UPDATE CASCADE );""",0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Create a table named 'copy'. Columns: isbn varchar, serial_number int4, weight int4 and bookcase int4. Primary key on (isbn, serial_number). Foreign keys: FOREIGN KEY (isbn) REFERENCES book (isbn). Check constraints: CHECK ((weight >= 10 and weight <= 1000)). 
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Column names
+✅ Foreign keys
+✅ Unique constraints
+✅ Check constraints
+
+3️⃣ Issues found in the following sections:
+❌ Type of 'isbn'
+❌ NOT NULL constraint for 'isbn'
+❌ Type of 'weight'
+❌ Primary key
+
+❗ Problem Details:
+● The type for column 'isbn' should be 'varchar', but you have 'text'.
+● Column 'isbn' should not have a NOT NULL constraint, but your statement has it.
+● The type for column 'weight' should be 'int4', but you have 'numeric'.
+● Missing primary key column(s): 'isbn',  'serial_number'.
+
+4️⃣ Next steps:
+💡 Change the type of column 'isbn' to 'varchar'.
+💡 Adjust the NOT NULL constraint for column 'isbn'.
+💡 Change the type of column 'weight' to 'int4'.
+💡 Include the missing primary key column(s): 'isbn',  'serial_number'.
+"""
+662,1,6,ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);,0.8857142857142857,1,"""Semantics minor error. Maybe you meant 'ALTER TABLE Copy ADD CONSTRAINT check_weight_range CHECK (weight >= 10 AND weight <= 1000);'?
+"""
+663,1,6,"""CREATE TABLE Copy ( isbn VARCHAR(13) serial_number INT, weight INT, bookcase INT, CONSTRAINT weight_constraint CHECK (weight > 10 AND weight < 1000), PRIMARY KEY(serial_number), FOREIGN KEY(isbn)     REFERENCES Book(isbn)     ON DELETE CASCADE     ON UPDATE CASCADE     NOT DEFERRABLE ) ;""",0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+664,1,6,,0,1,"""The query is not parseable. Therefore, the semantics could not be verified.
+"""
+665,1,6,ALTER TABLE Copy ADD CHECK (weight BETWEEN 10 AND 1000);,0.42857142857142855,1,"""1️⃣ Goal:
+The query is supposed to:
+ ● Alter table 'copy': ADD CONSTRAINT check_weight_range (weight >= 10 and weight <= 1000).
+
+2️⃣ Correct Clauses:
+✅ Table name
+✅ Number of operations
+✅ Operation types
+
+3️⃣ Issues found in the following sections:
+❌ Operation 1
+❌ Operation 1
+
+❗ Problem Details:
+● Op 1: expected constraint name 'check_weight_range' but found ''.
+● Op 1: expected CHECK condition '(weight >= 10 and weight <= 1000)' but found '(unknown expression) BETWEEN (null) AND (null)'.
+
+4️⃣ Next steps:
+💡 Name constraint 'check_weight_range'.
+Use CHECK ((weight >= 10 and weight <= 1000)).
+"""
