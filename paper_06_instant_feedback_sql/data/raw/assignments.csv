@@ -1,0 +1,7 @@
+id,title,course,difficulty,points,due,tags,attempts_allowed,published,owner_id,created_at
+1,DB Quiz 1,IPC033 - Information Modelling and Databases,Beginner,1,07-01-2025,"{""Basic Select""}",10,t,1,2025-01-01 09:00:00+00
+2,DB Quiz 2,IPC033 - Information Modelling and Databases,Beginner,5,14-01-2025,"{Select,Where,Join}",10,t,1,2025-01-13 09:25:11.348538+00
+3,DB Quiz 3,IPC033 - Information Modelling and Databases,Intermediate,10,21-01-2025,"{""Intermediate Select""}",10,t,1,2025-01-17 10:58:47.165227+00
+4,DB Quiz 4,IPC033 - Information Modelling and Databases,Intermediate,8,28-01-2025,"{Select,""Order By""}",10,t,1,2025-01-27 11:02:11.209414+00
+5,DB Quiz 5,IPC033 - Information Modelling and Databases,Intermediate,6,04-02-2025,"{Create,Insert,Delete}",10,t,1,2025-01-30 12:23:15.152883+00
+6,DB Quiz 6,IPC033 - Information Modelling and Databases,Intermediate,1,11-02-2025,"{""Create View""}",10,t,1,2025-02-10 12:55:27.600216+00

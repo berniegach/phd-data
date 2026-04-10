@@ -48,7 +48,7 @@ In general:
 - Chapter 5 -- [paper_03_parameter_setting_sql_grading](paper_03_parameter_setting_sql_grading)
 - Chapter 6 -- [paper_04_automated_feedback_sql](paper_04_automated_feedback_sql)
 - Chapter 7 -- [paper_05_sql_ddl_dml_grading](paper_05_sql_ddl_dml_grading)
-- Chapter 8 -- pending
+- Chapter 8 -- [paper_06_instant_feedback_sql](paper_06_instant_feedback_sql)
 
 ## Privacy and ethics
 
